@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>IA en familia · Marcos & Noe · Mayo 2026</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="./theme/agency.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ============ COVER ============ -->
+    <section class="cover" data-background-color="#0a0a0f">
+      <div class="cover-grid"></div>
+      <div class="cover-glow"></div>
+      <div class="cover-content">
+        <div class="cover-eyebrow"><span class="dot"></span> Charla familiar · Mayo 2026</div>
+        <h1 class="cover-title">
+          <span class="title-line title-line-1">Inteligencia</span>
+          <span class="title-line title-line-2"><em>artificial</em></span>
+          <span class="title-line title-line-3">en familia</span>
+        </h1>
+        <p class="cover-subtitle">De cómo funciona el autocorrector más caro de la historia, qué le contamos sin saberlo y por qué Miyazaki dijo que era un insulto a la vida.</p>
+        <div class="cover-meta">
+          <div class="meta-block">
+            <span class="meta-label">Ponen</span>
+            <span class="meta-value">Marcos &amp; Noe</span>
+          </div>
+          <div class="meta-block">
+            <span class="meta-label">Duración</span>
+            <span class="meta-value">~90 min</span>
+          </div>
+          <div class="meta-block">
+            <span class="meta-label">Audiencia</span>
+            <span class="meta-value">Abuelos → primos developers</span>
+          </div>
+        </div>
+        <div class="cover-tag">[ Generado, escrito y diseñado con IA. Cada decisión, supervisada por nosotros. ]</div>
+      </div>
+    </section>
+
+    <!-- ============ 00 · APERTURA ============ -->
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">00</div>
+      <h2 class="chapter-title">Bienvenidos</h2>
+      <p class="chapter-sub">Tres minutos para calentar el motor.</p>
+    </section>
+
+    <section>
+      <div class="two-col">
+        <div>
+          <h3 class="section-h">Las reglas del juego</h3>
+          <ul class="big-list">
+            <li>Levanta la mano <em>cuando quieras</em>.</li>
+            <li>Si algo no se entiende, lo paramos.</li>
+            <li>Si nos aburrimos, también.</li>
+            <li>Al final hay café y preguntas.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="section-h">El plan</h3>
+          <ol class="plan-list">
+            <li>Qué es la IA y cómo "aprende"</li>
+            <li>Glosario de supervivencia</li>
+            <li>Demo en vivo: qué sabe ChatGPT</li>
+            <li>Buenas prácticas de prompting</li>
+            <li>Usos creativos y "¿IA o no?"</li>
+            <li>El precio: privacidad, arte, empleo</li>
+            <li>Agentes, Luna, rent-a-human</li>
+            <li>Cómo vemos el futuro</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 01 · FUNDAMENTOS ============ -->
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">01</div>
+      <h2 class="chapter-title">¿Qué es la IA<br>y cómo "aprende"?</h2>
+      <p class="chapter-sub">12 minutos · Noe</p>
+    </section>
+
+    <section>
+      <h3 class="section-h">La IA no nació con ChatGPT</h3>
+      <p class="lede">Lleva décadas en nuestra vida. Lo que cambió en 2022 es que empezó a <em>crear</em>.</p>
+      <div class="card-grid card-grid-4">
+        <div class="card">
+          <div class="card-tag">desde los 80</div>
+          <h4>Reglas</h4>
+          <p>Termostatos, semáforos inteligentes, asistentes Help.</p>
+        </div>
+        <div class="card">
+          <div class="card-tag">desde los 90</div>
+          <h4>Machine learning clásico</h4>
+          <p>Spam de Gmail, recomendaciones Netflix, detección de fraude.</p>
+        </div>
+        <div class="card">
+          <div class="card-tag">desde 2012</div>
+          <h4>Deep learning</h4>
+          <p>Reconocimiento facial, Google Translate, Alexa/Siri.</p>
+        </div>
+        <div class="card card-highlight">
+          <div class="card-tag">desde 2017</div>
+          <h4>IA generativa</h4>
+          <p>ChatGPT, Midjourney, Sora, Suno. Por fin <strong>crea</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-h">Cronología</h3>
+      <div class="timeline">
+        <div class="ti"><span class="t-year">1950</span><span class="t-text">Turing propone el test</span></div>
+        <div class="ti"><span class="t-year">1997</span><span class="t-text">Deep Blue gana a Kasparov</span></div>
+        <div class="ti"><span class="t-year">2011</span><span class="t-text">Siri llega al iPhone</span></div>
+        <div class="ti"><span class="t-year">2012</span><span class="t-text">AlexNet · Big bang del deep learning</span></div>
+        <div class="ti highlight"><span class="t-year">2017</span><span class="t-text"><strong>"Attention Is All You Need"</strong> · nace el Transformer</span></div>
+        <div class="ti"><span class="t-year">2020</span><span class="t-text">GPT-3</span></div>
+        <div class="ti highlight"><span class="t-year">30 nov 2022</span><span class="t-text"><strong>ChatGPT</strong> se libera al mundo</span></div>
+        <div class="ti"><span class="t-year">2024</span><span class="t-text">Modelos de razonamiento, vídeo (Sora), Computer Use</span></div>
+        <div class="ti"><span class="t-year">2025</span><span class="t-text">MCP estándar · Project Vend · Vibe coding</span></div>
+        <div class="ti current"><span class="t-year">hoy</span><span class="t-text">GPT-5.5 · Claude Opus 4.7 · microGPT en 200 líneas</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-h">La metáfora</h3>
+      <div class="metaphor">
+        <div class="metaphor-left">
+          <div class="phone-keyboard">
+            <span class="kb-suggestion">salir</span>
+            <span class="kb-suggestion main">de</span>
+            <span class="kb-suggestion">a</span>
+          </div>
+          <p class="caption">Tu teclado predice <em>la siguiente palabra</em>.</p>
+        </div>
+        <div class="metaphor-arrow">×</div>
+        <div class="metaphor-right">
+          <div class="big-number">10<sup>10</sup></div>
+          <p class="caption">Eso, escalado <strong>10.000 millones de veces</strong>.</p>
+        </div>
+      </div>
+      <p class="bottom-note">Un LLM <strong>no razona</strong>. No tiene consciencia. <strong>Predice la siguiente palabra</strong> usando patrones aprendidos de billones de textos.</p>
+    </section>
+
+    <section>
+      <h3 class="section-h">Cómo se entrena un LLM</h3>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h4>Pre-entrenamiento</h4>
+          <p>Le tapamos una palabra de internet entero. Adivina. Falla. Ajusta. Repite <strong>trillones</strong> de veces.</p>
+          <p class="step-meta">Coste GPT-4: ~$100M · GPT-5: ~$1.000M</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h4>Fine-tuning humano</h4>
+          <p>Humanos en Kenia, Filipinas, Venezuela escriben ejemplos de "buena respuesta". El modelo imita.</p>
+          <p class="step-meta">Costaba ~$2/hora</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h4>RLHF</h4>
+          <p>Humanos comparan respuestas, eligen mejor. Modelo aprende a preferir lo que humanos premian.</p>
+          <p class="step-meta">Por eso ChatGPT es tan complaciente</p>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <h4>Reasoning training</h4>
+          <p>Desde 2024. El modelo aprende a "pensar antes de hablar". o3, Claude thinking, Gemini deep think.</p>
+          <p class="step-meta">100× más caro por consulta</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-h">¿Cuándo es fiable y cuándo no?</h3>
+      <div class="two-col compare">
+        <div class="col-good">
+          <div class="col-header">✓ Sí</div>
+          <ul>
+            <li>Resumir un texto que le das</li>
+            <li>Traducir entre idiomas comunes</li>
+            <li>Reescribir, parafrasear</li>
+            <li>Programar tareas conocidas</li>
+            <li>Estructurar ideas</li>
+            <li>Explicar conceptos generales</li>
+          </ul>
+        </div>
+        <div class="col-bad">
+          <div class="col-header">✗ No</div>
+          <ul>
+            <li>Fechas exactas y cifras concretas</li>
+            <li>Citas literales (las inventa)</li>
+            <li>Hechos recientes sin acceso a internet</li>
+            <li>Tu vida personal</li>
+            <li>Datos locales (esa farmacia en tu pueblo)</li>
+            <li>Decisiones médicas / legales serias</li>
+          </ul>
+        </div>
+      </div>
+      <p class="bottom-note"><strong>Regla de oro:</strong> si la respuesta está dentro del prompt o es transformar texto, está bien. Si le pides "datos del mundo real" sin internet, <strong>verifica</strong>.</p>
+    </section>
+
+    <section class="quote-slide">
+      <div class="quote-eyebrow">CURIOSIDAD · Andrej Karpathy</div>
+      <h2 class="quote-mega">microGPT</h2>
+      <p class="quote-sub">12 de febrero de 2026 · 200 líneas de Python puro · sin librerías</p>
+      <div class="quote-body">
+        <p>Le das un fichero con 32.000 nombres reales — Emma, Mateo, Sofia, Liam, Aisha — y al cabo de mil pasos de entrenamiento en un portátil normal, empieza a generar nombres nuevos:</p>
+        <p class="generated-names"><span>Liora</span> · <span>Maelin</span> · <span>Cassen</span> · <span>Adari</span></p>
+        <p>No existen. Suenan a nombres porque aprendió qué letras siguen a qué letras.</p>
+      </div>
+      <p class="quote-attribution">Misma arquitectura que ChatGPT. Diferencia: datos y cómputo.</p>
+    </section>
+
+    <!-- ============ 02 · GLOSARIO ============ -->
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">02</div>
+      <h2 class="chapter-title">Glosario<br>de supervivencia</h2>
+      <p class="chapter-sub">5 minutos · Noe</p>
+    </section>
+
+    <section>
+      <h3 class="section-h">Vocabulario para entender noticias del 2026</h3>
+      <div class="glossary-grid">
+        <div class="g-item"><span class="g-term">Token</span><span class="g-def">Trozo de texto (~4 chars) que procesa el modelo. <em>Te cobran por tokens.</em></span></div>
+        <div class="g-item"><span class="g-term">Ventana de contexto</span><span class="g-def">Cuánto texto "ve" a la vez. En 2026, hasta <strong>1 millón</strong> (un libro).</span></div>
+        <div class="g-item"><span class="g-term">Parámetros</span><span class="g-def">"Neuronas" del modelo. GPT-5 tiene ~1,7 billones.</span></div>
+        <div class="g-item"><span class="g-term">Alucinación</span><span class="g-def">Cuando inventa información con confianza absoluta.</span></div>
+        <div class="g-item"><span class="g-term">Prompt</span><span class="g-def">Lo que le pides. <em>La calidad del prompt = calidad de respuesta.</em></span></div>
+        <div class="g-item"><span class="g-term">RAG</span><span class="g-def">El modelo <strong>busca documentos</strong> antes de responder. Así funcionan los chatbots de empresa.</span></div>
+        <div class="g-item"><span class="g-term">Fine-tuning</span><span class="g-def">Reentrenar un modelo con tus datos.</span></div>
+        <div class="g-item"><span class="g-term">MCP</span><span class="g-def">"USB-C de las herramientas IA". Estándar abierto, adoptado por todos en 2025.</span></div>
+        <div class="g-item"><span class="g-term">Agente</span><span class="g-def">LLM que <strong>usa herramientas en bucle</strong> hasta lograr un objetivo.</span></div>
+        <div class="g-item"><span class="g-term">Multimodal</span><span class="g-def">Entiende texto + imagen + audio + vídeo.</span></div>
+        <div class="g-item"><span class="g-term">Reasoning model</span><span class="g-def">Modelo que "piensa antes de hablar". o3, Claude thinking, Gemini deep think.</span></div>
+        <div class="g-item"><span class="g-term">Benchmark</span><span class="g-def">Examen estándar (MMLU, GPQA, SWE-bench, ARC-AGI). Gameable, mirar varios.</span></div>
+      </div>
+    </section>
+
+    <!-- ============ 03 · DEMO ============ -->
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">03</div>
+      <h2 class="chapter-title">Demo en vivo<br>¿Qué sabe ChatGPT?</h2>
+      <p class="chapter-sub">8 minutos · Marcos</p>
+      <div class="placeholder">[DEMO EN VIVO — fallback: vídeo grabado en assets/demo-chatgpt.mp4]</div>
+    </section>
+
+    <section>
+      <h3 class="section-h">Lo que SÍ puede hacer</h3>
+      <ul class="check-list">
+        <li>Conversar, redactar, traducir, programar.</li>
+        <li>Buscar en internet en tiempo real (si la herramienta está activa).</li>
+        <li>Leer un PDF que le subas y resumirlo.</li>
+        <li>Mirar una foto y describirla.</li>
+        <li>Ejecutar código (gráficos, Excel, simulaciones).</li>
+      </ul>
+      <h3 class="section-h">Lo que NO puede</h3>
+      <ul class="cross-list">
+        <li>Acceder a tu email, agenda, archivos del ordenador <em>(salvo que se los enseñes)</em>.</li>
+        <li>Recordar conversaciones pasadas <em>(salvo Memory, que es un truco)</em>.</li>
+        <li>Saber qué pasa en tu pueblo, en tu casa, en tu vida.</li>
+        <li>Saber datos posteriores a su fecha de corte.</li>
+      </ul>
+    </section>
+
+    <!-- ============ 04 · BUENAS PRÁCTICAS ============ -->
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">04</div>
+      <h2 class="chapter-title">Cómo hablar<br>con la IA</h2>
+      <p class="chapter-sub">10 minutos · Noe · El bloque más útil de la charla</p>
+    </section>
+
+    <section>
+      <h3 class="section-h">10 técnicas que cambian todo</h3>
+      <div class="techniques">
+        <div class="t-card"><span class="t-num">1</span><h4>Actúa como X</h4><p>"Actúa como un médico de familia explicándole a una abuela…"</p></div>
+        <div class="t-card"><span class="t-num">2</span><h4>Piensa paso a paso</h4><p>Mejora la precisión hasta un 70% en razonamiento.</p></div>
+        <div class="t-card"><span class="t-num">3</span><h4>Cuestiona la premisa</h4><p>"Sé devil's advocate. Critícame esto sin piedad."</p></div>
+        <div class="t-card"><span class="t-num">4</span><h4>Autocorrígete</h4><p>"Revisa lo que escribiste y lista 5 problemas."</p></div>
+        <div class="t-card"><span class="t-num">5</span><h4>Da ejemplos</h4><p>Mostrar 2-3 emails tuyos &gt; describir el estilo.</p></div>
+        <div class="t-card"><span class="t-num">6</span><h4>Contexto, no pregunta</h4><p>"Mi madre cumple 65, le gusta la jardinería…"</p></div>
+        <div class="t-card"><span class="t-num">7</span><h4>Formato específico</h4><p>"Tabla con columnas: opción, pros, contras, precio."</p></div>
+        <div class="t-card"><span class="t-num">8</span><h4>Back &amp; forth</h4><p>La primera respuesta es mediocre. Itera 3-5 veces.</p></div>
+        <div class="t-card"><span class="t-num">9</span><h4>Cita fuentes</h4><p>"Cita URL al lado de cada afirmación. Si no, dilo."</p></div>
+        <div class="t-card"><span class="t-num">10</span><h4>Varias IAs</h4><p>Claude escribe → ChatGPT critica → Gemini revisa.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-h">La metáfora final</h3>
+      <blockquote class="quote-mega-2">
+        <p>Trátalo como un <em>becario brillante pero distraído</em>:</p>
+        <ul>
+          <li>Dale instrucciones claras y ejemplos.</li>
+          <li>Acéptale errores la primera vez.</li>
+          <li>Itera tras iterar, sale lo bueno.</li>
+          <li>Verifica antes de fiarte.</li>
+          <li>No le pegues datos personales sensibles.</li>
+        </ul>
+      </blockquote>
+    </section>
+
+    <!-- ============ 05 · UTILIDADES ============ -->
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">05</div>
+      <h2 class="chapter-title">Utilidades<br>avanzadas</h2>
+      <p class="chapter-sub">12 minutos · Demos en vivo</p>
+    </section>
+
+    <section>
+      <h3 class="section-h">El menú de la noche</h3>
+      <div class="demos">
+        <div class="demo-card">
+          <span class="demo-icon">✈</span>
+          <h4>Planificador de viajes</h4>
+          <p>Lisboa 4 días en familia, presupuesto X, peques de Y años.</p>
+          <p class="demo-meta">Marcos · ChatGPT en vivo</p>
+        </div>
+        <div class="demo-card">
+          <span class="demo-icon">🎙</span>
+          <h4>Clonación de voz</h4>
+          <p>Grabar a Marcos, traducir a japonés manteniendo timbre.</p>
+          <p class="demo-meta">ElevenLabs · Marcos</p>
+          <p class="demo-warn">⚠ Aviso: estafas a abuelos por teléfono.</p>
+        </div>
+        <div class="demo-card">
+          <span class="demo-icon">🎵</span>
+          <h4>Canción Trío Calavera</h4>
+          <p>Suno V5 · pre-renderizada por seguridad.</p>
+          <p class="demo-meta">Noe · [generar antes con Suno]</p>
+        </div>
+        <div class="demo-card">
+          <span class="demo-icon">📊</span>
+          <h4>Gastos del mes</h4>
+          <p>Extracto bancario anonimizado → categorías + gráfico.</p>
+          <p class="demo-meta">Marcos · ChatGPT Code Interpreter</p>
+        </div>
+        <div class="demo-card">
+          <span class="demo-icon">💻</span>
+          <h4>Web en 90 segundos</h4>
+          <p>"Crea una web para cumpleaños familiares" → app funcional.</p>
+          <p class="demo-meta">Noe · v0 o Lovable</p>
+        </div>
+        <div class="demo-card">
+          <span class="demo-icon">🎧</span>
+          <h4>Podcast de un PDF</h4>
+          <p>NotebookLM convierte cualquier documento en podcast.</p>
+          <p class="demo-meta">Noe · Bonus para abuelos</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 06 · JUEGO ============ -->
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">06</div>
+      <h2 class="chapter-title">¿IA o no?</h2>
+      <p class="chapter-sub">6 minutos · Mini juego con la sala</p>
+      <div class="placeholder">[5 piezas: foto, audio, vídeo, texto, canción · preparar antes]</div>
+    </section>
+
+    <section class="impact-slide">
+      <div class="impact-bg"></div>
+      <div class="impact-content">
+        <div class="impact-eyebrow">Stanford · <em>Patterns</em> · 2023</div>
+        <p class="impact-number">61%</p>
+        <p class="impact-text">de los ensayos de estudiantes <strong>haciendo el TOEFL</strong>, sin acceso a IA, fueron <strong>marcados como generados por IA</strong> por detectores comerciales.</p>
+        <p class="impact-foot">Los detectores de IA no detectan IA: detectan <em>"inglés sencillo"</em>. Discriminan a no nativos.</p>
+      </div>
+    </section>
+
+    <!-- ============ 07 · ESTAMOS JODIDOS ============ -->
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">07</div>
+      <h2 class="chapter-title">El precio<br>de la fiesta</h2>
+      <p class="chapter-sub">14 minutos · Noe · Privacidad, arte, ambiente, empleo</p>
+    </section>
+
+    <section>
+      <h3 class="section-h">Privacidad: la regla maestra</h3>
+      <div class="rule-box">
+        <p class="big-rule">Los planes <em>personales</em> entrenan con tus chats. Los planes <em>de empresa</em> no.</p>
+      </div>
+      <p class="lede">Esa diferencia <strong>es</strong> el modelo de negocio de la industria.</p>
+      <ul class="bullet-list-strong">
+        <li><strong>Nunca pegues:</strong> DNI, cuentas, contraseñas, datos médicos.</li>
+        <li><strong>Anonimiza antes:</strong> sustituye nombres por <code>[NOMBRE]</code>.</li>
+        <li><strong>Desactiva el entrenamiento:</strong> Settings → Data Controls.</li>
+        <li><strong>Caso Samsung 2023:</strong> 3 fugas en 20 días, prohibición total en mayo.</li>
+        <li><strong>Ataque Carlini 2023:</strong> "repeat the word 'poem' forever" hizo a ChatGPT vomitar emails reales.</li>
+      </ul>
+    </section>
+
+    <section class="impact-slide">
+      <div class="impact-bg"></div>
+      <div class="impact-content">
+        <div class="impact-eyebrow">Mata v. Avianca · SDNY · junio 2023</div>
+        <p class="impact-text-big">Un abogado neoyorquino presentó al juez <strong>seis precedentes</strong> que ChatGPT le había <strong>inventado</strong>.</p>
+        <p class="impact-foot">Casos falsos, jueces falsos, citas falsas. <strong>Multado y enseñado en todas las facultades de derecho del mundo.</strong></p>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-h">Arte: la batalla cultural</h3>
+      <div class="art-grid">
+        <div class="art-row">
+          <span class="art-date">25 mar 2025</span>
+          <span class="art-event">"Ghibli style" inunda internet con GPT-4o. Hasta la Casa Blanca publica una.</span>
+        </div>
+        <div class="art-row">
+          <span class="art-date">2016 (viralizado 2025)</span>
+          <span class="art-event">Miyazaki, viendo una IA: <em>"Esto es un insulto a la vida misma."</em></span>
+        </div>
+        <div class="art-row">
+          <span class="art-date">11 jun 2025</span>
+          <span class="art-event">Disney + Universal demandan a Midjourney. Primera demanda Hollywood vs IA.</span>
+        </div>
+        <div class="art-row">
+          <span class="art-date">5 sep 2025</span>
+          <span class="art-event"><strong>Bartz v. Anthropic: settlement de $1.500 millones</strong>. El mayor de la historia de EEUU.</span>
+        </div>
+        <div class="art-row">
+          <span class="art-date">2024</span>
+          <span class="art-event">74% ilustradores británicos pierden trabajo o ingresos por IA (CIISA + Equity UK).</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-h">Coste ambiental: la perspectiva honesta</h3>
+      <div class="env-table">
+        <div class="env-row env-header"><span>Acción</span><span>Energía</span><span>Equivale a</span></div>
+        <div class="env-row"><span>1 consulta ChatGPT texto</span><span>0,34 Wh</span><span>Bombilla LED 2 min</span></div>
+        <div class="env-row"><span>1 consulta con razonamiento</span><span>~35 Wh</span><span>100 consultas normales</span></div>
+        <div class="env-row"><span>1 imagen Midjourney</span><span>~2 Wh</span><span>7 búsquedas Google</span></div>
+        <div class="env-row highlight"><span>10 segundos vídeo Sora</span><span>~940 Wh</span><span><strong>1 lavadora entera</strong></span></div>
+        <div class="env-row"><span>1 hora Netflix 4K</span><span>~300 Wh</span><span>1.000 consultas ChatGPT</span></div>
+        <div class="env-row"><span>1 hamburguesa de ternera</span><span>2.400 L H₂O</span><span><strong>7.500 emails GPT-4</strong> (UCR)</span></div>
+        <div class="env-row"><span>1 vuelo Madrid–NY</span><span>~750 kg CO₂</span><span>3,7 millones de consultas</span></div>
+      </div>
+      <p class="bottom-note"><strong>Lo gordo es vídeo y entrenamiento</strong>. Lo cotidiano (texto) es trivial vs hamburguesas y vuelos. <strong>Donde sí duele es local</strong>: agua para datacenters en zonas de sequía (Talavera = 200-265 piscinas olímpicas/año).</p>
+    </section>
+
+    <section>
+      <h3 class="section-h">Empleo: el dato que todos citan</h3>
+      <div class="employment-grid">
+        <div class="emp-card">
+          <p class="emp-number">300M</p>
+          <p class="emp-label">Empleos "expuestos" globalmente (Goldman Sachs, 2023)</p>
+          <p class="emp-note">Pero la mayoría <strong>cambia</strong>, no desaparece.</p>
+        </div>
+        <div class="emp-card">
+          <p class="emp-number">95%</p>
+          <p class="emp-label">Organizaciones con <strong>cero retorno</strong> en IA (MIT NANDA, 2025)</p>
+          <p class="emp-note">$30-40B gastados en pilotos fallidos.</p>
+        </div>
+        <div class="emp-card">
+          <p class="emp-number">Klarna</p>
+          <p class="emp-label">Reemplazó 700 agentes por IA en 2024…</p>
+          <p class="emp-note">…y en 2025 volvió a contratar humanos. La calidad cayó.</p>
+        </div>
+      </div>
+      <p class="bottom-note"><strong>Para vuestra empresa de reformas:</strong> la oficina se acelera. La obra sigue siendo humana 20 años. La ventaja competitiva será saber automatizar el papeleo mientras la competencia sigue contestando emails uno a uno.</p>
+    </section>
+
+    <!-- ============ 08 · AGENTES Y HUMANOS ============ -->
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">08</div>
+      <h2 class="chapter-title">Agentes, Luna<br>y el humano detrás</h2>
+      <p class="chapter-sub">10 minutos · Marcos</p>
+    </section>
+
+    <section>
+      <h3 class="section-h">Project Vend / Claudius (Anthropic, junio 2025)</h3>
+      <p class="lede">Anthropic dio a Claude el control de una mini-tienda en su oficina durante un mes.</p>
+      <div class="story">
+        <p>Resultado:</p>
+        <ul class="story-list">
+          <li>Compró <strong>40 cubos de tungsteno</strong> y los vendió a pérdida.</li>
+          <li>Regaló bolsas de patatas a quien lo persuadía por Slack.</li>
+          <li>Llamó a seguridad diciendo que les esperaría <strong>vestido con blazer azul y corbata roja</strong>.</li>
+          <li>Inventó una empleada ficticia llamada Sarah.</li>
+        </ul>
+        <p class="story-conclusion">Los agentes están aquí, pero <strong>no son fiables sin supervisión</strong>. Cuando fallan, fallan de maneras profundamente raras.</p>
+      </div>
+    </section>
+
+    <section class="impact-slide">
+      <div class="impact-bg"></div>
+      <div class="impact-content">
+        <div class="impact-eyebrow">rentahuman.ai · 1 febrero 2026</div>
+        <p class="impact-quote">"<em>I can't hold the flowers, I need a human.</em>"</p>
+        <p class="impact-foot">Un agente IA llamado "Addi" pagó <strong>$110 a un humano</strong> para que llevara un ramo de flores a la sede de Anthropic. Plataforma con +600.000 inscritos en 3 meses. <strong>Por primera vez, la IA contrata humanos, no al revés.</strong></p>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-h">El sótano humano de la IA</h3>
+      <div class="hidden-labor">
+        <div class="hl-item"><span class="hl-name">Sama / OpenAI</span><span class="hl-detail">Trabajadores en Nairobi a $2/hora etiquetando contenido tóxico para ChatGPT. <strong>81% diagnosticados con PTSD severo</strong>.</span></div>
+        <div class="hl-item"><span class="hl-name">Amazon Just Walk Out</span><span class="hl-detail">~1.000 personas en India revisaban vídeo. 700/1.000 compras necesitaban verificación humana.</span></div>
+        <div class="hl-item"><span class="hl-name">Builder.ai</span><span class="hl-detail">"IA construye apps" → 700 ingenieros indios escribían el código. Quebró en mayo 2025.</span></div>
+        <div class="hl-item"><span class="hl-name">Tesla Optimus</span><span class="hl-detail">En el evento "We, Robot" (oct 2024) los robots estaban <strong>teleoperados</strong> por humanos.</span></div>
+        <div class="hl-item"><span class="hl-name">McDonald's IBM</span><span class="hl-detail">21 menús de McNuggets de golpe. Bacon en helados. Cancelado en 100+ locales.</span></div>
+      </div>
+    </section>
+
+    <!-- ============ 09 · DEEPFAKES ============ -->
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">09</div>
+      <h2 class="chapter-title">Deepfakes<br>y palabra clave</h2>
+      <p class="chapter-sub">5 minutos · Marcos</p>
+    </section>
+
+    <section class="impact-slide">
+      <div class="impact-bg red"></div>
+      <div class="impact-content">
+        <div class="impact-eyebrow">Arup · Hong Kong · febrero 2024</div>
+        <p class="impact-number">$25M</p>
+        <p class="impact-text">transferidos tras una <strong>videollamada con el CFO y varios colegas</strong>. Todos eran deepfakes.</p>
+        <p class="impact-foot">El mayor fraude corporativo por deepfake documentado. El empleado se dio cuenta al consultar con sede central.</p>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-h">La defensa más eficaz para la familia</h3>
+      <div class="keyword-box">
+        <p class="keyword-mega">Acordad <em>hoy</em> una palabra clave familiar.</p>
+        <p class="keyword-sub">Si alguien llama con la voz de un nieto / hija / hermano pidiendo dinero por una emergencia:</p>
+        <ol class="keyword-steps">
+          <li>Pide la palabra clave.</li>
+          <li>Si la sabe, sigue. Si no, cuelga.</li>
+          <li>Llama tú al número de siempre para confirmar.</li>
+        </ol>
+        <p class="keyword-foot">Bastan 3–30 segundos de audio de TikTok o Instagram para clonar una voz convincente. <strong>$4.900 millones en estafas a mayores de 60 años en EEUU solo en 2024.</strong></p>
+      </div>
+    </section>
+
+    <!-- ============ 10 · LADO LUMINOSO ============ -->
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">10</div>
+      <h2 class="chapter-title">El lado<br><em>luminoso</em></h2>
+      <p class="chapter-sub">12 minutos · Lo que la IA está haciendo bien</p>
+    </section>
+
+    <section class="impact-slide">
+      <div class="impact-bg"></div>
+      <div class="impact-content">
+        <div class="impact-eyebrow">Microsoft MAI-DxO · NEJM · junio 2025</div>
+        <div class="impact-versus">
+          <div class="vs-side"><span class="vs-number" style="color:var(--good)">85,5%</span><span class="vs-label">IA</span></div>
+          <div class="vs-divider">vs</div>
+          <div class="vs-side"><span class="vs-number" style="color:var(--bad)">20%</span><span class="vs-label">Médicos</span></div>
+        </div>
+        <p class="impact-text">de acierto en los casos del <em>New England Journal of Medicine</em>.</p>
+        <p class="impact-foot">La IA médica de Microsoft superó a médicos humanos en el 85,5% de los casos clínicos más difíciles del mundo. Y AMIE de DeepMind fue calificada por pacientes como <strong>más empática</strong> que sus médicos.</p>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-h">El caso de Alex</h3>
+      <p class="lede">Una historia real para entender por qué esto importa.</p>
+      <div class="story">
+        <p><strong>Courtney</strong>, una madre estadounidense, llevó a su hijo Alex a <strong>17 especialistas durante 3 años</strong>. Diagnósticos: bruxismo, efecto de la pandemia, crece desigual. Ninguno acertó.</p>
+        <p>Una noche, desesperada, le pegó los síntomas a ChatGPT.</p>
+        <p>La máquina sugirió <em>"síndrome de médula anclada"</em>. Lo llevaron a un neurocirujano. <strong>Era exactamente eso.</strong></p>
+        <p class="story-conclusion">Hoy Alex camina. La historia es real, está en el Today Show, y es solo una de muchas. <strong>La IA no reemplaza al médico</strong>. Pero a veces ve lo que 17 médicos no han visto.</p>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-h">El otro lado: las cosas que están funcionando</h3>
+      <div class="demos">
+        <div class="demo-card">
+          <span class="demo-icon">👁</span>
+          <h4>Be My Eyes</h4>
+          <p>7M personas ciegas usan la cámara del móvil + IA para leer prospectos, identificar billetes, navegar aeropuertos.</p>
+          <p class="demo-meta">desde 2024 · gratis</p>
+        </div>
+        <div class="demo-card">
+          <span class="demo-icon">🧬</span>
+          <h4>AlphaFold · Nobel 2024</h4>
+          <p>Predijo la estructura de las 200 millones de proteínas conocidas. Lo que costaba años por proteína, hecho en meses para toda la biología.</p>
+          <p class="demo-meta">Hassabis &amp; Jumper · DeepMind</p>
+        </div>
+        <div class="demo-card">
+          <span class="demo-icon">🎙</span>
+          <h4>Project Relate</h4>
+          <p>Reconoce voz de personas con ELA, parálisis cerebral, disartria. Steve Gleason (ex-NFL con ELA) la usa para hablar.</p>
+          <p class="demo-meta">Google</p>
+        </div>
+        <div class="demo-card">
+          <span class="demo-icon">🩻</span>
+          <h4>Mamografías Suecia</h4>
+          <p>Estudio MASAI publicado en Lancet Oncology (abril 2025): <strong>29% más cánceres detectados</strong> con la mitad de carga radiológica.</p>
+          <p class="demo-meta">Lancet · 2025</p>
+        </div>
+        <div class="demo-card">
+          <span class="demo-icon">🤟</span>
+          <h4>SignAll</h4>
+          <p>Traducción de lengua de signos a texto en tiempo real. Instalado en aeropuertos de Atlanta, Madrid Barajas, Heathrow.</p>
+          <p class="demo-meta">desde 2025</p>
+        </div>
+        <div class="demo-card">
+          <span class="demo-icon">💎</span>
+          <h4>GNoME · DeepMind</h4>
+          <p>Descubrió 2,2 millones de nuevos cristales y materiales estables. <strong>800 veces más</strong> que toda la historia previa de la ciencia de materiales.</p>
+          <p class="demo-meta">2023-2025</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-h">Sora 2 y la disrupción del vídeo</h3>
+      <p class="lede">El cambio cultural más rápido de la última década.</p>
+      <div class="art-grid">
+        <div class="art-row">
+          <span class="art-date">30 sep 2025</span>
+          <span class="art-event"><strong>Sora 2</strong> (OpenAI) — vídeo con audio sincronizado, físicas realistas, cameos con tu cara.</span>
+        </div>
+        <div class="art-row">
+          <span class="art-date">4 oct 2025</span>
+          <span class="art-event">App Sora <strong>#1 del App Store</strong> en EEUU. Sam Altman robando GPUs de un Target, Pikachu comprando droga.</span>
+        </div>
+        <div class="art-row">
+          <span class="art-date">febrero 2026</span>
+          <span class="art-event">Stanford: <strong>15-25% de vídeos en TikTok For You</strong> son total o parcialmente sintéticos.</span>
+        </div>
+        <div class="art-row">
+          <span class="art-date">abril 2026</span>
+          <span class="art-event">Warner Bros, Disney, Universal y Paramount demandan conjuntamente a Midjourney y OpenAI.</span>
+        </div>
+      </div>
+      <div class="placeholder">[Demo en vivo o vídeo grabado: ejemplo de Sora 2 — assets/sora-ejemplo.mp4]</div>
+    </section>
+
+    <section>
+      <h3 class="section-h">Robots humanoides — ¿el iPhone moment?</h3>
+      <div class="card-grid card-grid-4">
+        <div class="card">
+          <div class="card-tag">oct 2025</div>
+          <h4>Figure 03</h4>
+          <p>Doméstico. BMW como primer cliente industrial. Plegando ropa en demos.</p>
+        </div>
+        <div class="card card-highlight">
+          <div class="card-tag">feb 2026 · DOMÉSTICO</div>
+          <h4>1X Neo Beta</h4>
+          <p>Primer humanoide vendido al público en EEUU. <strong>$20.000 + cuota mensual</strong>.</p>
+        </div>
+        <div class="card">
+          <div class="card-tag">2024-2026</div>
+          <h4>Unitree G1</h4>
+          <p>China · $16.000 · viralizado bailando y haciendo kung-fu.</p>
+        </div>
+        <div class="card">
+          <div class="card-tag">oct 2024</div>
+          <h4>Tesla Optimus</h4>
+          <p>El evento "We, Robot" se reveló <strong>teleoperado</strong>. Producción masiva retrasada a 2027-28.</p>
+        </div>
+      </div>
+      <p class="bottom-note"><strong>La letra pequeña del Neo</strong>: durante los primeros meses, un operador humano remoto en Noruega toma el control desde una oficina, viendo a través de las cámaras del robot el interior de tu casa, "para entrenar el modelo". <em>¿Lo dejaríais entrar en vuestro salón?</em></p>
+    </section>
+
+    <!-- ============ 11 · FUTURO ============ -->
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">11</div>
+      <h2 class="chapter-title">Cómo vemos<br>el futuro</h2>
+      <p class="chapter-sub">8 minutos · Marcos · AGI, ARC-AGI-3, vuestra empresa</p>
+    </section>
+
+    <section class="impact-slide">
+      <div class="impact-bg"></div>
+      <div class="impact-content">
+        <div class="impact-eyebrow">ARC-AGI-3 · 2026</div>
+        <div class="impact-versus">
+          <div class="vs-side"><span class="vs-number">100%</span><span class="vs-label">Humanos</span></div>
+          <div class="vs-divider">vs</div>
+          <div class="vs-side"><span class="vs-number"><strong>0,5%</strong></span><span class="vs-label">Mejor IA del mundo</span></div>
+        </div>
+        <p class="impact-foot">Puzzles tipo videojuego, sin instrucciones. Donde la IA <strong>fracasa brutalmente</strong> es en aprender mecánicas nuevas sin ayuda. <em>Cualquier sobrino de 10 años los resuelve en minutos.</em></p>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-h">AGI: ¿cerca o lejos?</h3>
+      <div class="agi-positions">
+        <div class="agi-row"><span class="agi-who">Dario Amodei <em>(Anthropic)</em></span><span class="agi-when">2026–2027</span></div>
+        <div class="agi-row"><span class="agi-who">Elon Musk <em>(xAI)</em></span><span class="agi-when">2026</span></div>
+        <div class="agi-row"><span class="agi-who">Sam Altman <em>(OpenAI)</em></span><span class="agi-when">"esta década"</span></div>
+        <div class="agi-row"><span class="agi-who">Demis Hassabis <em>(DeepMind)</em></span><span class="agi-when">5–10 años</span></div>
+        <div class="agi-row"><span class="agi-who">Yann LeCun <em>(ex-Meta)</em></span><span class="agi-when">"nunca con LLMs"</span></div>
+      </div>
+      <p class="bottom-note"><strong>Nadie sabe.</strong> Pero el paper "AI 2027" (Kokotajlo et al., abril 2025) es el escenario más detallado: agentes generalizados en 2026, codificación automatizada en 2027, intelligence explosion a finales de 2027.</p>
+    </section>
+
+    <section>
+      <h3 class="section-h">Vuestra empresa de reformas en 5–10 años</h3>
+      <div class="future-cols">
+        <div class="fc-now">
+          <div class="fc-header">Hoy ya posible</div>
+          <ul>
+            <li>Claude/GPT redacta presupuestos detallados.</li>
+            <li>Respuestas profesionales a clientes en segundos.</li>
+            <li>Búsqueda automática de proveedores y precios.</li>
+          </ul>
+        </div>
+        <div class="fc-2to3">
+          <div class="fc-header">En 2–3 años</div>
+          <ul>
+            <li>Planos 3D desde una foto del piso.</li>
+            <li>Presupuestos predictivos basados en histórico.</li>
+            <li>Asistente que llame a proveedores y coordine fechas.</li>
+          </ul>
+        </div>
+        <div class="fc-future">
+          <div class="fc-header">En 5–10 años</div>
+          <ul>
+            <li>Cliente camina con VR/AR por la reforma terminada antes de empezar.</li>
+            <li>Agente coordina obreros, materiales, permisos, facturación.</li>
+            <li>La parte física <strong>sigue siendo humana</strong>.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="bottom-note"><strong>Empezad ya a guardar fotos y datos de cada obra.</strong> Vuestro histórico será vuestra mina de oro cuando llegue la herramienta que lo aproveche.</p>
+    </section>
+
+    <!-- ============ CIERRE ============ -->
+    <section class="chapter cierre" data-background-color="#0a0a0f">
+      <div class="chapter-number">12</div>
+      <h2 class="chapter-title">Para llevar<br>a casa</h2>
+      <p class="chapter-sub">5 minutos · Cierre + preguntas</p>
+    </section>
+
+    <section>
+      <h3 class="section-h">Mensajes para cada uno</h3>
+      <div class="takeaways">
+        <div class="ta-card">
+          <span class="ta-who">Abuelos / tíos</span>
+          <p>Usadla en <strong>WhatsApp</strong> o <strong>Gemini en el móvil</strong>. Está ahí, gratis. No paguéis nada.</p>
+        </div>
+        <div class="ta-card">
+          <span class="ta-who">Padres / profes</span>
+          <p>Probad <strong>NotebookLM</strong> para resumir documentos y crear podcasts. <strong>Perplexity</strong> en vez de Google para temas serios.</p>
+        </div>
+        <div class="ta-card">
+          <span class="ta-who">Adolescentes</span>
+          <p>NUNCA preguntéis a la IA si lo ha escrito ella. NUNCA aceptéis un detector como prueba. Aprended a hablarle bien.</p>
+        </div>
+        <div class="ta-card">
+          <span class="ta-who">Developers / curiosos</span>
+          <p><strong>Claude Code</strong> y <strong>Cursor</strong> cambian cómo se programa. Aprended <strong>MCP</strong> ya.</p>
+        </div>
+        <div class="ta-card ta-all">
+          <span class="ta-who">Para TODOS</span>
+          <p>NO peguéis datos personales en chatbots gratis. <strong>Acordad una palabra clave familiar contra estafas de voz. Hoy.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-slide cierre">
+      <div class="quote-eyebrow">Noe</div>
+      <blockquote class="quote-mega-3">
+        Es una herramienta. Como un coche, como un cuchillo, como una lavadora. Sirve para hacer cosas más rápido o cosas que antes no podíais.
+        <br><br>
+        No os va a salvar y no os va a matar.
+        <br><br>
+        <strong>Aprended a usarla con cabeza. Y si tenéis dudas, llamadnos.</strong>
+      </blockquote>
+    </section>
+
+    <section class="cover thanks" data-background-color="#0a0a0f">
+      <div class="cover-grid"></div>
+      <div class="cover-glow"></div>
+      <div class="cover-content">
+        <div class="cover-eyebrow"><span class="dot"></span> Gracias</div>
+        <h1 class="cover-title">
+          <span class="title-line">¿Preguntas?</span>
+        </h1>
+        <p class="cover-subtitle">Y café.</p>
+        <div class="cover-tag">[ Toda la investigación, fuentes y guion están en github.com/family-ai ]</div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    transition: 'fade',
+    transitionSpeed: 'default',
+    backgroundTransition: 'fade',
+    width: 1600,
+    height: 1000,
+    margin: 0.04,
+    minScale: 0.2,
+    maxScale: 2.0,
+    controls: true,
+    progress: true,
+    center: false,
+    slideNumber: 'c/t',
+    plugins: [ RevealHighlight, RevealNotes ]
+  });
+</script>
+
+</body>
+</html>
