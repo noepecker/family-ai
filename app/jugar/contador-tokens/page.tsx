@@ -1,6 +1,6 @@
 import { TokenCounter } from "@/components/token-counter/counter";
 
-export const metadata = { title: "Contador de tokens · IA en familia" };
+export const metadata = { title: "Contador de tokens · Acércate a la IA" };
 
 export default function TokenCounterPage() {
   return (

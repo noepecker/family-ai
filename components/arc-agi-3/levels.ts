@@ -1,5 +1,5 @@
 // Mini-juego estilo ARC-AGI-3: discovery games sin instrucciones.
-// Cada nivel tiene una mecánica oculta. La familia descubre haciendo clic.
+// Cada nivel tiene una mecánica oculta. Se descubre jugando.
 
 export type Dir = "up" | "down" | "left" | "right";
 export type Cell = { r: number; c: number };

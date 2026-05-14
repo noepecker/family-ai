@@ -1,6 +1,6 @@
 import { BillSplitter } from "@/components/bill-splitter/splitter";
 
-export const metadata = { title: "Dividir cuenta · IA en familia" };
+export const metadata = { title: "Dividir cuenta · Acércate a la IA" };
 
 export default function DividirCuentaPage() {
   return (

@@ -95,17 +95,17 @@ Cláusula 13. Jurisdicción. Para la resolución de cualquier controversia deriv
     title: "Traduce a 6 idiomas a la vez",
     intro:
       "Tu tarea: traducir esta frase al inglés, francés, alemán, italiano, portugués y catalán. Tienes 90 segundos. Marca los que termines.",
-    task: "Traduce: «Mañana iremos en familia a la playa porque el tiempo será perfecto.»",
+    task: "Traduce: «Mañana iremos todos juntos a la playa porque el tiempo será perfecto.»",
     seconds: 90,
     aiTime: "0,8 segundos",
     content:
-      "Mañana iremos en familia a la playa porque el tiempo será perfecto.",
-    aiAnswer: `Inglés:    Tomorrow we'll go to the beach as a family because the weather will be perfect.
-Francés:   Demain nous irons en famille à la plage parce que le temps sera parfait.
-Alemán:    Morgen werden wir als Familie an den Strand gehen, weil das Wetter perfekt sein wird.
-Italiano:  Domani andremo in famiglia al mare perché il tempo sarà perfetto.
-Portugués: Amanhã iremos em família à praia porque o tempo estará perfeito.
-Catalán:   Demà anirem en família a la platja perquè el temps serà perfecte.`,
+      "Mañana iremos todos juntos a la playa porque el tiempo será perfecto.",
+    aiAnswer: `Inglés:    Tomorrow we'll all go together to the beach because the weather will be perfect.
+Francés:   Demain nous irons tous ensemble à la plage parce que le temps sera parfait.
+Alemán:    Morgen werden wir alle zusammen an den Strand gehen, weil das Wetter perfekt sein wird.
+Italiano:  Domani andremo tutti insieme al mare perché il tempo sarà perfetto.
+Portugués: Amanhã iremos todos juntos à praia porque o tempo estará perfeito.
+Catalán:   Demà anirem tots junts a la platja perquè el temps serà perfecte.`,
     reveal:
       "La IA traduce a más de 100 idiomas simultáneamente, sin error gramatical, conservando matices culturales. Un humano puede tener uno o dos idiomas, pero hace falta una vida para dominar 6. Y el coste energético de esta traducción es despreciable (~0,3 ml de agua, menos que un sorbo de café).",
   },

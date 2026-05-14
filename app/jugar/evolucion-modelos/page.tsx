@@ -1,6 +1,6 @@
 import { Evolucion } from "@/components/evolucion/evolucion";
 
-export const metadata = { title: "Evolución de los modelos · IA en familia" };
+export const metadata = { title: "Evolución de los modelos · Acércate a la IA" };
 
 export default function EvolucionPage() {
   return (

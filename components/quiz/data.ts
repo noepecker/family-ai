@@ -100,7 +100,7 @@ export const questions: QuizQuestion[] = [
       { text: "30 segundos o menos", correct: true },
       { text: "Una hora", correct: false },
     ],
-    explanation: "Herramientas como ElevenLabs necesitan 30 segundos o menos. En 2024 hubo $4.900 millones en estafas a mayores de 60 años en EEUU (+43%). Defensa eficaz: acordar una palabra clave familiar.",
+    explanation: "Herramientas como ElevenLabs necesitan 30 segundos o menos. En 2024 hubo $4.900 millones en estafas a mayores de 60 años en EEUU (+43%). Defensa eficaz: acordar una palabra clave con tu círculo cercano.",
     source: "FBI 2024 + ElevenLabs",
   },
   {

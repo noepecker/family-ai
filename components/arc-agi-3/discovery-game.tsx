@@ -110,7 +110,7 @@ function LevelPlay({
 
       <p className="text-base text-[var(--color-fg-soft)] mb-6">
         Sin instrucciones. Pulsa las flechas y descubre qué hace cada una.
-        <em> Decididlo en familia</em>: hablad qué creéis que pasará antes de pulsar.
+        <em> Decididlo en grupo</em>: hablad qué creéis que pasará antes de pulsar.
       </p>
 
       <div className="flex flex-col items-center mb-6">

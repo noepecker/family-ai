@@ -1,6 +1,6 @@
 import { Quiz } from "@/components/quiz/quiz";
 
-export const metadata = { title: "Quiz · IA en familia" };
+export const metadata = { title: "Quiz · Acércate a la IA" };
 
 export default function QuizPage() {
   return (

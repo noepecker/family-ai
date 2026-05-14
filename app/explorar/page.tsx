@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { bloques, tagLabels, type Bloque } from "@/content/bloques";
 
-export const metadata = { title: "Explorar · IA en familia" };
+export const metadata = { title: "Explorar · Acércate a la IA" };
 
 export default function ExplorarPage() {
   return (

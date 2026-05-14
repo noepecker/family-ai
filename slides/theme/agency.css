@@ -1,5 +1,5 @@
 /* ============================================================
-   AGENCY THEME — Charla familiar sobre IA · Marcos & Noe · 2026
+   AGENCY THEME — Acércate a la IA · Marcos & Noe · 2026
    ============================================================ */
 
 :root {
@@ -133,6 +133,70 @@
 
 .reveal li strong {
   color: var(--fg);
+}
+
+/* ============ DEEPEN CTA — link from slide to web ============ */
+.deepen {
+  position: absolute;
+  bottom: 40px;
+  right: 80px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: rgba(255, 87, 34, 0.08);
+  border: 1px solid rgba(255, 87, 34, 0.32);
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+.deepen::before {
+  content: "↗";
+  font-size: 18px;
+}
+.deepen:hover {
+  background: rgba(255, 87, 34, 0.18);
+  color: var(--accent-soft);
+  transform: translateY(-1px);
+}
+.deepen .deepen-hint {
+  color: var(--fg-mute);
+  font-weight: 400;
+  margin-right: 4px;
+}
+
+/* ============ OPEN QUESTION — preguntas críticas ============ */
+.open-question {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-top: 36px;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+.open-question .oq-mark {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.open-question .oq-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--fg);
+  line-height: 1.4;
 }
 
 /* ============ COVER SLIDE ============ */

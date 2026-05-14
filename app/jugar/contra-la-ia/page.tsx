@@ -1,6 +1,6 @@
 import { ContraLaIA } from "@/components/contra-la-ia/race";
 
-export const metadata = { title: "Contra la IA · IA en familia" };
+export const metadata = { title: "Contra la IA · Acércate a la IA" };
 
 export default function ContraIaPage() {
   return (

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Jugar · IA en familia" };
+export const metadata = { title: "Jugar · Acércate a la IA" };
 
 type Juego = {
   slug: string;
@@ -26,12 +26,12 @@ const juegos: Juego[] = [
   },
   {
     slug: "arc-agi-3",
-    title: "ARC-AGI-3 · descubrid la regla en familia",
+    title: "ARC-AGI-3 · descubrid la regla",
     description: "4 niveles, cero instrucciones. Pulsáis flechas y deducís qué hacen. Cada nivel cambia las reglas. Esto es ARC-AGI-3 real: donde la mejor IA puntúa 0,5%.",
     emoji: "🧩",
     color: "var(--color-good)",
     duration: "10-15 min",
-    who: "Toda la familia junta",
+    who: "Mejor en grupo",
     kind: "interactivo",
   },
   {
@@ -135,8 +135,8 @@ export default function JugarPage() {
       </h1>
 
       <p className="text-xl text-[var(--color-fg-soft)] font-light max-w-3xl mb-16 leading-relaxed">
-        Tests, comparativas y demos interactivas para entender la IA jugando. Ideal para
-        hacer en familia después de la charla, o para que cada uno los pruebe a su ritmo.
+        Tests, comparativas y demos interactivas para entender la IA jugando. Ideales para
+        tocarlos en grupo después de la charla, o para probarlos a tu ritmo cuando quieras.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

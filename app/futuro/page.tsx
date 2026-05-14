@@ -2,7 +2,7 @@ import Link from "next/link";
 import { failedReplaceX, failedNeverX, historicFailed, type Prediccion } from "@/content/predicciones";
 
 export const metadata = {
-  title: "¿Nos quedamos sin trabajo? · IA en familia",
+  title: "¿Nos quedamos sin trabajo? · Predicciones que fallaron · Acércate a la IA",
   description: "Tres respuestas, todas defendibles. Y los CEOs llevan equivocándose 70 años.",
 };
 
@@ -251,10 +251,10 @@ export default function FuturoPage() {
         </div>
       </section>
 
-      {/* ============ TU FAMILIA ============ */}
+      {/* ============ QUÉ HACER ============ */}
       <section className="mb-12">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">
-          Entonces, <span className="font-serif italic text-[var(--color-accent)]">¿qué hacemos en casa</span>?
+          Entonces, <span className="font-serif italic text-[var(--color-accent)]">¿qué hacemos</span>?
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
@@ -283,7 +283,7 @@ export default function FuturoPage() {
 
         <div className="p-6 rounded-2xl bg-[var(--color-bg-card)] border-l-4 border-[var(--color-accent)]">
           <div className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] mb-3">
-            Para vuestra empresa de reformas (ejemplo)
+            Caso de uso: una pyme de reformas
           </div>
           <p className="text-base text-[var(--color-fg)] leading-relaxed mb-3">
             La parte de oficina (presupuestos, comunicación, planos, búsqueda de
@@ -292,9 +292,9 @@ export default function FuturoPage() {
             es saber automatizar el papeleo antes que la competencia.
           </p>
           <p className="text-sm text-[var(--color-fg-soft)] leading-relaxed">
-            <strong className="text-[var(--color-fg)]">Acción concreta:</strong> empezad
+            <strong className="text-[var(--color-fg)]">Acción concreta:</strong> empieza
             ya a guardar fotos y datos de cada obra. Cuando llegue la herramienta que
-            cruce vuestro histórico con la oferta del cliente, tendréis el mejor presupuesto
+            cruce ese histórico con la oferta del cliente, tendrás el mejor presupuesto
             de la ciudad. Quien no haya guardado nada empezará desde cero.
           </p>
         </div>
@@ -308,7 +308,7 @@ export default function FuturoPage() {
           tienen autenticidad disputada; las hemos etiquetado como tal o omitido.
         </p>
         <p>
-          Esta página es lectura para una sobremesa familiar, no un paper académico.
+          Esta página es lectura para una sobremesa larga, no un paper académico.
         </p>
       </div>
     </div>
