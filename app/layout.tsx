@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const metadata: Metadata = {
   title: "IA en familia · Marcos & Noe · Mayo 2026",
@@ -8,10 +9,13 @@ export const metadata: Metadata = {
     "Una charla familiar sobre IA, abierta para que cada uno profundice donde quiera. Desde abuelos hasta primos developers.",
 };
 
+const themeInitScript = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
@@ -45,6 +49,7 @@ function SiteHeader() {
           <NavLink href="/jugar">Jugar</NavLink>
           <NavLink href="/agi">AGI</NavLink>
           <NavLink href="/futuro">Futuro</NavLink>
+          <ThemeToggle />
         </nav>
       </div>
     </header>
@@ -55,7 +60,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className="px-3 py-1.5 rounded-md text-[var(--color-fg-soft)] hover:text-[var(--color-fg)] hover:bg-white/5 transition-colors"
+      className="px-3 py-1.5 rounded-md text-[var(--color-fg-soft)] hover:text-[var(--color-fg)] hover:bg-[var(--color-hover)] transition-colors"
     >
       {children}
     </Link>
