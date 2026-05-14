@@ -75,17 +75,23 @@ export function useNivel(): Ctx {
 
 export function NivelChip() {
   const { nivel, setNivel } = useNivel();
-  const options: { value: NivelState; label: string; color: string }[] = [
-    { value: "todos", label: "Todos", color: "var(--color-fg-soft)" },
+  const options: {
+    value: NivelState;
+    label: string;
+    short: string;
+    color: string;
+  }[] = [
+    { value: "todos", label: "Todos", short: "Todos", color: "var(--color-fg-soft)" },
     ...nivelOrder.map((n) => ({
       value: n,
       label: nivelMeta[n].label,
+      short: nivelMeta[n].label.slice(0, 3), // Cur / Prá / Pro
       color: nivelMeta[n].color,
     })),
   ];
 
   return (
-    <div className="inline-flex items-center gap-1 p-1 rounded-full bg-[var(--color-bg-card)] border border-[var(--color-border)]">
+    <div className="inline-flex items-center gap-0.5 p-0.5 rounded-full bg-[var(--color-bg-card)] border border-[var(--color-border)]">
       {options.map((o) => {
         const active = nivel === o.value;
         return (
@@ -93,7 +99,7 @@ export function NivelChip() {
             key={o.value}
             type="button"
             onClick={() => setNivel(o.value)}
-            className="px-2.5 py-1 rounded-full text-[0.65rem] font-mono uppercase tracking-wider transition-all"
+            className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[0.6rem] sm:text-[0.65rem] font-mono uppercase tracking-wider transition-all whitespace-nowrap"
             style={{
               color: active ? "var(--color-on-accent)" : o.color,
               background: active ? o.color : "transparent",
@@ -101,7 +107,8 @@ export function NivelChip() {
             aria-pressed={active}
             title={`Filtrar por nivel: ${o.label}`}
           >
-            {o.label}
+            <span className="sm:hidden">{o.short}</span>
+            <span className="hidden sm:inline">{o.label}</span>
           </button>
         );
       })}

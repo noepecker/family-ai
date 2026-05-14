@@ -67,6 +67,30 @@ html, body {
   color: var(--color-bg);
 }
 
+/* Cursor: pointer en todo lo que se pueda pulsar.
+   Tailwind v4 mantiene cursor: default en botones por compatibilidad con la
+   spec, pero como aquí los botones SIEMPRE son interactivos los pongo a
+   pointer explícitamente. Lo mismo para enlaces, role=button, summary, etc. */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+[role="link"],
+a[href],
+summary,
+label[for],
+input[type="button"]:not(:disabled),
+input[type="submit"]:not(:disabled),
+input[type="reset"]:not(:disabled),
+input[type="checkbox"]:not(:disabled),
+input[type="radio"]:not(:disabled),
+select:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
 /* Scrollbar dark */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--color-bg); }
@@ -186,7 +210,7 @@ html, body {
 
 /* Prose styles for markdown rendering */
 .prose-custom h1 {
-  font-size: 3rem;
+  font-size: clamp(1.85rem, 5vw, 3rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 1.5rem;
@@ -194,12 +218,12 @@ html, body {
 }
 
 .prose-custom h2 {
-  font-size: 2rem;
+  font-size: clamp(1.45rem, 3.5vw, 2rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-top: 3rem;
+  margin-top: 2.25rem;
   margin-bottom: 1rem;
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
   position: relative;
   scroll-margin-top: 6rem;
 }
@@ -217,9 +241,9 @@ html, body {
 }
 
 .prose-custom h3 {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 2.8vw, 1.5rem);
   font-weight: 600;
-  margin-top: 2rem;
+  margin-top: 1.75rem;
   margin-bottom: 0.75rem;
   color: var(--color-fg);
   scroll-margin-top: 6rem;
@@ -234,7 +258,7 @@ html, body {
 }
 
 .prose-custom p {
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
   line-height: 1.65;
   color: var(--color-fg-soft);
   margin-bottom: 1rem;
@@ -295,13 +319,24 @@ html, body {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
-  font-size: 0.95rem;
+  font-size: clamp(0.78rem, 2vw, 0.95rem);
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .prose-custom th, .prose-custom td {
-  padding: 12px 16px;
+  padding: 10px 12px;
   border-bottom: 1px solid var(--color-border);
   text-align: left;
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .prose-custom th, .prose-custom td {
+    padding: 12px 16px;
+    white-space: normal;
+  }
 }
 
 .prose-custom th {

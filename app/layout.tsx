@@ -45,15 +45,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-[var(--color-bg)]/80 border-b border-[var(--color-border)]">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4 flex-wrap">
-        <Link href="/" className="flex items-center gap-2 font-mono text-sm shrink-0">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-[var(--color-bg)]/85 border-b border-[var(--color-border)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4 flex-wrap">
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-mono text-sm shrink-0"
+          aria-label="Acércate a la IA · inicio"
+        >
           <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse-glow"></span>
           <span className="text-[var(--color-fg-soft)] hidden sm:inline">
             Acércate <span className="text-[var(--color-fg-mute)]">a la</span> IA
           </span>
         </Link>
-        <nav className="flex items-center gap-0.5 text-sm font-mono overflow-x-auto no-scrollbar order-3 md:order-2 w-full md:w-auto">
+
+        {/* En móvil el orden es: logo / chip+toggle / nav debajo a ancho completo */}
+        <div className="flex items-center gap-1.5 sm:gap-2 order-2 md:order-3 shrink-0">
+          <NivelChip />
+          <ThemeToggle />
+        </div>
+
+        <nav
+          className="flex items-center gap-0.5 text-xs sm:text-sm font-mono overflow-x-auto no-scrollbar order-3 md:order-2 w-full md:w-auto -mx-1 sm:mx-0 px-1 sm:px-0"
+          aria-label="Navegación principal"
+        >
           <NavLink href="/charla">Charla</NavLink>
           <NavLink href="/casos">Casos</NavLink>
           <NavLink href="/jugar">Jugar</NavLink>
@@ -62,10 +76,6 @@ function SiteHeader() {
           <NavLink href="/historia">Historia</NavLink>
           <NavLink href="/preguntas">Preguntas</NavLink>
         </nav>
-        <div className="flex items-center gap-2 order-2 md:order-3 shrink-0">
-          <NivelChip />
-          <ThemeToggle />
-        </div>
       </div>
     </header>
   );
@@ -75,7 +85,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className="px-2.5 py-1.5 rounded-md text-[var(--color-fg-soft)] hover:text-[var(--color-fg)] hover:bg-[var(--color-hover)] transition-colors whitespace-nowrap"
+      className="px-2 sm:px-2.5 py-1.5 rounded-md text-[var(--color-fg-soft)] hover:text-[var(--color-fg)] hover:bg-[var(--color-hover)] transition-colors whitespace-nowrap"
     >
       {children}
     </Link>

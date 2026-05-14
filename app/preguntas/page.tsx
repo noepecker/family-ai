@@ -27,22 +27,22 @@ export default function PreguntasPage() {
   const bloques = Object.keys(bloqueLabels) as BloqueId[];
 
   return (
-    <div className="max-w-5xl mx-auto px-6 pt-16 pb-24">
-      <div className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-accent)] mb-6 flex items-center gap-3">
+    <div className="max-w-5xl mx-auto px-5 sm:px-6 pt-10 sm:pt-16 pb-20 sm:pb-24">
+      <div className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] text-[var(--color-accent)] mb-5 sm:mb-6 flex items-center gap-3">
         <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse-glow"></span>
         Preguntas que abrimos
       </div>
-      <h1 className="text-5xl md:text-7xl font-extrabold tracking-[-0.03em] leading-[0.95] mb-8">
+      <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-[-0.03em] leading-[0.95] mb-6 sm:mb-8">
         Las preguntas que <span className="font-serif italic text-[var(--color-accent)]">no</span> vamos a cerrar.
       </h1>
-      <p className="text-lg text-[var(--color-fg-soft)] leading-relaxed max-w-3xl mb-12">
+      <p className="text-base sm:text-lg text-[var(--color-fg-soft)] leading-relaxed max-w-3xl mb-10 sm:mb-12">
         Lo que el público suele preguntar después de cada bloque, anticipado. Filtra por
         nivel para ver solo lo tuyo, o por bloque para profundizar en un tema. Cada
         respuesta termina con un link para tirar del hilo.
       </p>
 
-      {/* Filtros */}
-      <div className="flex flex-wrap items-center gap-3 mb-10 sticky top-[68px] z-30 bg-[var(--color-bg)]/85 backdrop-blur-md py-3 -mx-2 px-2 border-b border-[var(--color-border)]">
+      {/* Filtros — sticky con offset que se adapta al header (más alto en móvil con la nav debajo) */}
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-8 sm:mb-10 sticky top-[88px] sm:top-[68px] z-30 bg-[var(--color-bg)]/85 backdrop-blur-md py-3 -mx-2 px-2 border-b border-[var(--color-border)]">
         <div className="font-mono text-[0.7rem] uppercase tracking-wider text-[var(--color-fg-mute)] mr-1">
           Nivel
         </div>

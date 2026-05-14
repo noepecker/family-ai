@@ -9,13 +9,13 @@ export default function HomePage() {
       <BackgroundEffects />
 
       {/* ---------- HERO ---------- */}
-      <section className="relative max-w-7xl mx-auto px-6 pt-20 md:pt-28 pb-20">
-        <div className="font-mono text-xs md:text-sm text-[var(--color-accent)] uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
+      <section className="relative max-w-7xl mx-auto px-5 sm:px-6 pt-14 sm:pt-20 md:pt-28 pb-16 sm:pb-20">
+        <div className="font-mono text-[0.65rem] sm:text-xs md:text-sm text-[var(--color-accent)] uppercase tracking-[0.2em] mb-6 sm:mb-8 flex items-center gap-3">
           <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse-glow"></span>
           Charla abierta · Mayo 2026
         </div>
 
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold leading-[0.92] tracking-[-0.04em] mb-8">
+        <h1 className="text-[3.25rem] sm:text-6xl md:text-8xl lg:text-9xl font-extrabold leading-[0.92] tracking-[-0.04em] mb-6 sm:mb-8">
           <span className="block animate-fade-up">Acércate</span>
           <span className="block animate-fade-up" style={{ animationDelay: "120ms" }}>
             a la <span className="font-serif italic text-[var(--color-accent)]">inteligencia</span>
@@ -26,7 +26,7 @@ export default function HomePage() {
         </h1>
 
         <p
-          className="text-lg md:text-2xl text-[var(--color-fg-soft)] font-light max-w-3xl mb-14 leading-relaxed animate-fade-up"
+          className="text-base sm:text-lg md:text-2xl text-[var(--color-fg-soft)] font-light max-w-3xl mb-10 sm:mb-14 leading-relaxed animate-fade-up"
           style={{ animationDelay: "360ms" }}
         >
           Cómo funciona, qué hace ya hoy, qué empieza a romper. Sin condescendencia y sin
@@ -39,7 +39,7 @@ export default function HomePage() {
         </div>
 
         <p
-          className="mt-8 text-sm text-[var(--color-fg-mute)] font-mono animate-fade-up"
+          className="mt-6 sm:mt-8 text-xs sm:text-sm text-[var(--color-fg-mute)] font-mono animate-fade-up leading-relaxed"
           style={{ animationDelay: "640ms" }}
         >
           ↑ Lo que acabas de ver es lo único que hace un LLM: predecir el siguiente trozo
@@ -48,16 +48,16 @@ export default function HomePage() {
       </section>
 
       {/* ---------- POR DÓNDE EMPEZAR (NIVELES) ---------- */}
-      <section className="relative max-w-7xl mx-auto px-6 pb-24 pt-12 border-t border-[var(--color-border)]">
+      <section className="relative max-w-7xl mx-auto px-5 sm:px-6 pb-16 sm:pb-24 pt-10 sm:pt-12 border-t border-[var(--color-border)]">
         <div className="max-w-3xl mb-12">
           <div className="section-marker">
             <span className="marker-num">01</span>
             <span className="marker-label">Elige tu nivel</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-3 sm:mb-4">
             ¿Por dónde <span className="font-serif italic text-[var(--color-accent)]">empezar?</span>
           </h2>
-          <p className="text-lg text-[var(--color-fg-soft)] leading-relaxed">
+          <p className="text-base sm:text-lg text-[var(--color-fg-soft)] leading-relaxed">
             Tres recorridos. Mismo contenido, distintos puntos de entrada. No es un test; puedes saltar entre niveles cuando quieras.
           </p>
         </div>
@@ -70,16 +70,16 @@ export default function HomePage() {
       </section>
 
       {/* ---------- POR INTENCIÓN ---------- */}
-      <section className="relative max-w-7xl mx-auto px-6 pb-24 pt-12 border-t border-[var(--color-border)]">
+      <section className="relative max-w-7xl mx-auto px-5 sm:px-6 pb-16 sm:pb-24 pt-10 sm:pt-12 border-t border-[var(--color-border)]">
         <div className="max-w-3xl mb-12">
           <div className="section-marker">
             <span className="marker-num">02</span>
             <span className="marker-label">O elige por qué vienes</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-3 sm:mb-4">
             Seis formas de <span className="font-serif italic text-[var(--color-accent)]">recorrerla.</span>
           </h2>
-          <p className="text-lg text-[var(--color-fg-soft)] leading-relaxed">
+          <p className="text-base sm:text-lg text-[var(--color-fg-soft)] leading-relaxed">
             La charla es lineal. La web no. Cada slide está enlazada con la página de la
             web donde puedes profundizar; cada juego, con el bloque que lo explica.
           </p>
@@ -144,16 +144,16 @@ export default function HomePage() {
       </section>
 
       {/* ---------- PREGUNTAS ABIERTAS ---------- */}
-      <section className="relative max-w-7xl mx-auto px-6 pb-24 pt-12 border-t border-[var(--color-border)]">
+      <section className="relative max-w-7xl mx-auto px-5 sm:px-6 pb-16 sm:pb-24 pt-10 sm:pt-12 border-t border-[var(--color-border)]">
         <div className="max-w-3xl mb-12">
           <div className="section-marker">
             <span className="marker-num">03</span>
             <span className="marker-label">Preguntas que abrimos hoy</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-3 sm:mb-4">
             No vamos a <span className="font-serif italic text-[var(--color-accent)]">cerrar</span> ninguna.
           </h2>
-          <p className="text-lg text-[var(--color-fg-soft)] leading-relaxed">
+          <p className="text-base sm:text-lg text-[var(--color-fg-soft)] leading-relaxed">
             Estas son las preguntas que vertebran la charla. Cada una tiene una respuesta
             corta, una larga, y un debate sin terminar. Tira del hilo que más te toque.
           </p>
@@ -203,16 +203,16 @@ export default function HomePage() {
       </section>
 
       {/* ---------- HIGHLIGHTS ---------- */}
-      <section className="relative max-w-7xl mx-auto px-6 pb-24 pt-12 border-t border-[var(--color-border)]">
+      <section className="relative max-w-7xl mx-auto px-5 sm:px-6 pb-16 sm:pb-24 pt-10 sm:pt-12 border-t border-[var(--color-border)]">
         <div className="max-w-3xl mb-12">
           <div className="section-marker">
             <span className="marker-num">04</span>
             <span className="marker-label">Lo que más cuesta de creer</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-3 sm:mb-4">
             Doce cosas que pasaron este <span className="font-serif italic text-[var(--color-accent)]">año.</span>
           </h2>
-          <p className="text-lg text-[var(--color-fg-soft)] leading-relaxed">
+          <p className="text-base sm:text-lg text-[var(--color-fg-soft)] leading-relaxed">
             No predicciones. Hechos contrastados con fuente al lado. Empieza por el que te
             saque más de tu zona.
           </p>
