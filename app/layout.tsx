@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { NivelProvider, NivelChip } from "@/components/nivel-provider";
+import { FromSlideBanner } from "@/components/from-slide-banner";
 
 export const metadata: Metadata = {
   title: "Acércate a la IA · una charla abierta · Marcos & Noe",
@@ -30,9 +32,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <SiteHeader />
-        <main>{children}</main>
-        <SiteFooter />
+        <NivelProvider>
+          <SiteHeader />
+          <FromSlideBanner />
+          <main>{children}</main>
+          <SiteFooter />
+        </NivelProvider>
       </body>
     </html>
   );
@@ -41,14 +46,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-[var(--color-bg)]/80 border-b border-[var(--color-border)]">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4 flex-wrap">
         <Link href="/" className="flex items-center gap-2 font-mono text-sm shrink-0">
           <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse-glow"></span>
           <span className="text-[var(--color-fg-soft)] hidden sm:inline">
             Acércate <span className="text-[var(--color-fg-mute)]">a la</span> IA
           </span>
         </Link>
-        <nav className="flex items-center gap-0.5 text-sm font-mono overflow-x-auto no-scrollbar">
+        <nav className="flex items-center gap-0.5 text-sm font-mono overflow-x-auto no-scrollbar order-3 md:order-2 w-full md:w-auto">
           <NavLink href="/charla">Charla</NavLink>
           <NavLink href="/casos">Casos</NavLink>
           <NavLink href="/jugar">Jugar</NavLink>
@@ -56,9 +61,11 @@ function SiteHeader() {
           <NavLink href="/explorar">Explorar</NavLink>
           <NavLink href="/historia">Historia</NavLink>
           <NavLink href="/preguntas">Preguntas</NavLink>
-          <span className="w-px h-5 bg-[var(--color-border)] mx-2"></span>
-          <ThemeToggle />
         </nav>
+        <div className="flex items-center gap-2 order-2 md:order-3 shrink-0">
+          <NivelChip />
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

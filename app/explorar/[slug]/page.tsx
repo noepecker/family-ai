@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { bloques, getBloque, tagLabels } from "@/content/bloques";
 import { loadMarkdown, addHeadingIds, extractToc } from "@/lib/markdown";
+import { InlineFaq } from "@/components/inline-faq";
 
 export function generateStaticParams() {
   return bloques.map((b) => ({ slug: b.slug }));
@@ -72,6 +73,8 @@ export default async function BloqueDetailPage({
             className="prose-custom max-w-3xl"
             dangerouslySetInnerHTML={{ __html: htmlWithIds }}
           />
+
+          <InlineFaq slug={slug} />
 
           <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-4">
             {prev && <NavCard bloque={prev} direction="prev" />}
