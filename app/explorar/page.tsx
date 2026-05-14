@@ -5,17 +5,17 @@ export const metadata = { title: "Explorar · Acércate a la IA" };
 
 export default function ExplorarPage() {
   return (
-    <div className="max-w-7xl mx-auto px-6 pt-16 pb-32">
-      <div className="font-mono text-sm text-[var(--color-accent)] uppercase tracking-wider mb-6 flex items-center gap-3">
+    <div className="max-w-7xl mx-auto px-5 sm:px-6 pt-12 sm:pt-16 pb-24 sm:pb-32">
+      <div className="font-mono text-xs sm:text-sm text-[var(--color-accent)] uppercase tracking-wider mb-5 sm:mb-6 flex items-center gap-3">
         <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse-glow"></span>
         Modo enciclopedia · 13 bloques
       </div>
 
-      <h1 className="text-5xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.04em] mb-6">
+      <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.04em] mb-5 sm:mb-6">
         Explora <span className="font-serif italic text-[var(--color-accent)]">lo que quieras</span>
       </h1>
 
-      <p className="text-xl text-[var(--color-fg-soft)] font-light max-w-3xl mb-16 leading-relaxed">
+      <p className="text-base sm:text-xl text-[var(--color-fg-soft)] font-light max-w-3xl mb-12 sm:mb-16 leading-relaxed">
         Cada bloque es independiente y se lee en 8-15 minutos. Toda la investigación
         está verificada y con fuentes. Elige por tema, por interés, o léelo entero.
       </p>

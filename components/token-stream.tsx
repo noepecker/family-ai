@@ -76,23 +76,23 @@ export function TokenStream() {
 
   return (
     <div className="max-w-2xl">
-      <div className="font-mono text-sm md:text-base bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-5 md:p-6 shadow-2xl">
-        <div className="flex items-center gap-2 mb-3">
+      <div className="font-mono text-[0.85rem] sm:text-sm md:text-base bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-4 sm:p-5 md:p-6 shadow-2xl">
+        <div className="flex items-center gap-1.5 sm:gap-2 mb-3">
           <span className="w-2 h-2 rounded-full bg-[var(--color-bad)]"></span>
           <span className="w-2 h-2 rounded-full bg-[var(--color-warn)]"></span>
           <span className="w-2 h-2 rounded-full bg-[var(--color-good)]"></span>
-          <span className="text-[var(--color-fg-mute)] text-xs ml-2">
+          <span className="text-[var(--color-fg-mute)] text-[10px] sm:text-xs ml-1 sm:ml-2">
             chat · token-by-token
           </span>
           <span className="flex-1" />
-          <span className="text-[var(--color-fg-mute)] text-[10px] uppercase tracking-wider">
-            {shown}/{demo.tokens.length} tokens
+          <span className="text-[var(--color-fg-mute)] text-[9px] sm:text-[10px] uppercase tracking-wider whitespace-nowrap">
+            {shown}/{demo.tokens.length}
           </span>
         </div>
-        <div className="text-[var(--color-fg-mute)] mb-2 text-sm">
+        <div className="text-[var(--color-fg-mute)] mb-2 text-xs sm:text-sm break-words">
           {">"} {demo.prompt}
         </div>
-        <div className="text-[var(--color-fg)] leading-relaxed min-h-[5em] text-base">
+        <div className="text-[var(--color-fg)] leading-relaxed min-h-[5em] text-sm sm:text-base">
           {demo.tokens.slice(0, shown).map((t, i) => (
             <span
               key={`${demo.id}-${i}`}
@@ -116,8 +116,8 @@ export function TokenStream() {
         </div>
       </div>
 
-      <div className="mt-4 flex items-center gap-3 flex-wrap text-xs font-mono">
-        <span className="text-[var(--color-fg-mute)] uppercase tracking-wider text-[0.65rem]">
+      <div className="mt-3 sm:mt-4 flex items-center gap-2 sm:gap-3 flex-wrap text-xs font-mono">
+        <span className="text-[var(--color-fg-mute)] uppercase tracking-wider text-[0.6rem] sm:text-[0.65rem] basis-full sm:basis-auto">
           Prueba otra:
         </span>
         {DEMOS.map((d, i) => (
@@ -125,7 +125,7 @@ export function TokenStream() {
             key={d.id}
             type="button"
             onClick={() => onSelect(i)}
-            className="px-3 py-1.5 rounded-full transition-all"
+            className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full transition-all text-[0.7rem] sm:text-xs"
             style={{
               background:
                 i === demoIdx ? "var(--color-accent)" : "var(--color-bg-card)",

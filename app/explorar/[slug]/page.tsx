@@ -38,7 +38,7 @@ export default async function BloqueDetailPage({
   const tagInfo = tagLabels[bloque.tag];
 
   return (
-    <div className="max-w-7xl mx-auto px-6 pt-12 pb-32">
+    <div className="max-w-7xl mx-auto px-5 sm:px-6 pt-8 sm:pt-12 pb-24 sm:pb-32">
       <Link
         href="/explorar"
         className="font-mono text-sm text-[var(--color-fg-mute)] hover:text-[var(--color-accent)] transition-colors inline-flex items-center gap-2 mb-10"
@@ -61,10 +61,10 @@ export default async function BloqueDetailPage({
                 </div>
               </div>
             </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-[-0.03em] leading-[1.05] mt-6">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-[-0.03em] leading-[1.05] mt-5 sm:mt-6">
               {bloque.title}
             </h1>
-            <p className="text-lg text-[var(--color-fg-soft)] mt-4 font-light leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-lg text-[var(--color-fg-soft)] mt-4 font-light leading-relaxed max-w-3xl">
               {bloque.short}
             </p>
           </div>

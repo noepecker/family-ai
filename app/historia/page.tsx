@@ -23,18 +23,18 @@ export default function HistoriaPage() {
         }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-6 pt-16 pb-32">
+      <div className="relative max-w-6xl mx-auto px-5 sm:px-6 pt-12 sm:pt-16 pb-24 sm:pb-32">
         <div className="font-mono text-sm text-[var(--color-accent)] uppercase tracking-wider mb-6 flex items-center gap-3">
           <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse-glow" />
           Línea temporal · 80 años en {total} hitos
         </div>
 
-        <h1 className="text-6xl md:text-8xl font-extrabold leading-[0.95] tracking-[-0.04em] mb-8">
+        <h1 className="text-4xl sm:text-6xl md:text-8xl font-extrabold leading-[0.95] tracking-[-0.04em] mb-6 sm:mb-8">
           La historia <span className="font-serif italic text-[var(--color-accent)]">de la IA</span>,
           en una pantalla.
         </h1>
 
-        <p className="text-xl md:text-2xl text-[var(--color-fg-soft)] font-light max-w-3xl leading-snug mb-12">
+        <p className="text-base sm:text-xl md:text-2xl text-[var(--color-fg-soft)] font-light max-w-3xl leading-snug mb-10 sm:mb-12">
           Desde la primera neurona artificial en papel (1943) hasta las hipótesis
           del futuro. Filtra por era o categoría, abre cada hito para profundizar
           con fuentes. Pensado para recorrerlo de un vistazo o quedarte en el

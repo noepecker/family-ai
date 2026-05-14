@@ -9,9 +9,30 @@ import {
   type CasoLevel,
   type CasoCategory,
 } from "@/content/casos";
+import { useNivel } from "@/components/nivel-provider";
+import { legacyLevelMap, type Nivel } from "@/content/niveles";
+
+// Mapa inverso curioso → basico para sincronizar con el selector global.
+const nivelToCasoLevel: Record<Nivel, CasoLevel> = {
+  curioso: "basico",
+  practicante: "medio",
+  profundo: "avanzado",
+};
+
+const casoLevelToNivel: Record<CasoLevel, Nivel> = Object.fromEntries(
+  Object.entries(legacyLevelMap).map(([legacy, n]) => [legacy, n]),
+) as Record<CasoLevel, Nivel>;
 
 export default function CasosPage() {
-  const [level, setLevel] = useState<CasoLevel | "all">("all");
+  const { nivel: globalNivel, setNivel: setGlobalNivel } = useNivel();
+  const level: CasoLevel | "all" =
+    globalNivel === "todos" ? "all" : nivelToCasoLevel[globalNivel];
+
+  const setLevel = (l: CasoLevel | "all") => {
+    if (l === "all") setGlobalNivel("todos");
+    else setGlobalNivel(casoLevelToNivel[l]);
+  };
+
   const [category, setCategory] = useState<CasoCategory | "all">("all");
 
   const filtered = casos.filter(
@@ -21,17 +42,17 @@ export default function CasosPage() {
   );
 
   return (
-    <div className="max-w-7xl mx-auto px-6 pt-16 pb-32">
-      <div className="font-mono text-sm text-[var(--color-accent)] uppercase tracking-wider mb-6 flex items-center gap-3">
+    <div className="max-w-7xl mx-auto px-5 sm:px-6 pt-12 sm:pt-16 pb-24 sm:pb-32">
+      <div className="font-mono text-xs sm:text-sm text-[var(--color-accent)] uppercase tracking-wider mb-5 sm:mb-6 flex items-center gap-3">
         <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse-glow"></span>
         Casos de uso · 30+ ejemplos reales
       </div>
 
-      <h1 className="text-5xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.04em] mb-6">
+      <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.04em] mb-5 sm:mb-6">
         ¿Y esto <span className="font-serif italic text-[var(--color-accent)]">para qué</span> sirve?
       </h1>
 
-      <p className="text-xl text-[var(--color-fg-soft)] font-light max-w-3xl mb-12 leading-relaxed">
+      <p className="text-base sm:text-xl text-[var(--color-fg-soft)] font-light max-w-3xl mb-10 sm:mb-12 leading-relaxed">
         Casos reales con contexto, herramienta, paso a paso y ejemplo de prompt. Filtra
         por nivel y por tipo de uso. Empieza por los básicos si nunca has pagado por una IA.
       </p>

@@ -124,17 +124,17 @@ const kindLabels = {
 
 export default function JugarPage() {
   return (
-    <div className="max-w-7xl mx-auto px-6 pt-16 pb-32">
-      <div className="font-mono text-sm text-[var(--color-accent)] uppercase tracking-wider mb-6 flex items-center gap-3">
+    <div className="max-w-7xl mx-auto px-5 sm:px-6 pt-12 sm:pt-16 pb-24 sm:pb-32">
+      <div className="font-mono text-xs sm:text-sm text-[var(--color-accent)] uppercase tracking-wider mb-5 sm:mb-6 flex items-center gap-3">
         <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse-glow"></span>
         Modo interactivo · {juegos.length} retos
       </div>
 
-      <h1 className="text-5xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.04em] mb-6">
+      <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.04em] mb-5 sm:mb-6">
         Toca la IA <span className="font-serif italic text-[var(--color-accent)]">con las manos</span>
       </h1>
 
-      <p className="text-xl text-[var(--color-fg-soft)] font-light max-w-3xl mb-16 leading-relaxed">
+      <p className="text-base sm:text-xl text-[var(--color-fg-soft)] font-light max-w-3xl mb-12 sm:mb-16 leading-relaxed">
         Tests, comparativas y demos interactivas para entender la IA jugando. Ideales para
         tocarlos en grupo después de la charla, o para probarlos a tu ritmo cuando quieras.
       </p>

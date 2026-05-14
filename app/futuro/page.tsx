@@ -8,16 +8,16 @@ export const metadata = {
 
 export default function FuturoPage() {
   return (
-    <div className="max-w-5xl mx-auto px-6 pt-16 pb-32">
+    <div className="max-w-5xl mx-auto px-5 sm:px-6 pt-12 sm:pt-16 pb-24 sm:pb-32">
       <div className="font-mono text-sm text-[var(--color-accent)] uppercase tracking-wider mb-6 flex items-center gap-3">
         <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse-glow"></span>
         El gran debate · Empleo, IA, futuro
       </div>
 
-      <h1 className="text-5xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.04em] mb-8">
+      <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.04em] mb-6 sm:mb-8">
         ¿Nos quedamos <span className="font-serif italic text-[var(--color-accent)]">sin trabajo</span>?
       </h1>
-      <p className="text-2xl md:text-3xl text-[var(--color-fg-soft)] font-light max-w-3xl leading-snug mb-16">
+      <p className="text-base sm:text-2xl md:text-3xl text-[var(--color-fg-soft)] font-light max-w-3xl leading-snug mb-12 sm:mb-16">
         Tres respuestas. Todas defendibles. Ninguna verificable hasta que pase. Y los
         que mejor pagan por opinar llevan <strong className="text-[var(--color-fg)]">décadas</strong> equivocándose.
       </p>
