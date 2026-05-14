@@ -526,6 +526,52 @@
   font-weight: 600;
 }
 
+/* questions-list: variante editorial. Para slides donde las "preguntas
+   abiertas" son protagonistas (apertura, recap). Número mono pequeño +
+   pregunta en serif italic. Eco visual al open-question del final de
+   cada bloque. */
+.questions-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 56px;
+}
+.questions-list li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 56px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.35;
+  color: var(--fg);
+}
+.questions-list li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 4px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.questions-list li::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 14px;
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.5;
+}
+
 .two-col.compare {
   gap: 40px;
 }
