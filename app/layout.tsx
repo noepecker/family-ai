@@ -6,7 +6,7 @@ import { NivelProvider, NivelChip } from "@/components/nivel-provider";
 import { FromSlideBanner } from "@/components/from-slide-banner";
 
 export const metadata: Metadata = {
-  title: "Acércate a la IA · una charla abierta · Marcos & Noe",
+  title: "Acércate a la IA · una charla abierta",
   description:
     "Cómo funciona la IA, qué hace ya hoy y qué empieza a romper. Tres niveles de lectura: para empezar de cero, para sacarle más si ya la usas, y para profundizar con fuentes.",
   openGraph: {
@@ -111,7 +111,7 @@ function SiteFooter() {
             Crédito
           </div>
           <p className="text-xs text-[var(--color-fg-soft)] leading-relaxed">
-            Investigado, escrito y diseñado por <strong className="text-[var(--color-fg)]">Marcos &amp; Noe</strong> con asistencia de IA. Cada dato verificado a mano. Fuentes enlazadas en cada cita.
+            Investigado, escrito y diseñado con asistencia de IA. Cada dato verificado a mano. Fuentes enlazadas en cada cita.
           </p>
           <p className="text-[0.7rem] text-[var(--color-fg-mute)] mt-3 font-mono">
             Mayo 2026 · v2

@@ -15,8 +15,8 @@ const COLORS = [
 ];
 
 const INITIAL_PEOPLE: Person[] = [
-  { id: 0, name: "Marcos", color: COLORS[0] },
-  { id: 1, name: "Noe", color: COLORS[1] },
+  { id: 0, name: "Carmen", color: COLORS[0] },
+  { id: 1, name: "Diego", color: COLORS[1] },
   { id: 2, name: "Pedro", color: COLORS[2] },
   { id: 3, name: "Ana", color: COLORS[3] },
 ];
