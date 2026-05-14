@@ -1,6 +1,6 @@
 import { PromptBattle } from "@/components/prompt-battle/battle";
 
-export const metadata = { title: "Prompt battle · IA en familia" };
+export const metadata = { title: "Prompt battle · Acércate a la IA" };
 
 export default function PromptBattlePage() {
   return (

@@ -1,6 +1,6 @@
 import { IaONoGame } from "@/components/ia-o-no/game";
 
-export const metadata = { title: "¿IA o no? · IA en familia" };
+export const metadata = { title: "¿IA o no? · Acércate a la IA" };
 
 export default function IaONoPage() {
   return (

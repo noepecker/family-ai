@@ -1,6 +1,6 @@
 import { ArcGame } from "@/components/arc-agi/game";
 
-export const metadata = { title: "ARC-AGI · IA en familia" };
+export const metadata = { title: "ARC-AGI · Acércate a la IA" };
 
 export default function ArcPage() {
   return (

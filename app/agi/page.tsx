@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "AGI · IA en familia",
+  title: "AGI · Acércate a la IA",
   description: "Qué es la AGI, cuánto falta, qué pasaría si llegamos. Sin hype y sin apocalipsis.",
 };
 
@@ -281,28 +281,28 @@ export default function AgiPage() {
         </p>
       </Section>
 
-      <Section number="08" title="Cómo vivir esto en familia">
+      <Section number="08" title="Cómo vivir esto sin paralizarte">
         <p>
-          AGI o no AGI, la IA que YA existe va a cambiar profundamente vuestro trabajo,
-          vuestros estudios, vuestra forma de informarte y comunicarte. Tres consejos
-          prácticos sin caer en el hype:
+          AGI o no AGI, la IA que YA existe va a cambiar profundamente cómo trabajas,
+          estudias, te informas y te comunicas. Tres consejos prácticos sin caer en el
+          hype:
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
           <Tip
-            title="Aprended a usarla bien"
-            body="No leerá vuestro Slack solo. Vosotros tenéis que aprender a hablarle, iterar, verificar."
+            title="Aprende a usarla bien"
+            body="No leerá tu Slack sola. Tienes que aprender a hablarle, iterar, verificar."
             link="/casos"
             linkText="Ver casos"
           />
           <Tip
-            title="Mantened el espíritu crítico"
-            body="Verifica datos importantes fuera de la IA. Acordad la palabra clave contra deepfakes. Hoy."
+            title="Mantén el espíritu crítico"
+            body="Verifica datos importantes fuera de la IA. Acuerda una palabra clave contra deepfakes. Hoy."
             link="/jugar/contra-la-ia"
             linkText="Probar contra la IA"
           />
           <Tip
-            title="Comprended qué falla"
-            body="Saber DÓNDE la IA todavía es ciega os hace ciudadanos mejor informados, no víctimas."
+            title="Conoce dónde falla"
+            body="Saber DÓNDE la IA todavía es ciega te convierte en ciudadano informado, no en víctima."
             link="/jugar/arc-agi-3"
             linkText="Jugar ARC-AGI-3"
           />

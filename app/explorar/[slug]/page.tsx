@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const bloque = getBloque(slug);
   if (!bloque) return { title: "Bloque no encontrado" };
   return {
-    title: `${bloque.title} · IA en familia`,
+    title: `${bloque.title} · Acércate a la IA`,
     description: bloque.short,
   };
 }

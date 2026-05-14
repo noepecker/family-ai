@@ -33,7 +33,7 @@ export type Evento = {
   categoria: Categoria;
   title: string;
   tagline: string;      // una línea para el vistazo rápido
-  why: string;          // por qué importa, en familia
+  why: string;          // por qué importa, en lenguaje cotidiano
   details: string[];    // párrafos para profundizar
   fun?: string;         // curiosidad opcional
   sources?: Fuente[];
@@ -188,7 +188,7 @@ export const eventos: Evento[] = [
     title: "El Perceptrón de Rosenblatt",
     tagline:
       "Frank Rosenblatt construye una red neuronal real (con cables) capaz de aprender.",
-    why: "El primer modelo capaz de aprender de ejemplos sin que un programador le dijera las reglas. El abuelo de todo lo que vino después.",
+    why: "El primer modelo capaz de aprender de ejemplos sin que un programador le dijera las reglas. El antepasado de todo lo que vino después.",
     details: [
       "Rosenblatt, psicólogo de la Universidad de Cornell, implementó el perceptrón primero en software y después como una máquina física (la 'Mark I Perceptron') con 400 fotocélulas y cables ajustables manualmente con potenciómetros.",
       "El New York Times tituló en 1958: 'New Navy Device Learns By Doing'. Rosenblatt predijo que los perceptrones acabarían 'caminando, hablando, viendo, escribiendo, reproduciéndose y siendo conscientes de su existencia'. Llegaría el invierno antes que esa profecía.",
@@ -526,7 +526,7 @@ export const eventos: Evento[] = [
     why: "GPT-3 fue el momento en que la comunidad de IA se dio cuenta de que escalar funcionaba mucho más de lo previsto. Tareas que el modelo NO se había entrenado para hacer aparecían simplemente al hacerlo más grande. Esto se llamó 'emergent capabilities'.",
     details: [
       "Coste estimado de entrenamiento: $4,6M en compute. 175B parámetros era 100× más grande que GPT-2. Demostró 'in-context learning': aprende tareas nuevas solo viendo 1-3 ejemplos en el prompt.",
-      "OpenAI no lo hizo público — solo por API. Empezaron a aparecer demos virales: GitHub Copilot (basado en Codex, primo de GPT-3), AI Dungeon, copywriting automático. La sensación en la industria pasó de 'curioso' a 'esto va a cambiar todo' en seis meses.",
+      "OpenAI no lo hizo público — solo por API. Empezaron a aparecer demos virales: GitHub Copilot (basado en Codex, pariente directo de GPT-3), AI Dungeon, copywriting automático. La sensación en la industria pasó de 'curioso' a 'esto va a cambiar todo' en seis meses.",
     ],
     fun: "Sam Altman (CEO de OpenAI) tuiteó en mayo de 2020: 'GPT-3 hype is way too much. It's impressive (thanks for the nice compliments!) but it still has serious weaknesses and sometimes makes very silly mistakes. AI is going to change the world, but GPT-3 is just a very early glimpse'. Profético: faltaba GPT-3.5.",
   },
@@ -604,10 +604,10 @@ export const eventos: Evento[] = [
     display: "30 Nov 2022",
     era: "explosion",
     categoria: "producto",
-    title: "ChatGPT — la IA llega a la familia",
+    title: "ChatGPT — la IA sale de los laboratorios",
     tagline:
       "OpenAI lanza ChatGPT como 'demo de research' un miércoles. 100 millones de usuarios en 2 meses.",
-    why: "El momento en que la IA dejó de ser 'cosa de investigación' y se convirtió en 'cosa que tu sobrino enseña a tu abuela'. Toda la conversación familiar y mediática sobre IA gira alrededor de este día.",
+    why: "El momento en que la IA dejó de ser 'cosa de investigación' y entró en el día a día de cualquiera con un navegador. Toda la conversación pública y mediática sobre IA gira alrededor de este día.",
     details: [
       "ChatGPT alcanzó los 100M de usuarios activos en 2 meses. Para comparar: TikTok tardó 9 meses, Instagram 2,5 años, Facebook 4,5 años. Es la adopción más rápida de un producto de consumo en la historia.",
       "OpenAI lo lanzó internamente como 'low-key research preview'. Esperaban unos cuantos miles de usuarios. La sorpresa fue interna también: tuvieron que correr para escalar infraestructura mientras los servidores caían cada pocas horas.",
@@ -663,7 +663,7 @@ export const eventos: Evento[] = [
       "Una empresa fundada por ex-OpenAI que pone seguridad delante de todo. Constitutional AI: el modelo se auto-critica según una constitución escrita.",
     why: "Anthropic se convierte en el segundo gran laboratorio frontera. Claude es la única IA general que mucha gente usa por preferir su tono ('más honesto', 'menos pelota', 'mejor para escribir'). En 2025-2026 lidera el mercado developer con Claude Code.",
     details: [
-      "Dario y Daniela Amodei (hermanos), junto a otros 7 ex-OpenAI, fundaron Anthropic en 2021 porque sentían que OpenAI estaba priorizando la velocidad sobre la seguridad. Se llevaron a investigadores clave como Tom Brown (primer autor del paper de GPT-3).",
+      "Dario y Daniela Amodei (hermanos, sí), junto a otros 7 ex-OpenAI, fundaron Anthropic en 2021 porque sentían que OpenAI estaba priorizando la velocidad sobre la seguridad. Se llevaron a investigadores clave como Tom Brown (primer autor del paper de GPT-3).",
       "Su técnica Constitutional AI sustituye buena parte del feedback humano por el propio modelo criticándose a sí mismo según una constitución (escrita en lenguaje natural). Esto reduce coste y permite alinear modelos más grandes con menos anotadores humanos.",
     ],
   },
@@ -760,7 +760,7 @@ export const eventos: Evento[] = [
     title: "Premios Nobel para la IA",
     tagline:
       "Hinton (Física) y Hassabis + Jumper (Química). El reconocimiento científico definitivo.",
-    why: "Dos Nobels en una semana validan que la IA no es 'tendencia tecnológica', es ciencia básica de impacto histórico. Para los abuelos que dudan, el Nobel pesa.",
+    why: "Dos Nobels en una semana validan que la IA no es 'tendencia tecnológica', es ciencia básica de impacto histórico. Para quien sigue dudando, el Nobel pesa.",
     details: [
       "Geoffrey Hinton compartió el Nobel de Física con John Hopfield por 'descubrimientos fundamentales en redes neuronales que permiten el aprendizaje automático'. Hinton lo aceptó con un discurso advirtiendo de los riesgos existenciales de la propia tecnología que recibía el premio.",
       "Demis Hassabis y John Jumper de DeepMind compartieron el Nobel de Química con David Baker (Universidad de Washington) por AlphaFold. Hassabis pasó de ser fundador de un estudio de videojuegos a Nobel en 25 años.",
@@ -811,7 +811,7 @@ export const eventos: Evento[] = [
     title: "Arup pierde $25M en una videollamada deepfake",
     tagline:
       "Un empleado se conecta a Zoom con el CFO y otros colegas. Todos eran deepfakes. Transfiere $25M.",
-    why: "Hasta este caso, los deepfakes en empresa eran teóricos. Ahora son una línea presupuestaria de seguridad. La defensa familiar contra clonación de voz (palabra clave) sale exactamente de aprender de este caso.",
+    why: "Hasta este caso, los deepfakes en empresa eran teóricos. Ahora son una línea presupuestaria de seguridad. La defensa cotidiana contra clonación de voz (palabra clave) sale exactamente de aprender de este caso.",
     details: [
       "Arup, la ingeniería británica detrás de la Ópera de Sídney, sufrió un ataque coordinado: emails de phishing convencieron a un empleado de Hong Kong de unirse a una videollamada. Los 'colegas' del Zoom eran deepfakes generados con vídeo público de la web corporativa.",
       "El empleado, sospechando, intentó verificar. Los deepfakes respondieron en tiempo real (combinación de cara generada + IA de voz). Hizo 15 transferencias por $25,6M antes de descubrir el fraude.",
@@ -957,7 +957,7 @@ export const eventos: Evento[] = [
     title: "microGPT: un GPT entero en 200 líneas de Python",
     tagline:
       "Andrej Karpathy publica un GPT funcional sin PyTorch, sin librerías. Demuestra que la arquitectura es sencilla — lo escaso son los datos y el cómputo.",
-    why: "Es la mejor herramienta de divulgación que ha tenido el campo en años. Si tu sobrino developer quiere entender 'qué hay dentro' de ChatGPT, leer microGPT en una tarde le resuelve la duda mejor que diez documentales.",
+    why: "Es la mejor herramienta de divulgación que ha tenido el campo en años. Si alguien con bagaje técnico quiere entender 'qué hay dentro' de ChatGPT, leer microGPT en una tarde resuelve la duda mejor que diez documentales.",
     details: [
       "200 líneas de Python puro. Incluye tokenizer, motor de autograd casero (heredado de micrograd), arquitectura tipo GPT-2 con atención multi-cabeza, optimizador Adam, bucle de entrenamiento e inferencia. Sin dependencias externas.",
       "Karpathy lo entrena con un fichero de 32.000 nombres reales del SSA. En unos minutos en un portátil normal empieza a inventar nombres plausibles que no existen (Liora, Maelin, Cassen). El truco no es magia: es estadística aprendida.",
@@ -1058,7 +1058,7 @@ export const eventos: Evento[] = [
     title: "El escenario Skynet (con asterisco)",
     tagline:
       "¿Puede una IA militar 'rebelarse' como en Terminator? Spoiler: no así, pero los riesgos reales sí existen.",
-    why: "Skynet es la metáfora cultural más usada cuando la familia pregunta '¿la IA nos va a matar?'. Conviene tener una respuesta honesta: no como en la peli, pero hay riesgos serios y documentados en armamento autónomo.",
+    why: "Skynet es la metáfora cultural más usada cuando alguien pregunta '¿la IA nos va a matar?'. Conviene tener una respuesta honesta: no como en la peli, pero hay riesgos serios y documentados en armamento autónomo.",
     details: [
       "El sistema 'Lavender' del ejército israelí (denunciado por +972 Magazine y The Guardian en 2024) usa IA para sugerir objetivos en Gaza con un margen de error explícito del 10%. Investigaciones independientes confirmaron muertes de civiles en operaciones donde el operador humano dedicaba ~20 segundos a aprobar cada objetivo.",
       "Rusia, EE. UU., China, Israel, Turquía y Reino Unido desarrollan drones autónomos. La ONU lleva intentando regularlos desde 2014 sin acuerdo vinculante. El escenario realista no es una IA que decide 'matar humanos': es humanos delegando decisiones letales en sistemas opacos, sin supervisión real.",
@@ -1107,7 +1107,7 @@ export const eventos: Evento[] = [
     why: "Cerramos con humildad. Llevamos 70 años de predicciones IA, casi todas equivocadas por los dos lados. La mejor herramienta no es saber 'qué va a pasar', es aprender a leer rápido los cambios cuando lleguen.",
     details: [
       "Nadie predijo que un chatbot lanzado un miércoles cualquiera (ChatGPT) batiría el récord de adopción de productos de consumo. Nadie predijo que una startup china (DeepSeek) tiraría $600.000M de NVIDIA en un día. Nadie predijo que la pieza más útil de los LLMs para empresas sería 'programar'.",
-      "Probablemente pasarán cosas similares en los próximos años. Buena norma para la familia: leer 30 minutos a la semana sobre IA, probar herramientas nuevas cuando salen, y desconfiar de cualquiera (incluido este sitio) que diga 'sé exactamente qué va a pasar en 2030'.",
+      "Probablemente pasarán cosas similares en los próximos años. Buena norma para cualquiera: leer 30 minutos a la semana sobre IA, probar herramientas nuevas cuando salen, y desconfiar de cualquiera (incluido este sitio) que diga 'sé exactamente qué va a pasar en 2030'.",
     ],
   },
 ];

@@ -81,7 +81,7 @@ export const casos: Caso[] = [
     icon: "🌱",
     short: "Foto de la planta → diagnóstico + qué hacer.",
     scenario:
-      "El ficus del salón tiene hojas amarillas. La aloe se le cae el centro. El bonsái de la abuela parece muerto pero igual lo salvas.",
+      "El ficus del salón tiene hojas amarillas. La aloe se le cae el centro. Un bonsái al borde del adiós que igual recuperas.",
     tool: "ChatGPT / Claude (con cámara). Plant.id si quieres app especializada.",
     flow: [
       "Foto de la planta entera + foto de las hojas dañadas de cerca.",
@@ -100,7 +100,7 @@ export const casos: Caso[] = [
     icon: "💊",
     short: "Letra pequeña, jerga médica → explicación en cristiano.",
     scenario:
-      "Vuelves de la farmacia con tres cajas. El prospecto parece un examen. Las indicaciones son ambiguas. La abuela ya no ve bien la letra.",
+      "Vuelves de la farmacia con tres cajas. El prospecto parece un examen. Las indicaciones son ambiguas. La letra es minúscula.",
     tool: "ChatGPT / Claude / Gemini (con cámara)",
     flow: [
       "Foto al envase + al prospecto si quieres más detalle.",
@@ -120,7 +120,7 @@ export const casos: Caso[] = [
     icon: "🛡️",
     short: "Pegas el email sospechoso. Te dice si huele a phishing y por qué.",
     scenario:
-      "'Tu paquete está retenido, paga 1,99€ para liberarlo'. 'Tu Netflix se ha bloqueado, verifica aquí'. 'Soy tu nieto, perdí el móvil, mándame 200€'. La cantidad de estafas crece cada año.",
+      "'Tu paquete está retenido, paga 1,99€ para liberarlo'. 'Tu Netflix se ha bloqueado, verifica aquí'. 'Perdí el móvil, mándame 200€'. La cantidad de estafas crece cada año.",
     tool: "ChatGPT / Claude (gratis, sin pagar nada).",
     flow: [
       "Copia el texto completo del correo o mensaje.",
@@ -129,23 +129,23 @@ export const casos: Caso[] = [
     ],
     prompt:
       "Me ha llegado este mensaje y no sé si es real. ¿Tiene pinta de estafa? Dime qué pistas hay para reconocer el phishing. [pega el mensaje completo]",
-    tip: "Funciona también para llamadas si las grabas/transcribes. Y para 'oportunidades de inversión por WhatsApp' que tu cuñado quiere reenviarte.",
-    related: ["palabra-clave-familiar"],
+    tip: "Funciona también para llamadas si las grabas/transcribes. Y para 'oportunidades de inversión por WhatsApp' que alguien insiste en reenviarte.",
+    related: ["palabra-clave"],
   },
   {
-    id: "palabra-clave-familiar",
+    id: "palabra-clave",
     title: "Defensa contra clonación de voz",
     level: "basico",
     category: "vida-diaria",
     icon: "🔐",
-    short: "No es un caso de uso 'de IA', es la regla familiar que CADA familia debería acordar.",
+    short: "No es un caso de uso 'de IA', es la regla que cualquier círculo cercano debería acordar.",
     scenario:
-      "Tu madre recibe una llamada llorando con la voz de tu hijo: 'mamá, he tenido un accidente, mándame 800€'. Con 30 segundos de TikTok del nieto se clona la voz. $4.900 millones en estafas a mayores en EEUU solo en 2024.",
-    tool: "Una palabra, acordada en familia. Cero coste.",
+      "Alguien recibe una llamada llorando con la voz de un ser querido: 'he tenido un accidente, mándame 800€'. Con 30 segundos de TikTok se clona una voz convincente. $4.900 millones en estafas a mayores en EEUU solo en 2024.",
+    tool: "Una palabra, acordada con quien te importa. Cero coste.",
     flow: [
-      "Reúnete con tu familia. Acordad UNA palabra clave secreta.",
-      "Algo que sepáis solo vosotros. NO el nombre del perro, NO la fecha de boda.",
-      "Si alguien llama pidiendo dinero o información urgente con la voz de un familiar: pide la palabra.",
+      "Pónte de acuerdo con tu círculo cercano. Acordad UNA palabra clave secreta.",
+      "Algo que solo sepáis vosotros. NO el nombre del perro, NO la fecha de boda.",
+      "Si alguien llama pidiendo dinero o información urgente con una voz conocida: pide la palabra.",
       "Si no la sabe, cuelga. Llama tú al número de siempre.",
     ],
     tip: "Bonus: acordad también una palabra para situaciones de coacción ('hay algo que va mal, ayuda silenciosa').",
@@ -166,7 +166,7 @@ export const casos: Caso[] = [
       "Te dice paso a paso. Si falta algo, te ofrece alternativas.",
     ],
     prompt:
-      "Aquí está mi nevera. Cena familiar para 4, dos peques de 6 años. Tengo 30 minutos y pereza. Dame 3 opciones con lo que ves, ordenadas de menos a más esfuerzo.",
+      "Aquí está mi nevera. Cena para 4, dos peques de 6 años. Tengo 30 minutos y pereza. Dame 3 opciones con lo que ves, ordenadas de menos a más esfuerzo.",
     tip: "Para listas de la compra inversas: dile lo que QUIERES cocinar esta semana y te genera lista organizada por sección del super.",
   },
   {
@@ -177,7 +177,7 @@ export const casos: Caso[] = [
     icon: "🎧",
     short: "Conversación en otro idioma → subtítulos traducidos en tu móvil.",
     scenario:
-      "Tu cuñado austriaco viene a comer. La conversación se vuelve interesante pero tú no hablas alemán. O un familiar perdió audición y quiere seguir las conversaciones.",
+      "Un invitado austriaco viene a comer. La conversación se vuelve interesante pero tú no hablas alemán. O alguien con pérdida de audición quiere seguir la conversación.",
     tool: "Apple Intelligence (Live Captions, iPhone 15 Pro+), Google Pixel Recorder, app de traducción de Samsung",
     flow: [
       "Activa la función de subtítulos en vivo del móvil.",
@@ -227,7 +227,7 @@ export const casos: Caso[] = [
   // ============ VIDA DIARIA · MEDIO ============
   {
     id: "planificar-viaje",
-    title: "Planificar un viaje familiar entero",
+    title: "Planificar un viaje en grupo",
     level: "medio",
     category: "vida-diaria",
     icon: "✈️",
@@ -318,7 +318,7 @@ export const casos: Caso[] = [
       "Pide plan + lista de compra organizada por sección del super.",
     ],
     prompt:
-      "Plan de comidas para una familia de 4 (2 adultos + 2 niños de 6 y 9 años), de lunes a viernes (comida y cena). Variado, 2 veces pescado, 1 vez legumbre, sin repetir mismo ingrediente principal. Devuélveme: plan en tabla + lista de la compra organizada por: frescos, lácteos, congelados, despensa, limpieza.",
+      "Plan de comidas para 4 personas (2 adultos + 2 niños de 6 y 9 años), de lunes a viernes (comida y cena). Variado, 2 veces pescado, 1 vez legumbre, sin repetir mismo ingrediente principal. Devuélveme: plan en tabla + lista de la compra organizada por: frescos, lácteos, congelados, despensa, limpieza.",
   },
   {
     id: "aprender-idioma",
@@ -472,7 +472,7 @@ export const casos: Caso[] = [
       "Pulsa 'Audio Overview'. Genera podcast tipo NPR de 12-20 minutos con dos voces conversando.",
       "Descarga MP3.",
     ],
-    tip: "Brutal para abuelos que ya no leen letra pequeña pero sí escuchan bien. Funciona en castellano desde 2024.",
+    tip: "Brutal para quien ya no lee letra pequeña pero sí escucha bien. Funciona en castellano desde 2024.",
     related: ["notebooklm-examen"],
   },
   {
@@ -539,7 +539,7 @@ export const casos: Caso[] = [
     icon: "🎤",
     short: "30 segundos de audio tuyo → narras un vídeo entero sin grabar.",
     scenario:
-      "Quieres narrar un montaje familiar. Te da vergüenza grabar. O quieres traducirlo a otros idiomas manteniendo TU voz.",
+      "Quieres narrar un montaje personal. Te da vergüenza grabar. O quieres traducirlo a otros idiomas manteniendo TU voz.",
     tool: "ElevenLabs (el referente). Heygen para vídeo + voz.",
     flow: [
       "Sube 30-60 segundos de audio tuyo limpio.",
@@ -552,13 +552,13 @@ export const casos: Caso[] = [
   },
   {
     id: "cancion-suno",
-    title: "Música para un montaje familiar",
+    title: "Música para un montaje personal",
     level: "medio",
     category: "creativo",
     icon: "🎵",
     short: "Suno V5 → canción completa con letra y voz cantada.",
     scenario:
-      "Cumple del abuelo, boda de un primo, jubilación. Quieres una canción 'a medida'.",
+      "Una boda, una jubilación, un cumpleaños grande. Quieres una canción 'a medida'.",
     tool: "Suno (suno.com) o Udio.",
     flow: [
       "Describe el estilo musical, instrumentación y ambiente.",
@@ -566,7 +566,7 @@ export const casos: Caso[] = [
       "Suno genera 2-3 variantes. Eliges, descargas MP3.",
     ],
     prompt:
-      "Canción flamenco-rock alegre y cómica para el 75 cumpleaños del abuelo Joaquín. Le encanta el fútbol del Atleti, jugar al mus, y se duerme viendo el telediario. Tiene 4 nietos. Coro pegadizo y letra con cariño.",
+      "Canción flamenco-rock alegre y cómica para el 75 cumpleaños de Joaquín. Le encanta el fútbol del Atleti, jugar al mus, y se duerme viendo el telediario. Coro pegadizo y letra con cariño.",
     tip: "Las canciones IA están en Spotify ya. La calidad es indistinguible en géneros pop/electrónicos para oyente casual.",
   },
   {
@@ -609,7 +609,7 @@ export const casos: Caso[] = [
     ],
     prompt:
       "Investiga el estado actual (mayo 2026) de los tratamientos para la fibromialgia. Quiero: (1) qué dice la ciencia más reciente (papers <2 años), (2) qué tratamientos están en ensayo, (3) qué centros en España son referencia, (4) qué grupos de pacientes existen. Cita las fuentes con URL y año.",
-    tip: "Esta charla familiar usó modos de razonamiento profundo de varios modelos para verificar todas las cifras citadas. Funciona.",
+    tip: "Esta misma charla usó modos de razonamiento profundo de varios modelos para verificar todas las cifras citadas. Funciona.",
     related: ["notebooklm-examen"],
   },
   {
@@ -620,7 +620,7 @@ export const casos: Caso[] = [
     icon: "💻",
     short: "Describe la app. La IA la construye. Tú iteras hasta que funciona.",
     scenario:
-      "Necesitas una herramienta interna: gestor de cumpleaños familiares, calculadora específica para tu sector, web del trabajo. No quieres pagar a un developer.",
+      "Necesitas una herramienta interna: gestor de cumpleaños del equipo, calculadora específica para tu sector, web del trabajo. No quieres pagar a un developer.",
     tool: "v0 (Vercel), Lovable, Bolt.new, Replit Agent, Claude Artifacts.",
     flow: [
       "Describe en lenguaje normal qué quieres.",
@@ -629,7 +629,7 @@ export const casos: Caso[] = [
       "En 1 hora tienes algo funcional. En 4 horas algo decente.",
     ],
     prompt:
-      "Crea una web para que mi familia (8 personas) apunte cumpleaños. Login con Google. Formulario con nombre + fecha + foto + nota. Lista visible para todos, ordenada por fecha. Notificación 1 semana antes. Diseño limpio, colores cálidos.",
+      "Crea una web para que mi grupo (8 personas) apunte cumpleaños. Login con Google. Formulario con nombre + fecha + foto + nota. Lista visible para todos, ordenada por fecha. Notificación 1 semana antes. Diseño limpio, colores cálidos.",
     tip: "Para apps internas y prototipos: genial. Para producción real con datos sensibles: te toca aprender (o contratar).",
   },
   {
@@ -722,17 +722,17 @@ export const levelLabels: Record<CasoLevel, { label: string; color: string; desc
   basico: {
     label: "Básico",
     color: "var(--color-good)",
-    description: "Para abuelos, tíos, quien jamás ha pagado por una IA",
+    description: "Si nunca has pagado por IA y quieres ubicarte",
   },
   medio: {
     label: "Medio",
     color: "var(--color-warn)",
-    description: "Para quien usa ChatGPT a veces y quiere sacarle más jugo",
+    description: "Si usas ChatGPT a veces y quieres sacarle más",
   },
   avanzado: {
     label: "Avanzado",
     color: "var(--color-hot)",
-    description: "Para quien ya lo usa cada día y quiere exprimir el ecosistema",
+    description: "Si la usas cada día y quieres exprimir el ecosistema",
   },
 };
 

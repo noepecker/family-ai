@@ -1,6 +1,6 @@
 import { DiscoveryGame } from "@/components/arc-agi-3/discovery-game";
 
-export const metadata = { title: "ARC-AGI-3 · IA en familia" };
+export const metadata = { title: "ARC-AGI-3 · Acércate a la IA" };
 
 export default function ArcAgi3Page() {
   return (
@@ -12,7 +12,7 @@ export default function ArcAgi3Page() {
         <span>←</span> Volver a jugar
       </a>
       <h1 className="text-4xl md:text-6xl font-extrabold tracking-[-0.03em] leading-[1.05] mb-3">
-        ARC-AGI-3 <span className="font-serif italic text-[var(--color-accent)]">descubrid la regla en familia</span>
+        ARC-AGI-3 <span className="font-serif italic text-[var(--color-accent)]">descubrid la regla</span>
       </h1>
       <p className="text-lg text-[var(--color-fg-soft)] mb-6 max-w-3xl">
         Cuatro niveles, cero instrucciones. Pulsa las flechas y descubrid qué hace cada

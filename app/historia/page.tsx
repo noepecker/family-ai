@@ -3,7 +3,7 @@ import { Timeline } from "@/components/historia/timeline";
 import { eventos, eras, erasInOrder } from "@/content/historia";
 
 export const metadata = {
-  title: "Línea temporal · 80 años de IA · IA en familia",
+  title: "Línea temporal · 80 años de IA · Acércate a la IA",
   description:
     "De la primera neurona artificial (1943) a las hipótesis del futuro. Una línea temporal interactiva con eras, filtros y fuentes para profundizar.",
 };
@@ -37,8 +37,8 @@ export default function HistoriaPage() {
         <p className="text-xl md:text-2xl text-[var(--color-fg-soft)] font-light max-w-3xl leading-snug mb-12">
           Desde la primera neurona artificial en papel (1943) hasta las hipótesis
           del futuro. Filtra por era o categoría, abre cada hito para profundizar
-          con fuentes. Pensado para verlo en familia y poder bajar a detalle
-          cuando alguien quiera.
+          con fuentes. Pensado para recorrerlo de un vistazo o quedarte en el
+          detalle de un único año.
         </p>
 
         {/* ============ Mini-estadísticas por era ============ */}
@@ -98,7 +98,7 @@ export default function HistoriaPage() {
           </div>
           <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
             La IA llevaba <span className="font-serif italic text-[var(--color-accent)]">80 años</span> avanzando
-            cuando ChatGPT llegó a tu salón.
+            cuando ChatGPT salió del laboratorio.
           </h2>
           <p className="text-base md:text-lg text-[var(--color-fg-soft)] leading-relaxed mb-3">
             Cada hito de esta línea fue, en su momento, “la cosa nueva”.
@@ -107,8 +107,8 @@ export default function HistoriaPage() {
             prediciendo lo que vendría después — por exceso o por defecto.
           </p>
           <p className="text-base md:text-lg text-[var(--color-fg-soft)] leading-relaxed">
-            La conclusión útil para la familia no es predecir, es aprender a leer
-            estos cambios cuando llegan. Si tenéis curiosidad, seguid bajando: en{" "}
+            La conclusión útil no es predecir, es aprender a leer estos cambios
+            cuando llegan. Si tienes curiosidad, sigue bajando: en{" "}
             <Link href="/explorar" className="text-[var(--color-accent)] underline">
               Explorar
             </Link>{" "}

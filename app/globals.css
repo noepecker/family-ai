@@ -117,6 +117,38 @@ html, body {
   100% { background-position: 1000px 0; }
 }
 
+@keyframes token-pop {
+  from { opacity: 0; transform: translateY(4px); filter: blur(2px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(0.5deg); }
+}
+
+.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* Hover magnetic effect for cards */
+.card-magnetic {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+}
+.card-magnetic:hover {
+  transform: translateY(-4px) rotate(-0.2deg);
+}
+
+/* Subtle underline on hover for inline links */
+.link-underline {
+  background: linear-gradient(currentColor, currentColor) 0 100%/0 1px no-repeat;
+  transition: background-size 0.3s ease;
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
 /* Prose styles for markdown rendering */
 .prose-custom h1 {
   font-size: 3rem;

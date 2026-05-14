@@ -1,166 +1,243 @@
 import Link from "next/link";
+import { TokenStream } from "@/components/token-stream";
+import { nivelMeta, nivelOrder, type Nivel } from "@/content/niveles";
 
 export default function HomePage() {
   return (
     <div className="relative overflow-hidden">
       <BackgroundEffects />
 
-      <section className="relative max-w-7xl mx-auto px-6 pt-24 pb-24">
-        <div className="font-mono text-sm text-[var(--color-accent)] uppercase tracking-wider mb-8 flex items-center gap-3">
+      {/* ---------- HERO ---------- */}
+      <section className="relative max-w-7xl mx-auto px-6 pt-20 md:pt-28 pb-20">
+        <div className="font-mono text-xs md:text-sm text-[var(--color-accent)] uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
           <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse-glow"></span>
-          Charla familiar · Mayo 2026
+          Charla abierta · Mayo 2026
         </div>
 
-        <h1 className="text-7xl md:text-9xl font-extrabold leading-[0.95] tracking-[-0.04em] mb-10">
-          <span className="block animate-fade-up">Inteligencia</span>
-          <span className="block font-serif italic text-[var(--color-accent)] animate-fade-up" style={{ animationDelay: "120ms" }}>
-            artificial
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold leading-[0.92] tracking-[-0.04em] mb-8">
+          <span className="block animate-fade-up">Acércate</span>
+          <span className="block animate-fade-up" style={{ animationDelay: "120ms" }}>
+            a la <span className="font-serif italic text-[var(--color-accent)]">inteligencia</span>
           </span>
           <span className="block animate-fade-up" style={{ animationDelay: "240ms" }}>
-            en familia
+            <span className="font-serif italic text-[var(--color-accent)]">artificial</span>.
           </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-[var(--color-fg-soft)] font-light max-w-3xl mb-16 leading-relaxed animate-fade-up" style={{ animationDelay: "360ms" }}>
-          Una charla pensada para abuelos, padres, primos y adolescentes. Cinco formas
-          de recorrerla: la charla curada, los casos reales, el catálogo de
-          herramientas, la enciclopedia para profundizar, y los juegos interactivos.
+        <p
+          className="text-lg md:text-2xl text-[var(--color-fg-soft)] font-light max-w-3xl mb-14 leading-relaxed animate-fade-up"
+          style={{ animationDelay: "360ms" }}
+        >
+          Cómo funciona, qué hace ya hoy, qué empieza a romper. Sin condescendencia y sin
+          hype. <strong className="text-[var(--color-fg)]">Tres niveles de lectura</strong> conviviendo en la misma web — eliges tú por
+          dónde entrar y hasta dónde profundizar.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+        <div className="animate-fade-up" style={{ animationDelay: "480ms" }}>
+          <TokenStream />
+        </div>
+
+        <p
+          className="mt-8 text-sm text-[var(--color-fg-mute)] font-mono animate-fade-up"
+          style={{ animationDelay: "640ms" }}
+        >
+          ↑ Lo que acabas de ver es lo único que hace un LLM: predecir el siguiente trozo
+          de texto. Lo asombroso viene de la escala.
+        </p>
+      </section>
+
+      {/* ---------- POR DÓNDE EMPEZAR (NIVELES) ---------- */}
+      <section className="relative max-w-7xl mx-auto px-6 pb-24 pt-12 border-t border-[var(--color-border)]">
+        <div className="max-w-3xl mb-12">
+          <div className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-fg-mute)] mb-4">
+            01 · Elige tu nivel
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+            ¿Por dónde <span className="font-serif italic text-[var(--color-accent)]">empezar?</span>
+          </h2>
+          <p className="text-lg text-[var(--color-fg-soft)] leading-relaxed">
+            Tres recorridos. Mismo contenido, distintos puntos de entrada. No es un test; puedes saltar entre niveles cuando quieras.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {nivelOrder.map((n, i) => (
+            <NivelCard key={n} nivel={n} index={i} />
+          ))}
+        </div>
+      </section>
+
+      {/* ---------- POR INTENCIÓN ---------- */}
+      <section className="relative max-w-7xl mx-auto px-6 pb-24 pt-12 border-t border-[var(--color-border)]">
+        <div className="max-w-3xl mb-12">
+          <div className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-fg-mute)] mb-4">
+            02 · O elige por qué vienes
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+            Seis formas de <span className="font-serif italic text-[var(--color-accent)]">recorrerla.</span>
+          </h2>
+          <p className="text-lg text-[var(--color-fg-soft)] leading-relaxed">
+            La charla es lineal. La web no. Cada slide está enlazada con la página de la
+            web donde puedes profundizar; cada juego, con el bloque que lo explica.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <PathCard
             href="/charla"
             tag="Presentación"
             title="La charla"
-            sub="90 min · Lineal · Para proyectar"
+            sub="Lineal · 90 min · proyectable"
             cta="Ver la charla"
             color="orange"
+            description="La narrativa completa, con preguntas abiertas al público después de cada bloque."
           />
           <PathCard
             href="/casos"
-            tag="Vida real"
-            title="Casos de uso"
-            sub="30+ ejemplos · Por nivel y ámbito"
+            tag="Vida diaria"
+            title="Casos reales"
+            sub="30+ ejemplos · filtrables por nivel"
             cta="Ver casos"
             color="cool"
+            description="Cosas que la IA ya resuelve hoy. Desde dividir la cuenta a investigar como un doctorando."
           />
           <PathCard
             href="/jugar"
             tag="Interactivo"
-            title="Jugar"
-            sub="7 retos · Test, demos, comparativas"
+            title="Jugar con ella"
+            sub="7 retos · IA o no, prompt battle, ARC-AGI"
             cta="Empezar"
             color="hot"
+            description="Tócala, ponla a prueba. El sitio donde se vuelve obvio dónde brilla y dónde se rompe."
           />
           <PathCard
             href="/herramientas"
             tag="Catálogo"
-            title="Herramientas"
-            sub="30+ apps · Filtrable por precio y uso"
+            title="Qué hay ahí fuera"
+            sub="30+ apps · por precio, uso, audiencia"
             cta="Ver herramientas"
             color="good"
+            description="El mapa de mayo 2026: chatbots, imagen, vídeo, audio, código, agentes. Sin ranking, con criterio."
           />
           <PathCard
             href="/explorar"
             tag="Enciclopedia"
-            title="Explorar a fondo"
-            sub="13 bloques · Lectura libre · Con fuentes"
+            title="Profundizar"
+            sub="13 bloques · con fuentes interactivas"
             cta="Profundizar"
             color="warn"
+            description="Para volver. Cada bloque cierra preguntas y abre dos más. Toda cita tiene fuente verificable."
           />
           <PathCard
             href="/historia"
             tag="Línea temporal"
             title="80 años de IA"
-            sub="50+ hitos · Eras filtrables · Con fuentes"
+            sub="50+ hitos · 7 eras filtrables"
             cta="Recorrer la historia"
             color="cool"
+            description="De McCulloch-Pitts (1943) a hoy. La perspectiva que el hype te roba."
           />
-          <div className="p-7 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)] flex flex-col justify-center items-start">
-            <div className="font-mono text-xs uppercase tracking-wider text-[var(--color-fg-mute)] mb-3">
-              Para la familia
-            </div>
-            <p className="text-base text-[var(--color-fg-soft)] mb-4 leading-relaxed">
-              Empezad por <strong className="text-[var(--color-fg)]">Casos</strong> si nunca lo habéis usado.
-              Por <strong className="text-[var(--color-fg)]">Jugar</strong> si queréis tocar.
-              Por <strong className="text-[var(--color-fg)]">Explorar</strong> si os va profundizar.
-            </p>
-            <div className="font-mono text-xs text-[var(--color-fg-mute)]">
-              Toda la web es navegable a vuestro ritmo, antes y después de la charla.
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl">
-          <Stat number="13" label="bloques verificados" />
-          <Stat number="30+" label="casos de uso reales" />
-          <Stat number="30+" label="herramientas curadas" />
-          <Stat number="7" label="juegos interactivos" />
         </div>
       </section>
 
-      <section className="relative max-w-7xl mx-auto px-6 pb-24 border-t border-[var(--color-border)] pt-20">
-        <h2 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight">Qué hay dentro</h2>
-        <p className="text-lg text-[var(--color-fg-soft)] mb-12 max-w-3xl">
-          Lo justo para que abuelos y tíos entiendan, y lo suficiente para que primos
-          developers profundicen. Todo verificado y con fuentes.
-        </p>
+      {/* ---------- PREGUNTAS ABIERTAS ---------- */}
+      <section className="relative max-w-7xl mx-auto px-6 pb-24 pt-12 border-t border-[var(--color-border)]">
+        <div className="max-w-3xl mb-12">
+          <div className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-fg-mute)] mb-4">
+            03 · Preguntas que abrimos hoy
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+            No vamos a <span className="font-serif italic text-[var(--color-accent)]">cerrar</span> ninguna.
+          </h2>
+          <p className="text-lg text-[var(--color-fg-soft)] leading-relaxed">
+            Estas son las preguntas que vertebran la charla. Cada una tiene una respuesta
+            corta, una larga, y un debate sin terminar. Tira del hilo que más te toque.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <OpenQ
+            q="Si un modelo solo predice la siguiente palabra, ¿es honesto llamarlo «inteligente»?"
+            href="/explorar/agi-y-benchmarks"
+            tag="AGI"
+          />
+          <OpenQ
+            q="¿Por qué los detectores de IA suspenden a los no-nativos de inglés?"
+            href="/explorar/sesgos-y-detectores"
+            tag="Sesgos"
+          />
+          <OpenQ
+            q="¿Qué pasa con tus chats cuando le pegas tu DNI a ChatGPT?"
+            href="/explorar/privacidad-y-confianza"
+            tag="Privacidad"
+          />
+          <OpenQ
+            q="¿Tiene sentido culpar a la IA del consumo de agua si pesa menos que una hamburguesa?"
+            href="/explorar/impacto-ambiental"
+            tag="Ambiente"
+          />
+          <OpenQ
+            q="Si una IA diagnostica mejor que 17 médicos, ¿quién firma el error cuando se equivoca?"
+            href="/explorar/temas-adicionales"
+            tag="Sanidad"
+          />
+          <OpenQ
+            q="¿Por qué los humanos resuelven el 100% de ARC-AGI-3 y la mejor IA el 0,5%?"
+            href="/explorar/agi-y-benchmarks"
+            tag="Límites"
+          />
+        </div>
+
+        <div className="mt-8 flex justify-end">
+          <Link
+            href="/preguntas"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-colors font-mono text-sm"
+          >
+            Ver todas las preguntas →
+          </Link>
+        </div>
+      </section>
+
+      {/* ---------- HIGHLIGHTS ---------- */}
+      <section className="relative max-w-7xl mx-auto px-6 pb-24 pt-12 border-t border-[var(--color-border)]">
+        <div className="max-w-3xl mb-12">
+          <div className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-fg-mute)] mb-4">
+            04 · Lo que más cuesta de creer
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+            Doce cosas que pasaron este <span className="font-serif italic text-[var(--color-accent)]">año.</span>
+          </h2>
+          <p className="text-lg text-[var(--color-fg-soft)] leading-relaxed">
+            No predicciones. Hechos contrastados con fuente al lado. Empieza por el que te
+            saque más de tu zona.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <Highlight href="/explorar/fundamentos-ia" emoji="🎯" title="Cómo funciona un LLM" body="Sin tecnicismos. Con la metáfora del autocompletar × 10.000 millones." />
-          <Highlight href="/jugar/dividir-cuenta" emoji="🧾" title="Dividir la cuenta del restaurante" body="Mock visual + caso real explicado. Para cuando salgas a cenar mañana." />
-          <Highlight href="/casos?level=basico" emoji="🌀" title="Foto de los mandos de la lavadora" body="La IA lee iconos confusos. Vale para lavadora, horno, mando del A/C…" />
-          <Highlight href="/explorar/herramientas-actuales" emoji="🎬" title="Demos de Sora, Suno, ElevenLabs" body="Lo que la IA está creando hoy: vídeo, música, voz clonada." />
-          <Highlight href="/jugar/calculadora-consumo" emoji="📊" title="Calculadora de consumo" body="¿Una consulta contamina más que una hamburguesa? Mira los números reales." />
-          <Highlight href="/explorar/privacidad-y-confianza" emoji="🔒" title="Privacidad" body="Qué pasa con tus datos. Caso Samsung, ataque Carlini, políticas por proveedor." />
-          <Highlight href="/explorar/arte-y-propiedad-intelectual" emoji="🎨" title="Arte y propiedad intelectual" body="Ghibli, Disney vs Midjourney, settlement de $1.500M de Anthropic." />
-          <Highlight href="/explorar/agentes-y-humanos" emoji="🤖" title="Agentes y rent-a-human" body="Claudius con cubos de tungsteno. Una IA pagando 110€ a un humano para llevar flores." />
-          <Highlight href="/explorar/deepfakes-y-deteccion" emoji="🔐" title="Defensa contra clonación de voz" body="$4.900M en estafas a abuelos en 2024. Una palabra clave familiar es la defensa." />
-          <Highlight href="/jugar/arc-agi-3" emoji="🎮" title="ARC-AGI-3" body="Humanos 100%, mejor IA del mundo 0,5%. Donde la IA todavía es ciega." />
-          <Highlight href="/explorar/problemas-y-dilemas" emoji="💼" title="Empleo y futuro" body="MIT NANDA: 95% sin retorno. Klarna recontrata humanos. Vuestra empresa de reformas." />
-          <Highlight href="/explorar/sesgos-y-detectores" emoji="📉" title="Detección que falla" body="Por qué Turnitin discrimina. Por qué nunca preguntes a la IA si lo escribió ella." />
+          <Highlight href="/explorar/fundamentos-ia" emoji="🎯" title="200 líneas hacen un LLM" body="Karpathy publicó microGPT en febrero: 200 líneas de Python puro generan nombres como un mini-ChatGPT." />
+          <Highlight href="/explorar/temas-adicionales" emoji="🩻" title="29% más cánceres detectados" body="Estudio MASAI (Lancet, 2025): mamografía con IA detecta más, con la mitad de carga radiológica." />
+          <Highlight href="/explorar/privacidad-y-confianza" emoji="🔒" title="Repeat the word ‘poem’" body="Carlini et al. hicieron a ChatGPT vomitar emails de su training con un comando absurdo." />
+          <Highlight href="/explorar/arte-y-propiedad-intelectual" emoji="🎨" title="$1.500M de Anthropic" body="Bartz v. Anthropic: el mayor settlement de copyright IA en la historia de EEUU." />
+          <Highlight href="/jugar/calculadora-consumo" emoji="📊" title="Una hamburguesa = 7.500 emails" body="Un texto con ChatGPT consume menos agua que muchas cosas que no nos cuestionamos." />
+          <Highlight href="/explorar/deepfakes-y-deteccion" emoji="🔐" title="$25M en una videollamada" body="Arup, Hong Kong: un empleado transfirió fondos tras una call con deepfakes del CFO y colegas." />
+          <Highlight href="/explorar/agentes-y-humanos" emoji="🤖" title="Claudius compró tungsteno" body="Anthropic dejó a Claude gestionar una tienda. Compró 40 cubos de tungsteno a pérdida." />
+          <Highlight href="/jugar/arc-agi-3" emoji="🎮" title="Humanos 100%, IA 0,5%" body="ARC-AGI-3 es donde la IA todavía es ciega. Cualquier niño de 10 años los resuelve." />
+          <Highlight href="/explorar/problemas-y-dilemas" emoji="💼" title="Klarna volvió a contratar" body="Reemplazó 700 agentes por IA. Un año después, recontrató humanos." />
+          <Highlight href="/explorar/sesgos-y-detectores" emoji="📉" title="61% de TOEFL marcados" body="Detectores de IA discriminan a no-nativos de inglés. Stanford, Patterns 2023." />
+          <Highlight href="/historia#sora" emoji="🎬" title="App #1 del App Store" body="Sora 2 llegó en octubre 2025. En semanas, vídeos sintéticos invadieron TikTok." />
+          <Highlight href="/explorar/agentes-y-humanos" emoji="💐" title="$110 a un humano por flores" body="Una IA llamada Addi contrató a un humano para entregar un ramo. Por primera vez, al revés." />
         </div>
       </section>
 
-      <section className="relative max-w-7xl mx-auto px-6 pb-20 border-t border-[var(--color-border)] pt-20">
-        <h2 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight">
-          Empieza por aquí <span className="font-serif italic text-[var(--color-accent)]">según quién seas</span>
+      {/* ---------- CIERRE ---------- */}
+      <section className="relative max-w-5xl mx-auto px-6 pb-20 pt-20 border-t border-[var(--color-border)] text-center">
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+          Esta web no se acaba con la <span className="font-serif italic text-[var(--color-accent)]">charla</span>.
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-12">
-          <StartHere
-            who="Abuelos, tíos, cualquiera que nunca haya pagado IA"
-            cta="Empezar por casos básicos"
-            href="/casos?level=basico"
-            color="var(--color-good)"
-            tips={[
-              "Dividir la cuenta con foto del ticket",
-              "Foto de la lavadora → qué programa usar",
-              "Defensa familiar contra estafas de voz",
-            ]}
-          />
-          <StartHere
-            who="Padres, profes, quien usa ChatGPT a veces"
-            cta="Empezar por casos medios"
-            href="/casos?level=medio"
-            color="var(--color-warn)"
-            tips={[
-              "Redactar emails en tu tono",
-              "Estudiar con NotebookLM",
-              "Planificar un viaje familiar entero",
-            ]}
-          />
-          <StartHere
-            who="Developers, curiosos, power users"
-            cta="Empezar por avanzados"
-            href="/casos?level=avanzado"
-            color="var(--color-hot)"
-            tips={[
-              "Deep Research para investigar a fondo",
-              "Vibe coding: apps web sin programar",
-              "MCP: la IA conectada a tus herramientas",
-            ]}
-          />
-        </div>
+        <p className="text-lg text-[var(--color-fg-soft)] max-w-2xl mx-auto leading-relaxed">
+          Está pensada para volver a ella: revisar un concepto, mandar un link a alguien,
+          comprobar una fuente. Si encuentras un error o algo desactualizado, dilo.
+        </p>
       </section>
     </div>
   );
@@ -172,9 +249,48 @@ function BackgroundEffects() {
       <div className="absolute inset-0 bg-grid opacity-50 pointer-events-none"></div>
       <div
         className="absolute -top-40 -right-40 w-[800px] h-[800px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, var(--color-accent-glow) 0%, transparent 60%)", filter: "blur(40px)" }}
+        style={{
+          background:
+            "radial-gradient(circle, var(--color-accent-glow) 0%, transparent 60%)",
+          filter: "blur(40px)",
+        }}
       ></div>
     </>
+  );
+}
+
+function NivelCard({ nivel, index }: { nivel: Nivel; index: number }) {
+  const meta = nivelMeta[nivel];
+  const startHref =
+    nivel === "curioso"
+      ? "/casos?nivel=curioso"
+      : nivel === "practicante"
+        ? "/explorar/buenas-practicas-prompting"
+        : "/explorar/agi-y-benchmarks";
+
+  return (
+    <Link
+      href={startHref}
+      className="group relative block p-7 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--lvl-color)]"
+      style={{
+        ["--lvl-color" as string]: meta.color,
+        animation: `fade-in-up 0.6s ease-out ${index * 100 + 700}ms backwards`,
+      }}
+    >
+      <div className="flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] mb-4" style={{ color: meta.color }}>
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: meta.color }}></span>
+        Nivel · {meta.label}
+      </div>
+      <h3 className="text-3xl font-bold mb-3 tracking-tight">{meta.short}</h3>
+      <p className="text-sm text-[var(--color-fg-soft)] mb-2 italic font-serif">"{meta.promesa}"</p>
+      <p className="text-xs text-[var(--color-fg-mute)] mb-6 leading-relaxed">{meta.audiencia}</p>
+      <div
+        className="inline-flex items-center gap-2 text-sm font-mono font-semibold transition-all"
+        style={{ color: meta.color }}
+      >
+        Por aquí <span className="group-hover:translate-x-1 transition-transform">→</span>
+      </div>
+    </Link>
   );
 }
 
@@ -185,6 +301,7 @@ function PathCard({
   sub,
   cta,
   color,
+  description,
 }: {
   href: string;
   tag: string;
@@ -192,30 +309,33 @@ function PathCard({
   sub: string;
   cta: string;
   color: "orange" | "cool" | "hot" | "good" | "warn";
+  description: string;
 }) {
   const colorMap = {
-    orange: { var: "--color-accent", shadow: "rgba(255, 87, 34, 0.35)" },
-    cool: { var: "--color-cool", shadow: "rgba(56, 189, 248, 0.35)" },
-    hot: { var: "--color-hot", shadow: "rgba(236, 72, 153, 0.35)" },
-    good: { var: "--color-good", shadow: "rgba(16, 185, 129, 0.35)" },
-    warn: { var: "--color-warn", shadow: "rgba(245, 158, 11, 0.35)" },
+    orange: "--color-accent",
+    cool: "--color-cool",
+    hot: "--color-hot",
+    good: "--color-good",
+    warn: "--color-warn",
   };
   const c = colorMap[color];
   return (
     <Link
       href={href}
-      className="group block p-7 rounded-2xl bg-[var(--color-bg-card)] border-t-4 transition-all duration-300 hover:-translate-y-1"
-      style={{
-        borderTopColor: `var(${c.var})`,
-        boxShadow: undefined,
-      }}
+      className="group relative block p-7 rounded-2xl bg-[var(--color-bg-card)] border-t-4 transition-all duration-300 hover:-translate-y-1"
+      style={{ borderTopColor: `var(${c})` }}
     >
-      <div className="font-mono text-xs uppercase tracking-wider text-[var(--color-fg-mute)] mb-3">{tag}</div>
+      <div className="font-mono text-xs uppercase tracking-wider text-[var(--color-fg-mute)] mb-3">
+        {tag}
+      </div>
       <h3 className="text-2xl font-bold mb-2 tracking-tight">{title}</h3>
-      <p className="text-sm text-[var(--color-fg-soft)] mb-6">{sub}</p>
+      <p className="text-xs text-[var(--color-fg-mute)] mb-3 font-mono">{sub}</p>
+      <p className="text-sm text-[var(--color-fg-soft)] mb-5 leading-relaxed">
+        {description}
+      </p>
       <div
-        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-[var(--color-bg)] font-mono group-hover:gap-3 transition-all"
-        style={{ background: `var(${c.var})` }}
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-[var(--color-on-accent)] font-mono group-hover:gap-3 transition-all"
+        style={{ background: `var(${c})` }}
       >
         {cta} <span>→</span>
       </div>
@@ -223,48 +343,46 @@ function PathCard({
   );
 }
 
-function Stat({ number, label }: { number: string; label: string }) {
+function OpenQ({ q, href, tag }: { q: string; href: string; tag: string }) {
   return (
-    <div>
-      <div className="font-mono text-4xl font-bold text-[var(--color-accent)]">{number}</div>
-      <div className="text-sm text-[var(--color-fg-soft)] mt-1">{label}</div>
-    </div>
+    <Link
+      href={href}
+      className="group block p-6 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-0.5 transition-all"
+    >
+      <div className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[var(--color-fg-mute)] mb-3">
+        {tag}
+      </div>
+      <p className="text-lg md:text-xl font-serif italic text-[var(--color-fg)] leading-snug mb-4">
+        “{q}”
+      </p>
+      <div className="font-mono text-xs text-[var(--color-accent)] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+        Tirar del hilo →
+      </div>
+    </Link>
   );
 }
 
-function Highlight({ href, emoji, title, body }: { href: string; emoji: string; title: string; body: string }) {
+function Highlight({
+  href,
+  emoji,
+  title,
+  body,
+}: {
+  href: string;
+  emoji: string;
+  title: string;
+  body: string;
+}) {
   return (
     <Link
       href={href}
       className="group block p-6 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-0.5 transition-all"
     >
       <div className="text-3xl mb-3">{emoji}</div>
-      <h3 className="text-lg font-semibold mb-2 group-hover:text-[var(--color-accent)] transition-colors">{title}</h3>
+      <h3 className="text-lg font-semibold mb-2 group-hover:text-[var(--color-accent)] transition-colors">
+        {title}
+      </h3>
       <p className="text-sm text-[var(--color-fg-soft)] leading-relaxed">{body}</p>
     </Link>
-  );
-}
-
-function StartHere({ who, cta, href, color, tips }: { who: string; cta: string; href: string; color: string; tips: string[] }) {
-  return (
-    <div className="p-7 rounded-2xl bg-[var(--color-bg-card)] border-t-4" style={{ borderTopColor: color }}>
-      <div className="font-mono text-xs uppercase tracking-wider mb-3" style={{ color }}>Para ti si eres…</div>
-      <p className="text-lg font-semibold mb-4">{who}</p>
-      <ul className="space-y-2 mb-6">
-        {tips.map((t, i) => (
-          <li key={i} className="text-sm text-[var(--color-fg-soft)] flex gap-2">
-            <span style={{ color }} className="flex-shrink-0">→</span>
-            <span>{t}</span>
-          </li>
-        ))}
-      </ul>
-      <Link
-        href={href}
-        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-[var(--color-bg)] font-mono"
-        style={{ background: color }}
-      >
-        {cta} <span>→</span>
-      </Link>
-    </div>
   );
 }

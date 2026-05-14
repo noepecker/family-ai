@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const caso = getCaso(id);
   if (!caso) return { title: "Caso no encontrado" };
-  return { title: `${caso.title} · Casos · IA en familia`, description: caso.short };
+  return { title: `${caso.title} · Casos · Acércate a la IA`, description: caso.short };
 }
 
 export default async function CasoDetail({

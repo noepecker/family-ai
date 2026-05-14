@@ -1,6 +1,6 @@
 import { ConsumoCalc } from "@/components/calculadora-consumo/calc";
 
-export const metadata = { title: "Calculadora de consumo · IA en familia" };
+export const metadata = { title: "Calculadora de consumo · Acércate a la IA" };
 
 export default function CalcPage() {
   return (

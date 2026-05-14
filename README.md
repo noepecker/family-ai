@@ -1,11 +1,18 @@
-# IA en familia · Marcos & Noe (Mayo 2026)
+# Acércate a la IA · Marcos & Noe (Mayo 2026)
 
-Una **app web Next.js** lista para Vercel, pensada para acompañar una charla familiar
-sobre IA. Tres modos de uso:
+Una **app web Next.js** desplegada en Vercel que acompaña una charla abierta sobre IA.
+Pensada para tres niveles de lectura (curioso / practicante / profundo) y para
+volver a ella después de la charla.
 
-1. **`/charla`** — presentación lineal de 90 min (reveal.js, ideal para proyectar)
-2. **`/explorar`** — encyclopedia de 13 bloques (lectura libre con índice por tema)
-3. **`/jugar`** — 4 interactivos: quiz, ¿IA o no?, prompt battle, evolución de modelos
+Recorridos:
+
+1. **`/charla`** — presentación lineal de 90 min (reveal.js). Cada slide enlaza con la página web donde profundizar.
+2. **`/casos`** — 30+ casos de uso reales filtrables por nivel.
+3. **`/jugar`** — 10 interactivos (quiz, ¿IA o no?, prompt battle, ARC-AGI-3, etc.).
+4. **`/herramientas`** — catálogo curado del ecosistema mayo 2026.
+5. **`/explorar`** — enciclopedia de 13 bloques con fuentes interactivas.
+6. **`/historia`** — línea temporal de 56 hitos (1943 → hipótesis del futuro).
+7. **`/preguntas`** — Q&A anticipada del público, filtrable por nivel y bloque.
 
 ## Cómo arrancar en local
 
@@ -45,43 +52,42 @@ Dashboard → Project Settings → Environment Variables.
 ```
 family-ai/
 ├── app/                    # Next.js App Router
-│   ├── layout.tsx          # Layout + header + footer global
-│   ├── page.tsx            # Landing con las 3 vías
-│   ├── globals.css         # Tailwind v4 + tema custom
-│   ├── explorar/
-│   │   ├── page.tsx        # Grid de los 13 bloques
-│   │   └── [slug]/page.tsx # Detalle con TOC
-│   ├── jugar/
-│   │   ├── page.tsx        # Hub de juegos
-│   │   ├── quiz/page.tsx
-│   │   ├── ia-o-no/page.tsx
-│   │   ├── prompt-battle/page.tsx
-│   │   └── evolucion-modelos/page.tsx
-│   └── (charla redirige a /slides/ via next.config.ts)
-├── components/             # Componentes React de los juegos
-│   ├── quiz/{quiz.tsx, data.ts}
-│   ├── ia-o-no/{game.tsx, data.ts}
-│   ├── prompt-battle/{battle.tsx, data.ts}
-│   └── evolucion/{evolucion.tsx, data.ts}
-├── content/
-│   └── bloques.ts          # Metadata de los 13 bloques de /explorar
+│   ├── layout.tsx          # Header + footer global con autoría
+│   ├── page.tsx            # Landing con hero animado + 3 niveles + 6 vías
+│   ├── globals.css         # Tailwind v4 + tema custom + animaciones
+│   ├── preguntas/page.tsx  # FAQ anticipada (filtros nivel + bloque)
+│   ├── explorar/{page,[slug]/page}.tsx
+│   ├── casos/{page,[id]/page}.tsx
+│   ├── jugar/...           # Hub + 10 sub-juegos
+│   ├── herramientas/page.tsx
+│   ├── historia/page.tsx
+│   ├── agi/page.tsx
+│   └── futuro/page.tsx
+├── components/
+│   ├── cite.tsx            # Cita inline interactiva (hover-card con fuente)
+│   ├── token-stream.tsx    # Animación de tokens generándose (hero)
+│   ├── theme-toggle.tsx
+│   └── [juegos]/...
+├── content/                # Single source of truth de datos editoriales
+│   ├── niveles.ts          # Sistema unificado curioso/practicante/profundo
+│   ├── slide-map.ts        # Mapa slide ↔ página web
+│   ├── fuentes.ts          # Registro central de fuentes citadas
+│   ├── preguntas.ts        # FAQ por bloque y nivel
+│   ├── bloques.ts          # 13 bloques de /explorar
+│   ├── casos.ts            # 30+ casos
+│   ├── herramientas.ts     # Catálogo
+│   ├── historia.ts         # Línea temporal
+│   └── predicciones.ts
 ├── lib/
-│   └── markdown.ts         # Parser de markdown → HTML para los bloques
-├── research/               # 13 documentos verificados con fuentes (.md)
+│   ├── markdown.ts         # Parser markdown
+│   └── niveles.ts          # Helpers de estilos por nivel
 ├── docs/
-│   └── 00-guion-charla.md  # Guion temporizado de la charla
-├── slides/                 # Presentación reveal.js (se copia a public/slides/)
-│   ├── index.html
-│   └── theme/agency.css
-├── scripts/
-│   └── copy-slides.mjs     # Pre-script que copia slides/ → public/slides/
-├── assets/                 # Assets pendientes a generar con IA
-├── public/                 # Estáticos servidos por Next.js
-├── package.json
-├── next.config.ts
-├── tsconfig.json
-├── postcss.config.mjs
-└── vercel.json             # Config de despliegue Vercel
+│   ├── 00-guion-charla.md
+│   └── 01-tono.md          # Guía editorial: tono, voz, antimétricas
+├── research/               # Documentos verificados (~150 fuentes)
+├── slides/                 # Presentación reveal.js (con CTAs Profundizar →)
+├── scripts/copy-slides.mjs
+├── package.json · next.config.ts · tsconfig.json · vercel.json
 ```
 
 ## Tecnología
@@ -95,13 +101,17 @@ family-ai/
 
 ## Estado actual
 
-- [x] App Next.js completa y funcionando
+- [x] App Next.js completa y funcionando (70 rutas estáticas)
 - [x] 13 bloques de contenido (research/) renderizándose en /explorar
-- [x] 4 juegos interactivos completos
-- [x] Tema visual custom estilo agencia
-- [x] Presentación reveal.js integrada en /slides
+- [x] 10 juegos interactivos completos
+- [x] Sistema unificado de niveles (curioso / practicante / profundo)
+- [x] Guía de tono y voz (`docs/01-tono.md`)
+- [x] Componente `<Cite>` con registro central de fuentes
+- [x] /preguntas — Q&A anticipada filtrable
+- [x] Slides con CTAs "Profundizar →" a la web
+- [x] Tema visual custom + dark/light toggle
 - [x] Config Vercel lista
-- [ ] Pendiente: assets generados con IA (foto portada, vídeo Sora, audio clonado…) — ver `assets/GENERATE.md`
+- [ ] Pendiente: assets generados con IA — ver `assets/GENERATE.md`
 
 ## Lo que sigue
 
