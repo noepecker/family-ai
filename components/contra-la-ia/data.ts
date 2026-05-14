@@ -13,7 +13,7 @@ export type Reto = {
   reveal: string; // lección final
 };
 
-export const retos = [
+export const retos: readonly Reto[] = [
   // ============ RETO 1: LEER JAPONÉS ============
   {
     id: "japones",
@@ -109,4 +109,4 @@ Catalán:   Demà anirem en família a la platja perquè el temps serà perfecte
     reveal:
       "La IA traduce a más de 100 idiomas simultáneamente, sin error gramatical, conservando matices culturales. Un humano puede tener uno o dos idiomas, pero hace falta una vida para dominar 6. Y el coste energético de esta traducción es despreciable (~0,3 ml de agua, menos que un sorbo de café).",
   },
-] as const;
+];

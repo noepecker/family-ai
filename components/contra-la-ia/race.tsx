@@ -47,7 +47,7 @@ function RetoView({
   onNext: () => void;
 }) {
   const [state, setState] = useState<RetoState>("intro");
-  const [secondsLeft, setSecondsLeft] = useState(reto.seconds);
+  const [secondsLeft, setSecondsLeft] = useState<number>(reto.seconds);
   const [pickedOption, setPickedOption] = useState<number | null>(null);
   const startedAt = useRef<number>(0);
 
