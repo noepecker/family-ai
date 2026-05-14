@@ -1,4 +1,4 @@
-# Acércate a la IA · Marcos & Noe (Mayo 2026)
+# Acércate a la IA · Mayo 2026
 
 Una **app web Next.js** desplegada en Vercel que acompaña una charla abierta sobre IA.
 Pensada para tres niveles de lectura (curioso / practicante / profundo) y para

@@ -13,7 +13,7 @@ const SAMPLES = [
   },
   {
     name: "Email tipo",
-    text: "Hola Marcos,\n\nTe escribo para confirmarte la reunión del próximo jueves a las 10:00. Adjunto la presentación con los puntos a tratar. Si necesitas algo más antes, dime.\n\nUn saludo,\nNoe",
+    text: "Hola Diego,\n\nTe escribo para confirmarte la reunión del próximo jueves a las 10:00. Adjunto la presentación con los puntos a tratar. Si necesitas algo más antes, dime.\n\nUn saludo,\nCarmen",
   },
   {
     name: "Código JavaScript",

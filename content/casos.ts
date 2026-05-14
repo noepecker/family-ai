@@ -45,9 +45,9 @@ export const casos: Caso[] = [
       "Te da el desglose en una tabla. Pídele que ajuste si algo no cuadra.",
     ],
     prompt:
-      "Aquí está la cuenta. Somos 6: Marcos, Noe, Pedro, Ana, Luis, Marta. Pedro no bebió alcohol (descuéntale el vino y la cerveza). Ana solo tomó el postre de chocolate. El resto, partid el resto a partes iguales. Dame qué paga cada uno redondeado al euro.",
+      "Aquí está la cuenta. Somos 6: Carmen, Diego, Pedro, Ana, Luis, Marta. Pedro no bebió alcohol (descuéntale el vino y la cerveza). Ana solo tomó el postre de chocolate. El resto, partid el resto a partes iguales. Dame qué paga cada uno redondeado al euro.",
     example:
-      "Marcos: 28€\nNoe: 28€\nLuis: 28€\nMarta: 28€\nPedro: 16€ (sin alcohol)\nAna: 7€ (solo postre)",
+      "Carmen: 28€\nDiego: 28€\nLuis: 28€\nMarta: 28€\nPedro: 16€ (sin alcohol)\nAna: 7€ (solo postre)",
     tip: "Si la foto del ticket es borrosa o el papel térmico está descolorido, transcribe a mano las dos o tres líneas problemáticas. La IA prefiere claridad a creatividad.",
     related: ["categorizar-gastos", "comparativa-supermercado"],
   },
@@ -413,7 +413,7 @@ export const casos: Caso[] = [
       "Pega + pide opciones que cumplan todas las restricciones.",
     ],
     prompt:
-      "Tengo que organizar reunión de 1 hora con 5 personas en próximos 10 días. Disponibilidades: Marcos cualquier mañana excepto martes. Noe tardes después de las 17h. Pedro solo lunes/miércoles. Ana en NY (UTC-5). Luis sin restricciones. Dame las 3 mejores opciones de día y hora.",
+      "Tengo que organizar reunión de 1 hora con 5 personas en próximos 10 días. Disponibilidades: Carmen cualquier mañana excepto martes. Diego tardes después de las 17h. Pedro solo lunes/miércoles. Ana en NY (UTC-5). Luis sin restricciones. Dame las 3 mejores opciones de día y hora.",
   },
   {
     id: "cv-adaptado",
