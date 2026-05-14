@@ -47,23 +47,73 @@ pixels absolutos en ese canvas; Reveal los reescala al viewport.
 | `card` body | 22px | Inter 400 |
 | Sub-card `h4` | 28px | Inter 600 |
 
-### Números de impacto
+### Números: dos categorías, dos estilos
 
-Aquí está la decisión clave: **los números grandes no son tipografía
-decorativa, son protagonistas**. Tienen una escala propia y un grosor
-intencional.
+Hay **dos roles tipográficos distintos** para los números. Verlos
+mezclados es un bug, no una decisión.
 
-| Elemento | Tamaño | Familia |
-| --- | --- | --- |
-| `big-number` (10^10 en la metáfora) | 130px | Inter 800 |
-| `impact-number` (61%, $25M, 85,5%) | ~180px | Inter 800 |
-| `emp-number` (300M / 95% / Klarna) | ~100px | Inter 800 |
-| `vs-number` (en `impact-versus`) | ~120px | Inter 800 |
+#### a) Números de impacto · **rellenos**
 
-**Regla**: si un número justifica la slide entera, va en `impact-number` y
-en color (rojo si es alarma, verde si es positivo, naranja si es neutro
-con peso). Si acompaña a un texto explicativo, va en `emp-number` o
-`big-number`.
+Datos protagonistas. Hacen la slide. Carga semántica vía color.
+
+| Elemento | Tamaño | Familia | Color |
+| --- | --- | --- | --- |
+| `big-number` (10^10 en la metáfora) | 130px | Mono 800 | Naranja |
+| `impact-number` (61%, $25M, 85,5%) | 320px | Inter 900 | Gradiente acento→hot |
+| `vs-number` (en `impact-versus`) | 200px | Mono 800 | Verde (1ª) / Rojo (2ª) |
+| `emp-number` (300M / 95% / Klarna) | 90px | Mono 800 | Naranja |
+| `step-num` (1-4 entrenamiento) | 48px | Mono 700 | Naranja |
+| `t-num` (1-5 técnicas) | 18px | Mono 700 | Naranja |
+
+**Estilo común**: relleno sólido, peso 700-900, line-height ~1.
+
+**Regla de color**:
+- Naranja (acento) = neutro con peso.
+- Verde (good) = noticia positiva (29% más cánceres, 85,5% acierto).
+- Rojo (bad) = alarma o fracaso (95% sin retorno, 0,5% de IA, $25M).
+- Gradiente acento→hot = solo para `impact-number` (el más grande).
+
+#### b) Números de capítulo · **contorno** (outline)
+
+Solo aparecen en **slides divisor de capítulo** (`section.chapter`).
+Son tipografía gráfica, no datos. Funcionan como *runners* visuales.
+
+| Elemento | Tamaño | Familia | Estilo |
+| --- | --- | --- | --- |
+| `chapter-number` (01, 02, 03…) | 220px | Mono 200 | `text-stroke: 2px var(--accent)`, color transparent |
+
+**Estilo común**: contorno fino naranja, sin relleno. Peso visual bajo
+para no robarle protagonismo al `chapter-title` 144px que está debajo.
+
+**Regla clave**: `chapter-number` **NO se usa en slides de contenido**.
+Si una slide necesita identificar a qué capítulo pertenece (por ejemplo
+slides "compactas" que son su propio capítulo), va `chapter-pointer`:
+
+#### c) Indicador de capítulo en contenido · `chapter-pointer`
+
+| Elemento | Tamaño | Familia | Notas |
+| --- | --- | --- | --- |
+| `chapter-pointer` ("Cap. 02 · Glosario") | 16px | Mono 600 | Una línea horizontal acento + uppercase 0.2em letter-spacing |
+
+**Estilo común**: meta-info en mono, jamás compite con el `section-h`.
+
+#### Resumen visual rápido
+
+```
+┌────────────────────────────────────────────────┐
+│  CHAPTER DIVIDER (section.chapter)             │
+│    01    ← chapter-number, 220px, OUTLINE      │
+│    Título grande                               │
+│                                                │
+│  CONTENT SLIDE (compact chapter)               │
+│  — Cap. 02 · Glosario   ← chapter-pointer 16px │
+│  Título                                        │
+│                                                │
+│  IMPACT SLIDE                                  │
+│       61%   ← impact-number 320px, RELLENO     │
+│      gradiente naranja→hot                     │
+└────────────────────────────────────────────────┘
+```
 
 ### Meta y labels
 

@@ -378,6 +378,9 @@
   position: relative;
 }
 
+/* chapter-number: SOLO para slides divisor de capítulo (section.chapter).
+   Estilo "outlined" deliberado — actúa como tipografía gráfica, no como
+   número de dato. Ver docs/03-criterio-visual.md sección "Números". */
 .chapter-number {
   font-family: var(--font-mono);
   font-size: 220px;
@@ -387,6 +390,29 @@
   -webkit-text-stroke: 2px var(--accent);
   margin-bottom: 20px;
   letter-spacing: -0.04em;
+}
+
+/* chapter-pointer: el "runner" pequeño para indicar capítulo dentro de
+   slides de contenido (cuando una sección no tiene divisor propio). Vive
+   en la familia mono como meta-info, NO compite con el title. */
+.chapter-pointer {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.chapter-pointer::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.5;
 }
 
 .chapter-title {
