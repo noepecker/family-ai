@@ -107,18 +107,18 @@ export default function HomePage() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <Highlight emoji="🎯" title="Cómo funciona un LLM" body="Sin tecnicismos. Con la metáfora del autocompletar × 10.000 millones." />
-          <Highlight emoji="🧾" title="Dividir la cuenta del restaurante" body="Mock visual + caso real explicado. Para cuando salgas a cenar mañana." />
-          <Highlight emoji="🌀" title="Foto de los mandos de la lavadora" body="La IA lee iconos confusos. Vale para lavadora, horno, mando del A/C…" />
-          <Highlight emoji="🎬" title="Demos de Sora, Suno, ElevenLabs" body="Lo que la IA está creando hoy: vídeo, música, voz clonada." />
-          <Highlight emoji="📊" title="Calculadora de consumo" body="¿Una consulta contamina más que una hamburguesa? Mira los números reales." />
-          <Highlight emoji="🔒" title="Privacidad" body="Qué pasa con tus datos. Caso Samsung, ataque Carlini, políticas por proveedor." />
-          <Highlight emoji="🎨" title="Arte y propiedad intelectual" body="Ghibli, Disney vs Midjourney, settlement de $1.500M de Anthropic." />
-          <Highlight emoji="🤖" title="Agentes y rent-a-human" body="Claudius con cubos de tungsteno. Una IA pagando 110€ a un humano para llevar flores." />
-          <Highlight emoji="🔐" title="Defensa contra clonación de voz" body="$4.900M en estafas a abuelos en 2024. Una palabra clave familiar es la defensa." />
-          <Highlight emoji="🎮" title="ARC-AGI-3" body="Humanos 100%, mejor IA del mundo 0,5%. Donde la IA todavía es ciega." />
-          <Highlight emoji="💼" title="Empleo y futuro" body="MIT NANDA: 95% sin retorno. Klarna recontrata humanos. Vuestra empresa de reformas." />
-          <Highlight emoji="📉" title="Detección que falla" body="Por qué Turnitin discrimina. Por qué nunca preguntes a la IA si lo escribió ella." />
+          <Highlight href="/explorar/fundamentos-ia" emoji="🎯" title="Cómo funciona un LLM" body="Sin tecnicismos. Con la metáfora del autocompletar × 10.000 millones." />
+          <Highlight href="/jugar/dividir-cuenta" emoji="🧾" title="Dividir la cuenta del restaurante" body="Mock visual + caso real explicado. Para cuando salgas a cenar mañana." />
+          <Highlight href="/casos?level=basico" emoji="🌀" title="Foto de los mandos de la lavadora" body="La IA lee iconos confusos. Vale para lavadora, horno, mando del A/C…" />
+          <Highlight href="/explorar/herramientas-actuales" emoji="🎬" title="Demos de Sora, Suno, ElevenLabs" body="Lo que la IA está creando hoy: vídeo, música, voz clonada." />
+          <Highlight href="/jugar/calculadora-consumo" emoji="📊" title="Calculadora de consumo" body="¿Una consulta contamina más que una hamburguesa? Mira los números reales." />
+          <Highlight href="/explorar/privacidad-y-confianza" emoji="🔒" title="Privacidad" body="Qué pasa con tus datos. Caso Samsung, ataque Carlini, políticas por proveedor." />
+          <Highlight href="/explorar/arte-y-propiedad-intelectual" emoji="🎨" title="Arte y propiedad intelectual" body="Ghibli, Disney vs Midjourney, settlement de $1.500M de Anthropic." />
+          <Highlight href="/explorar/agentes-y-humanos" emoji="🤖" title="Agentes y rent-a-human" body="Claudius con cubos de tungsteno. Una IA pagando 110€ a un humano para llevar flores." />
+          <Highlight href="/explorar/deepfakes-y-deteccion" emoji="🔐" title="Defensa contra clonación de voz" body="$4.900M en estafas a abuelos en 2024. Una palabra clave familiar es la defensa." />
+          <Highlight href="/jugar/arc-agi-3" emoji="🎮" title="ARC-AGI-3" body="Humanos 100%, mejor IA del mundo 0,5%. Donde la IA todavía es ciega." />
+          <Highlight href="/explorar/problemas-y-dilemas" emoji="💼" title="Empleo y futuro" body="MIT NANDA: 95% sin retorno. Klarna recontrata humanos. Vuestra empresa de reformas." />
+          <Highlight href="/explorar/sesgos-y-detectores" emoji="📉" title="Detección que falla" body="Por qué Turnitin discrimina. Por qué nunca preguntes a la IA si lo escribió ella." />
         </div>
       </section>
 
@@ -232,13 +232,16 @@ function Stat({ number, label }: { number: string; label: string }) {
   );
 }
 
-function Highlight({ emoji, title, body }: { emoji: string; title: string; body: string }) {
+function Highlight({ href, emoji, title, body }: { href: string; emoji: string; title: string; body: string }) {
   return (
-    <div className="p-6 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-colors">
+    <Link
+      href={href}
+      className="group block p-6 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-0.5 transition-all"
+    >
       <div className="text-3xl mb-3">{emoji}</div>
-      <h3 className="text-lg font-semibold mb-2">{title}</h3>
+      <h3 className="text-lg font-semibold mb-2 group-hover:text-[var(--color-accent)] transition-colors">{title}</h3>
       <p className="text-sm text-[var(--color-fg-soft)] leading-relaxed">{body}</p>
-    </div>
+    </Link>
   );
 }
 
