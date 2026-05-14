@@ -38,6 +38,7 @@ function SiteHeader() {
         </Link>
         <nav className="flex items-center gap-1 text-sm font-mono">
           <NavLink href="/charla">Charla</NavLink>
+          <NavLink href="/historia">Historia</NavLink>
           <NavLink href="/casos">Casos</NavLink>
           <NavLink href="/herramientas">Herramientas</NavLink>
           <NavLink href="/explorar">Explorar</NavLink>

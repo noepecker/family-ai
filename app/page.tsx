@@ -68,6 +68,14 @@ export default function HomePage() {
             cta="Profundizar"
             color="warn"
           />
+          <PathCard
+            href="/historia"
+            tag="Línea temporal"
+            title="80 años de IA"
+            sub="50+ hitos · Eras filtrables · Con fuentes"
+            cta="Recorrer la historia"
+            color="cool"
+          />
           <div className="p-7 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)] flex flex-col justify-center items-start">
             <div className="font-mono text-xs uppercase tracking-wider text-[var(--color-fg-mute)] mb-3">
               Para la familia
