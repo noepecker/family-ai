@@ -4,11 +4,15 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { preguntas, bloqueLabels, type Pregunta } from "@/content/preguntas";
 import { nivelMeta, nivelOrder, type Nivel } from "@/content/niveles";
+import { useNivel } from "@/components/nivel-provider";
+import { Cite } from "@/components/cite";
 
 type BloqueId = Pregunta["bloque"];
 
 export default function PreguntasPage() {
-  const [nivel, setNivel] = useState<Nivel | "todos">("todos");
+  const { nivel: globalNivel, setNivel: setGlobalNivel } = useNivel();
+  const nivel = globalNivel;
+  const setNivel = (n: Nivel | "todos") => setGlobalNivel(n);
   const [bloque, setBloque] = useState<BloqueId | "todos">("todos");
   const [open, setOpen] = useState<string | null>(null);
 
@@ -174,6 +178,16 @@ function PreguntaItem({
           <p className="text-base text-[var(--color-fg-soft)] leading-relaxed mb-4">
             {pregunta.a}
           </p>
+          {pregunta.fuentes && pregunta.fuentes.length > 0 && (
+            <div className="flex items-center gap-2 mb-4 flex-wrap">
+              <span className="font-mono text-[0.65rem] uppercase tracking-wider text-[var(--color-fg-mute)]">
+                Fuentes
+              </span>
+              {pregunta.fuentes.map((id) => (
+                <Cite key={id} id={id} />
+              ))}
+            </div>
+          )}
           {pregunta.href && (
             <Link
               href={pregunta.href}

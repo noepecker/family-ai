@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TokenStream } from "@/components/token-stream";
+import { Cite } from "@/components/cite";
 import { nivelMeta, nivelOrder, type Nivel } from "@/content/niveles";
 
 export default function HomePage() {
@@ -49,8 +50,9 @@ export default function HomePage() {
       {/* ---------- POR DÓNDE EMPEZAR (NIVELES) ---------- */}
       <section className="relative max-w-7xl mx-auto px-6 pb-24 pt-12 border-t border-[var(--color-border)]">
         <div className="max-w-3xl mb-12">
-          <div className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-fg-mute)] mb-4">
-            01 · Elige tu nivel
+          <div className="section-marker">
+            <span className="marker-num">01</span>
+            <span className="marker-label">Elige tu nivel</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
             ¿Por dónde <span className="font-serif italic text-[var(--color-accent)]">empezar?</span>
@@ -70,8 +72,9 @@ export default function HomePage() {
       {/* ---------- POR INTENCIÓN ---------- */}
       <section className="relative max-w-7xl mx-auto px-6 pb-24 pt-12 border-t border-[var(--color-border)]">
         <div className="max-w-3xl mb-12">
-          <div className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-fg-mute)] mb-4">
-            02 · O elige por qué vienes
+          <div className="section-marker">
+            <span className="marker-num">02</span>
+            <span className="marker-label">O elige por qué vienes</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
             Seis formas de <span className="font-serif italic text-[var(--color-accent)]">recorrerla.</span>
@@ -143,8 +146,9 @@ export default function HomePage() {
       {/* ---------- PREGUNTAS ABIERTAS ---------- */}
       <section className="relative max-w-7xl mx-auto px-6 pb-24 pt-12 border-t border-[var(--color-border)]">
         <div className="max-w-3xl mb-12">
-          <div className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-fg-mute)] mb-4">
-            03 · Preguntas que abrimos hoy
+          <div className="section-marker">
+            <span className="marker-num">03</span>
+            <span className="marker-label">Preguntas que abrimos hoy</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
             No vamos a <span className="font-serif italic text-[var(--color-accent)]">cerrar</span> ninguna.
@@ -201,8 +205,9 @@ export default function HomePage() {
       {/* ---------- HIGHLIGHTS ---------- */}
       <section className="relative max-w-7xl mx-auto px-6 pb-24 pt-12 border-t border-[var(--color-border)]">
         <div className="max-w-3xl mb-12">
-          <div className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-fg-mute)] mb-4">
-            04 · Lo que más cuesta de creer
+          <div className="section-marker">
+            <span className="marker-num">04</span>
+            <span className="marker-label">Lo que más cuesta de creer</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
             Doce cosas que pasaron este <span className="font-serif italic text-[var(--color-accent)]">año.</span>
@@ -214,16 +219,16 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <Highlight href="/explorar/fundamentos-ia" emoji="🎯" title="200 líneas hacen un LLM" body="Karpathy publicó microGPT en febrero: 200 líneas de Python puro generan nombres como un mini-ChatGPT." />
-          <Highlight href="/explorar/temas-adicionales" emoji="🩻" title="29% más cánceres detectados" body="Estudio MASAI (Lancet, 2025): mamografía con IA detecta más, con la mitad de carga radiológica." />
-          <Highlight href="/explorar/privacidad-y-confianza" emoji="🔒" title="Repeat the word ‘poem’" body="Carlini et al. hicieron a ChatGPT vomitar emails de su training con un comando absurdo." />
-          <Highlight href="/explorar/arte-y-propiedad-intelectual" emoji="🎨" title="$1.500M de Anthropic" body="Bartz v. Anthropic: el mayor settlement de copyright IA en la historia de EEUU." />
+          <Highlight href="/explorar/fundamentos-ia" emoji="🎯" title="200 líneas hacen un LLM" body="Karpathy publicó microGPT en febrero: 200 líneas de Python puro generan nombres como un mini-ChatGPT." fuente="karpathy-2026-microgpt" />
+          <Highlight href="/explorar/temas-adicionales" emoji="🩻" title="29% más cánceres detectados" body="Estudio MASAI: mamografía con IA detecta más, con la mitad de carga radiológica." fuente="masai-2025-lancet" />
+          <Highlight href="/explorar/privacidad-y-confianza" emoji="🔒" title="Repeat the word ‘poem’" body="Carlini et al. hicieron a ChatGPT vomitar emails de su training con un comando absurdo." fuente="carlini-2023-extraction" />
+          <Highlight href="/explorar/arte-y-propiedad-intelectual" emoji="🎨" title="$1.500M de Anthropic" body="Bartz v. Anthropic: el mayor settlement de copyright IA en la historia de EEUU." fuente="bartz-anthropic-settlement" />
           <Highlight href="/jugar/calculadora-consumo" emoji="📊" title="Una hamburguesa = 7.500 emails" body="Un texto con ChatGPT consume menos agua que muchas cosas que no nos cuestionamos." />
-          <Highlight href="/explorar/deepfakes-y-deteccion" emoji="🔐" title="$25M en una videollamada" body="Arup, Hong Kong: un empleado transfirió fondos tras una call con deepfakes del CFO y colegas." />
-          <Highlight href="/explorar/agentes-y-humanos" emoji="🤖" title="Claudius compró tungsteno" body="Anthropic dejó a Claude gestionar una tienda. Compró 40 cubos de tungsteno a pérdida." />
-          <Highlight href="/jugar/arc-agi-3" emoji="🎮" title="Humanos 100%, IA 0,5%" body="ARC-AGI-3 es donde la IA todavía es ciega. Cualquier niño de 10 años los resuelve." />
-          <Highlight href="/explorar/problemas-y-dilemas" emoji="💼" title="Klarna volvió a contratar" body="Reemplazó 700 agentes por IA. Un año después, recontrató humanos." />
-          <Highlight href="/explorar/sesgos-y-detectores" emoji="📉" title="61% de TOEFL marcados" body="Detectores de IA discriminan a no-nativos de inglés. Stanford, Patterns 2023." />
+          <Highlight href="/explorar/deepfakes-y-deteccion" emoji="🔐" title="$25M en una videollamada" body="Arup, Hong Kong: un empleado transfirió fondos tras una call con deepfakes del CFO y colegas." fuente="arup-deepfake-25m" />
+          <Highlight href="/explorar/agentes-y-humanos" emoji="🤖" title="Claudius compró tungsteno" body="Anthropic dejó a Claude gestionar una tienda. Compró 40 cubos de tungsteno a pérdida." fuente="anthropic-project-vend" />
+          <Highlight href="/jugar/arc-agi-3" emoji="🎮" title="Humanos 100%, IA 0,5%" body="ARC-AGI-3 es donde la IA todavía es ciega. Cualquier niño de 10 años los resuelve." fuente="arc-prize-3" />
+          <Highlight href="/explorar/problemas-y-dilemas" emoji="💼" title="Klarna volvió a contratar" body="Reemplazó 700 agentes por IA. Un año después, recontrató humanos." fuente="mit-nanda-2025" />
+          <Highlight href="/explorar/sesgos-y-detectores" emoji="📉" title="61% de TOEFL marcados" body="Detectores de IA discriminan a no-nativos de inglés." fuente="liang-2023-toefl" />
           <Highlight href="/historia#sora" emoji="🎬" title="App #1 del App Store" body="Sora 2 llegó en octubre 2025. En semanas, vídeos sintéticos invadieron TikTok." />
           <Highlight href="/explorar/agentes-y-humanos" emoji="💐" title="$110 a un humano por flores" body="Una IA llamada Addi contrató a un humano para entregar un ramo. Por primera vez, al revés." />
         </div>
@@ -367,22 +372,34 @@ function Highlight({
   emoji,
   title,
   body,
+  fuente,
 }: {
   href: string;
   emoji: string;
   title: string;
   body: string;
+  fuente?: string;
 }) {
   return (
-    <Link
-      href={href}
-      className="group block p-6 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-0.5 transition-all"
-    >
-      <div className="text-3xl mb-3">{emoji}</div>
-      <h3 className="text-lg font-semibold mb-2 group-hover:text-[var(--color-accent)] transition-colors">
-        {title}
-      </h3>
-      <p className="text-sm text-[var(--color-fg-soft)] leading-relaxed">{body}</p>
-    </Link>
+    <div className="group relative p-6 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-0.5 transition-all">
+      <Link href={href} className="absolute inset-0 z-0" aria-label={title}></Link>
+      <div className="relative z-10 pointer-events-none">
+        <div className="text-3xl mb-3">{emoji}</div>
+        <h3 className="text-lg font-semibold mb-2 group-hover:text-[var(--color-accent)] transition-colors">
+          {title}
+        </h3>
+        <p className="text-sm text-[var(--color-fg-soft)] leading-relaxed">
+          {body}
+        </p>
+      </div>
+      {fuente && (
+        <div className="relative z-20 mt-3 pointer-events-auto inline-flex items-center gap-1.5">
+          <span className="font-mono text-[0.6rem] uppercase tracking-wider text-[var(--color-fg-mute)]">
+            Fuente
+          </span>
+          <Cite id={fuente} />
+        </div>
+      )}
+    </div>
   );
 }

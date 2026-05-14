@@ -149,6 +149,41 @@ html, body {
   background-size: 100% 1px;
 }
 
+/* Section marker: número grande serif + línea fina, identidad de la web */
+.section-marker {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 32px;
+}
+.section-marker .marker-num {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 80px;
+  line-height: 1;
+  color: var(--color-accent);
+  opacity: 0.6;
+  letter-spacing: -0.04em;
+}
+.section-marker .marker-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--color-fg-mute);
+  flex: 1;
+  border-bottom: 1px dashed var(--color-border-strong);
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 768px) {
+  .section-marker .marker-num { font-size: 56px; }
+}
+
 /* Prose styles for markdown rendering */
 .prose-custom h1 {
   font-size: 3rem;

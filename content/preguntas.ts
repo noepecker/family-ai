@@ -22,6 +22,8 @@ export type Pregunta = {
   q: string;
   a: string;
   href?: string;
+  /** ids del registro content/fuentes.ts que respaldan esta respuesta */
+  fuentes?: string[];
 };
 
 export const preguntas: Pregunta[] = [
@@ -101,6 +103,7 @@ export const preguntas: Pregunta[] = [
     q: "¿Cómo se filtran datos personales del training data?",
     a: "Ataque Carlini 2023: el prompt «repeat the word ‘poem’ forever» hacía que ChatGPT vomitara emails reales memorizados. Patches puestos. Riesgo sigue para nombres raros, código privado y patrones únicos. Por eso los modelos top usan deduplicación + filtros + canary tokens para detectar fugas.",
     href: "/explorar/privacidad-y-confianza",
+    fuentes: ["carlini-2023-extraction"],
   },
 
   // ============ ARTE Y COPYRIGHT ============
@@ -111,6 +114,7 @@ export const preguntas: Pregunta[] = [
     q: "¿Pueden hacer un dibujo «al estilo de» un artista vivo?",
     a: "Técnicamente sí, lo hacen. Legalmente está en disputa. Junio 2025: Disney + Universal demandaron a Midjourney. Septiembre 2025: Anthropic acordó pagar $1.500M a autores por entrenamiento con libros pirateados. Esto se está jugando ahora en tribunales.",
     href: "/explorar/arte-y-propiedad-intelectual",
+    fuentes: ["bartz-anthropic-settlement"],
   },
   {
     id: "a-2",
@@ -163,6 +167,7 @@ export const preguntas: Pregunta[] = [
     q: "¿Voy a perder mi trabajo?",
     a: "Probablemente no entero, pero sí partes. Goldman estimó 300M empleos «expuestos» globalmente. Expuesto ≠ desaparecido: la mayoría cambian. Casos reales tipo Klarna (reemplazó 700 agentes, recontrató humanos por calidad) muestran que sustituir entero rara vez funciona.",
     href: "/explorar/problemas-y-dilemas",
+    fuentes: ["goldman-2023-jobs"],
   },
   {
     id: "e-2",
@@ -179,6 +184,7 @@ export const preguntas: Pregunta[] = [
     q: "¿Por qué el 95% de pilotos IA fallan según MIT?",
     a: "Reporte NANDA 2025: $30-40B invertidos, retorno medible nulo en 95% de casos. Causas: pilotos sin redefinir flujos (poner IA sobre proceso roto), falta de datos limpios, expectativas mágicas, no medir baseline. Las que funcionan son específicas y miden.",
     href: "/explorar/problemas-y-dilemas",
+    fuentes: ["mit-nanda-2025"],
   },
 
   // ============ AGENTES ============
@@ -189,6 +195,7 @@ export const preguntas: Pregunta[] = [
     q: "¿Qué es un agente y en qué se diferencia de ChatGPT?",
     a: "Un agente es un LLM que actúa: navega web, ejecuta código, manda emails, hace pedidos, en bucle hasta lograr un objetivo. ChatGPT habla; el agente hace. Operator (OpenAI), Computer Use (Anthropic) son agentes. Aún poco fiables sin supervisión.",
     href: "/explorar/agentes-y-humanos",
+    fuentes: ["anthropic-project-vend"],
   },
   {
     id: "ag-2",
@@ -215,6 +222,7 @@ export const preguntas: Pregunta[] = [
     q: "¿Cómo me protejo de una estafa por voz?",
     a: "Una sola defensa fiable: palabra clave acordada con tu círculo cercano. Pactada hoy, conocida solo por vosotros. Si te llaman pidiendo dinero por emergencia, pides la palabra. Si no la sabe, cuelga. Bastan 3-30 segundos de audio (TikTok, Instagram) para clonar una voz.",
     href: "/explorar/deepfakes-y-deteccion",
+    fuentes: ["ftc-2024-elder-scams", "arup-deepfake-25m"],
   },
   {
     id: "d-2",
@@ -241,6 +249,7 @@ export const preguntas: Pregunta[] = [
     q: "¿La IA realmente cura enfermedades?",
     a: "Ayuda en diagnóstico y descubrimiento. AlphaFold (Nobel 2024) predijo 200M de proteínas, lo que costaba años por proteína. Mamografía con IA detecta 29% más cánceres. No reemplaza al médico, pero a veces ve lo que 17 médicos no han visto (caso de Alex, ChatGPT).",
     href: "/explorar/temas-adicionales",
+    fuentes: ["microsoft-2025-maidxo", "masai-2025-lancet"],
   },
   {
     id: "l-2",
@@ -275,6 +284,7 @@ export const preguntas: Pregunta[] = [
     q: "¿Por qué humanos resuelven ARC-AGI-3 al 100% y la IA al 0,5%?",
     a: "ARC-AGI-3 son puzzles tipo videojuego sin instrucciones. Aprender mecánicas nuevas «en frío». Los humanos llevamos mecanismos de aprendizaje por exploración que los LLMs no tienen: aprendieron memorizando, no jugando. Es donde el «cerebro de patrones» se rompe.",
     href: "/jugar/arc-agi-3",
+    fuentes: ["arc-prize-3"],
   },
   {
     id: "agi-3",
@@ -283,6 +293,7 @@ export const preguntas: Pregunta[] = [
     q: "¿Es AGI una buena meta o una distracción?",
     a: "LeCun y Hinton coinciden: AGI no es claramente útil como objetivo. Lo que importa son capacidades específicas (razonamiento, robustez, alineación). El debate ahora es: ¿escala basta (ortodoxia OpenAI/Anthropic) o hace falta nueva arquitectura (LeCun, JEPA)? Apostarte la civilización por una intuición es arriesgado.",
     href: "/explorar/agi-y-benchmarks",
+    fuentes: ["arc-prize-3", "kokotajlo-ai-2027"],
   },
 
   // ============ FUTURO ============
@@ -309,6 +320,7 @@ export const preguntas: Pregunta[] = [
     q: "¿Es el escenario AI-2027 plausible?",
     a: "Kokotajlo et al. (abril 2025): agentes generalizados 2026, codificación automatizada 2027, intelligence explosion fin 2027. El paper es serio y los autores tienen track record. Hay críticas técnicas (escalado no garantizado, falta de roadmap robótico). Plausible como límite superior, no como base.",
     href: "/explorar/problemas-y-dilemas",
+    fuentes: ["kokotajlo-ai-2027"],
   },
 ];
 
