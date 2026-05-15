@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { bloques, getBloque, tagLabels } from "@/content/bloques";
-import { loadMarkdown, addHeadingIds, extractToc } from "@/lib/markdown";
+import { loadMarkdown, addHeadingIds, extractToc, linkGlossaryTerms } from "@/lib/markdown";
 import { InlineFaq } from "@/components/inline-faq";
+import { GlossaryPopover } from "@/components/glossary-popover";
 
 export function generateStaticParams() {
   return bloques.map((b) => ({ slug: b.slug }));
@@ -28,7 +29,7 @@ export default async function BloqueDetailPage({
   if (!bloque) notFound();
 
   const html = await loadMarkdown(bloque.file);
-  const htmlWithIds = addHeadingIds(html);
+  const htmlWithIds = linkGlossaryTerms(addHeadingIds(html));
   const toc = extractToc(html);
 
   const currentIndex = bloques.findIndex((b) => b.slug === slug);
@@ -104,6 +105,7 @@ export default async function BloqueDetailPage({
           </aside>
         )}
       </div>
+      <GlossaryPopover />
     </div>
   );
 }

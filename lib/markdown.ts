@@ -1,6 +1,7 @@
 import { marked } from "marked";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { glosario } from "@/content/glosario";
 
 const renderer = new marked.Renderer();
 
@@ -51,4 +52,61 @@ export function addHeadingIds(html: string): string {
       .replace(/\s+/g, "-");
     return `<h${level} id="${id}">${text}</h${level}>`;
   });
+}
+
+/* ---- Glosario inline -----------------------------------------------------
+   Marca la primera aparición de cada término técnico como un <button> que el
+   componente GlossaryPopover convierte en un popup con la definición.
+   Se salta encabezados, código y enlaces para no romper esos contextos. */
+
+type TermForm = { id: string; form: string; re: RegExp };
+
+const TERM_FORMS: TermForm[] = glosario
+  .flatMap((t) => t.match.map((form) => ({ id: t.id, form })))
+  // formas más largas primero: "ventana de contexto" gana a "contexto"
+  .sort((a, b) => b.form.length - a.form.length)
+  .map(({ id, form }) => {
+    const esc = form.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    // Sigla en mayúsculas → distingue mayúsculas (no marca palabras corrientes)
+    const acronym = /^[A-Z]{2,5}$/.test(form);
+    const re = new RegExp(
+      `(?<![\\p{L}\\p{N}])(${esc})(?![\\p{L}\\p{N}])`,
+      acronym ? "u" : "iu",
+    );
+    return { id, form, re };
+  });
+
+export function linkGlossaryTerms(html: string): string {
+  const used = new Set<string>();
+  const parts = html.split(/(<[^>]+>)/);
+  const openSkip = /^<(pre|code|h[1-6]|a|button)\b/i;
+  const closeSkip = /^<\/(pre|code|h[1-6]|a|button)>/i;
+  let skip = 0;
+
+  for (let i = 0; i < parts.length; i++) {
+    const p = parts[i];
+    if (!p) continue;
+    if (p[0] === "<") {
+      if (closeSkip.test(p)) skip = Math.max(0, skip - 1);
+      else if (openSkip.test(p) && !/\/>\s*$/.test(p)) skip++;
+      continue;
+    }
+    if (skip > 0) continue;
+
+    let text = p;
+    for (const { id, re } of TERM_FORMS) {
+      if (used.has(id)) continue;
+      const m = re.exec(text);
+      if (!m) continue;
+      used.add(id);
+      const start = m.index;
+      const end = start + m[1].length;
+      text =
+        text.slice(0, start) +
+        `<button type="button" class="gloss-term" data-term="${id}">${m[1]}</button>` +
+        text.slice(end);
+    }
+    parts[i] = text;
+  }
+  return parts.join("");
 }

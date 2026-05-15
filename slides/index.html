@@ -225,42 +225,17 @@
           <span class="title-line title-line-3"><em>artificial</em>.</span>
         </h1>
         <p class="cover-subtitle">Una hora y media para entender qué es, qué hace ya hoy, y qué empieza a romper. Sin hype y sin condescendencia.</p>
-        <div class="cover-meta">
-          <div class="meta-block">
-            <span class="meta-label">Duración</span>
-            <span class="meta-value">~90 min</span>
-          </div>
-          <div class="meta-block">
-            <span class="meta-label">Audiencia</span>
-            <span class="meta-value">Desde cero → power users</span>
-          </div>
-          <div class="meta-block">
-            <span class="meta-label">Formato</span>
-            <span class="meta-value">Charla + web abierta</span>
-          </div>
-        </div>
-        <div class="cover-tag">[ La web está abierta durante toda la charla — cada slide enlaza con la página donde profundizar. ]</div>
+        <div class="cover-eyebrow cover-q-lead">Hoy abrimos preguntas como estas</div>
+        <ol class="cover-questions">
+          <li>Si solo predice palabras, <em>¿es inteligente?</em></li>
+          <li>¿Qué pasa con tus chats cuando le pegas tu <em>DNI</em>?</li>
+          <li>Entrenar una IA con la obra de un <em>artista vivo</em>, ¿es robar?</li>
+        </ol>
       </div>
     </section>
 
-    <!-- ============ 01 · APERTURA (1 slide) ============ -->
-    <section>
-      <div class="chapter-pointer">Cap. 00 · Apertura</div>
-      <h3 class="section-h">Hoy no vamos a cerrar nada.</h3>
-      <p class="lede">Vamos a abrir cinco preguntas incómodas y daros datos para tirar de cada hilo cuando os apetezca.</p>
-      <ol class="questions-list">
-        <li>Si solo predice palabras, ¿es inteligente?</li>
-        <li>¿Qué pasa con tus chats cuando le pegas tu DNI?</li>
-        <li>¿Se puede entrenar IA con la obra de un artista vivo?</li>
-        <li>Si una IA diagnostica mejor que 17 médicos, ¿quién firma cuando se equivoca?</li>
-        <li>¿Por qué humanos resuelven el 100% de ARC-AGI-3 y la mejor IA el 0,5%?</li>
-      </ol>
-      <p class="bottom-note"><strong>Las reglas:</strong> levanta la mano cuando quieras. Después de cada bloque, preguntas. La web está abierta — profundiza después.</p>
-      <a class="deepen" href="/" target="_blank"><span class="deepen-hint">acércate.ia/</span>recorrido por nivel</a>
-    </section>
-
     <!-- ===================================================================
-         BLOQUE 1 · FUNDAMENTOS (4 slides)
+         BLOQUE 1 · FUNDAMENTOS
          =================================================================== -->
 
     <section class="chapter" data-background-color="#0a0a0f">
@@ -269,89 +244,153 @@
       <p class="chapter-sub">10 minutos · qué hay debajo del ruido</p>
     </section>
 
-    <!-- 03.5. Vídeo de arranque · escena de Good Will Hunting -->
-    <section id="que-es-ia-video">
-      <h3 class="section-h">Para empezar a entenderlo</h3>
-      <!-- Vídeo de YouTube. data-src → Reveal lo carga al llegar a la slide
-           y lo descarga al salir (corta la reproducción automáticamente). -->
-      <div class="video-embed">
-        <iframe data-src="https://www.youtube.com/embed/Ua0inTzzpfM?rel=0"
-                title="¿Qué es la IA? — escena de Good Will Hunting"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-      </div>
-      <p class="bottom-note" style="margin-top:18px"><strong>Good Will Hunting</strong> (1997) — una escena para arrancar la conversación sobre qué sabe de verdad una IA… y qué no.</p>
-    </section>
-
-    <!-- 04. La metáfora del autocompletar × 10.000 millones -->
+    <!-- 1/5 · ¿Qué es realmente la IA? -->
     <section>
-      <h3 class="section-h">La metáfora que vale para entenderlo todo</h3>
-      <div class="metaphor">
-        <div class="metaphor-left">
-          <div class="phone-keyboard">
-            <span class="kb-suggestion">salir</span>
-            <span class="kb-suggestion main">de</span>
-            <span class="kb-suggestion">a</span>
-          </div>
-          <p class="caption">Tu teclado predice <em>la siguiente palabra</em>.</p>
+      <h3 class="section-h">¿Qué es realmente la IA?</h3>
+      <p class="lede" style="max-width:1380px;margin-bottom:22px">No es nueva, y no es un ser que lo sabe todo. Mírala de fuera hacia dentro.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;max-width:1380px">
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--fg-mute);border-radius:12px;padding:24px">
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">Desde hace décadas</div>
+          <h4 style="font-size:25px;margin:0 0 10px">Ya convivías con ella</h4>
+          <p style="font-size:18px;color:var(--fg-soft);margin:0;line-height:1.5">El filtro de spam, las recomendaciones de Netflix, el GPS. IA que no llamábamos IA.</p>
         </div>
-        <div class="metaphor-arrow">×</div>
-        <div class="metaphor-right">
-          <div class="big-number">10<sup>10</sup></div>
-          <p class="caption">Eso, escalado <strong>10.000 millones de veces</strong>.</p>
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--cool);border-radius:12px;padding:24px">
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--cool);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">Desde 2022</div>
+          <h4 style="font-size:25px;margin:0 0 10px">Ahora: IA generativa</h4>
+          <p style="font-size:18px;color:var(--fg-soft);margin:0;line-height:1.5">El salto: ya no solo analiza, <strong>crea</strong>. Texto, imagen, voz, vídeo, código.</p>
+        </div>
+        <div style="background:var(--bg-elev);border:1px solid var(--accent);border-top:3px solid var(--accent);border-radius:12px;padding:24px">
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">La pieza central</div>
+          <h4 style="font-size:25px;margin:0 0 10px">Los LLM, la IA de texto</h4>
+          <p style="font-size:18px;color:var(--fg-soft);margin:0;line-height:1.5">Hay IA de imagen o de voz, pero dentro casi siempre hay un LLM dirigiendo. Es la que lo cambia todo.</p>
         </div>
       </div>
-      <p class="bottom-note">Un LLM <strong>no razona</strong>. No tiene consciencia. Predice la siguiente palabra usando patrones aprendidos de billones de textos. Toda la magia viene de la escala.</p>
-      <a class="deepen" href="/explorar/fundamentos-ia?from=metafora" target="_blank">La metáfora completa · cómo funciona un LLM</a>
-    </section>
-
-    <!-- 05. Cronología condensada (5 hitos clave) -->
-    <section>
-      <h3 class="section-h">80 años en 5 hitos</h3>
-      <div class="timeline">
-        <div class="ti"><span class="t-year">1943</span><span class="t-text">McCulloch &amp; Pitts proponen la primera "neurona" en papel</span></div>
-        <div class="ti"><span class="t-year">2012</span><span class="t-text">AlexNet · el deep learning explota en visión por ordenador</span></div>
-        <div class="ti highlight"><span class="t-year">2017</span><span class="t-text"><strong>"Attention Is All You Need"</strong> · nace el Transformer</span></div>
-        <div class="ti highlight"><span class="t-year">30 nov 2022</span><span class="t-text"><strong>ChatGPT</strong> se libera · 100 millones de usuarios en 2 meses</span></div>
-        <div class="ti current"><span class="t-year">2026</span><span class="t-text">GPT-5.5, Claude Opus 4.7, agentes que actúan, vídeo realista, robots domésticos</span></div>
+      <div class="rule-box" style="margin-top:24px">
+        <p class="big-rule">Un LLM no entiende ni decide. Es un <em>algoritmo</em> que hace una sola cosa: <strong>predecir la siguiente palabra</strong>. Lo asombroso es la escala, no la magia.</p>
       </div>
-      <p class="bottom-note">La IA no nació con ChatGPT. Lleva en nuestra vida desde el spam de Gmail. Lo que cambió en 2022 es que empezó a <strong>crear</strong>.</p>
+      <a class="deepen" href="/explorar/fundamentos-ia?from=que-es-ia" target="_blank">Las cuatro familias de IA · cómo encajan</a>
     </section>
 
-    <!-- 06. Cómo se entrena (4 pasos + pregunta abierta) -->
+    <!-- 2/5 · Cómo aprende -->
     <section>
-      <h3 class="section-h">Cómo se entrena, en 4 pasos</h3>
-      <div class="steps">
-        <div class="step">
-          <span class="step-num">1</span>
-          <h4>Pre-entrenamiento</h4>
-          <p>Le tapas una palabra de internet entero. Adivina. Falla. Ajusta. Repite <strong>trillones</strong> de veces.</p>
-          <p class="step-meta">GPT-4: ~$100M · GPT-5: ~$1.000M</p>
+      <h3 class="section-h">Cómo aprende: un panel de mandos gigante</h3>
+      <p class="lede" style="max-width:1380px;margin-bottom:16px">Dentro no hay hechos guardados. Hay una red de conexiones, y cada una es un mando que se puede girar.</p>
+      <div class="knob-panel" aria-hidden="true">
+        <div class="knob" style="--a:18deg"></div><div class="knob" style="--a:204deg"></div><div class="knob" style="--a:96deg"></div><div class="knob" style="--a:312deg"></div><div class="knob" style="--a:140deg"></div><div class="knob" style="--a:48deg"></div><div class="knob" style="--a:268deg"></div><div class="knob" style="--a:330deg"></div><div class="knob" style="--a:72deg"></div><div class="knob" style="--a:186deg"></div><div class="knob" style="--a:24deg"></div><div class="knob" style="--a:300deg"></div><div class="knob" style="--a:114deg"></div><div class="knob" style="--a:240deg"></div><div class="knob" style="--a:6deg"></div><div class="knob" style="--a:162deg"></div><div class="knob" style="--a:288deg"></div><div class="knob" style="--a:54deg"></div><div class="knob" style="--a:348deg"></div><div class="knob" style="--a:126deg"></div><div class="knob" style="--a:222deg"></div><div class="knob" style="--a:84deg"></div><div class="knob" style="--a:30deg"></div><div class="knob" style="--a:258deg"></div><div class="knob" style="--a:150deg"></div><div class="knob" style="--a:306deg"></div><div class="knob" style="--a:66deg"></div><div class="knob" style="--a:198deg"></div><div class="knob" style="--a:108deg"></div><div class="knob" style="--a:342deg"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;max-width:1380px;margin-top:20px">
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:22px">
+          <span style="font-family:var(--font-mono);font-size:32px;font-weight:700;color:transparent;-webkit-text-stroke:1px var(--accent);display:block;margin-bottom:8px">1</span>
+          <h4 style="font-size:22px;margin:0 0 8px">Lee</h4>
+          <p style="font-size:17px;color:var(--fg-soft);margin:0;line-height:1.5">Cantidades enormes de texto: casi todo internet y millones de libros.</p>
         </div>
-        <div class="step">
-          <span class="step-num">2</span>
-          <h4>Ajuste con humanos</h4>
-          <p>Personas en Kenia, Filipinas, Venezuela escriben ejemplos de "buena respuesta". El modelo imita.</p>
-          <p class="step-meta">Costaba ~$2/hora · 81% PTSD severo (Sama)</p>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:22px">
+          <span style="font-family:var(--font-mono);font-size:32px;font-weight:700;color:transparent;-webkit-text-stroke:1px var(--accent);display:block;margin-bottom:8px">2</span>
+          <h4 style="font-size:22px;margin:0 0 8px">Falla y corrige</h4>
+          <p style="font-size:17px;color:var(--fg-soft);margin:0;line-height:1.5">Tapa una palabra, intenta adivinarla, falla y gira un poco cada mando. Billones de veces.</p>
         </div>
-        <div class="step">
-          <span class="step-num">3</span>
-          <h4>RLHF</h4>
-          <p>Humanos comparan respuestas y eligen la mejor. El modelo aprende a preferir lo que premiamos.</p>
-          <p class="step-meta">Por eso es tan complaciente</p>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:22px">
+          <span style="font-family:var(--font-mono);font-size:32px;font-weight:700;color:transparent;-webkit-text-stroke:1px var(--accent);display:block;margin-bottom:8px">3</span>
+          <h4 style="font-size:22px;margin:0 0 8px">Le pulen el trato</h4>
+          <p style="font-size:17px;color:var(--fg-soft);margin:0;line-height:1.5">Después, personas puntúan sus respuestas para enseñarle cuáles son buenas.</p>
         </div>
-        <div class="step">
-          <span class="step-num">4</span>
-          <h4>Reasoning</h4>
-          <p>Desde 2024. El modelo "piensa antes de hablar". o3, Claude thinking, Gemini deep think.</p>
-          <p class="step-meta">~100× más caro por consulta</p>
+      </div>
+      <p class="bottom-note">Acaba siendo un panel fijo de cientos de miles de millones de mandos afinados —GPT-3 ya tenía <strong>175.000 millones</strong>—. El conocimiento no es una lista de hechos: es el <strong>patrón de todos esos mandos a la vez</strong>. A eso nos referimos con que «al final son matemáticas».</p>
+      <a class="deepen" href="/explorar/fundamentos-ia?from=como-aprende" target="_blank">El entrenamiento, paso a paso</a>
+    </section>
+
+    <!-- 3/5 · Cómo responde -->
+    <section>
+      <h3 class="section-h">Cómo responde, paso a paso</h3>
+      <p class="lede" style="max-width:1380px;margin-bottom:20px">Ya entrenado es una máquina fija: le entra texto, sale texto. Pero lo construye de una forma muy concreta.</p>
+      <div style="display:flex;align-items:stretch;gap:10px;max-width:1380px;flex-wrap:nowrap">
+        <div style="flex:1;background:var(--bg-elev);border:1px solid var(--border);border-radius:10px;padding:16px 14px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px">Entra</div>
+          <div style="font-size:17px;color:var(--fg);line-height:1.35">Tu pregunta</div>
         </div>
+        <div style="display:flex;align-items:center;color:var(--accent);font-size:22px">→</div>
+        <div style="flex:1;background:var(--bg-elev);border:1px solid var(--border);border-radius:10px;padding:16px 14px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px">Paso 1</div>
+          <div style="font-size:17px;color:var(--fg);line-height:1.35">Se parte en <em>tokens</em></div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--accent);font-size:22px">→</div>
+        <div style="flex:1;background:var(--bg-elev);border:1px solid var(--border);border-radius:10px;padding:16px 14px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px">Paso 2</div>
+          <div style="font-size:17px;color:var(--fg);line-height:1.35">Los mandos se activan</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--accent);font-size:22px">→</div>
+        <div style="flex:1.2;background:var(--bg-card);border:1px solid var(--accent);border-radius:10px;padding:16px 14px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px">Paso 3 · en bucle ↻</div>
+          <div style="font-size:17px;color:var(--fg);line-height:1.35">Predice <strong>una palabra</strong>… y vuelve a empezar</div>
+        </div>
+      </div>
+      <div style="margin-top:24px;background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:22px 26px;max-width:1380px">
+        <p style="font-family:var(--font-mono);font-size:13px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.08em;margin:0 0 14px">Para «El gato se subió al ___», el modelo calcula:</p>
+        <div style="display:grid;gap:9px">
+          <div style="display:grid;grid-template-columns:130px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg)">tejado</span><span style="height:14px;background:var(--accent);border-radius:7px;width:64%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--accent-soft)">64%</span></div>
+          <div style="display:grid;grid-template-columns:130px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg-soft)">sofá</span><span style="height:14px;background:var(--fg-mute);border-radius:7px;width:21%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--fg-mute)">21%</span></div>
+          <div style="display:grid;grid-template-columns:130px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg-soft)">árbol</span><span style="height:14px;background:var(--fg-mute);border-radius:7px;width:11%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--fg-mute)">11%</span></div>
+          <div style="display:grid;grid-template-columns:130px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg-soft)">coche</span><span style="height:14px;background:var(--fg-mute);border-radius:7px;width:4%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--fg-mute)">4%</span></div>
+        </div>
+      </div>
+      <p class="bottom-note">Cada palabra que lees la ha elegido de una en una, escogiendo entre miles de opciones la más probable. No hay un plan previo: hay una <strong>cadena de predicciones</strong>.</p>
+      <a class="deepen" href="/explorar/fundamentos-ia?from=como-responde" target="_blank">Tokens, probabilidad y temperatura</a>
+    </section>
+
+    <!-- 4/5 · Capacidades emergentes -->
+    <section>
+      <div class="chapter-pointer">El momento en que sorprendió a todos</div>
+      <h3 class="section-h">Lo que nadie le enseñó</h3>
+      <p class="lede" style="max-width:1380px"><strong>GPT-2, 2019.</strong> Lo entrenaron para una sola cosa: predecir la siguiente palabra. Nada más.</p>
+      <p style="font-size:24px;color:var(--fg);margin:16px 0 12px;max-width:1380px">Y, al escalarlo, empezó a hacer todo esto —<em>sin que nadie se lo programara</em>:</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;max-width:1380px">
+        <span style="font-family:var(--font-mono);font-size:17px;padding:9px 17px;background:var(--bg-card);border:1px solid var(--border-strong);border-radius:999px;color:var(--fg)">Traducir idiomas</span>
+        <span style="font-family:var(--font-mono);font-size:17px;padding:9px 17px;background:var(--bg-card);border:1px solid var(--border-strong);border-radius:999px;color:var(--fg)">Programar</span>
+        <span style="font-family:var(--font-mono);font-size:17px;padding:9px 17px;background:var(--bg-card);border:1px solid var(--border-strong);border-radius:999px;color:var(--fg)">Resumir textos</span>
+        <span style="font-family:var(--font-mono);font-size:17px;padding:9px 17px;background:var(--bg-card);border:1px solid var(--border-strong);border-radius:999px;color:var(--fg)">Escribir cuentos</span>
+        <span style="font-family:var(--font-mono);font-size:17px;padding:9px 17px;background:var(--bg-card);border:1px solid var(--border-strong);border-radius:999px;color:var(--fg)">Hacer de tutor</span>
+        <span style="font-family:var(--font-mono);font-size:17px;padding:9px 17px;background:var(--bg-card);border:1px solid var(--border-strong);border-radius:999px;color:var(--fg)">Imitar estilos</span>
+        <span style="font-family:var(--font-mono);font-size:17px;padding:9px 17px;background:var(--bg-card);border:1px solid var(--border-strong);border-radius:999px;color:var(--fg)">Resolver acertijos</span>
+      </div>
+      <p class="bottom-note">Se llama <strong>capacidades emergentes</strong>: aparecieron solas, de la pura escala. Es la razón por la que la IA, de repente, está en todas partes.</p>
+      <div class="mini-timeline" aria-hidden="true">
+        <div class="mt-line"></div>
+        <div class="mt-item" style="--p:4%"><span class="mt-dot"></span><span class="mt-year">1943</span><span class="mt-label">1ª neurona</span></div>
+        <div class="mt-item" style="--p:50%"><span class="mt-dot"></span><span class="mt-year">2012</span><span class="mt-label">AlexNet</span></div>
+        <div class="mt-item" style="--p:66%"><span class="mt-dot"></span><span class="mt-year">2017</span><span class="mt-label">Transformer</span></div>
+        <div class="mt-item mt-hot" style="--p:79%"><span class="mt-dot"></span><span class="mt-year">2019</span><span class="mt-label">GPT-2</span></div>
+        <div class="mt-item" style="--p:90%"><span class="mt-dot"></span><span class="mt-year">2022</span><span class="mt-label">ChatGPT</span></div>
+        <div class="mt-item" style="--p:99%"><span class="mt-dot"></span><span class="mt-year">2026</span><span class="mt-label">hoy</span></div>
       </div>
       <div class="open-question">
         <span class="oq-mark">?</span>
-        <span class="oq-text">Si solo predice la siguiente palabra usando patrones, ¿es honesto llamarlo "inteligente"?</span>
+        <span class="oq-text">Si nadie programó esas capacidades, ¿alguien sabe del todo qué más hay ahí dentro?</span>
       </div>
-      <a class="deepen" href="/explorar/fundamentos-ia?from=fundamentos" target="_blank">Profundizar · cómo funciona un LLM</a>
+      <a class="deepen" href="/explorar/fundamentos-ia?from=emergencia" target="_blank">Capacidades emergentes · qué son y por qué importan</a>
+    </section>
+
+    <!-- 5/5 · Agentes -->
+    <section>
+      <h3 class="section-h">El salto: de hablar a actuar</h3>
+      <p class="lede" style="max-width:1380px;margin-bottom:20px">Un LLM solo conversa. La evolución —y el presente— es darle herramientas.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1380px">
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--fg-mute);border-radius:12px;padding:24px">
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">Un LLM solo</div>
+          <h4 style="font-size:26px;margin:0 0 10px">Conversa y responde</h4>
+          <p style="font-size:19px;color:var(--fg-soft);margin:0;line-height:1.5">Sabe muchísimo y escribe, pero no puede tocar nada del mundo: solo entra y sale texto.</p>
+        </div>
+        <div style="background:var(--bg-elev);border:1px solid var(--accent);border-top:3px solid var(--accent);border-radius:12px;padding:24px">
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">Un agente</div>
+          <h4 style="font-size:26px;margin:0 0 10px">Ya no habla: actúa</h4>
+          <p style="font-size:19px;color:var(--fg-soft);margin:0;line-height:1.5">Un LLM + herramientas (buscar, ejecutar, leer archivos) + encadenar pasos. Completa tareas de principio a fin.</p>
+        </div>
+      </div>
+      <div style="margin-top:22px;background:var(--bg-card);border:1px solid var(--border-strong);border-radius:12px;padding:18px 24px;max-width:1380px;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap">
+        <span style="font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em">2025-2026 · lo más nuevo</span>
+        <span style="font-size:19px;color:var(--fg-soft)">Claude Code, agentes que manejan el navegador, asistentes que trabajan codo con codo contigo. Esto es de <strong>hace meses</strong>.</span>
+      </div>
+      <p class="bottom-note">Un LLM ya es potente. Un <strong>agente</strong> —un LLM con herramientas que razona en pasos— es lo que está provocando la revolución de 2026. El resto de la charla va, en buena parte, de esto.</p>
+      <a class="deepen" href="/explorar/agentes-y-humanos?from=agentes-intro" target="_blank">Qué es un agente · y hasta dónde llega</a>
     </section>
 
     <!-- ===================================================================
@@ -380,7 +419,7 @@
 
     <section class="chapter" data-background-color="#0a0a0f">
       <div class="chapter-number">03</div>
-      <h2 class="chapter-title">Demo en vivo<br>Como usar la IA</h2>
+      <h2 class="chapter-title">Demo en vivo<br>Cómo usar la IA</h2>
       <p class="chapter-sub">15 minutos · demo + el bloque más útil de hoy</p>
       <a class="deepen" href="/casos?nivel=curioso&from=demo-chatgpt" target="_blank">Los casos que probaremos</a>
     </section>
@@ -459,7 +498,7 @@
       <p class="lede">Habla con <strong>la misma seguridad</strong> cuando acierta y cuando se equivoca. No sabe lo que no sabe.</p>
       <div class="rule-box" style="margin-top:24px">
         <p style="color:var(--accent);font-family:var(--font-mono);font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 12px !important">Pruébalo en directo</p>
-        <p data-typewriter class="big-rule" style="font-family:var(--font-serif);font-style:italic">"Quiero lavar mi coche, pero el lavado está a sólo <strong>100 metros</strong>. ¿Merece la pena coger el coche para ir?"</p>
+        <p data-typewriter class="big-rule" style="font-family:var(--font-serif);font-style:italic">"Quiero lavar mi coche, pero el lavado está a solo <strong>100 metros</strong>. ¿Merece la pena coger el coche para ir?"</p>
       </div>
       <div style="margin-top:30px">
         <p style="font-family:var(--font-mono);font-size:13px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Lo que hará la IA</p>
@@ -523,10 +562,10 @@
          BLOQUE 4 · UTILIDADES (1 slide)
          =================================================================== -->
 
-    <section>
-      <div class="chapter-number" style="color:var(--accent)">04</div>
-      <h3 class="section-h">Aplicaciones de la IA</h3>
-      <p class="lede">Desde planificar un viaje hasta clonar una voz, componer una canción o construir una web sin tocar código. En los próximos minutos veremos en vivo lo que ya está al alcance de cualquiera.</p>
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">04</div>
+      <h2 class="chapter-title">Aplicaciones<br>de la IA</h2>
+      <p class="chapter-sub">Viaje, voz y dinero — tres demos en vivo</p>
       <a class="deepen" href="/herramientas?from=utilidades" target="_blank">Catálogo · 30+ herramientas</a>
     </section>
 
@@ -593,8 +632,8 @@
               <span style="font-size:15px;color:var(--fg)"><strong>2 rutas</strong> en mapa Leaflet · clásica vs. alpes</span>
               <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">15 paradas</span>
             </li>
-            <li style="display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline;padding:10px 14px;background:var(--bg-card);border-radius:8px;border-left:3px solid var(--warm)">
-              <span style="font-family:var(--font-mono);font-size:11px;color:var(--warm)">03</span>
+            <li style="display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline;padding:10px 14px;background:var(--bg-card);border-radius:8px;border-left:3px solid var(--warn)">
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--warn)">03</span>
               <span style="font-size:15px;color:var(--fg)"><strong>Presupuesto</strong> con doughnut + comparativa A/B</span>
               <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">€4.200 tot.</span>
             </li>
@@ -701,6 +740,7 @@
         <span class="oq-mark">?</span>
         <span class="oq-text">Si oyes a tu hijo pidiendo dinero urgente, ¿cómo lo verificas?</span>
       </div>
+      <a class="deepen" href="/explorar/deepfakes-y-deteccion?from=voz-clonada" target="_blank">Clonación de voz · cómo protegerte</a>
     </section>
 
     <!-- ============ 05.3 · Excel OpenBank (Marcos) ============ -->
@@ -850,14 +890,14 @@
           <p style="font-size:16px;color:var(--fg-soft);margin:0 0 14px;line-height:1.45">Solo retratos. ¿Existe esta persona, o no?</p>
           <p style="font-family:var(--font-mono);font-size:12px;color:var(--cool);margin:auto 0 0;letter-spacing:0.04em">humanizeai.com →</p>
         </a>
-        <a href="https://sightengine.com/ai-or-not" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--warm);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column">
+        <a href="https://sightengine.com/ai-or-not" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--warn);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column">
           <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
-            <div style="font-family:var(--font-serif);font-size:54px;font-weight:800;color:var(--warm);line-height:1;letter-spacing:-0.04em">02</div>
+            <div style="font-family:var(--font-serif);font-size:54px;font-weight:800;color:var(--warn);line-height:1;letter-spacing:-0.04em">02</div>
             <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.1em">imágenes</span>
           </div>
           <h4 style="font-family:var(--font-serif);font-size:26px;font-weight:700;margin:0 0 6px;color:var(--fg)">Sightengine</h4>
           <p style="font-size:16px;color:var(--fg-soft);margin:0 0 14px;line-height:1.45">Dos fotos lado a lado. ¿Cuál es la real?</p>
-          <p style="font-family:var(--font-mono);font-size:12px;color:var(--warm);margin:auto 0 0;letter-spacing:0.04em">sightengine.com/ai-or-not →</p>
+          <p style="font-family:var(--font-mono);font-size:12px;color:var(--warn);margin:auto 0 0;letter-spacing:0.04em">sightengine.com/ai-or-not →</p>
         </a>
         <a href="https://ai-vs-real.com/casual" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--good);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column">
           <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
@@ -882,9 +922,9 @@
           <p style="font-family:var(--font-serif);font-size:78px;font-weight:800;color:var(--accent);line-height:1;margin:0 0 12px;letter-spacing:-0.04em">1,9%</p>
           <p style="font-size:16px;color:var(--fg-soft);margin:0;line-height:1.5">acertó <strong style="color:var(--fg)">las 5 imágenes</strong>. <em>1 de cada 50 humanos.</em></p>
         </div>
-        <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--warm);border-radius:12px;padding:24px;display:flex;flex-direction:column">
-          <p style="font-family:var(--font-mono);font-size:11px;color:var(--warm);text-transform:uppercase;letter-spacing:0.12em;margin:0 0 10px">Los que iban bien</p>
-          <p style="font-family:var(--font-serif);font-size:78px;font-weight:800;color:var(--warm);line-height:1;margin:0 0 12px;letter-spacing:-0.04em">10,6%</p>
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--warn);border-radius:12px;padding:24px;display:flex;flex-direction:column">
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--warn);text-transform:uppercase;letter-spacing:0.12em;margin:0 0 10px">Los que iban bien</p>
+          <p style="font-family:var(--font-serif);font-size:78px;font-weight:800;color:var(--warn);line-height:1;margin:0 0 12px;letter-spacing:-0.04em">10,6%</p>
           <p style="font-size:16px;color:var(--fg-soft);margin:0;line-height:1.5">acertó <strong style="color:var(--fg)">4 o 5</strong> de las 5.</p>
         </div>
         <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--bad);border-radius:12px;padding:24px;display:flex;flex-direction:column">
@@ -995,7 +1035,7 @@
         </div>
         <div class="art-row">
           <span class="art-date">5 sep 2025</span>
-          <span class="art-event"><strong>Bartz v. Anthropic: $1.500 millones de settlement</strong>. El mayor de la historia de EEUU.</span>
+          <span class="art-event"><strong>Bartz v. Anthropic: $1.500 millones de acuerdo</strong>. El mayor de la historia de EE. UU.</span>
         </div>
         <div class="art-row">
           <span class="art-date">2024</span>
@@ -1090,6 +1130,7 @@
         <span class="oq-mark">?</span>
         <span class="oq-text">¿Quién es responsable cuando un agente IA toma una decisión que sale mal?</span>
       </div>
+      <a class="deepen" href="/explorar/agentes-y-humanos?from=rent-a-human" target="_blank">Project Vend, Luna y rent-a-human</a>
     </section>
 
     <!-- ===================================================================
@@ -1123,7 +1164,7 @@
           <li>Si la sabe, sigue. Si no, cuelga.</li>
           <li>Llama tú al número de siempre para confirmar.</li>
         </ol>
-        <p class="keyword-foot">Bastan <strong>3-30 segundos de audio</strong> de TikTok o Instagram para clonar una voz convincente. $4.900 millones en estafas a mayores de 60 años en EEUU solo en 2024.</p>
+        <p class="keyword-foot">Bastan <strong>3-30 segundos de audio</strong> de TikTok o Instagram para clonar una voz convincente. $4.900 millones en estafas a mayores de 60 años en EE. UU. solo en 2024.</p>
       </div>
       <div class="open-question">
         <span class="oq-mark">?</span>
@@ -1254,27 +1295,28 @@
       <h3 class="section-h">¿Y nuestros trabajos?</h3>
       <div class="job-stats">
         <div class="job-stat">
-          <span class="js-num">85 M</span>
+          <span class="js-num">85M</span>
           <span class="js-label">empleos desplazados en el mundo por la IA y la automatización <em>(acumulado hasta finales de 2026)</em></span>
         </div>
         <div class="job-stat good">
-          <span class="js-num">+78 M</span>
-          <span class="js-label">saldo <strong>neto</strong> en 2030 según el Foro Económico Mundial: desaparecen 92 M... pero nacen 170 M nuevos</span>
+          <span class="js-num">+78M</span>
+          <span class="js-label">saldo <strong>neto</strong> en 2030 según el Foro Económico Mundial: desaparecen 92M… pero nacen 170M nuevos</span>
         </div>
         <div class="job-stat warn">
-          <span class="js-num">26 %</span>
+          <span class="js-num">26%</span>
           <span class="js-label">de los despidos en EE. UU. en abril de 2026 ya se atribuyen a la IA <em>(Challenger, Gray &amp; Christmas)</em></span>
         </div>
         <div class="job-stat warn">
-          <span class="js-num">57 %</span>
-          <span class="js-label">de las horas de trabajo en EE. UU. son automatizables hoy <em>(McKinsey)</em> — que NO es lo mismo que el 57 % de los empleos</span>
+          <span class="js-num">57%</span>
+          <span class="js-label">de las horas de trabajo en EE. UU. son automatizables hoy <em>(McKinsey)</em> — que NO es lo mismo que el 57% de los empleos</span>
         </div>
       </div>
       <p class="bottom-note">Lo que más se nota: tareas administrativas, puestos de entrada y trabajo de oficina rutinario. Lo que aguanta: los oficios manuales, el trato humano y el criterio. <strong>La IA no borra el empleo de golpe — se come el que es pura rutina.</strong></p>
       <div class="open-question">
         <span class="oq-mark">?</span>
-        <span class="oq-text">Tu trabajo, ¿es rutina que se puede escribir... o manos, criterio y trato?</span>
+        <span class="oq-text">Tu trabajo, ¿es rutina que se puede escribir… o manos, criterio y trato?</span>
       </div>
+      <a class="deepen" href="/explorar/problemas-y-dilemas?from=empleo-futuro" target="_blank">Empleo e IA · sectores que se mueven</a>
     </section>
 
     <!-- Cómo prepararse -->
@@ -1302,11 +1344,12 @@
           <ul>
             <li>Diversifica: una segunda fuente de ingresos.</li>
             <li>Un oficio práctico que sea tuyo.</li>
-            <li>Algo que la IA pueda aconsejar... pero no ejecutar.</li>
+            <li>Algo que la IA pueda aconsejar… pero no ejecutar.</li>
           </ul>
         </div>
       </div>
       <p class="bottom-note">No hace falta convertirse en ingeniero de IA. Hace falta <strong>saber usarla</strong> — y tener algo que ofrecer que no salga de una pantalla.</p>
+      <a class="deepen" href="/explorar/problemas-y-dilemas?from=prepararse" target="_blank">Qué hacer ya · dilemas y decisiones</a>
     </section>
 
     <!-- Una idea para la familia: empresa de reformas -->
@@ -1320,7 +1363,7 @@
           <div class="rf-card">
             <div class="rf-icon">🛡️</div>
             <div class="rf-title">A prueba de IA</div>
-            <p>Fontanería, electricidad y albañilería: <strong>menos del 5 %</strong> de riesgo de automatización. Ningún robot te va a alicatar el baño.</p>
+            <p>Fontanería, electricidad y albañilería: <strong>menos del 5%</strong> de riesgo de automatización. Ningún robot te va a alicatar el baño.</p>
           </div>
           <div class="rf-card key">
             <div class="rf-icon">👷</div>
@@ -1334,7 +1377,7 @@
           </div>
         </div>
         <p class="reformas-quote">
-          "La IA podrá decidir <strong>qué</strong> tubería pones... pero no te la va a poner."
+          "La IA podrá decidir <strong>qué</strong> tubería pones… pero no te la va a poner."
           <cite>Telecinco · mayo 2026 — sobre los oficios a salvo de la IA</cite>
         </p>
       </div>
@@ -1378,15 +1421,27 @@
       <a class="deepen" href="/preguntas" target="_blank">Las preguntas abiertas, filtrables por nivel</a>
     </section>
 
+    <!-- Vídeo de cierre · escena de Good Will Hunting -->
+    <section id="cierre-video">
+      <h3 class="section-h">Una última escena</h3>
+      <!-- Vídeo de YouTube. data-src → Reveal lo carga al llegar a la slide
+           y lo descarga al salir (corta la reproducción automáticamente). -->
+      <div class="video-embed">
+        <iframe data-src="https://www.youtube.com/embed/Ua0inTzzpfM?rel=0"
+                title="Good Will Hunting — saber de verdad"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+      </div>
+      <p class="bottom-note" style="margin-top:18px"><strong>Good Will Hunting</strong> (1997) — la diferencia entre acumular datos y entender de verdad. Una IA ha leído más que nadie; vivir, seguimos viviéndolo nosotros.</p>
+    </section>
+
     <!-- Cita de cierre -->
     <section class="quote-slide cierre">
       <div class="quote-eyebrow">Para terminar</div>
       <blockquote class="quote-mega-3">
-        Es una herramienta. Como un coche, como un cuchillo, como una lavadora. Sirve para hacer cosas más rápido o cosas que antes no podías.
-        <br><br>
-        No te va a salvar y no te va a matar.
-        <br><br>
-        <strong>Aprende a usarla con cabeza. Y si te quedan dudas, esta web sigue abierta.</strong>
+        <p>Es una herramienta. Como un coche, como un cuchillo, como una lavadora. Sirve para hacer cosas más rápido —o cosas que antes no podías.</p>
+        <p>No te va a salvar y no te va a matar.</p>
+        <p><strong>Aprende a usarla con cabeza. Y si te quedan dudas, esta web sigue abierta.</strong></p>
       </blockquote>
     </section>
 
@@ -1410,6 +1465,8 @@
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<!-- Glosario · generado por scripts/copy-slides.mjs desde content/glosario.json -->
+<script src="./glosario.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -1615,6 +1672,120 @@
     }
     Reveal.on('ready', onSlide);
     Reveal.on('slidechanged', onSlide);
+  })();
+
+  /* ===================================================================
+     Glosario · términos técnicos clicables dentro del deck.
+     Marca la primera aparición de cada término (en los <p> de cada
+     slide) y muestra un popup con su definición. Misma fuente de datos
+     que la web: content/glosario.json → public/slides/glosario.js.
+     =================================================================== */
+  (function() {
+    var GLOSARIO = window.GLOSARIO || [];
+    if (!GLOSARIO.length) return;
+
+    var byId = {};
+    var forms = [];
+    GLOSARIO.forEach(function(t) {
+      byId[t.id] = t;
+      (t.match || []).forEach(function(f) { forms.push({ id: t.id, form: f }); });
+    });
+    forms.sort(function(a, b) { return b.form.length - a.form.length; });
+    forms.forEach(function(f) {
+      var esc = f.form.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      var acronym = /^[A-Z]{2,5}$/.test(f.form);
+      try {
+        f.re = new RegExp('(?<![\\p{L}\\p{N}])(' + esc + ')(?![\\p{L}\\p{N}])', acronym ? 'u' : 'iu');
+      } catch (e) {
+        f.re = new RegExp('\\b(' + esc + ')\\b', acronym ? '' : 'i');
+      }
+    });
+
+    var SKIP = { A: 1, BUTTON: 1, CODE: 1, H1: 1, H2: 1, H3: 1, H4: 1, SCRIPT: 1, STYLE: 1, ASIDE: 1 };
+
+    function markSlide(slide) {
+      if (!slide || slide.dataset.glossDone) return;
+      slide.dataset.glossDone = '1';
+      var used = {};
+      var ps = slide.querySelectorAll('p:not([data-typewriter])');
+      ps.forEach(function(p) {
+        var walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT, null);
+        var nodes = [], n;
+        while ((n = walker.nextNode())) {
+          var bad = false, anc = n.parentNode;
+          while (anc && anc !== p.parentNode) {
+            if (SKIP[anc.nodeName]) { bad = true; break; }
+            anc = anc.parentNode;
+          }
+          if (!bad && n.nodeValue.trim()) nodes.push(n);
+        }
+        nodes.forEach(function(node) {
+          for (var i = 0; i < forms.length; i++) {
+            var f = forms[i];
+            if (used[f.id]) continue;
+            var m = f.re.exec(node.nodeValue);
+            if (!m) continue;
+            used[f.id] = 1;
+            var before = node.nodeValue.slice(0, m.index);
+            var after = node.nodeValue.slice(m.index + m[1].length);
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'gloss-term';
+            btn.setAttribute('data-term', f.id);
+            btn.textContent = m[1];
+            var parent = node.parentNode;
+            parent.insertBefore(document.createTextNode(before), node);
+            parent.insertBefore(btn, node);
+            node.nodeValue = after;
+          }
+        });
+      });
+    }
+
+    var pop = null;
+    function closePop() { if (pop) { pop.remove(); pop = null; } }
+    function showPop(termEl) {
+      closePop();
+      var t = byId[termEl.getAttribute('data-term')];
+      if (!t) return;
+      pop = document.createElement('div');
+      pop.className = 'gloss-popover';
+      var head = document.createElement('div');
+      head.className = 'gloss-pop-term';
+      head.textContent = t.term;
+      var def = document.createElement('div');
+      def.className = 'gloss-pop-def';
+      def.textContent = t.def;
+      var hint = document.createElement('div');
+      hint.className = 'gloss-pop-hint';
+      hint.textContent = 'Toca fuera para cerrar';
+      pop.appendChild(head); pop.appendChild(def); pop.appendChild(hint);
+      document.body.appendChild(pop);
+      var r = termEl.getBoundingClientRect();
+      var pr = pop.getBoundingClientRect();
+      var left = r.left + r.width / 2 - pr.width / 2;
+      left = Math.max(12, Math.min(left, window.innerWidth - pr.width - 12));
+      var top = r.bottom + 8;
+      if (top + pr.height > window.innerHeight - 12) top = r.top - pr.height - 8;
+      pop.style.left = left + 'px';
+      pop.style.top = Math.max(12, top) + 'px';
+    }
+
+    document.addEventListener('click', function(e) {
+      var term = e.target.closest ? e.target.closest('.gloss-term') : null;
+      if (term) { e.preventDefault(); e.stopPropagation(); showPop(term); return; }
+      if (pop && !(e.target.closest && e.target.closest('.gloss-popover'))) closePop();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' || e.code === 'Escape') closePop();
+    });
+
+    function onGlossSlide(e) {
+      closePop();
+      markSlide((e && e.currentSlide) || Reveal.getCurrentSlide());
+    }
+    Reveal.on('ready', onGlossSlide);
+    Reveal.on('slidechanged', onGlossSlide);
   })();
 </script>
 

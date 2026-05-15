@@ -78,6 +78,9 @@
 
 | Palabra | Qué es | Por qué importa |
 |---|---|---|
+| **LLM** | *Large Language Model*: modelo grande de lenguaje, entrenado con enormes cantidades de texto | Es la pieza central de la IA generativa actual; predice la siguiente palabra |
+| **GPT** | *Generative Pre-trained Transformer*: la familia de modelos de OpenAI | Hoy se usa casi como sinónimo de chatbot de IA |
+| **Transformer** | La arquitectura interna sobre la que se construyen todos los LLM | Nació en 2017 con *"Attention Is All You Need"* (Google) |
 | **Token** | Trozo de texto (~4 caracteres o media palabra) que procesa el modelo | Las APIs se facturan por tokens |
 | **Ventana de contexto** | Cuánto texto "ve" el modelo a la vez | En 2026 ya hay modelos con 1M tokens (un libro entero) |
 | **Parámetros** | "Neuronas" del modelo | Más no siempre es mejor; arquitectura y datos importan igual |
@@ -91,6 +94,16 @@
 | **Multimodal** | Modelo que entiende texto + imagen + audio + vídeo | En 2026 es lo normal en los top |
 | **Reasoning model** | Modelo que "piensa antes de hablar" generando pasos internos | o1/o3 (OpenAI), Claude extended thinking, DeepSeek R1 |
 | **Alucinación** | Inventarse información con confianza | El problema número 1 sin resolver |
+| **Preentrenamiento** | La fase más cara: el modelo lee internet y ajusta sus parámetros prediciendo palabras tapadas | Es donde el modelo "aprende" el mundo; cuesta cientos de millones |
+| **RLHF** | *Reinforcement Learning from Human Feedback*: personas puntúan respuestas para enseñar al modelo cuáles son buenas | Por eso el chatbot responde con el tono y formato que conocemos |
+| **Prompt** | Lo que le escribes al modelo: tu instrucción o pregunta | La calidad del prompt determina la calidad de la respuesta |
+| **Inferencia** | Usar el modelo ya entrenado: le das texto y genera la respuesta | Es lo que ocurre cada vez que escribes a un chatbot |
+| **Temperatura** | Ajuste que controla cuánto arriesga el modelo al elegir la siguiente palabra | Baja: respuestas predecibles. Alta: más creativas y variables |
+| **Difusión** | Técnica detrás de la IA de imagen y vídeo: parte de ruido y lo "limpia" hasta la imagen | Cómo funcionan Midjourney, Sora, Flux |
+| **Embedding** | Convertir texto en una lista de números que captura su significado | Permite al modelo comparar y relacionar ideas; base del RAG |
+| **GPU** | El chip que hace en paralelo los cálculos de la IA | Entrenar y usar modelos grandes exige miles de GPU |
+| **Centro de datos** | Las naves llenas de servidores y GPU donde se entrena y ejecuta la IA | Consumen mucha electricidad y agua |
+| **Deepfake** | Imagen, vídeo o audio falsos generados por IA que imitan a una persona real | Base de fraudes y desinformación |
 
 ## 6. Mensajes de cierre por audiencia
 
