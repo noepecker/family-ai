@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japón · 15 días · Plan de viaje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --washi:#f4ecdc;
+    --washi-light:#fbf6ea;
+    --surface:#fffdf6;
+    --sumi:#1a1612;
+    --sumi-2:#3a322a;
+    --muted:#7a6f60;
+    --line:#e3d6b8;
+    --line-soft:#ede2c8;
+    --vermilion:#bf3625;
+    --vermilion-dark:#8e2317;
+    --indigo:#1f3a5f;
+    --indigo-light:#2f5688;
+    --kincha:#a87e30;
+    --sakura:#dc9696;
+    --moss:#5b7a3a;
+    --shadow: 0 2px 12px rgba(40,30,20,.06), 0 12px 40px rgba(40,30,20,.08);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--washi);color:var(--sumi);font-family:"Zen Kaku Gothic Antique",sans-serif;font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased}
+  body{
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(191,54,37,.04), transparent 35%),
+      radial-gradient(circle at 88% 92%, rgba(31,58,95,.05), transparent 40%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 0.05 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+    min-height:100vh;
+  }
+  h1,h2,h3,h4{font-family:"Shippori Mincho",serif;font-weight:500;color:var(--sumi);letter-spacing:.01em}
+  a{color:var(--indigo);text-decoration:none;border-bottom:1px solid rgba(31,58,95,.25);transition:border-color .2s}
+  a:hover{border-bottom-color:var(--indigo)}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+  /* ---------- HEADER ---------- */
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+  header.hero{padding:48px 0 28px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;border-bottom:1px solid var(--line);padding-bottom:28px}
+  .eyebrow{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--vermilion);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--vermilion)}
+  h1.title{font-size:clamp(40px,6vw,76px);line-height:.98;font-weight:700;letter-spacing:-.015em}
+  h1.title .jp{display:block;font-size:.42em;color:var(--muted);font-weight:400;margin-top:8px;letter-spacing:.12em}
+  .hero-meta{display:flex;flex-direction:column;gap:6px;font-family:"DM Mono",monospace;font-size:12px;color:var(--sumi-2);text-align:right;line-height:1.6}
+  .hero-meta b{color:var(--vermilion);font-weight:500}
+  .hero-sub{margin-top:18px;color:var(--muted);font-size:15px;max-width:640px}
+
+  /* Decorative seal */
+  .seal{position:absolute;top:44px;right:28px;width:84px;height:84px;display:none}
+  @media(min-width:900px){.seal{display:block}}
+  .seal svg{width:100%;height:100%}
+
+  /* ---------- TABS ---------- */
+  nav.tabs{position:sticky;top:0;z-index:20;background:rgba(244,236,220,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:0}
+  .tabs-inner{max-width:1200px;margin:0 auto;display:flex;gap:0;padding:0 28px;overflow-x:auto;scrollbar-width:none}
+  .tabs-inner::-webkit-scrollbar{display:none}
+  .tab-btn{padding:18px 0;margin-right:38px;font-family:"Shippori Mincho",serif;font-size:16px;color:var(--muted);position:relative;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s}
+  .tab-btn .n{font-family:"DM Mono",monospace;font-size:10px;color:var(--vermilion);margin-right:8px;letter-spacing:.1em}
+  .tab-btn:hover{color:var(--sumi)}
+  .tab-btn.active{color:var(--sumi);border-bottom-color:var(--vermilion)}
+
+  /* ---------- SECTIONS ---------- */
+  section.panel{display:none;padding:48px 0 80px}
+  section.panel.active{display:block;animation:fade .4s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .section-head{display:flex;align-items:baseline;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+  .section-num{font-family:"Shippori Mincho",serif;font-size:14px;color:var(--vermilion);writing-mode:vertical-rl;text-orientation:upright;letter-spacing:.3em;border-left:1px solid var(--vermilion);padding-left:6px;align-self:stretch}
+  .section-title{flex:1}
+  .section-title h2{font-size:clamp(28px,4vw,44px);line-height:1.05;font-weight:600}
+  .section-title .lead{margin-top:10px;color:var(--muted);max-width:680px;font-size:15px}
+
+  /* ---------- VUELOS ---------- */
+  .flight-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin-bottom:32px}
+  .flight-card{background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:22px;display:flex;flex-direction:column;gap:14px;position:relative;transition:transform .2s, box-shadow .2s}
+  .flight-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .flight-card.featured{border-color:var(--vermilion);background:linear-gradient(180deg,#fff,var(--surface))}
+  .flight-card.featured::before{content:"recomendado · directo";position:absolute;top:-10px;left:18px;background:var(--vermilion);color:#fff;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.15em;padding:3px 10px;border-radius:2px}
+  .airline{display:flex;align-items:center;justify-content:space-between}
+  .airline-name{font-family:"Shippori Mincho",serif;font-size:22px;font-weight:600}
+  .price-band{font-family:"DM Mono",monospace;font-size:13px;color:var(--vermilion);font-weight:500}
+  .route-line{display:flex;align-items:center;gap:10px;font-family:"DM Mono",monospace;font-size:12px;color:var(--sumi-2);padding:10px 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line)}
+  .route-line .dot{width:6px;height:6px;border-radius:50%;background:var(--sumi)}
+  .route-line .line{flex:1;height:1px;background:var(--sumi-2);position:relative}
+  .route-line .conn{position:absolute;top:-6px;left:50%;transform:translateX(-50%);background:var(--washi);padding:0 6px;color:var(--muted);font-size:10px}
+  .flight-detail{font-size:13px;color:var(--muted);line-height:1.7}
+  .flight-detail b{color:var(--sumi);font-weight:500}
+  .flight-links{display:flex;gap:8px;margin-top:auto;padding-top:8px}
+  .btn-link{flex:1;text-align:center;padding:9px 12px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;border-bottom:none}
+  .btn-primary{background:var(--sumi);color:var(--washi-light)}
+  .btn-primary:hover{background:var(--vermilion)}
+  .btn-secondary{background:transparent;color:var(--sumi);border:1px solid var(--line) !important}
+  .btn-secondary:hover{border-color:var(--sumi) !important;background:var(--washi-light)}
+
+  .compare-row{display:flex;gap:14px;flex-wrap:wrap;padding:20px;background:var(--washi-light);border:1px solid var(--line);border-radius:2px;align-items:center;justify-content:space-between}
+  .compare-row p{font-family:"Shippori Mincho",serif;font-size:18px}
+  .compare-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+  /* ---------- RUTAS ---------- */
+  .route-toggle{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:4px;margin-bottom:24px}
+  .route-toggle button{padding:10px 22px;font-family:"Shippori Mincho",serif;font-size:15px;color:var(--muted);border-radius:1px;transition:all .25s}
+  .route-toggle button .label{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.15em;color:var(--vermilion);display:block;margin-bottom:2px}
+  .route-toggle button.active{background:var(--sumi);color:var(--washi-light)}
+  .route-toggle button.active .label{color:var(--kincha)}
+
+  .route-desc{margin-bottom:20px;color:var(--muted);font-size:15px;max-width:780px}
+
+  .map-wrap{display:grid;grid-template-columns:1fr 380px;gap:20px;align-items:start}
+  @media(max-width:900px){.map-wrap{grid-template-columns:1fr}}
+  #map{height:540px;border:1px solid var(--line);border-radius:2px;background:#eee;box-shadow:var(--shadow)}
+  @media(max-width:600px){#map{height:420px}}
+  .num-marker-inner{
+    width:34px;height:34px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:"DM Mono",monospace;font-weight:600;font-size:14px;
+    box-shadow:0 2px 8px rgba(0,0,0,.3);
+    border:2px solid #fff;
+  }
+
+  .stop-panel{background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:24px;max-height:540px;overflow-y:auto;box-shadow:var(--shadow)}
+  .stop-panel.empty{display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-style:italic;font-family:"Shippori Mincho",serif;font-size:15px;min-height:300px}
+  .stop-panel-content h3{font-size:26px;display:flex;align-items:center;gap:10px}
+  .stop-panel-content .stop-num{background:var(--vermilion);color:#fff;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:"DM Mono",monospace;font-size:13px;font-weight:600}
+  .stop-meta{display:flex;flex-wrap:wrap;gap:14px;font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);margin:14px 0;padding:10px 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line)}
+  .stop-meta b{color:var(--vermilion);font-weight:500}
+  .stop-desc{font-size:14px;color:var(--sumi-2);margin-bottom:18px}
+  .category-block{margin-top:18px}
+  .category-block h4{font-family:"Shippori Mincho",serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--kincha);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--line-soft)}
+  .activity-list{display:flex;flex-direction:column;gap:10px}
+  .activity-item{display:flex;gap:10px;font-size:13px;line-height:1.5}
+  .activity-item .badge{flex-shrink:0;font-size:14px;line-height:1.4}
+  .activity-item .text{flex:1}
+  .activity-item .text b{font-weight:500;color:var(--sumi);font-family:"Shippori Mincho",serif;font-size:14px}
+  .activity-item .text span{color:var(--muted);display:block;font-size:12px;margin-top:1px}
+
+  .itinerary{margin-top:32px;background:var(--surface);border:1px solid var(--line);padding:24px;border-radius:2px}
+  .itinerary h3{font-size:22px;margin-bottom:18px}
+  .itinerary-list{display:flex;flex-direction:column;gap:0}
+  .iti-stop{display:flex;gap:18px;padding:14px 0;border-bottom:1px dashed var(--line-soft);align-items:center}
+  .iti-stop:last-child{border-bottom:none}
+  .iti-num{width:34px;height:34px;border-radius:50%;background:var(--vermilion);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"DM Mono",monospace;font-size:13px;font-weight:600;flex-shrink:0}
+  .iti-name{font-family:"Shippori Mincho",serif;font-size:17px;font-weight:500;flex:1}
+  .iti-nights{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);background:var(--washi-light);padding:4px 10px;border-radius:1px}
+
+  /* ---------- PRESUPUESTO ---------- */
+  .budget-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;margin-bottom:32px}
+  @media(max-width:900px){.budget-grid{grid-template-columns:1fr}}
+  .budget-totals{background:var(--surface);border:1px solid var(--line);padding:28px;border-radius:2px}
+  .total-card{padding:18px 0;border-bottom:1px solid var(--line-soft)}
+  .total-card:last-child{border-bottom:none}
+  .total-card .label{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .total-card .value{font-family:"Shippori Mincho",serif;font-size:36px;font-weight:600;color:var(--sumi);margin-top:6px}
+  .total-card .value .unit{font-size:14px;color:var(--muted);font-weight:400;margin-left:6px}
+  .total-card .sub{font-size:12px;color:var(--muted);margin-top:4px;font-family:"DM Mono",monospace}
+  .chart-wrap{background:var(--surface);border:1px solid var(--line);padding:28px;border-radius:2px;min-height:380px;display:flex;flex-direction:column}
+  .chart-wrap h3{font-size:18px;margin-bottom:16px}
+  .chart-canvas-wrap{flex:1;position:relative;min-height:300px}
+
+  .compare-table{background:var(--surface);border:1px solid var(--line);border-radius:2px;overflow:hidden;margin-top:8px}
+  .compare-table h3{padding:22px 24px 14px;font-size:22px}
+  .compare-table table{width:100%;border-collapse:collapse}
+  .compare-table th, .compare-table td{padding:13px 24px;text-align:left;font-size:14px;border-bottom:1px solid var(--line-soft)}
+  .compare-table th{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);background:var(--washi-light);font-weight:500}
+  .compare-table tr:last-child td{border-bottom:none}
+  .compare-table .cat{font-family:"Shippori Mincho",serif;font-size:15px}
+  .compare-table .num{font-family:"DM Mono",monospace;text-align:right;font-variant-numeric:tabular-nums}
+  .compare-table .total-row td{font-weight:700;background:var(--washi-light);font-size:15px}
+  .compare-table .total-row .num{color:var(--vermilion)}
+
+  /* ---------- CLIMA ---------- */
+  .climate-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:32px}
+  .climate-card{background:var(--surface);border:1px solid var(--line);padding:22px;border-radius:2px;position:relative}
+  .climate-card .icon{font-size:28px;margin-bottom:10px}
+  .climate-card h4{font-family:"Shippori Mincho",serif;font-size:18px;font-weight:500;margin-bottom:6px}
+  .climate-card p{font-size:13px;color:var(--muted)}
+  .climate-narrative{background:var(--surface);border:1px solid var(--line);padding:30px;border-radius:2px;line-height:1.7;font-size:15px}
+  .climate-narrative h3{font-size:22px;margin-bottom:14px}
+  .climate-narrative p{margin-bottom:14px;color:var(--sumi-2)}
+  .climate-narrative ul{padding-left:20px;color:var(--sumi-2)}
+  .climate-narrative li{margin-bottom:8px}
+  .climate-narrative .warning{background:rgba(191,54,37,.08);border-left:3px solid var(--vermilion);padding:14px 18px;margin-top:18px;font-size:14px;color:var(--vermilion-dark)}
+
+  /* ---------- EQUIPAJE ---------- */
+  .packing-progress{background:var(--surface);border:1px solid var(--line);padding:20px 24px;border-radius:2px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .packing-progress .label{font-family:"Shippori Mincho",serif;font-size:16px}
+  .packing-progress .count{font-family:"DM Mono",monospace;font-size:14px;color:var(--vermilion);font-weight:500}
+  .progress-bar{flex:1;min-width:200px;height:6px;background:var(--washi-light);border-radius:3px;overflow:hidden;border:1px solid var(--line-soft)}
+  .progress-bar-fill{height:100%;background:var(--vermilion);transition:width .4s ease}
+  .reset-btn{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--line);border-radius:2px}
+  .reset-btn:hover{color:var(--vermilion);border-color:var(--vermilion)}
+
+  .packing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .pack-category{background:var(--surface);border:1px solid var(--line);padding:24px;border-radius:2px}
+  .pack-category h3{font-size:18px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--line-soft);display:flex;align-items:center;gap:10px}
+  .pack-category h3 .ico{font-size:20px}
+  .pack-item{display:flex;align-items:flex-start;gap:10px;padding:7px 0;cursor:pointer;font-size:14px;line-height:1.4;color:var(--sumi-2)}
+  .pack-item input{margin-top:3px;accent-color:var(--vermilion);width:14px;height:14px;cursor:pointer}
+  .pack-item input:checked + span{text-decoration:line-through;color:var(--muted);opacity:.6}
+  .pack-item .note{display:block;font-size:11px;color:var(--muted);margin-top:1px;font-family:"DM Mono",monospace}
+  .pack-item input:checked ~ .note{opacity:.5}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:30px 0 50px;border-top:1px solid var(--line);margin-top:60px;text-align:center;font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.1em}
+  footer .jp{display:block;font-family:"Shippori Mincho",serif;font-size:14px;color:var(--vermilion);margin-bottom:8px;letter-spacing:.2em}
+
+  /* ---------- LEAFLET overrides ---------- */
+  .leaflet-container{font-family:"Zen Kaku Gothic Antique",sans-serif !important;background:#dde4d8 !important}
+  .leaflet-popup-content-wrapper{border-radius:2px;font-family:"Zen Kaku Gothic Antique",sans-serif}
+  .leaflet-popup-content{margin:12px 14px;font-size:13px}
+  .leaflet-popup-content b{font-family:"Shippori Mincho",serif;color:var(--vermilion)}
+
+  /* Mobile tweaks */
+  @media(max-width:600px){
+    header.hero{padding:30px 0 22px}
+    .hero-grid{grid-template-columns:1fr;align-items:start}
+    .hero-meta{text-align:left}
+    .wrap{padding:0 18px}
+    .tabs-inner{padding:0 18px}
+    .tab-btn{margin-right:24px;font-size:14px}
+    .compare-table th, .compare-table td{padding:10px 14px;font-size:12px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Plan de viaje · Madrid → Japón</div>
+        <h1 class="title">Quince días<br>en Japón<span class="jp">日本 · じゅうごにち</span></h1>
+        <p class="hero-sub">Ruta clásica imperial alternativa frente a un recorrido lento por los Alpes japoneses, Kanazawa y Koyasan. Dos opciones, mismo número de noches, dos formas distintas de ver el país.</p>
+      </div>
+      <div class="hero-meta">
+        <div>Agosto 2026</div>
+        <div><b>15 días</b> · 14 noches</div>
+        <div>2 adultos</div>
+        <div>Mid-range</div>
+        <div>Outdoor · foodie · cultural</div>
+      </div>
+    </div>
+  </div>
+  <div class="seal">
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="44" fill="none" stroke="#bf3625" stroke-width="2.5"/>
+      <text x="50" y="38" text-anchor="middle" fill="#bf3625" font-family="Shippori Mincho" font-size="22" font-weight="700">日</text>
+      <text x="50" y="62" text-anchor="middle" fill="#bf3625" font-family="Shippori Mincho" font-size="22" font-weight="700">本</text>
+      <text x="50" y="82" text-anchor="middle" fill="#bf3625" font-family="DM Mono" font-size="7" letter-spacing="1">2026</text>
+    </svg>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="tabs-inner">
+    <button class="tab-btn active" data-tab="vuelos"><span class="n">01</span>Vuelos</button>
+    <button class="tab-btn" data-tab="rutas"><span class="n">02</span>Rutas</button>
+    <button class="tab-btn" data-tab="presupuesto"><span class="n">03</span>Presupuesto</button>
+    <button class="tab-btn" data-tab="clima"><span class="n">04</span>Clima</button>
+    <button class="tab-btn" data-tab="equipaje"><span class="n">05</span>Equipaje</button>
+  </div>
+</nav>
+
+<!-- ============ VUELOS ============ -->
+<section class="panel active" id="vuelos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">壱 · I</div>
+      <div class="section-title">
+        <h2>Vuelos Madrid → Tokyo</h2>
+        <p class="lead">Cinco opciones reales en agosto 2026. Iberia es la única directa; el resto opera con escala en hub europeo o de Oriente Medio. Precios estimados ida y vuelta por persona en clase turista, alta temporada.</p>
+      </div>
+    </div>
+
+    <div class="flight-grid">
+
+      <div class="flight-card featured">
+        <div class="airline">
+          <div class="airline-name">Iberia</div>
+          <div class="price-band">€1.100 – 1.400</div>
+        </div>
+        <div class="route-line">
+          <span class="dot"></span><span>MAD</span>
+          <span class="line"></span>
+          <span>NRT</span><span class="dot"></span>
+        </div>
+        <div class="flight-detail">
+          <b>Directo</b> · ~14h 25min (ida) · ~13h 15min (vuelta)<br>
+          Salidas diarias. Único directo desde Madrid. A380 / A350.
+        </div>
+        <div class="flight-links">
+          <a class="btn-link btn-primary" href="https://www.iberia.com/es/vuelos-baratos/madrid-tokio/" target="_blank" rel="noopener">Iberia</a>
+          <a class="btn-link btn-secondary" href="https://www.skyscanner.es/transporte/vuelos/mad/tyoa/" target="_blank" rel="noopener">Skyscanner</a>
+        </div>
+      </div>
+
+      <div class="flight-card">
+        <div class="airline">
+          <div class="airline-name">KLM</div>
+          <div class="price-band">€950 – 1.200</div>
+        </div>
+        <div class="route-line">
+          <span class="dot"></span><span>MAD</span>
+          <span class="line"><span class="conn">AMS</span></span>
+          <span>HND</span><span class="dot"></span>
+        </div>
+        <div class="flight-detail">
+          <b>1 escala</b> · 16h – 18h total<br>
+          Escala 1h 30min – 3h en Ámsterdam. Llegada directa a Haneda (centro).
+        </div>
+        <div class="flight-links">
+          <a class="btn-link btn-primary" href="https://www.klm.es/" target="_blank" rel="noopener">KLM</a>
+          <a class="btn-link btn-secondary" href="https://www.google.com/travel/flights?q=Madrid%20a%20Tokio%20agosto%202026" target="_blank" rel="noopener">Google</a>
+        </div>
+      </div>
+
+      <div class="flight-card">
+        <div class="airline">
+          <div class="airline-name">Lufthansa</div>
+          <div class="price-band">€950 – 1.200</div>
+        </div>
+        <div class="route-line">
+          <span class="dot"></span><span>MAD</span>
+          <span class="line"><span class="conn">MUC</span></span>
+          <span>HND</span><span class="dot"></span>
+        </div>
+        <div class="flight-detail">
+          <b>1 escala</b> · 16h – 17h total<br>
+          Escala en Múnich o Frankfurt. Conexiones a Haneda o Narita.
+        </div>
+        <div class="flight-links">
+          <a class="btn-link btn-primary" href="https://www.lufthansa.com/es/es/homepage" target="_blank" rel="noopener">Lufthansa</a>
+          <a class="btn-link btn-secondary" href="https://www.kayak.es/flights/MAD-TYO" target="_blank" rel="noopener">Kayak</a>
+        </div>
+      </div>
+
+      <div class="flight-card">
+        <div class="airline">
+          <div class="airline-name">Qatar Airways</div>
+          <div class="price-band">€900 – 1.150</div>
+        </div>
+        <div class="route-line">
+          <span class="dot"></span><span>MAD</span>
+          <span class="line"><span class="conn">DOH</span></span>
+          <span>HND</span><span class="dot"></span>
+        </div>
+        <div class="flight-detail">
+          <b>1 escala</b> · 19h – 21h total<br>
+          Trayecto más largo pero confort superior. A350/777, ruta sur.
+        </div>
+        <div class="flight-links">
+          <a class="btn-link btn-primary" href="https://www.qatarairways.com/es-es/homepage.html" target="_blank" rel="noopener">Qatar</a>
+          <a class="btn-link btn-secondary" href="https://www.skyscanner.es/transporte/vuelos/mad/tyoa/" target="_blank" rel="noopener">Skyscanner</a>
+        </div>
+      </div>
+
+      <div class="flight-card">
+        <div class="airline">
+          <div class="airline-name">Turkish Airlines</div>
+          <div class="price-band">€850 – 1.050</div>
+        </div>
+        <div class="route-line">
+          <span class="dot"></span><span>MAD</span>
+          <span class="line"><span class="conn">IST</span></span>
+          <span>NRT</span><span class="dot"></span>
+        </div>
+        <div class="flight-detail">
+          <b>1 escala</b> · 17h – 19h total<br>
+          Suele ser la más barata. Escala corta en Estambul (1h 30min).
+        </div>
+        <div class="flight-links">
+          <a class="btn-link btn-primary" href="https://www.turkishairlines.com/es-es/" target="_blank" rel="noopener">Turkish</a>
+          <a class="btn-link btn-secondary" href="https://www.kayak.es/flights/MAD-TYO" target="_blank" rel="noopener">Kayak</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="compare-row">
+      <p>Comparador completo Madrid → Tokyo</p>
+      <div class="compare-actions">
+        <a class="btn-link btn-secondary" href="https://www.skyscanner.es/transporte/vuelos/mad/tyoa/" target="_blank" rel="noopener">Skyscanner</a>
+        <a class="btn-link btn-secondary" href="https://www.google.com/travel/flights?q=Flights%20from%20Madrid%20to%20Tokyo%20August%202026" target="_blank" rel="noopener">Google Flights</a>
+        <a class="btn-link btn-secondary" href="https://www.kayak.es/flights/MAD-TYO" target="_blank" rel="noopener">Kayak</a>
+        <a class="btn-link btn-primary" href="https://matrix.itasoftware.com/" target="_blank" rel="noopener">ITA Matrix</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RUTAS ============ -->
+<section class="panel" id="rutas">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">弐 · II</div>
+      <div class="section-title">
+        <h2>Dos rutas, una decisión</h2>
+        <p class="lead">Click en cada marcador para abrir el detalle de la parada con actividades, restaurantes y coste medio. Cambia entre rutas para ver el recorrido completo.</p>
+      </div>
+    </div>
+
+    <div class="route-toggle">
+      <button data-route="A" class="active">
+        <span class="label">Ruta A</span>
+        Clásico Imperial
+      </button>
+      <button data-route="B">
+        <span class="label">Ruta B</span>
+        Slow · Off-the-beaten-path
+      </button>
+    </div>
+
+    <p class="route-desc" id="route-desc"></p>
+
+    <div class="map-wrap">
+      <div id="map"></div>
+      <div class="stop-panel empty" id="stop-panel">
+        Selecciona un marcador en el mapa<br>para ver los detalles de la parada.
+      </div>
+    </div>
+
+    <div class="itinerary">
+      <h3>Itinerario · <span id="route-name">Clásico Imperial</span></h3>
+      <div class="itinerary-list" id="itinerary-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRESUPUESTO ============ -->
+<section class="panel" id="presupuesto">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">参 · III</div>
+      <div class="section-title">
+        <h2>Presupuesto</h2>
+        <p class="lead">Estimación realista para dos adultos, perfil mid-range. Incluye vuelos internacionales, alojamiento en hoteles 3-4★ con dos noches de ryokan, JR Pass de 14 días y un margen razonable para extras.</p>
+      </div>
+    </div>
+
+    <div class="budget-grid">
+      <div class="budget-totals">
+        <div class="total-card">
+          <div class="label">Coste medio diario · 2 personas</div>
+          <div class="value">€540<span class="unit">/día</span></div>
+          <div class="sub">≈ €270 por persona, incluyendo todo</div>
+        </div>
+        <div class="total-card">
+          <div class="label">Total estimado · Ruta A</div>
+          <div class="value">€7.800<span class="unit">·15 días·2 pax</span></div>
+          <div class="sub">Recorrido compacto, menos shinkansen</div>
+        </div>
+        <div class="total-card">
+          <div class="label">Total estimado · Ruta B</div>
+          <div class="value">€8.450<span class="unit">·15 días·2 pax</span></div>
+          <div class="sub">+ Koyasan, Kanazawa, segmentos extra de tren</div>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <h3>Desglose por categoría · Ruta A</h3>
+        <div class="chart-canvas-wrap">
+          <canvas id="budgetChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="compare-table">
+      <h3>Comparativa Ruta A vs Ruta B</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Categoría</th>
+            <th style="text-align:right">Ruta A · Clásico</th>
+            <th style="text-align:right">Ruta B · Slow</th>
+            <th style="text-align:right">Diferencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="cat">Vuelos internacionales</td><td class="num">€2.400</td><td class="num">€2.400</td><td class="num">—</td></tr>
+          <tr><td class="cat">Alojamiento (14 noches)</td><td class="num">€2.100</td><td class="num">€2.350</td><td class="num">+€250</td></tr>
+          <tr><td class="cat">Transporte interno (JR Pass + extras)</td><td class="num">€1.000</td><td class="num">€1.250</td><td class="num">+€250</td></tr>
+          <tr><td class="cat">Comida</td><td class="num">€1.500</td><td class="num">€1.500</td><td class="num">—</td></tr>
+          <tr><td class="cat">Actividades · entradas · Fuji</td><td class="num">€500</td><td class="num">€600</td><td class="num">+€100</td></tr>
+          <tr><td class="cat">Misceláneos (SIM, locker, regalos)</td><td class="num">€300</td><td class="num">€350</td><td class="num">+€50</td></tr>
+          <tr class="total-row"><td>Total estimado · 2 personas</td><td class="num">€7.800</td><td class="num">€8.450</td><td class="num">+€650</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLIMA ============ -->
+<section class="panel" id="clima">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">肆 · IV</div>
+      <div class="section-title">
+        <h2>Clima · agosto en Japón</h2>
+        <p class="lead">El mes más caluroso y húmedo del año. La temporada oficial de ascensión al Monte Fuji está abierta, los festivales (matsuri) están en pleno apogeo, y los típicos brotes de tifones empiezan a aparecer en la segunda mitad del mes.</p>
+      </div>
+    </div>
+
+    <div class="climate-grid">
+      <div class="climate-card">
+        <div class="icon">🌡️</div>
+        <h4>30 – 35 °C</h4>
+        <p>Temperatura diurna en Tokyo, Kyoto y Osaka. Sensación térmica hasta 40°C con humedad.</p>
+      </div>
+      <div class="climate-card">
+        <div class="icon">💧</div>
+        <h4>75 – 85% humedad</h4>
+        <p>Es el factor crítico. Toalla pequeña en mano y cambio de camiseta a medio día son la norma.</p>
+      </div>
+      <div class="climate-card">
+        <div class="icon">☀️</div>
+        <h4>Amanece 04:50</h4>
+        <p>Anochece sobre las 18:40. Madrugar es la mejor estrategia anti-calor y anti-multitudes.</p>
+      </div>
+      <div class="climate-card">
+        <div class="icon">⛰️</div>
+        <h4>Fuji: 5 – 10°C</h4>
+        <p>En la cima al amanecer, incluso en agosto. Capa de abrigo y guantes obligatorios.</p>
+      </div>
+      <div class="climate-card">
+        <div class="icon">🌀</div>
+        <h4>Tifones posibles</h4>
+        <p>Sobre todo desde mediados de agosto. Tener seguro de viaje y flexibilidad en reservas.</p>
+      </div>
+      <div class="climate-card">
+        <div class="icon">🎆</div>
+        <h4>Matsuri season</h4>
+        <p>Obon (13–16 ago) llena el país de festivales, fuegos artificiales y danzas tradicionales.</p>
+      </div>
+    </div>
+
+    <div class="climate-narrative">
+      <h3>¿Por qué agosto y qué esperar?</h3>
+      <p>Agosto es la temporada alta nacional en Japón pero también uno de los meses más vibrantes culturalmente. Para vuestro perfil — outdoor + foodie + cultural — concentra varios momentos únicos que no encontraréis en otras fechas:</p>
+      <ul>
+        <li><b>Temporada de ascensión al Fuji</b> abierta solo entre julio y los primeros días de septiembre. Refugios operativos, rutas señalizadas, autobuses a la 5ª estación.</li>
+        <li><b>Obon (13–16 de agosto)</b>: festivales en cada barrio, danzas Bon Odori, fuegos artificiales gigantes (en especial el de Sumida-gawa en Tokyo, sobre el 27 de julio – fechas similares cada año).</li>
+        <li><b>Gion Matsuri en Kyoto</b> tiene sus carrozas en julio, pero la cola de eventos sigue en agosto con el Daimonji Gozan Okuribi (16 ago), hogueras gigantes en las montañas de Kyoto.</li>
+        <li><b>Productos de temporada</b>: unagi (anguila), hamo (anguila de mar), kakigōri (hielo raspado), durazno blanco de Yamanashi. Imprescindibles.</li>
+      </ul>
+      <div class="warning">
+        ⚠️ <b>Evitar exactamente del 13 al 16 de agosto si podéis</b> para los trayectos largos en shinkansen y para Kyoto. Es la "Golden Week" estival: trenes llenos al 200% y precios disparados. Ese tramo es buen momento para quedarse en una sola ciudad. Si vuestras fechas son flexibles, mejor primera semana o última semana de agosto.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EQUIPAJE ============ -->
+<section class="panel" id="equipaje">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">伍 · V</div>
+      <div class="section-title">
+        <h2>Lista de equipaje</h2>
+        <p class="lead">Específica para agosto + ascensión al Fuji + ryokan. Los items marcados con ★ son los más críticos. Tu progreso se guarda automáticamente.</p>
+      </div>
+    </div>
+
+    <div class="packing-progress">
+      <div class="label">Progreso del equipaje</div>
+      <div class="progress-bar"><div class="progress-bar-fill" id="progressFill"></div></div>
+      <div class="count"><span id="packedCount">0</span> / <span id="totalCount">0</span></div>
+      <button class="reset-btn" id="resetPack">Reset</button>
+    </div>
+
+    <div class="packing-grid" id="packingGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <span class="jp">良い旅を</span>
+  <span>Plan generado en mayo de 2026 · datos y precios estimativos · revisar antes de reservar</span>
+</footer>
+
+<script>
+/* =========================================================================
+   DATA
+   ========================================================================= */
+const stops = {
+  tokyo: {
+    name: "Tokyo",
+    jp: "東京",
+    lat: 35.6762, lng: 139.6503,
+    avgCostPerDay: 220,
+    weather: "32°C · 80% humedad · tormentas vespertinas",
+    description: "Base de aterrizaje y plataforma para el resto del viaje. Mezclad barrios extremos: lo eléctrico (Shibuya, Akihabara, Shinjuku de noche) con lo doméstico y tranquilo (Yanaka, Shimokitazawa). El metro es perfecto pero a partir de las 22h las taquillas de equipaje son oro puro.",
+    activities: {
+      must: [
+        {name:"Shibuya Scramble Crossing y observatorio Shibuya Sky", note:"Mejor al atardecer, reservar Shibuya Sky con antelación"},
+        {name:"Senso-ji y Asakusa", note:"Llegad antes de las 8am para tenerlo casi vacío"},
+        {name:"Shinjuku nocturno: Omoide Yokocho + Golden Gai", note:"Cenar yakitori en las callejuelas de la posguerra"},
+        {name:"Akihabara electric town", note:"Multistore Yodobashi + tiendas de retro gaming"}
+      ],
+      hidden: [
+        {name:"Barrio de Yanaka", note:"Tokyo como era en los 60. Yanaka Ginza, gatos, templos pequeños"},
+        {name:"Todoroki Valley", note:"Único cañón natural dentro de la ciudad, paseo entre bambú"},
+        {name:"Shimokitazawa", note:"Vintage, vinilos, cafés indie, sin la masa de Harajuku"},
+        {name:"Kagurazaka", note:"Antiguo barrio de geishas, hoy escondido entre bistrós franceses"}
+      ],
+      nice: [
+        {name:"teamLab Planets", note:"Reservar con días de antelación"},
+        {name:"Meiji Jingu + Yoyogi Park", note:"Bosque urbano sagrado junto a Harajuku"},
+        {name:"Tokyo Skytree o Tokyo Tower", note:"Si Shibuya Sky no convence"}
+      ]
+    },
+    restaurants: {
+      must: [
+        {name:"Sushi Tokami (Ginza)", note:"Sushi alta gama accesible, reserva 30 días antes ★"},
+        {name:"Tonkatsu Maisen Aoyama", note:"El templo del tonkatsu, cola pero merece"},
+        {name:"Afuri Ramen (Ebisu)", note:"Ramen yuzu, ligero, perfecto para el calor"}
+      ],
+      hidden: [
+        {name:"Tsuta Japanese Soba Noodles", note:"Ramen con Michelin, fuera del radar turístico"},
+        {name:"Onibus Coffee Nakameguro", note:"Café de especialidad en la zona del canal"},
+        {name:"Toritake Asakusa", note:"Yakitori centenario en barrio antiguo"}
+      ],
+      nice: [
+        {name:"Ichiran Shibuya", note:"Ramen en cubículo individual, experiencia clásica"},
+        {name:"Sushiro Ginza", note:"Kaiten-zushi de calidad por <€20/persona"},
+        {name:"Gonpachi Nishi-Azabu", note:"El restaurante de Kill Bill"}
+      ]
+    }
+  },
+  kawaguchiko: {
+    name: "Kawaguchiko / Monte Fuji",
+    jp: "河口湖・富士山",
+    lat: 35.5108, lng: 138.7689,
+    avgCostPerDay: 230,
+    weather: "Lago 25°C · Cima Fuji 5°C al amanecer",
+    description: "Base lacustre para la ascensión al Fuji. Lago Kawaguchi enmarcado por el volcán, con onsen y vistas de postal. La ascensión nocturna (8–10h subida) llega a la cima al amanecer (goraikō). Reservar refugio en la 7ª u 8ª estación es obligatorio en 2024+ por el nuevo sistema de cuotas.",
+    activities: {
+      must: [
+        {name:"Ascensión nocturna al Monte Fuji por Yoshida trail", note:"Reservar refugio + permiso oficial (sistema nuevo) ★"},
+        {name:"Pagoda Chureito + vista de Fuji", note:"Amanecer, evitar el medio día turístico"},
+        {name:"Onsen con vista al Fuji desde Kawaguchiko", note:"Yumori-no-sato es la mejor opción"}
+      ],
+      hidden: [
+        {name:"Oishi Park (orilla norte)", note:"Lavanda en agosto + Fuji de fondo, casi sin turistas"},
+        {name:"Iyashi no Sato Nenba (lago Saiko)", note:"Antigua aldea con casas de techo de paja"},
+        {name:"Lago Shoji y Lago Motosu", note:"Los menos visitados de los Fuji Five Lakes"}
+      ],
+      nice: [
+        {name:"Teleférico Kachi-Kachi Yama", note:"Vista panorámica sin esfuerzo"},
+        {name:"Cueva del viento Fugaku", note:"Cueva de lava bajo el Fuji, fresca incluso en agosto"}
+      ]
+    },
+    restaurants: {
+      must: [
+        {name:"Hoto Fudo (Kawaguchiko)", note:"Hoto: estofado de fideos con verduras, plato típico ★"},
+        {name:"Sanrokuen", note:"Robatayaki tradicional, cocina sobre hibachi"}
+      ],
+      hidden: [
+        {name:"Tetsuyaki Kawaguchiko", note:"Soba artesanal hecha a la vista"},
+        {name:"Café Mimi", note:"Desayuno con vista directa al lago y Fuji"}
+      ],
+      nice: [
+        {name:"Idaten Soba", note:"Soba clásico, opción rápida tras la bajada"}
+      ]
+    }
+  },
+  hakone: {
+    name: "Hakone",
+    jp: "箱根",
+    lat: 35.2326, lng: 139.1067,
+    avgCostPerDay: 260,
+    weather: "26°C · más fresco que Tokyo · niebla en las montañas",
+    description: "Onsen-resort histórico a 90 min de Tokyo. Dos noches de ryokan en Hakone son la fórmula perfecta para descontracturar después del Fuji: aguas termales, kaiseki sin levantarse de la mesa, y el barco pirata por el lago Ashi como anti-pretexto.",
+    activities: {
+      must: [
+        {name:"Noche en ryokan con onsen privado", note:"Reserva con cena kaiseki incluida ★"},
+        {name:"Hakone Open-Air Museum", note:"Esculturas de Henry Moore al aire libre + pabellón Picasso"},
+        {name:"Owakudani volcánico + huevo negro", note:"Funicular sobre las fumarolas"}
+      ],
+      hidden: [
+        {name:"Pola Museum of Art", note:"Monet y Cezanne en un edificio enterrado en el bosque"},
+        {name:"Hakone Yumoto antiguo", note:"Onsen-pueblo original, calles tradicionales"},
+        {name:"Hakone Detached Palace Garden", note:"Jardines imperiales con vista al Fuji"}
+      ],
+      nice: [
+        {name:"Barco pirata por Lago Ashi", note:"Cliché, pero foto canónica con el torii flotante"},
+        {name:"Hakone Shrine torii flotante", note:"Cola para la foto, mejor temprano"}
+      ]
+    },
+    restaurants: {
+      must: [
+        {name:"Cena kaiseki incluida en el ryokan", note:"Es la experiencia gastronómica de Hakone ★"},
+        {name:"Itoh Dining Gotemba (carne wagyu)", note:"Si hay coche, vale la pena el desvío"}
+      ],
+      hidden: [
+        {name:"Naraya Café", note:"Antigua casa de té reconvertida, vista al volcán"},
+        {name:"Hatsuhana Soba", note:"Soba con presentación en cesta de bambú"}
+      ],
+      nice: [
+        {name:"Bakery & Table Hakone", note:"Pan con los pies en el ashiyu (baño de pies caliente)"}
+      ]
+    }
+  },
+  matsumoto: {
+    name: "Matsumoto / Kamikōchi",
+    jp: "松本・上高地",
+    lat: 36.2381, lng: 137.9719,
+    avgCostPerDay: 200,
+    weather: "Matsumoto 28°C · Kamikōchi 20°C en altura",
+    description: "Solo en Ruta B. Matsumoto tiene uno de los castillos originales más espectaculares del país (Karasu-jō, el cuervo negro). Kamikōchi es el santuario del trekking japonés en los Alpes del Norte: ríos esmeralda, bosques alpinos y vistas al Hotaka. Coche no, autobús directo desde Matsumoto.",
+    activities: {
+      must: [
+        {name:"Castillo de Matsumoto al atardecer", note:"Uno de los 5 castillos originales de Japón ★"},
+        {name:"Trekking en Kamikōchi (Kappa-bashi → Myojin Pond)", note:"3-5h, llano, accesible, paisaje sublime"},
+        {name:"Cena en Nakamachi (calle preservada)", note:"Casas de comerciantes Edo perfectamente conservadas"}
+      ],
+      hidden: [
+        {name:"Bosque de Taishō-ike al amanecer", note:"Reflejo del Hotaka, ciervos sika en silencio"},
+        {name:"Onsen Shirahone", note:"Aguas blanco-lechosas en valle profundo, casi secreto"}
+      ],
+      nice: [
+        {name:"Museo Ukiyo-e Japan Ukiyo-e Museum", note:"Mayor colección privada de estampas del país"},
+        {name:"Distrito de Nawate-dori", note:"Calle de las ranas, vintage y antigüedades"}
+      ]
+    },
+    restaurants: {
+      must: [
+        {name:"Kura (Matsumoto)", note:"Soba en almacén tradicional sake-gura del s.XIX ★"}
+      ],
+      hidden: [
+        {name:"Café Marumo", note:"Kissaten clásico desde 1956, café y tarta de queso"}
+      ],
+      nice: [
+        {name:"Kamikōchi Imperial Hotel Lounge", note:"Té de la tarde con vista al valle"}
+      ]
+    }
+  },
+  kanazawa: {
+    name: "Kanazawa",
+    jp: "金沢",
+    lat: 36.5613, lng: 136.6562,
+    avgCostPerDay: 200,
+    weather: "30°C · ligeramente menos húmedo que el Pacífico",
+    description: "Solo en Ruta B. La 'pequeña Kyoto del mar de Japón' que sobrevivió a la II Guerra Mundial sin bombardeos: distritos de geishas intactos, casas de samurái, el jardín Kenroku-en (uno de los tres grandes de Japón) y un mercado de pescado de altura local impresionante. Llegada en shinkansen desde Tokyo (2h 30min).",
+    activities: {
+      must: [
+        {name:"Jardín Kenroku-en al amanecer", note:"Uno de los Top 3 jardines del país, ir a las 7am ★"},
+        {name:"Higashi Chaya District (geishas)", note:"Casas de té de madera, pan de oro local"},
+        {name:"Nagamachi (barrio samurái)", note:"Muros de barro, canales, casa Nomura"}
+      ],
+      hidden: [
+        {name:"21st Century Museum of Contemporary Art", note:"Piscina de Leandro Erlich, museo redondo de vidrio"},
+        {name:"D.T. Suzuki Museum", note:"Templo zen en arquitectura minimalista contemporánea"},
+        {name:"Distrito de Nishi Chaya", note:"Tercer barrio de geishas, casi vacío de turistas"}
+      ],
+      nice: [
+        {name:"Kanazawa Castle Park", note:"Reconstrucción de calidad museística"},
+        {name:"Omicho Market", note:"Mercado cubierto, kaisendon de mariscos"}
+      ]
+    },
+    restaurants: {
+      must: [
+        {name:"Ippei Sushi (Omicho)", note:"Sushi de cangrejo de las nieves y pescado del mar de Japón ★"},
+        {name:"Jiyuken (omurice)", note:"Tortilla de arroz centenaria, fundadora del género"}
+      ],
+      hidden: [
+        {name:"Curio Espresso & Vintage Design", note:"Café australiano + tienda vintage en casa tradicional"},
+        {name:"Oden Miyuki", note:"Oden de Kanazawa, caldo de algas locales"}
+      ],
+      nice: [
+        {name:"Ja-no-Me (barrio Higashi Chaya)", note:"Soba con vistas al canal"}
+      ]
+    }
+  },
+  kyoto: {
+    name: "Kyoto",
+    jp: "京都",
+    lat: 35.0116, lng: 135.7681,
+    avgCostPerDay: 220,
+    weather: "34°C · valle muy caliente y húmedo · tormentas",
+    description: "Capital imperial durante mil años, hoy 1.600 templos, 17 sitios UNESCO y la mayor concentración mundial de chefs Michelin. El secreto contra el calor y las multitudes: amanecer en los grandes iconos, sobremesa larga en cafés con jardín, y atardecer en los templos del este. Daimonji Gozan Okuribi (16 ago) es uno de los momentos más bellos del año.",
+    activities: {
+      must: [
+        {name:"Fushimi Inari a las 6am", note:"Los miles de torii vacíos, la mejor caminata es subir hasta la cima ★"},
+        {name:"Bambú de Arashiyama + Tenryū-ji", note:"Antes de las 8am, después se hace imposible"},
+        {name:"Kiyomizu-dera al atardecer + Gion", note:"Bajar por Ninnenzaka, cena en Gion"},
+        {name:"Kinkaku-ji (Pabellón Dorado)", note:"Día despejado, reflejo en el estanque"}
+      ],
+      hidden: [
+        {name:"Camino del Filósofo al amanecer", note:"Tetsugaku-no-michi, canales entre templos, casi solo"},
+        {name:"Daitoku-ji (complejo de subtemplos)", note:"Zen puro: Daisen-in, Ryōgen-in, jardines de roca apenas visitados"},
+        {name:"Kurama → Kibune (trekking entre templos)", note:"2h por montaña, baño en río al final"},
+        {name:"Hōnen-in", note:"Templo escondido junto al Camino del Filósofo, gratis y silencioso"}
+      ],
+      nice: [
+        {name:"Nijō Castle", note:"Suelos de ruiseñor, palacio shogunal"},
+        {name:"Kyoto Imperial Palace", note:"Visita gratuita, jardines amplios"}
+      ]
+    },
+    restaurants: {
+      must: [
+        {name:"Kikunoi (Higashiyama)", note:"Kaiseki 3 ★ Michelin, reserva 60 días antes, la cena del viaje ★"},
+        {name:"Issen Yōshoku", note:"Okonomiyaki estilo Gion desde 1929"},
+        {name:"Mercado Nishiki", note:"Pasada de mediodía, todos los snacks de Kyoto"}
+      ],
+      hidden: [
+        {name:"Giro Giro Hitoshina", note:"Kaiseki contemporáneo asequible, abierto en barra, sin reserva ★"},
+        {name:"Café Bibliotic Hello", note:"Café-librería en machiya restaurada"},
+        {name:"Saryo Suisen", note:"Postres de matcha en jardín privado"}
+      ],
+      nice: [
+        {name:"Tofu kaiseki en Shōraian (Arashiyama)", note:"Junto al río, después del bambú"},
+        {name:"Omen (Ginkaku-ji)", note:"Udon casero, perfecto tras el Camino del Filósofo"}
+      ]
+    }
+  },
+  koyasan: {
+    name: "Koyasan",
+    jp: "高野山",
+    lat: 34.2131, lng: 135.5847,
+    avgCostPerDay: 280,
+    weather: "23°C · 1000m de altura · noches frescas",
+    description: "Solo en Ruta B. Monte sagrado del budismo Shingon. Dormir en un shukubō (alojamiento monástico) y participar en la ceremonia matinal (gomma) a las 6am es una de las experiencias más singulares del país. Cena vegetariana shōjin ryōri incluida. El cementerio de Okunoin de noche, con 200.000 estelas entre cedros centenarios, es de otro planeta.",
+    activities: {
+      must: [
+        {name:"Noche en shukubō (templo) con shōjin ryōri", note:"Eko-in o Saizen-in. Incluye ceremonia matinal ★"},
+        {name:"Okunoin de noche con guía", note:"Cementerio + Mausoleo de Kūkai, recorrido sobrenatural"},
+        {name:"Kongōbu-ji y Garan", note:"Centros principales del culto Shingon"}
+      ],
+      hidden: [
+        {name:"Pagoda Daitō al amanecer", note:"Pagoda bermellón gigante, sin nadie a las 6am"},
+        {name:"Ruta Chōishi-michi", note:"Camino histórico de peregrinación, 20km descendentes (opcional)"}
+      ],
+      nice: [
+        {name:"Reihōkan Museum", note:"Tesoros budistas que normalmente no se pueden ver"}
+      ]
+    },
+    restaurants: {
+      must: [
+        {name:"Cena shōjin ryōri en el shukubō", note:"Cocina monástica vegetariana, incluida en el alojamiento ★"}
+      ],
+      hidden: [
+        {name:"Café Hanabishi", note:"Goma-dōfu (tofu de sésamo), receta única de Koya"}
+      ],
+      nice: [
+        {name:"Maruman", note:"Tienda local de pasteles momiji manju"}
+      ]
+    }
+  },
+  osaka: {
+    name: "Osaka",
+    jp: "大阪",
+    lat: 34.6937, lng: 135.5023,
+    avgCostPerDay: 200,
+    weather: "33°C · muy húmedo · tormentas vespertinas",
+    description: "La capital de la comida. Si Kyoto es la elegancia, Osaka es la calle, el ruido y la generosidad. Dotonbori al anochecer, takoyaki en el puesto, kushikatsu en bares y un día desde aquí a Nara para los ciervos y el Gran Buda. Vuestro último tramo del viaje antes de volver.",
+    activities: {
+      must: [
+        {name:"Dotonbori + Glico man al anochecer", note:"Neones, comida callejera, multitudes felizmente caóticas ★"},
+        {name:"Día a Nara: Tōdai-ji + ciervos + Kasuga Taisha", note:"Tren rápido 45min desde Osaka"},
+        {name:"Castillo de Osaka", note:"Mejor con luz del amanecer o vista desde fuera"}
+      ],
+      hidden: [
+        {name:"Shinsekai retro al atardecer", note:"Barrio decadente-encantador con torre Tsutenkaku"},
+        {name:"Hōzenji Yokochō", note:"Callejón de farolillos en pleno centro, templo cubierto de musgo"},
+        {name:"Nakazakichō", note:"Casas de posguerra reconvertidas en cafés indie"}
+      ],
+      nice: [
+        {name:"Umeda Sky Building", note:"Observatorio gratuito con vista 360°"},
+        {name:"Kuromon Ichiba", note:"Mercado, mejor a media mañana"}
+      ]
+    },
+    restaurants: {
+      must: [
+        {name:"Mizuno (Dotonbori)", note:"Okonomiyaki estrella Bib Gourmand desde 1945 ★"},
+        {name:"Takoyaki Wanaka Sennichimae", note:"Takoyaki más famoso, cola fluida"},
+        {name:"Kushikatsu Daruma (Shinsekai)", note:"Brochetas fritas, la regla: una sola mojada en salsa"}
+      ],
+      hidden: [
+        {name:"Endo Sushi (mercado Osaka)", note:"5 piezas, desayuno con sushi recién pescado, abre a las 5am ★"},
+        {name:"Yakiniku Marukin", note:"Yakiniku familiar lejos del foco turístico"},
+        {name:"Kissa American", note:"Café retro de los 50, hotcakes míticos"}
+      ],
+      nice: [
+        {name:"Ichiran Dōtonbori", note:"Ramen 24h cuando todo cierra"},
+        {name:"Pablo Cheese Tart", note:"Tarta de queso recién hecha, original de Osaka"}
+      ]
+    }
+  }
+};
+
+const routes = {
+  A: {
+    name: "Clásico Imperial",
+    color: "#bf3625",
+    description: "Recorrido tradicional: Tokyo como base de entrada, ascensión al Fuji desde Kawaguchiko, dos noches de ryokan en Hakone, cuatro noches en Kyoto con día a Nara, y cierre en Osaka. Menos shinkansen, más tiempo en cada lugar, foco en patrimonio imperial.",
+    stopList: [
+      {id:"tokyo", nights:4},
+      {id:"kawaguchiko", nights:2},
+      {id:"hakone", nights:2},
+      {id:"kyoto", nights:4},
+      {id:"osaka", nights:2}
+    ]
+  },
+  B: {
+    name: "Slow · Off-the-beaten-path",
+    color: "#1f3a5f",
+    description: "Itinerario más amplio geográficamente, incluye Alpes japoneses (Matsumoto + Kamikōchi), Kanazawa por el mar de Japón, una noche de templo monástico en Koyasan, y menos noches en las ciudades grandes. Más kilómetros pero mucho menos turismo masivo. Ideal si Tokyo y Osaka os interesan menos.",
+    stopList: [
+      {id:"tokyo", nights:3},
+      {id:"kawaguchiko", nights:2},
+      {id:"matsumoto", nights:2},
+      {id:"kanazawa", nights:2},
+      {id:"kyoto", nights:2},
+      {id:"koyasan", nights:1},
+      {id:"osaka", nights:2}
+    ]
+  }
+};
+
+const packing = {
+  "Ropa": {
+    icon: "👕",
+    items: [
+      {label:"Camisetas técnicas transpirables (5-6)", note:"★ humedad extrema, algodón se queda mojado"},
+      {label:"Pantalón ligero / shorts (2-3)", note:"Cuidado: muchos templos no permiten shorts cortos"},
+      {label:"1 conjunto largo respetuoso para templos", note:""},
+      {label:"Chaqueta cortavientos ligera", note:"Para tormentas vespertinas"},
+      {label:"Capa térmica + forro polar fino", note:"★ Solo para la cima del Fuji"},
+      {label:"Pantalón largo trekking para Fuji", note:"★ Imprescindible para la cima"},
+      {label:"Gorra o sombrero ala ancha", note:"★ Sol intenso de agosto"},
+      {label:"Calcetines técnicos × 5", note:"Mejor merino para no sudar"},
+      {label:"Calcetines limpios para tatami", note:"Os los van a ver mucho"},
+      {label:"Yukata propio o usar el del ryokan", note:""}
+    ]
+  },
+  "Equipamiento outdoor": {
+    icon: "🎒",
+    items: [
+      {label:"Botas de trekking ya rodadas", note:"★ Para el Fuji - no estrenar"},
+      {label:"Zapatillas urbanas cómodas", note:"★ Vais a andar 15-20km al día"},
+      {label:"Sandalias o chanclas para ryokan/onsen", note:""},
+      {label:"Frontal con pilas nuevas", note:"★ Ascensión nocturna al Fuji obligatorio"},
+      {label:"Bastones de trekking plegables", note:"Recomendado para bajada del Fuji"},
+      {label:"Mochila de día 20-25L", note:""},
+      {label:"Botella reutilizable 1L", note:"Hay máquinas expendedoras cada 50m"},
+      {label:"Toalla pequeña tipo tenugui", note:"★ Para sudor y para onsen"},
+      {label:"Impermeable / poncho compacto", note:"Tifones posibles"},
+      {label:"Saco de dormir liner (Koyasan/refugio Fuji)", note:"Solo si ruta B o refugio Fuji"}
+    ]
+  },
+  "Documentos": {
+    icon: "📄",
+    items: [
+      {label:"Pasaporte válido (mín. 6 meses)", note:"★ Crítico"},
+      {label:"Permiso ascensión Fuji + reserva refugio", note:"★ Sistema nuevo desde 2024"},
+      {label:"JR Pass voucher (canjear a la llegada)", note:"O comprar online JR East/Central por separado"},
+      {label:"Tarjeta IC (Suica/Pasmo) o app móvil", note:"Para metro y conbinis"},
+      {label:"Reservas de hoteles/ryokan impresas", note:"Algunos ryokan no usan email"},
+      {label:"Seguro de viaje con cobertura tifón", note:"★"},
+      {label:"Tarjeta sanitaria europea / privada", note:""},
+      {label:"Carnet de conducir internacional", note:"Solo si pensáis alquilar coche"},
+      {label:"Copia digital de todo en la nube", note:""}
+    ]
+  },
+  "Tecnología": {
+    icon: "🔌",
+    items: [
+      {label:"Adaptador enchufe tipo A (USA-style)", note:"★ Diferente al europeo"},
+      {label:"Powerbank 10.000mAh", note:"★ Móvil tirando todo el día con Google Maps"},
+      {label:"Cargador rápido USB-C múltiple", note:""},
+      {label:"SIM japonesa o eSIM (Mobal, Sakura)", note:"★ Pedir antes de salir"},
+      {label:"Pocket WiFi (alternativa a SIM)", note:"Si viajáis con más dispositivos"},
+      {label:"Auriculares con cancelación de ruido", note:"Para vuelo largo y shinkansen"},
+      {label:"Cámara + 2 baterías + tarjetas", note:""},
+      {label:"Cable de cámara y lector tarjetas", note:""}
+    ]
+  },
+  "Aseo / botiquín": {
+    icon: "💊",
+    items: [
+      {label:"Crema solar SPF 50+", note:"★ Más cara en Japón, traer de casa"},
+      {label:"Repelente de mosquitos", note:"Agosto es temporada"},
+      {label:"After-bite", note:""},
+      {label:"Toallitas refrescantes mentoladas", note:"Las venden allí, salvavidas en el calor"},
+      {label:"Hidratante labial con SPF", note:""},
+      {label:"Ibuprofeno / paracetamol", note:"Marcas locales con dosis distintas"},
+      {label:"Loperamida (anti-diarréico)", note:"Por si acaso"},
+      {label:"Tiritas tipo Compeed para ampollas", note:"★ 20km de Fuji y caminatas en Kyoto"},
+      {label:"Imodium / sales de rehidratación", note:""},
+      {label:"Probióticos / encimas digestivas", note:"Cambio de microbiota"},
+      {label:"Gel hidroalcohólico pequeño", note:""}
+    ]
+  },
+  "Extras útiles": {
+    icon: "✨",
+    items: [
+      {label:"Abanico plegable", note:"★ Trick local, es lo que llevan los abuelos"},
+      {label:"Toallita refrescante reutilizable", note:""},
+      {label:"Bolsa lavandería ligera", note:"Hay coin laundry en casi todos los hoteles"},
+      {label:"Detergente en cápsulas individuales (3-4)", note:""},
+      {label:"Cinturón / riñonera anti-robo", note:"Más por costumbre que por necesidad real"},
+      {label:"Diccionario japonés básico o app offline", note:"Google Translate cámara funciona muy bien"},
+      {label:"Tarjetas de visita en inglés", note:"Cultura de meishi, útiles si conocéis a alguien"},
+      {label:"Pañuelo tenugui o furoshiki", note:"Multiuso, regalo cultural"},
+      {label:"Cuaderno de viaje + bolígrafo", note:"Para sellos goshuin de templos"},
+      {label:"Bolsa para zapatos (al entrar en templos)", note:""}
+    ]
+  }
+};
+
+/* =========================================================================
+   TAB SWITCHING
+   ========================================================================= */
+const tabs = document.querySelectorAll('.tab-btn');
+const panels = document.querySelectorAll('section.panel');
+tabs.forEach(t => t.addEventListener('click', () => {
+  tabs.forEach(x => x.classList.remove('active'));
+  panels.forEach(x => x.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById(t.dataset.tab).classList.add('active');
+  if(t.dataset.tab === 'rutas' && map){
+    setTimeout(()=> map.invalidateSize(), 80);
+  }
+}));
+
+/* =========================================================================
+   MAP + ROUTES
+   ========================================================================= */
+let map, routeLayer;
+let currentRoute = 'A';
+
+function initMap(){
+  map = L.map('map', {scrollWheelZoom:false}).setView([35.5, 137.5], 6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:'© OpenStreetMap',
+    maxZoom: 18
+  }).addTo(map);
+  routeLayer = L.layerGroup().addTo(map);
+  drawRoute('A');
+}
+
+function drawRoute(key){
+  currentRoute = key;
+  routeLayer.clearLayers();
+  const route = routes[key];
+  const latlngs = [];
+
+  route.stopList.forEach((s, i) => {
+    const stop = stops[s.id];
+    const ll = [stop.lat, stop.lng];
+    latlngs.push(ll);
+    const icon = L.divIcon({
+      className: '',
+      html: `<div class="num-marker-inner" style="background:${route.color}">${i+1}</div>`,
+      iconSize: [34,34],
+      iconAnchor: [17,17]
+    });
+    const marker = L.marker(ll, {icon}).addTo(routeLayer);
+    marker.bindPopup(`<b>${stop.name}</b><br>${stop.jp}<br>${s.nights} noches`);
+    marker.on('click', () => showStopDetails(s.id, s.nights, key));
+  });
+
+  L.polyline(latlngs, {
+    color: route.color,
+    weight: 2.5,
+    opacity: .75,
+    dashArray: '6,8'
+  }).addTo(routeLayer);
+
+  map.fitBounds(L.latLngBounds(latlngs).pad(0.15));
+
+  // Update text
+  document.getElementById('route-desc').textContent = route.description;
+  document.getElementById('route-name').textContent = route.name;
+
+  // Render itinerary
+  const list = document.getElementById('itinerary-list');
+  list.innerHTML = '';
+  route.stopList.forEach((s, i) => {
+    const stop = stops[s.id];
+    const row = document.createElement('div');
+    row.className = 'iti-stop';
+    row.style.cursor = 'pointer';
+    row.innerHTML = `
+      <div class="iti-num" style="background:${route.color}">${i+1}</div>
+      <div class="iti-name">${stop.name} <span style="font-family:'Shippori Mincho',serif;font-size:13px;color:var(--muted);margin-left:8px">${stop.jp}</span></div>
+      <div class="iti-nights">${s.nights} ${s.nights===1?'noche':'noches'}</div>
+    `;
+    row.addEventListener('click', () => {
+      showStopDetails(s.id, s.nights, key);
+      document.getElementById('map').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    list.appendChild(row);
+  });
+
+  // Reset stop panel
+  const panel = document.getElementById('stop-panel');
+  panel.classList.add('empty');
+  panel.innerHTML = 'Selecciona un marcador en el mapa<br>para ver los detalles de la parada.';
+}
+
+function showStopDetails(id, nights, routeKey){
+  const stop = stops[id];
+  const route = routes[routeKey];
+  const idx = route.stopList.findIndex(s => s.id === id) + 1;
+  const panel = document.getElementById('stop-panel');
+  panel.classList.remove('empty');
+
+  const renderItems = (items) => items.map(i => `
+    <div class="activity-item">
+      <div class="text"><b>${i.name}</b><span>${i.note}</span></div>
+    </div>
+  `).join('');
+
+  panel.innerHTML = `
+    <div class="stop-panel-content">
+      <h3><span class="stop-num" style="background:${route.color}">${idx}</span> ${stop.name}</h3>
+      <div style="font-family:'Shippori Mincho',serif;color:var(--muted);font-size:14px;margin-top:6px;letter-spacing:.15em">${stop.jp}</div>
+      <div class="stop-meta">
+        <div>🌙 <b>${nights}</b> ${nights===1?'noche':'noches'}</div>
+        <div>💴 <b>€${stop.avgCostPerDay}</b>/día (2 pax)</div>
+        <div>🌤️ ${stop.weather}</div>
+      </div>
+      <p class="stop-desc">${stop.description}</p>
+
+      <div class="category-block">
+        <h4>🔴 Compulsory · imprescindibles</h4>
+        <div class="activity-list">${renderItems(stop.activities.must)}</div>
+      </div>
+      <div class="category-block">
+        <h4>💎 Hidden gems</h4>
+        <div class="activity-list">${renderItems(stop.activities.hidden)}</div>
+      </div>
+      <div class="category-block">
+        <h4>🟢 Nice to see</h4>
+        <div class="activity-list">${renderItems(stop.activities.nice)}</div>
+      </div>
+
+      <div class="category-block" style="margin-top:26px;padding-top:18px;border-top:1px solid var(--line)">
+        <h4 style="color:var(--vermilion)">🍱 Restaurantes</h4>
+      </div>
+      <div class="category-block">
+        <h4>🔴 No te los pierdas</h4>
+        <div class="activity-list">${renderItems(stop.restaurants.must)}</div>
+      </div>
+      <div class="category-block">
+        <h4>💎 Hidden gems gastronómicos</h4>
+        <div class="activity-list">${renderItems(stop.restaurants.hidden)}</div>
+      </div>
+      <div class="category-block">
+        <h4>🟢 Si os queda tiempo</h4>
+        <div class="activity-list">${renderItems(stop.restaurants.nice)}</div>
+      </div>
+    </div>
+  `;
+  panel.scrollTop = 0;
+}
+
+// Route toggle buttons
+document.querySelectorAll('.route-toggle button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.route-toggle button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    drawRoute(b.dataset.route);
+  });
+});
+
+/* =========================================================================
+   CHART.JS
+   ========================================================================= */
+function initChart(){
+  const ctx = document.getElementById('budgetChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Vuelos', 'Alojamiento', 'Transporte interno', 'Comida', 'Actividades', 'Misceláneos'],
+      datasets: [{
+        data: [2400, 2100, 1000, 1500, 500, 300],
+        backgroundColor: [
+          '#bf3625',  // vermilion - vuelos
+          '#1f3a5f',  // indigo - hotel
+          '#a87e30',  // kincha - transporte
+          '#5b7a3a',  // moss - comida
+          '#dc9696',  // sakura - actividades
+          '#7a6f60'   // muted - misc
+        ],
+        borderColor: '#fffdf6',
+        borderWidth: 3,
+        hoverOffset: 14
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '58%',
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            font: {family: 'Zen Kaku Gothic Antique', size: 12},
+            color: '#3a322a',
+            padding: 14,
+            boxWidth: 12,
+            boxHeight: 12
+          }
+        },
+        tooltip: {
+          backgroundColor: '#1a1612',
+          titleFont: {family: 'Shippori Mincho', size: 14},
+          bodyFont: {family: 'DM Mono', size: 12},
+          padding: 12,
+          callbacks: {
+            label: (c) => ` ${c.label}: €${c.parsed.toLocaleString('es-ES')}`
+          }
+        }
+      }
+    }
+  });
+}
+
+/* =========================================================================
+   PACKING LIST
+   ========================================================================= */
+function initPacking(){
+  const grid = document.getElementById('packingGrid');
+  let total = 0;
+  let stored = {};
+  try {
+    stored = JSON.parse(localStorage.getItem('jp_packing') || '{}');
+  } catch(e){ stored = {}; }
+
+  Object.keys(packing).forEach(cat => {
+    const obj = packing[cat];
+    const box = document.createElement('div');
+    box.className = 'pack-category';
+    let html = `<h3><span class="ico">${obj.icon}</span> ${cat}</h3>`;
+    obj.items.forEach((item, i) => {
+      const id = `pk_${cat.replace(/\W/g,'')}_${i}`;
+      const checked = stored[id] ? 'checked' : '';
+      html += `
+        <label class="pack-item" for="${id}">
+          <input type="checkbox" id="${id}" ${checked}>
+          <span>${item.label}${item.note?`<span class="note">${item.note}</span>`:''}</span>
+        </label>
+      `;
+      total++;
+    });
+    box.innerHTML = html;
+    grid.appendChild(box);
+  });
+
+  document.getElementById('totalCount').textContent = total;
+
+  function updateProgress(){
+    const checks = grid.querySelectorAll('input[type=checkbox]');
+    let done = 0;
+    const state = {};
+    checks.forEach(c => {
+      state[c.id] = c.checked;
+      if(c.checked) done++;
+    });
+    document.getElementById('packedCount').textContent = done;
+    document.getElementById('progressFill').style.width = (done/total*100)+'%';
+    try { localStorage.setItem('jp_packing', JSON.stringify(state)); } catch(e){}
+  }
+
+  grid.addEventListener('change', updateProgress);
+  document.getElementById('resetPack').addEventListener('click', () => {
+    grid.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
+    updateProgress();
+  });
+
+  updateProgress();
+}
+
+/* =========================================================================
+   INIT
+   ========================================================================= */
+window.addEventListener('DOMContentLoaded', () => {
+  initMap();
+  initChart();
+  initPacking();
+});
+</script>
+
+</body>
+</html>

@@ -24,6 +24,7 @@ export type Caso = {
   tip?: string;
   warning?: string;
   related?: string[]; // ids de casos relacionados
+  assets?: { label: string; url: string; kind?: "demo" | "download" }[]; // Demos y descargas
 };
 
 export const casos: Caso[] = [
@@ -227,44 +228,67 @@ export const casos: Caso[] = [
   // ============ VIDA DIARIA · MEDIO ============
   {
     id: "planificar-viaje",
-    title: "Planificar un viaje en grupo",
+    title: "Planificador de viaje interactivo",
     level: "medio",
     category: "vida-diaria",
     icon: "✈️",
-    short: "Itinerario día a día con peques, restricciones y presupuesto.",
+    short:
+      "Pídeselo bien y te devuelve una página entera: entrevista, dos rutas con mapa, presupuesto, vuelos reales y checklist de equipaje.",
     scenario:
-      "5 días en Lisboa con dos peques. Quieres playa, algo cultural, comida buena, y no llegar muertos al hotel.",
-    tool: "ChatGPT con búsqueda web activada, o Perplexity.",
+      "Quieres planificar un viaje (5 días, 15 días, en grupo, con peques) sin pelearte con 12 pestañas abiertas. Le pides a Claude un único HTML interactivo con todo: vuelos reales, dos rutas en mapa, presupuesto con gráfico y checklist de equipaje.",
+    tool: "Claude (mejor con artifacts) o ChatGPT. Conviene activar búsqueda web.",
     flow: [
-      "Da el contexto completo: fechas, gente, edades, presupuesto, lo que NO te gusta.",
-      "Pide itinerario día por día.",
-      "Pide alternativas para días de lluvia y zonas alternativas.",
-      "Pídele que verifique horarios de los sitios que recomienda (es lo más fácil que se equivoque).",
+      "Copia el prompt de abajo y pégalo en Claude.",
+      "Antes de construir nada, Claude te entrevista (origen, destino, fechas, presupuesto, estilo, imprescindibles, lo que evitar).",
+      "Confirma tus respuestas en una línea resumen y genera un HTML autocontenido con pestañas: Overview, Vuelos, Rutas en mapa, Presupuesto, Clima, Equipaje.",
+      "Te lo manda como archivo. Lo abres en el navegador, retocas, e iteras: 'añade un día más en Kioto', 'cambia ruta B por costa norte', etc.",
     ],
     prompt:
-      "Planifica un viaje a Lisboa del 15 al 19 de junio. Somos 2 adultos, 2 niños (6 y 9 años). Presupuesto medio. Nos gusta caminar, comer bien, museos cortos. Detestamos colas de 2 horas. Itinerario día por día con horarios reales (verifica en internet), restaurantes con plato típico y precio aproximado, plan B para día de lluvia.",
-    tip: "Para reservas concretas (hoteles, vuelos) sigue usando Booking/Skyscanner. La IA puede inventar precios y disponibilidad.",
+      "Quiero que me construyas un plan de viaje interactivo en HTML, como un único archivo .html autocontenido que pueda abrir directamente en el navegador.\n\nPaso 1 — Entrevístame primero. No empieces a construir todavía.\nHazme las preguntas de abajo antes de escribir nada. Agrúpalas en unas pocas rondas de opción múltiple cuando tenga sentido — dame opciones razonables más una vía \"Otro\" / texto libre para poder sobrescribir. Para las preguntas abiertas (imprescindibles, lo que evitar, intereses especiales), pregúntalas directamente. Confírmame mis respuestas en una línea resumen antes de empezar a construir.\n\nPreguntas a cubrir:\n• Ciudad de origen — ¿desde dónde vuelo? (dame algunas opciones probables para hubs grandes, más Otro)\n• Destino / región — ¿una sola ciudad, varias ciudades, un país o una región?\n• Fechas de viaje o temporada — fechas exactas si las sé, si no temporada + año\n• Duración — número de días\n• Viajeros — cuántos adultos / niños, alguna consideración de movilidad\n• Nivel de presupuesto — mochilero / medio / cómodo / lujo (y una cifra orientativa total si la tengo)\n• Estilo de viaje — marca todas las que apliquen: aire libre activo, lento y cultural, gastronómico, vida nocturna, fotografía, familiar, romántico, aventura/extremo, bienestar, mucha historia\n• Imprescindibles — pregunta abierta: experiencias innegociables, restaurantes, barrios, hoteles ya reservados, etc.\n• Evitar — pregunta abierta: lo que quiero saltarme (masificaciones, hoteles de cadena, caminatas extremas, comidas concretas, etc.)\n• Intereses especiales — pregunta abierta: hobbies o nichos para entrelazar (jazz, tiendas vintage, geología, arquitectura concreta, surf, etc.)\n• Preferencia de transporte en destino — coche de alquiler / transporte público / trenes / tours guiados / mix\n• Ritmo — apretado / equilibrado / pausado\n\nSi doy respuestas vagas o contradictorias, presióname con suavidad y aclara antes de construir.\n\nPaso 2 — Cuando hayas confirmado mis respuestas, construye el HTML con estas secciones (todas como pestañas en una misma página):\n\n• Overview — números destacados (duración, estimación total, por día y persona, distancia/transporte, horas de luz o nota estacional relevante) y un párrafo corto por cada ruta.\n• Opciones de vuelo — al menos 4 opciones reales de aerolíneas del origen al destino, con:\n   – Aerolínea, ruta (directo vs. con escala), duración aproximada y banda de precio aproximada\n   – URL directa de reserva con la aerolínea Y un agregador (Skyscanner / Google Flights / Kayak / Momondo)\n   – Una fila \"comparar en todas\" al final con todos los agregadores\n• Dos opciones de ruta distintas — Ruta A y Ruta B con enfoques diferentes (clásica vs. menos turística, rápida vs. lenta, norte vs. sur, etc.). Cada ruta renderizada en un mapa interactivo de Leaflet con:\n   – Marcadores numerados unidos por una polilínea\n   – Al hacer clic en un marcador, se abre un panel lateral con todo lo de esa parada\n   – Un toggle para cambiar de ruta (el mapa se redibuja)\n   – Una tira día a día del itinerario debajo\n• Detalles por parada (al hacer clic en el marcador):\n   – Párrafo corto de contexto\n   – Actividades clasificadas como 🔴 Imprescindibles / 💎 Joyas escondidas / 🟢 Nice to see\n   – Restaurantes clasificados igual\n   – Coste medio diario\n   – Mini ficha del tiempo para la temporada elegida\n• Resumen de presupuesto:\n   – Precio medio por día por persona + coste total del viaje\n   – Desglose por categoría (vuelos, alojamiento, transporte, comida, actividades, misc) como un doughnut de Chart.js + lista detallada\n   – Tabla comparativa Ruta A vs. Ruta B\n• Tiempo y mejor época para visitar — grid de 12 meses con el mes elegido marcado como \"MEJOR\", más una narrativa corta sobre qué esperar y qué se gana/pierde visitando en ese momento.\n• Checklist de equipaje — específico del destino, específico de la temporada, agrupado por categoría (ropa, calzado, equipo, documentos, tecnología, aseo), con checkboxes que funcionan y una barra de progreso.\n\nRequisitos de diseño:\n• Un único archivo .html autocontenido, aspecto moderno, responsive en móvil\n• Navegación superior con pestañas pegajosas (sticky)\n• Leaflet 1.9+ desde CDN con tiles de OpenStreetMap\n• Chart.js desde CDN para el gráfico de presupuesto\n• Paleta de colores inspirada en el destino\n• Todas las URLs de reserva deben ser reales y funcionar\n\nReglas de calidad de los datos:\n• Vuelos: aerolíneas reales que cubran de verdad esa ruta, URLs de reserva reales — sin números de vuelo inventados\n• Actividades y restaurantes: lugares reales con nombre (puntos famosos O joyas escondidas de verdad conocidas)\n• Precios: rangos realistas para el nivel de presupuesto indicado, claramente etiquetados como estimaciones\n• Sé honesto con los límites de temporada (ej. \"cuevas de hielo: solo en invierno\", \"ferry: horario de verano\")",
+    tip: "Para reservas concretas (hoteles, vuelos) sigue usando Booking/Skyscanner. La IA puede inventar precios y disponibilidad, así que el HTML es el plan, no el ticket.",
+    assets: [
+      {
+        label: "Demo · Japón 15 días",
+        url: "/slides/demos/japon-15-dias.html",
+        kind: "demo",
+      },
+    ],
   },
   {
     id: "categorizar-gastos",
-    title: "Categorizar gastos del banco",
+    title: "Extracto bancario → Excel limpio",
     level: "medio",
     category: "vida-diaria",
     icon: "💰",
-    short: "Extracto bancario en bruto → tabla por categorías + gráfico.",
+    short:
+      "Subes el extracto tal cual sale del banco. Recibes un Excel con categorías, gráfico, ingresos vs gastos y proyección anual — con fórmulas reales.",
     scenario:
-      "Fin de mes. Quieres saber dónde se va el dinero. Tu banco no te lo categoriza bien o te miente.",
-    tool: "ChatGPT con Code Interpreter (Data Analysis)",
+      "Fin de mes. Abres el extracto de OpenBank y el campo 'Concepto' es un desastre: mezcla método de pago, número de tarjeta y fecha repetida con el comercio enterrado entre todo eso. Quieres saber a dónde se te va el dinero sin pasarte la tarde con tablas dinámicas.",
+    tool: "Claude (con archivos adjuntos) o ChatGPT con Data Analysis.",
     flow: [
-      "Anonimiza el extracto: borra números de cuenta, nombres completos.",
-      "Pégalo o súbelo como CSV / PDF.",
-      "Pídele categorización + gráfico + 3 patrones que veas.",
+      "Anonimiza primero: borra IBAN, nombre del titular y cualquier dato sensible.",
+      "Adjunta el .xlsx tal cual lo descargaste del banco.",
+      "Pega el prompt de abajo y deja que Claude limpie el 'Concepto', categorice y construya las 4 hojas.",
+      "Te devuelve un único .xlsx con fórmulas reales: si editas una categoría, los totales y el gráfico se recalculan solos.",
     ],
     prompt:
-      "Anonimicé este extracto. Categoriza los gastos en: vivienda, alimentación, transporte, ocio, suscripciones, otros. Muéstrame una tabla con totales y un gráfico de barras. Sugiéreme 3 cosas concretas que podría reducir sin sacrificar calidad de vida.",
+      "Te adjunto el extracto de mi cuenta de OpenBank de abril de 2026, tal cual sale del banco. Es un Excel con varias filas de cabecera arriba (Descripción, Titular, Saldo, Número de Cuenta, fecha de descarga) y luego una lista de movimientos con las columnas: Fecha Operación, Fecha Valor, Concepto, Importe, Saldo.\n\nEl campo \"Concepto\" tiene mucho ruido: incluye el método de pago (Google pay / Apple pay), el número de tarjeta, la fecha repetida, y el comercio enterrado entre todo eso. También hay transferencias mezcladas con compras.\n\nQuiero que me devuelvas un único archivo Excel (.xlsx) con todo esto:\n\n1. Hoja \"Movimientos\": una fila por operación con estas columnas — Fecha, Concepto original (déjalo tal cual viene del banco, para que pueda revisar a posteriori si alguna categoría está mal asignada), Comercio (extraído del Concepto, limpio), Categoría, Tipo (compra / transferencia salida / transferencia entrada / nómina / suscripción), Importe, Saldo.\n\n2. Categoriza cada movimiento en una de estas categorías: Supermercado, Comida fuera, Combustible, Transporte, Suscripciones, Ocio, Ropa, Salud, Hogar (suministros), Alquiler, Transferencias personales, Otros. Si dudas, \"Otros\".\n\n3. Hoja \"Resumen por categoría\": total gastado, número de operaciones, importe medio y porcentaje sobre el gasto total de cada categoría. Ordenado de mayor a menor.\n\n4. Hoja \"Ingresos vs Gastos\": total ingresos del mes, total gastos del mes, ahorro neto y ratio ahorro/ingresos.\n\n5. Inserta un gráfico circular del reparto del gasto por categoría en la hoja Resumen.\n\n6. Hoja \"Conclusiones\": una frase con dónde se me va más dinero, un consejo concreto y accionable para reducir gasto sin sufrir, y una proyección anual: si sigo gastando así todo el año, cuánto ahorraré o dejaré de ahorrar respecto a un objetivo razonable del 20% de la nómina.\n\nUsa fórmulas reales de Excel cuando puedas, no valores hardcodeados, para que pueda editar el archivo y se actualice solo.",
+    tip: "El truco está en pedir las fórmulas (SUMIFS, COUNTIFS, %) en vez de números fijos. Así el Excel sigue vivo y puedes recategorizar un par de filas sin que se rompa nada.",
     warning:
-      "Quita siempre datos personales antes de subir nada. En el plan gratis, tus chats pueden usarse para entrenar.",
+      "Anonimiza ANTES de subir: borra IBAN, nombre del titular, número de cuenta. En planes gratuitos los chats pueden usarse para entrenar.",
     related: ["dividir-cuenta"],
+    assets: [
+      {
+        label: "Extracto OpenBank de muestra (.xlsx)",
+        url: "/slides/demos/extracto-openbank-abril-2026.xlsx",
+        kind: "download",
+      },
+      {
+        label: "Análisis resultante (.xlsx)",
+        url: "/slides/demos/extracto-abril-2026-analisis.xlsx",
+        kind: "download",
+      },
+    ],
   },
   {
     id: "buscar-producto-foto",

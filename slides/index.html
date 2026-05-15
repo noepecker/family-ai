@@ -11,6 +11,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&display=swap" rel="stylesheet">
+  <style>
+    /* Typewriter caret */
+    [data-typewriter].typing::after {
+      content: "▍";
+      display: inline-block;
+      margin-left: 2px;
+      color: var(--accent);
+      animation: tw-blink 0.9s steps(1) infinite;
+      transform: translateY(-2px);
+    }
+    @keyframes tw-blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
 
@@ -100,6 +115,7 @@
         </div>
       </div>
       <p class="bottom-note">Un LLM <strong>no razona</strong>. No tiene consciencia. Predice la siguiente palabra usando patrones aprendidos de billones de textos. Toda la magia viene de la escala.</p>
+      <a class="deepen" href="/explorar/fundamentos-ia?from=metafora" target="_blank">La metáfora completa · cómo funciona un LLM</a>
     </section>
 
     <!-- 05. Cronología condensada (5 hitos clave) -->
@@ -172,28 +188,137 @@
     </section>
 
     <!-- ===================================================================
-         BLOQUE 3 · DEMO EN VIVO (1 slide)
+         BLOQUE 3 · DEMO EN VIVO + CÓMO HABLARLE (7 slides)
          =================================================================== -->
 
     <section class="chapter" data-background-color="#0a0a0f">
       <div class="chapter-number">03</div>
-      <h2 class="chapter-title">Demo en vivo<br>¿Qué sabe ChatGPT?</h2>
-      <p class="chapter-sub">7 minutos · demo en vivo</p>
-      <div class="placeholder">[ DEMO EN VIVO — fallback: vídeo grabado en assets/demo-chatgpt.mp4 ]</div>
+      <h2 class="chapter-title">Demo en vivo<br>Cómo hablarle</h2>
+      <p class="chapter-sub">15 minutos · demo + el bloque más útil de hoy</p>
       <a class="deepen" href="/casos?nivel=curioso&from=demo-chatgpt" target="_blank">Los casos que probaremos</a>
     </section>
 
-    <!-- ===================================================================
-         BLOQUE 4 · CÓMO HABLARLE (2 slides)
-         =================================================================== -->
-
-    <section class="chapter" data-background-color="#0a0a0f">
-      <div class="chapter-number">04</div>
-      <h2 class="chapter-title">Cómo hablarle<br>para que te haga caso</h2>
-      <p class="chapter-sub">8 minutos · el bloque más útil de hoy</p>
+    <!-- ============ 03.1 · Tipos de IA (Marcos) ============ -->
+    <section>
+      <h3 class="section-h">¿Qué IAs hay ahí fuera?</h3>
+      <div class="two-col compare">
+        <div class="col-good" style="border-top-color:var(--cool)">
+          <div class="col-header" style="color:var(--cool)">ESPECIALIZADAS</div>
+          <p style="font-size:24px;color:var(--fg);margin-bottom:18px"><strong>Una IA, una cosa.</strong> Hacen una sola tarea muy bien.</p>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="padding:8px 0;font-size:20px;border-bottom:1px solid var(--border)"><strong>Música</strong> · Suno · Udio</li>
+            <li style="padding:8px 0;font-size:20px;border-bottom:1px solid var(--border)"><strong>Voz</strong> · ElevenLabs</li>
+            <li style="padding:8px 0;font-size:20px;border-bottom:1px solid var(--border)"><strong>Imagen</strong> · Midjourney · DALL·E</li>
+            <li style="padding:8px 0;font-size:20px;border-bottom:1px solid var(--border)"><strong>Vídeo</strong> · Sora · Runway</li>
+            <li style="padding:8px 0;font-size:20px"><strong>Código</strong> · Cursor · Copilot</li>
+          </ul>
+        </div>
+        <div class="col-good" style="border-top-color:var(--accent)">
+          <div class="col-header" style="color:var(--accent)">PROPÓSITO GENERAL</div>
+          <p style="font-size:24px;color:var(--fg);margin-bottom:18px"><strong>Una IA, casi todo.</strong> Sirven para hablar, planear, resumir, programar…</p>
+          <div style="padding:16px 20px;background:var(--bg-elev);border-radius:10px;border:1px solid var(--accent);margin-bottom:12px">
+            <strong style="font-size:26px;color:var(--fg)">Claude</strong><br>
+            <span style="font-size:15px;color:var(--accent-soft);font-style:italic;font-family:var(--font-serif)">Anthropic · la que vamos a usar hoy</span>
+          </div>
+          <div style="padding:16px 20px;background:var(--bg-elev);border-radius:10px;border:1px solid var(--border-strong)">
+            <strong style="font-size:26px;color:var(--fg)">ChatGPT</strong><br>
+            <span style="font-size:15px;color:var(--fg-mute)">OpenAI · la más conocida</span>
+          </div>
+        </div>
+      </div>
+      <p class="bottom-note">Hoy vamos a usar <strong>Claude</strong> en directo. Lo que veáis funciona igual en ChatGPT.</p>
+      <a class="deepen" href="/explorar/herramientas-actuales?from=tipos-ia" target="_blank">El ecosistema completo · chatbots, creativas, código</a>
     </section>
 
-    <!-- 11. Las 5 técnicas que cambian todo (no 10) -->
+    <!-- ============ 03.2 · Qué es un prompt (Marcos) ============ -->
+    <section>
+      <h3 class="section-h">¿Qué es un prompt?</h3>
+      <p class="lede">Lo que le escribes. Tu pregunta. <strong>La calidad del prompt = calidad de la respuesta</strong>.</p>
+      <div class="two-col compare">
+        <div class="col-bad" style="border-top-color:var(--fg-mute)">
+          <div class="col-header" style="color:var(--fg-mute)">PROMPT FLOJO</div>
+          <p data-typewriter style="font-family:var(--font-serif);font-style:italic;font-size:30px;color:var(--fg);margin:0 0 20px;line-height:1.3">"Recomiéndame algo para cenar."</p>
+          <p style="font-size:20px;color:var(--fg-soft);margin:0">→ Te dice "pasta" o "ensalada" y ya. Genérico.</p>
+        </div>
+        <div class="col-good" style="border-top-color:var(--accent)">
+          <div class="col-header" style="color:var(--accent)">PROMPT BUENO</div>
+          <p data-typewriter style="font-family:var(--font-serif);font-style:italic;font-size:24px;color:var(--fg);margin:0 0 20px;line-height:1.3">"Tengo huevos, espinacas y arroz. Soy diabético. Receta rápida en 20 min."</p>
+          <p style="font-size:20px;color:var(--fg-soft);margin:0">→ Receta concreta, paso a paso, con lo que tienes.</p>
+        </div>
+      </div>
+      <a class="deepen" href="/explorar/buenas-practicas-prompting?from=prompt" target="_blank">Qué es un prompt · técnicas y plantillas</a>
+    </section>
+
+    <!-- ============ 03.3 · Fecha de corte (Marcos) ============ -->
+    <section>
+      <h3 class="section-h">Trampa 1 · La fecha de corte</h3>
+      <p class="lede">La IA aprendió leyendo internet <em>hasta una fecha</em>. Después de eso… no sabe nada.</p>
+      <div class="story" style="margin-top:24px">
+        <p style="color:var(--accent);font-family:var(--font-mono);font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 6px !important">Prompt 1</p>
+        <p data-typewriter style="font-family:var(--font-serif);font-style:italic;font-size:30px;margin:0 0 8px !important;color:var(--fg)">"¿Cuándo fue tu fecha de corte?"</p>
+        <p style="font-size:18px;color:var(--fg-soft);margin:0 0 24px !important">→ Te confiesa hasta cuándo aprendió.</p>
+
+        <p style="color:var(--accent);font-family:var(--font-mono);font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 6px !important;padding-top:16px;border-top:1px solid var(--border)">Prompt 2</p>
+        <p data-typewriter style="font-family:var(--font-serif);font-style:italic;font-size:30px;margin:0 0 8px !important;color:var(--fg)">"¿Cuándo murió Cruz Novillo?"</p>
+        <p style="font-size:18px;color:var(--fg-soft);margin:0">→ Si murió después de su corte, fallará o se inventará.</p>
+      </div>
+      <p class="bottom-note"><strong>Solución</strong> → activamos la búsqueda web y repetimos. Ahora sí responde — con enlaces.</p>
+      <a class="deepen" href="/explorar/privacidad-y-confianza?from=fecha-corte" target="_blank">Qué sabe (de verdad) la IA · privacidad y confianza</a>
+    </section>
+
+    <!-- ============ 03.4 · Alucinaciones (Marcos) ============ -->
+    <section>
+      <h3 class="section-h">Trampa 2 · Las alucinaciones</h3>
+      <p class="lede">Habla con <strong>la misma seguridad</strong> cuando acierta y cuando se equivoca. No sabe lo que no sabe.</p>
+      <div class="rule-box" style="margin-top:24px">
+        <p style="color:var(--accent);font-family:var(--font-mono);font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 12px !important">Pruébalo en directo</p>
+        <p data-typewriter class="big-rule" style="font-family:var(--font-serif);font-style:italic">"Quiero lavar mi coche, pero el lavado está a sólo <strong>100 metros</strong>. ¿Merece la pena coger el coche para ir?"</p>
+      </div>
+      <div style="margin-top:30px">
+        <p style="font-family:var(--font-mono);font-size:13px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Lo que hará la IA</p>
+        <p style="font-size:22px;color:var(--fg-soft);margin:0">Análisis serio de consumo, contaminación, tiempo…</p>
+      </div>
+      <a class="deepen" href="/explorar/privacidad-y-confianza?from=alucinaciones" target="_blank">Cuándo fiarte de la IA · Mata v. Avianca y casos reales</a>
+    </section>
+
+    <!-- ============ 03.5 · Verificación (Marcos) ============ -->
+    <section>
+      <h3 class="section-h">¿Cómo sé si me dice la verdad?</h3>
+      <div class="techniques">
+        <div class="t-card">
+          <span class="t-num">01</span>
+          <h4>Mira las fuentes</h4>
+          <p>Con búsqueda activada, te pone enlaces. Pincha y comprueba.</p>
+        </div>
+        <div class="t-card">
+          <span class="t-num">02</span>
+          <h4>Mira su razonamiento</h4>
+          <p>Ej: <em>"¿es 3821 primo?"</em>. Ves los cálculos paso a paso.</p>
+        </div>
+        <div class="t-card">
+          <span class="t-num">03</span>
+          <h4>Contrasta</h4>
+          <p>Si suena raro, pídele que lo explique con más detalle.</p>
+        </div>
+        <div class="t-card">
+          <span class="t-num">04</span>
+          <h4>Pregunta dos veces</h4>
+          <p>Con otras palabras. Si cambia, está inventando.</p>
+        </div>
+        <div class="t-card">
+          <span class="t-num">05</span>
+          <h4>"¿Estás seguro?"</h4>
+          <p>A veces, con eso, se desdice solo.</p>
+        </div>
+      </div>
+      <div class="open-question">
+        <span class="oq-mark">?</span>
+        <span class="oq-text">Si no controlas la materia, ¿cómo sabes si te miente?</span>
+      </div>
+      <a class="deepen" href="/explorar/buenas-practicas-prompting?from=verificacion" target="_blank">Verificar lo que dice la IA · técnicas completas</a>
+    </section>
+
+    <!-- ============ 03.6 · 5 técnicas que cambian la respuesta ============ -->
     <section>
       <h3 class="section-h">5 técnicas que cambian la respuesta</h3>
       <div class="techniques">
@@ -208,86 +333,366 @@
     </section>
 
     <!-- ===================================================================
-         BLOQUE 5 · UTILIDADES (1 slide)
+         BLOQUE 4 · UTILIDADES (1 slide)
          =================================================================== -->
 
     <section>
-      <div class="chapter-pointer">Cap. 05 · Utilidades en vivo</div>
-      <h3 class="section-h">Lo que está pasando ahora mismo</h3>
-      <div class="demos">
-        <div class="demo-card">
-          <span class="demo-icon">✈</span>
-          <h4>Viaje a Lisboa entero</h4>
-          <p>Itinerario, restaurantes, horarios verificados, plan B para lluvia.</p>
-          <p class="demo-meta">ChatGPT en vivo · 2 min</p>
-        </div>
-        <div class="demo-card">
-          <span class="demo-icon">🎙</span>
-          <h4>Clonación de voz</h4>
-          <p>Una voz hablando un idioma que no domina, conservando su timbre original.</p>
-          <p class="demo-meta">ElevenLabs</p>
-          <p class="demo-warn">⚠ Volveremos a esto en el bloque 09.</p>
-        </div>
-        <div class="demo-card">
-          <span class="demo-icon">🎵</span>
-          <h4>Canción a medida</h4>
-          <p>Suno V5 · pre-renderizada antes para no perder tiempo.</p>
-          <p class="demo-meta">Suno V5</p>
-        </div>
-        <div class="demo-card">
-          <span class="demo-icon">💻</span>
-          <h4>Web en 90 segundos</h4>
-          <p>"Crea una web para X" → app funcional. Sin tocar código.</p>
-          <p class="demo-meta">v0 / Lovable</p>
-        </div>
-        <div class="demo-card">
-          <span class="demo-icon">🎧</span>
-          <h4>PDF → podcast</h4>
-          <p>Subes un documento, sale un podcast de 2 voces. Útil si no tienes tiempo para leer.</p>
-          <p class="demo-meta">NotebookLM</p>
-        </div>
-        <div class="demo-card">
-          <span class="demo-icon">📊</span>
-          <h4>Extracto → gráfico</h4>
-          <p>Categoriza tus gastos del mes y te dice 3 cosas que podrías reducir.</p>
-          <p class="demo-meta">Code Interpreter</p>
-        </div>
-      </div>
+      <div class="chapter-number" style="color:var(--accent)">04</div>
+      <h3 class="section-h">Aplicaciones de la IA</h3>
+      <p class="lede">Desde planificar un viaje hasta clonar una voz, componer una canción o construir una web sin tocar código. En los próximos minutos veremos en vivo lo que ya está al alcance de cualquiera.</p>
       <a class="deepen" href="/herramientas?from=utilidades" target="_blank">Catálogo · 30+ herramientas</a>
     </section>
 
+    <!-- ============ 05.1 · Planificador de viaje (Marcos) ============ -->
+    <section id="planificador-viaje">
+      <h3 class="section-h">Planificador de viaje</h3>
+      <p class="lede" style="margin-bottom:24px">Pídeselo bien y te devuelve <strong>una página entera</strong>: te entrevista, construye dos rutas con mapa, presupuesto, vuelos reales y checklist de equipaje.</p>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:8px;align-items:start;max-width:1380px">
+
+        <!-- LEFT · Chat mockup -->
+        <div style="min-width:0;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">
+            <span style="width:9px;height:9px;border-radius:50%;background:var(--bad)"></span>
+            <span style="width:9px;height:9px;border-radius:50%;background:var(--warn)"></span>
+            <span style="width:9px;height:9px;border-radius:50%;background:var(--good)"></span>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute);letter-spacing:0.1em;text-transform:uppercase;margin-left:6px">chat · claude</span>
+          </div>
+
+          <div>
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px">Tú</div>
+            <div style="font-family:var(--font-serif);font-style:italic;font-size:20px;color:var(--fg);line-height:1.3">"Hazme un plan de viaje a Japón, 15 días."</div>
+          </div>
+
+          <div>
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--cool);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px">Claude</div>
+            <div style="font-size:16px;color:var(--fg-soft);line-height:1.55">Antes de construir nada, déjame preguntarte cuatro cosas:</div>
+            <ul style="list-style:none;padding:0;margin:10px 0 0;display:grid;gap:6px">
+              <li style="font-size:16px;color:var(--fg);padding-left:22px;position:relative"><span style="position:absolute;left:0;color:var(--cool);font-family:var(--font-mono);font-size:13px">→</span>¿Desde dónde vuelas?</li>
+              <li style="font-size:16px;color:var(--fg);padding-left:22px;position:relative"><span style="position:absolute;left:0;color:var(--cool);font-family:var(--font-mono);font-size:13px">→</span>¿Mochilero, medio, cómodo o lujo?</li>
+              <li style="font-size:16px;color:var(--fg);padding-left:22px;position:relative"><span style="position:absolute;left:0;color:var(--cool);font-family:var(--font-mono);font-size:13px">→</span>¿Algo que quieras evitar?</li>
+              <li style="font-size:16px;color:var(--fg);padding-left:22px;position:relative"><span style="position:absolute;left:0;color:var(--cool);font-family:var(--font-mono);font-size:13px">→</span>¿Ritmo apretado, equilibrado o pausado?</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:auto;padding-top:8px;border-top:1px dashed var(--border);font-family:var(--font-mono);font-size:13px;color:var(--accent-soft);letter-spacing:0.04em">
+            <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:8px;animation:tw-blink 0.9s steps(1) infinite;vertical-align:middle"></span>Construyendo HTML…
+          </div>
+        </div>
+
+        <!-- RIGHT · Result preview -->
+        <div style="min-width:0;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid var(--border)">
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase">japon-15-dias.html</span>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">Madrid → Tokio · 14 noches</span>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em">
+            <div style="padding:6px 8px;border-radius:6px;background:var(--bg-card);color:var(--accent);border:1px solid var(--accent);text-align:center">Vuelos</div>
+            <div style="padding:6px 8px;border-radius:6px;background:var(--bg-card);color:var(--fg-mute);border:1px solid var(--border);text-align:center">Rutas</div>
+            <div style="padding:6px 8px;border-radius:6px;background:var(--bg-card);color:var(--fg-mute);border:1px solid var(--border);text-align:center">Presup.</div>
+            <div style="padding:6px 8px;border-radius:6px;background:var(--bg-card);color:var(--fg-mute);border:1px solid var(--border);text-align:center">Clima</div>
+            <div style="padding:6px 8px;border-radius:6px;background:var(--bg-card);color:var(--fg-mute);border:1px solid var(--border);text-align:center">Equipaje</div>
+          </div>
+
+          <ul style="list-style:none;padding:0;margin:0;display:grid;gap:10px">
+            <li style="display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline;padding:10px 14px;background:var(--bg-card);border-radius:8px;border-left:3px solid var(--accent)">
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--accent)">01</span>
+              <span style="font-size:15px;color:var(--fg)"><strong>5 aerolíneas reales</strong> con URLs de reserva</span>
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">€900–1.400</span>
+            </li>
+            <li style="display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline;padding:10px 14px;background:var(--bg-card);border-radius:8px;border-left:3px solid var(--cool)">
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--cool)">02</span>
+              <span style="font-size:15px;color:var(--fg)"><strong>2 rutas</strong> en mapa Leaflet · clásica vs. alpes</span>
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">15 paradas</span>
+            </li>
+            <li style="display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline;padding:10px 14px;background:var(--bg-card);border-radius:8px;border-left:3px solid var(--warm)">
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--warm)">03</span>
+              <span style="font-size:15px;color:var(--fg)"><strong>Presupuesto</strong> con doughnut + comparativa A/B</span>
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">€4.200 tot.</span>
+            </li>
+            <li style="display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline;padding:10px 14px;background:var(--bg-card);border-radius:8px;border-left:3px solid var(--good)">
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--good)">04</span>
+              <span style="font-size:15px;color:var(--fg)"><strong>Equipaje</strong> · checklist por categoría con %</span>
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">Agosto</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px">
+        <a class="deepen" href="/casos/planificar-viaje?from=charla" target="_blank">Ver el caso completo</a>
+        <a class="deepen" href="/slides/demos/japon-15-dias.html" target="_blank">Ver demo · Japón 15 días</a>
+      </div>
+    </section>
+
+    <!-- ============ 05.2 · Voz clonada (Marcos) ============ -->
+    <section class="impact-slide">
+      <div class="impact-bg"></div>
+      <div class="impact-content">
+        <div class="impact-eyebrow">ElevenLabs · clonación de voz</div>
+        <p class="impact-quote">Madre mía…<br>qué <em>bochinche</em>.</p>
+        <p class="impact-foot"><strong>60 segundos</strong> de muestra · <strong>$11</strong> al mes · <strong>30+ idiomas</strong>.<br>Una persona que no ha dicho ni una palabra de esto.</p>
+      </div>
+      <div class="open-question">
+        <span class="oq-mark">?</span>
+        <span class="oq-text">Si oyes a tu hijo pidiendo dinero urgente, ¿cómo lo verificas?</span>
+      </div>
+    </section>
+
+    <!-- ============ 05.3 · Excel OpenBank (Marcos) ============ -->
+    <section id="excel-openbank">
+      <h3 class="section-h">Extracto bancario → Excel limpio</h3>
+      <p class="lede" style="margin-bottom:24px">Subo el extracto <strong>tal cual sale del banco</strong> y Claude me devuelve un Excel con movimientos categorizados, resumen por categoría, gráfico, ingresos vs gastos y proyección anual. <strong>Con fórmulas reales</strong> — edito una fila y se recalcula solo.</p>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:8px;align-items:start;max-width:1380px">
+
+        <!-- LEFT · Raw bank export -->
+        <div style="min-width:0;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid var(--border)">
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute);letter-spacing:0.1em;text-transform:uppercase">extracto-openbank.xlsx</span>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--bad)">crudo · sin tocar</span>
+          </div>
+
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--bad);letter-spacing:0.14em;text-transform:uppercase">Columna "Concepto"</div>
+
+          <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
+            <li style="padding:10px 12px;background:var(--bg-card);border-radius:6px;border-left:3px solid var(--bad);font-family:var(--font-mono);font-size:12px;color:var(--fg-soft);line-height:1.5;overflow-wrap:anywhere;word-break:break-word">Google pay: COMPRA EN MERCADONA, CON LA TARJETA : 5489…4444 EL 2026-04-02</li>
+            <li style="padding:10px 12px;background:var(--bg-card);border-radius:6px;border-left:3px solid var(--bad);font-family:var(--font-mono);font-size:12px;color:var(--fg-soft);line-height:1.5;overflow-wrap:anywhere;word-break:break-word">Apple pay: PAGO EN REPSOL E.S. AVDA, TARJETA 5489…4444 EL 2026-04-08</li>
+            <li style="padding:10px 12px;background:var(--bg-card);border-radius:6px;border-left:3px solid var(--bad);font-family:var(--font-mono);font-size:12px;color:var(--fg-soft);line-height:1.5;overflow-wrap:anywhere;word-break:break-word">TRANSFERENCIA RECIBIDA NOMINA EMPRESA SL ABRIL</li>
+            <li style="padding:10px 12px;background:var(--bg-card);border-radius:6px;border-left:3px solid var(--bad);font-family:var(--font-mono);font-size:12px;color:var(--fg-soft);line-height:1.5;overflow-wrap:anywhere;word-break:break-word">RECIBO NETFLIX INTERNATIONAL B.V. REF 4429301</li>
+          </ul>
+
+          <div style="margin-top:auto;padding-top:10px;border-top:1px dashed var(--border);font-family:var(--font-mono);font-size:12px;color:var(--fg-mute)">
+            Método, tarjeta, fecha y comercio mezclados en una sola línea.
+          </div>
+        </div>
+
+        <!-- RIGHT · Resumen por categoría (donut + leyenda) -->
+        <div style="min-width:0;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid var(--border)">
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase">analisis-abril-2026.xlsx</span>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--good)">4 hojas · fórmulas</span>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.06em">
+            <div style="padding:6px 4px;border-radius:6px;background:var(--bg-card);color:var(--fg-mute);border:1px solid var(--border);text-align:center">Movim.</div>
+            <div style="padding:6px 4px;border-radius:6px;background:var(--bg-card);color:var(--accent);border:1px solid var(--accent);text-align:center">Resumen</div>
+            <div style="padding:6px 4px;border-radius:6px;background:var(--bg-card);color:var(--fg-mute);border:1px solid var(--border);text-align:center">Ingr/Gas</div>
+            <div style="padding:6px 4px;border-radius:6px;background:var(--bg-card);color:var(--fg-mute);border:1px solid var(--border);text-align:center">Conclus.</div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:center;margin-top:4px">
+            <!-- Donut chart -->
+            <svg viewBox="0 0 120 120" style="width:150px;height:150px;display:block">
+              <circle cx="60" cy="60" r="42" fill="none" stroke="var(--bg-card)" stroke-width="14"/>
+              <g transform="translate(60 60) rotate(-90)">
+                <circle r="42" cx="0" cy="0" fill="none" stroke="#ff5722" stroke-width="14" stroke-dasharray="92.36 263.89"/>
+                <circle r="42" cx="0" cy="0" fill="none" stroke="#7aa2ff" stroke-width="14" stroke-dasharray="58.05 263.89" transform="rotate(126)"/>
+                <circle r="42" cx="0" cy="0" fill="none" stroke="#7ddb9b" stroke-width="14" stroke-dasharray="36.94 263.89" transform="rotate(205.2)"/>
+                <circle r="42" cx="0" cy="0" fill="none" stroke="#ffb39a" stroke-width="14" stroke-dasharray="29.03 263.89" transform="rotate(255.6)"/>
+                <circle r="42" cx="0" cy="0" fill="none" stroke="#f59e0b" stroke-width="14" stroke-dasharray="21.11 263.89" transform="rotate(295.2)"/>
+                <circle r="42" cx="0" cy="0" fill="none" stroke="#8a8a96" stroke-width="14" stroke-dasharray="26.39 263.89" transform="rotate(324)"/>
+              </g>
+              <text x="60" y="57" text-anchor="middle" fill="var(--fg-mute)" font-family="JetBrains Mono" font-size="7" letter-spacing="0.5">GASTO ABRIL</text>
+              <text x="60" y="71" text-anchor="middle" fill="var(--fg)" font-family="JetBrains Mono" font-size="11" font-weight="600">€1.842</text>
+            </svg>
+
+            <!-- Legend -->
+            <ul style="list-style:none;padding:0;margin:0;display:grid;gap:6px">
+              <li style="display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:12px;color:var(--fg)">
+                <span style="width:10px;height:10px;border-radius:2px;background:#ff5722"></span>
+                <span>Supermercado</span>
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">35%</span>
+              </li>
+              <li style="display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:12px;color:var(--fg)">
+                <span style="width:10px;height:10px;border-radius:2px;background:#7aa2ff"></span>
+                <span>Comida fuera</span>
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">22%</span>
+              </li>
+              <li style="display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:12px;color:var(--fg)">
+                <span style="width:10px;height:10px;border-radius:2px;background:#7ddb9b"></span>
+                <span>Combustible</span>
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">14%</span>
+              </li>
+              <li style="display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:12px;color:var(--fg)">
+                <span style="width:10px;height:10px;border-radius:2px;background:#ffb39a"></span>
+                <span>Suscripciones</span>
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">11%</span>
+              </li>
+              <li style="display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:12px;color:var(--fg)">
+                <span style="width:10px;height:10px;border-radius:2px;background:#f59e0b"></span>
+                <span>Hogar</span>
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">8%</span>
+              </li>
+              <li style="display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:12px;color:var(--fg-soft)">
+                <span style="width:10px;height:10px;border-radius:2px;background:#8a8a96"></span>
+                <span>Otros</span>
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute)">10%</span>
+              </li>
+            </ul>
+          </div>
+
+          <div style="margin-top:auto;padding-top:10px;border-top:1px dashed var(--border);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:baseline">
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.08em">Proyección anual</span>
+            <span style="font-family:var(--font-mono);font-size:13px;color:var(--accent-soft)">−€2.4k vs objetivo 20%</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px">
+        <a class="deepen" href="/casos/categorizar-gastos?from=charla" target="_blank">Ver el caso completo</a>
+        <a class="deepen" href="/slides/demos/extracto-abril-2026-analisis.xlsx" target="_blank">Descargar el Excel resultante</a>
+      </div>
+    </section>
+
     <!-- ===================================================================
-         BLOQUE 6 · ¿IA O NO? + DETECTORES (1 slide impact)
+         BLOQUE 5 · ¿IA O NO? (chapter + juego + impact + 4 virales)
+         =================================================================== -->
+
+    <section class="chapter" data-background-color="#0a0a0f">
+      <div class="chapter-number">05</div>
+      <h2 class="chapter-title">¿IA o no?</h2>
+      <p class="chapter-sub">8 minutos · Jugamos juntos y vemos por qué nos pasa</p>
+    </section>
+
+    <!-- ============ 05.1 · ¿Listos para jugar? ============ -->
+    <section>
+      <h3 class="section-h">¿Listos para jugar?</h3>
+      <p class="lede" style="margin-bottom:22px;max-width:1380px">Tres rondas. Votáis a mano alzada <strong>antes</strong> de cada respuesta — y después revelamos. La sala suele dividirse en mitad y mitad.</p>
+
+      <!-- Hero warmup -->
+      <a href="https://www.youtube.com/shorts/8ShTwoop7oQ" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block;max-width:1380px;margin-bottom:22px">
+        <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:24px;align-items:center;padding:20px 28px;background:linear-gradient(135deg,rgba(255,87,34,0.14),rgba(255,87,34,0.03));border:1px solid var(--accent);border-radius:14px">
+          <div style="font-family:var(--font-serif);font-size:56px;font-weight:800;color:transparent;-webkit-text-stroke:2px var(--accent);line-height:1;letter-spacing:-0.04em">00</div>
+          <div style="min-width:0">
+            <p style="font-family:var(--font-mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:0.12em;margin:0 0 6px">Precalentamiento · 60 segundos</p>
+            <h4 style="font-family:var(--font-serif);font-size:28px;font-weight:700;margin:0 0 4px;color:var(--fg)">Evolución del vídeo IA</h4>
+            <p style="font-size:16px;color:var(--fg-soft);margin:0">De caras planas a personas indistinguibles, en pocos años.</p>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;display:flex;align-items:center;gap:8px">
+            <span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--accent);display:inline-flex;align-items:center;justify-content:center;font-size:14px">▶</span>
+            youtube
+          </div>
+        </div>
+      </a>
+
+      <!-- 3 round cards -->
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:18px;max-width:1380px">
+        <a href="https://humanizeai.com/human-or-ai/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--cool);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
+            <div style="font-family:var(--font-serif);font-size:54px;font-weight:800;color:var(--cool);line-height:1;letter-spacing:-0.04em">01</div>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.1em">caras</span>
+          </div>
+          <h4 style="font-family:var(--font-serif);font-size:26px;font-weight:700;margin:0 0 6px;color:var(--fg)">Humanize AI</h4>
+          <p style="font-size:16px;color:var(--fg-soft);margin:0 0 14px;line-height:1.45">Solo retratos. ¿Existe esta persona, o no?</p>
+          <p style="font-family:var(--font-mono);font-size:12px;color:var(--cool);margin:auto 0 0;letter-spacing:0.04em">humanizeai.com →</p>
+        </a>
+        <a href="https://sightengine.com/ai-or-not" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--warm);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
+            <div style="font-family:var(--font-serif);font-size:54px;font-weight:800;color:var(--warm);line-height:1;letter-spacing:-0.04em">02</div>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.1em">imágenes</span>
+          </div>
+          <h4 style="font-family:var(--font-serif);font-size:26px;font-weight:700;margin:0 0 6px;color:var(--fg)">Sightengine</h4>
+          <p style="font-size:16px;color:var(--fg-soft);margin:0 0 14px;line-height:1.45">Dos fotos lado a lado. ¿Cuál es la real?</p>
+          <p style="font-family:var(--font-mono);font-size:12px;color:var(--warm);margin:auto 0 0;letter-spacing:0.04em">sightengine.com/ai-or-not →</p>
+        </a>
+        <a href="https://ai-vs-real.com/casual" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--good);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
+            <div style="font-family:var(--font-serif);font-size:54px;font-weight:800;color:var(--good);line-height:1;letter-spacing:-0.04em">03</div>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.1em">cualquier</span>
+          </div>
+          <h4 style="font-family:var(--font-serif);font-size:26px;font-weight:700;margin:0 0 6px;color:var(--fg)">AI vs Real</h4>
+          <p style="font-size:16px;color:var(--fg-soft);margin:0 0 14px;line-height:1.45">Cualquier imagen. Modo casual, con puntuación.</p>
+          <p style="font-family:var(--font-mono);font-size:12px;color:var(--good);margin:auto 0 0;letter-spacing:0.04em">ai-vs-real.com/casual →</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ 05.2 · Lo confirma el propio juego ============ -->
+    <section>
+      <h3 class="section-h">Lo confirma el propio juego.</h3>
+      <p class="lede" style="margin-bottom:22px;max-width:1380px">Humanize AI publica sus resultados en directo. <strong>31.118 personas</strong> ya han jugado a lo mismo que acabamos de jugar — <strong>155.590 respuestas</strong>. Y siguen subiendo.</p>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:18px;max-width:1380px">
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:12px;padding:24px;display:flex;flex-direction:column">
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:0.12em;margin:0 0 10px">Los que acertaron todo</p>
+          <p style="font-family:var(--font-serif);font-size:78px;font-weight:800;color:var(--accent);line-height:1;margin:0 0 12px;letter-spacing:-0.04em">1,9%</p>
+          <p style="font-size:16px;color:var(--fg-soft);margin:0;line-height:1.5">acertó <strong style="color:var(--fg)">las 5 imágenes</strong>. <em>1 de cada 50 humanos.</em></p>
+        </div>
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--warm);border-radius:12px;padding:24px;display:flex;flex-direction:column">
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--warm);text-transform:uppercase;letter-spacing:0.12em;margin:0 0 10px">Los que iban bien</p>
+          <p style="font-family:var(--font-serif);font-size:78px;font-weight:800;color:var(--warm);line-height:1;margin:0 0 12px;letter-spacing:-0.04em">10,6%</p>
+          <p style="font-size:16px;color:var(--fg-soft);margin:0;line-height:1.5">acertó <strong style="color:var(--fg)">4 o 5</strong> de las 5.</p>
+        </div>
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--bad);border-radius:12px;padding:24px;display:flex;flex-direction:column">
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--bad);text-transform:uppercase;letter-spacing:0.12em;margin:0 0 10px">Y la mayoría…</p>
+          <p style="font-family:var(--font-serif);font-size:78px;font-weight:800;color:var(--bad);line-height:1;margin:0 0 12px;letter-spacing:-0.04em">59,4%</p>
+          <p style="font-size:16px;color:var(--fg-soft);margin:0;line-height:1.5">de los intentos fueron <strong style="color:var(--fg)">incorrectos</strong>.</p>
+        </div>
+      </div>
+
+      <p class="bottom-note" style="max-width:1380px">Estados Unidos lo hace todavía peor: solo <strong>0,91%</strong> acertó las cinco. <em>Vosotros sois la línea 31.119 del estudio.</em></p>
+      <a class="deepen" href="https://humanizeai.com/human-or-ai-study-results/" target="_blank" rel="noopener">Resultados completos · humanizeai.com</a>
+    </section>
+
+    <!-- ============ 05.3 · El número que duele (Nightingale & Farid) ============ -->
+    <section class="impact-slide">
+      <div class="impact-bg"></div>
+      <div class="impact-content">
+        <div class="impact-eyebrow">Nightingale &amp; Farid · PNAS · 2022</div>
+        <p class="impact-number">~50%</p>
+        <p class="impact-text">de acierto distinguiendo caras generadas por IA de caras reales. <strong>Cara o cruz.</strong></p>
+        <p class="impact-foot">En el mismo estudio académico, los rostros sintéticos puntuaron <em>más confiables</em> que los reales. Si te has equivocado en el juego, no eres tonto: el ojo humano ya no llega.</p>
+      </div>
+    </section>
+
+    <!-- ============ 05.4 · Casos que engañaron al mundo ============ -->
+    <section>
+      <h3 class="section-h">Cuando el mundo entero picó.</h3>
+      <p class="lede" style="margin-bottom:20px;max-width:1380px">Cuatro virales que llegaron a portadas reales antes de descubrirse que eran IA. Misma trampa, distinta escala.</p>
+      <div class="card-grid card-grid-4" style="max-width:1380px">
+        <div class="card">
+          <p class="card-tag">Marzo 2023 · Midjourney v5</p>
+          <h4>El Papa en plumas blancas</h4>
+          <p>Imagen del Papa Francisco con una doudoune <em>de diseño</em>. Millones lo creyeron antes de que Reddit la desmintiera. El primer viral global de IA generativa.</p>
+          <a href="https://maldita.es/malditobulo/20251204/papa-francisco-abrigo-plumas-bulo-inteligencia-artificial/" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px">Fuente · maldita.es →</a>
+        </div>
+        <div class="card">
+          <p class="card-tag">Mayo 2023 · viral en X</p>
+          <h4>Explosión en el Pentágono</h4>
+          <p>Foto falsa de humo cerca del Pentágono. Una cuenta de "Bloomberg" verificada (impostora) la replicó. El <strong>S&amp;P 500 cayó</strong> brevemente antes del desmentido oficial.</p>
+          <a href="https://www.theguardian.com/technology/2023/may/22/pentagon-ai-generated-image-explosion" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px">Fuente · The Guardian →</a>
+        </div>
+        <div class="card">
+          <p class="card-tag">Enero 2024 · ElevenLabs</p>
+          <h4>Robocall de Biden</h4>
+          <p>~20.000 votantes de New Hampshire recibieron una llamada con <strong>la voz clonada</strong> de Biden pidiéndoles no votar. $6M de demanda · $1M de multa de la FCC.</p>
+          <a href="https://www.npr.org/2024/05/23/nx-s1-4977582/fcc-ai-deepfake-robocall-biden-new-hampshire-political-operative" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px">Fuente · NPR →</a>
+        </div>
+        <div class="card">
+          <p class="card-tag">Enero 2024 · X</p>
+          <h4>Deepfakes de Taylor Swift</h4>
+          <p><strong>47M de visualizaciones</strong> antes del takedown. X bloqueó las búsquedas de su nombre durante días. La Casa Blanca pidió legislación.</p>
+          <a href="https://en.wikipedia.org/wiki/Taylor_Swift_deepfake_pornography_controversy" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px">Fuente · Wikipedia →</a>
+        </div>
+      </div>
+      <p class="bottom-note" style="max-width:1380px"><strong>Aviso paralelo:</strong> los detectores comerciales tampoco saben. Stanford 2023 — el <strong>61%</strong> de ensayos de estudiantes no-nativos en el TOEFL, <em>sin tocar IA</em>, fueron marcados como generados por IA. Nunca aceptes un detector como prueba.</p>
+      <div class="open-question" style="max-width:1380px">
+        <span class="oq-mark">?</span>
+        <span class="oq-text">Si nadie distingue, ¿cómo decidimos qué creer?</span>
+      </div>
+      <a class="deepen" href="/explorar/sesgos-y-detectores?from=ia-o-no" target="_blank">Sesgos, detectores y por qué Turnitin discrimina</a>
+    </section>
+
+    <!-- ===================================================================
+         BLOQUE 6 · EL PRECIO (5 slides: privacidad, arte, ambiente, empleo)
          =================================================================== -->
 
     <section class="chapter" data-background-color="#0a0a0f">
       <div class="chapter-number">06</div>
-      <h2 class="chapter-title">¿IA o no?</h2>
-      <p class="chapter-sub">5 minutos · Mini juego con la sala</p>
-      <div class="placeholder">[ 5 piezas: foto, audio, vídeo, texto, canción · preparar antes ]</div>
-    </section>
-
-    <section class="impact-slide">
-      <div class="impact-bg"></div>
-      <div class="impact-content">
-        <div class="impact-eyebrow">Stanford · Patterns · 2023</div>
-        <p class="impact-number">61%</p>
-        <p class="impact-text">de los ensayos de estudiantes no-nativos haciendo el TOEFL, <strong>sin acceso a IA</strong>, fueron marcados como generados por IA por detectores comerciales.</p>
-        <p class="impact-foot">Los detectores de IA no detectan IA: detectan <em>"inglés sencillo"</em>. Discriminan a no nativos. <strong>NUNCA aceptes un detector como prueba.</strong></p>
-      </div>
-      <div class="open-question">
-        <span class="oq-mark">?</span>
-        <span class="oq-text">¿Cómo le explicas a un profesor que el detector se equivoca?</span>
-      </div>
-      <a class="deepen" href="/explorar/sesgos-y-detectores?from=ia-o-no" target="_blank">Por qué Turnitin discrimina · estudio completo</a>
-    </section>
-
-    <!-- ===================================================================
-         BLOQUE 7 · EL PRECIO (5 slides: privacidad, arte, ambiente, empleo)
-         =================================================================== -->
-
-    <section class="chapter" data-background-color="#0a0a0f">
-      <div class="chapter-number">07</div>
       <h2 class="chapter-title">El precio<br>de la fiesta</h2>
       <p class="chapter-sub">15 minutos · Privacidad, arte, ambiente, empleo</p>
     </section>
@@ -387,11 +792,11 @@
     </section>
 
     <!-- ===================================================================
-         BLOQUE 8 · AGENTES Y HUMANOS (2 slides)
+         BLOQUE 7 · AGENTES Y HUMANOS (2 slides)
          =================================================================== -->
 
     <section class="chapter" data-background-color="#0a0a0f">
-      <div class="chapter-number">08</div>
+      <div class="chapter-number">07</div>
       <h2 class="chapter-title">Agentes<br>y el humano detrás</h2>
       <p class="chapter-sub">8 minutos · cuando la IA actúa, no solo habla</p>
     </section>
@@ -428,11 +833,11 @@
     </section>
 
     <!-- ===================================================================
-         BLOQUE 9 · DEEPFAKES (2 slides)
+         BLOQUE 8 · DEEPFAKES (2 slides)
          =================================================================== -->
 
     <section class="chapter" data-background-color="#0a0a0f">
-      <div class="chapter-number">09</div>
+      <div class="chapter-number">08</div>
       <h2 class="chapter-title">Deepfakes<br>y palabra clave</h2>
       <p class="chapter-sub">5 minutos · una historia, una defensa</p>
     </section>
@@ -468,11 +873,11 @@
     </section>
 
     <!-- ===================================================================
-         BLOQUE 10 · EL LADO LUMINOSO (2 slides)
+         BLOQUE 9 · EL LADO LUMINOSO (2 slides)
          =================================================================== -->
 
     <section class="chapter" data-background-color="#0a0a0f">
-      <div class="chapter-number">10</div>
+      <div class="chapter-number">09</div>
       <h2 class="chapter-title">El lado<br><em>luminoso</em></h2>
       <p class="chapter-sub">10 minutos · Lo que está saliendo bien</p>
     </section>
@@ -541,11 +946,11 @@
     </section>
 
     <!-- ===================================================================
-         BLOQUE 11 · FUTURO Y AGI (2 slides)
+         BLOQUE 10 · FUTURO Y AGI (2 slides)
          =================================================================== -->
 
     <section class="chapter" data-background-color="#0a0a0f">
-      <div class="chapter-number">11</div>
+      <div class="chapter-number">10</div>
       <h2 class="chapter-title">Cómo vemos<br>el futuro</h2>
       <p class="chapter-sub">7 minutos · AGI, ARC-AGI-3, qué hacer ya</p>
     </section>
@@ -589,7 +994,7 @@
          =================================================================== -->
 
     <section class="chapter cierre" data-background-color="#0a0a0f">
-      <div class="chapter-number">12</div>
+      <div class="chapter-number">11</div>
       <h2 class="chapter-title">Para llevar<br>a casa</h2>
       <p class="chapter-sub">5 minutos · Cierre + preguntas</p>
     </section>
@@ -672,6 +1077,55 @@
     slideNumber: 'c/t',
     plugins: [ RevealHighlight, RevealNotes ]
   });
+
+  /* ===================================================================
+     Typewriter animation for [data-typewriter] prompt blocks.
+     Mirrors the token-pop feel of the homepage TokenStream component.
+     =================================================================== */
+  (function() {
+    const TIMER_KEY = '__twTimer';
+
+    function tokenize(text) {
+      return text.match(/\S+\s*/g) || [];
+    }
+
+    function animate(el) {
+      // Cache the original HTML once so we can restore inline markup (e.g. <strong>).
+      if (el.dataset.twOriginal == null) {
+        el.dataset.twOriginal = el.innerHTML;
+        el.dataset.twPlain = el.textContent;
+      }
+      if (el[TIMER_KEY]) clearTimeout(el[TIMER_KEY]);
+
+      const tokens = tokenize(el.dataset.twPlain);
+      el.classList.add('typing');
+      el.textContent = '';
+      let i = 0;
+
+      function step() {
+        if (i < tokens.length) {
+          el.textContent += tokens[i];
+          i++;
+          const delay = 55 + Math.random() * 145;
+          el[TIMER_KEY] = setTimeout(step, delay);
+        } else {
+          el[TIMER_KEY] = setTimeout(() => {
+            el.classList.remove('typing');
+            el.innerHTML = el.dataset.twOriginal;
+          }, 280);
+        }
+      }
+      step();
+    }
+
+    function animateSlide(slide) {
+      if (!slide) return;
+      slide.querySelectorAll('[data-typewriter]').forEach(animate);
+    }
+
+    Reveal.on('ready', e => animateSlide(e.currentSlide));
+    Reveal.on('slidechanged', e => animateSlide(e.currentSlide));
+  })();
 </script>
 
 </body>

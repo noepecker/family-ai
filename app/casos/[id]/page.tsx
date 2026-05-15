@@ -87,6 +87,26 @@ export default async function CasoDetail({
         </ol>
       </Section>
 
+      {c.assets && c.assets.length > 0 && (
+        <Section title="Demos y descargas" icon="📦">
+          <div className="flex flex-wrap gap-3">
+            {c.assets.map((a) => (
+              <a
+                key={a.url}
+                href={a.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                {...(a.kind === "download" ? { download: "" } : {})}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors font-mono text-xs uppercase tracking-wider"
+              >
+                <span>{a.kind === "download" ? "↓" : "↗"}</span>
+                {a.label}
+              </a>
+            ))}
+          </div>
+        </Section>
+      )}
+
       {c.prompt && (
         <Section title="Ejemplo de prompt">
           <div className="p-5 rounded-xl bg-[var(--color-bg-card)] border-l-4 border-[var(--color-accent)] font-mono text-sm leading-relaxed whitespace-pre-wrap text-[var(--color-fg)]">
