@@ -25,6 +25,155 @@
       0%, 50% { opacity: 1; }
       51%, 100% { opacity: 0; }
     }
+
+    /* ===== Llamada de Beatriz · pantalla de teléfono =====
+       Slide-teléfono con dos estados: data-state="ringing" (sonando)
+       y data-state="in-call" (en llamada). */
+    .callscreen .phone {
+      width: 392px;
+      height: 812px;
+      margin: 0 auto;
+      padding: 13px;
+      background: #050507;
+      border-radius: 52px;
+      box-shadow: 0 50px 110px -25px rgba(0, 0, 0, .85),
+                  0 0 0 1px rgba(255, 255, 255, .06);
+    }
+    .phone-screen {
+      position: relative;
+      width: 100%; height: 100%;
+      border-radius: 40px;
+      overflow: hidden;
+      background: radial-gradient(125% 62% at 50% 0%, #2c1726 0%, #130d18 46%, #08080c 100%);
+    }
+    .phone-screen::before {                 /* notch */
+      content: "";
+      position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 132px; height: 26px;
+      background: #050507;
+      border-radius: 0 0 16px 16px;
+      z-index: 5;
+    }
+
+    .call-ringing, .call-active {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 80px 30px 46px;
+    }
+    .phone[data-state="ringing"] .call-active  { display: none; }
+    .phone[data-state="in-call"] .call-ringing { display: none; }
+
+    .call-label {
+      font-family: var(--font-mono); font-size: 12px;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(255, 255, 255, .5);
+    }
+    .call-name {
+      font-family: var(--font-sans); font-weight: 600;
+      color: #fff; font-size: 33px; letter-spacing: -.01em;
+    }
+    .call-sub {
+      font-family: var(--font-mono); font-size: 13px;
+      color: rgba(255, 255, 255, .5); margin-top: 9px;
+    }
+
+    .call-avatar {
+      width: 138px; height: 138px; border-radius: 50%;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(140deg, var(--accent), var(--hot));
+      color: #fff; font-family: var(--font-sans);
+      font-weight: 700; font-size: 56px;
+    }
+    .call-avatar svg { width: 64px; height: 64px; fill: #fff; }
+    .call-ringing .call-avatar { margin: 56px 0 26px; }
+    .phone[data-state="ringing"] .call-avatar {
+      animation: call-bob 1.7s ease-in-out infinite,
+                 call-ring 1.7s ease-out infinite;
+    }
+    @keyframes call-bob {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-9px); }
+    }
+    @keyframes call-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(255, 138, 101, .45); }
+      100% { box-shadow: 0 0 0 42px rgba(255, 138, 101, 0); }
+    }
+
+    .call-actions { margin-top: auto; display: flex; gap: 70px; }
+    .call-action {
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }
+    .call-action-label {
+      font-family: var(--font-mono); font-size: 12px;
+      color: rgba(255, 255, 255, .55);
+    }
+    .call-btn {
+      width: 74px; height: 74px; border-radius: 50%;
+      border: none; padding: 0; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      -webkit-appearance: none; appearance: none;
+    }
+    .call-btn svg { width: 32px; height: 32px; fill: #fff; }
+    .call-decline { background: #ef4444; }
+    .call-decline svg, .call-end svg { transform: rotate(135deg); }
+    .call-accept { background: #10b981; }
+    .phone[data-state="ringing"] .call-accept {
+      animation: call-accept-pulse 1.3s ease-out infinite;
+    }
+    @keyframes call-accept-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(16, 185, 129, .6); }
+      100% { box-shadow: 0 0 0 26px rgba(16, 185, 129, 0); }
+    }
+
+    /* ----- estado en llamada ----- */
+    .call-timer {
+      font-family: var(--font-mono); font-size: 15px;
+      color: var(--good); letter-spacing: .12em;
+    }
+    .call-active .call-name { margin-top: 12px; }
+    .call-active .call-avatar { margin: 46px 0 0; transition: box-shadow .25s; }
+    .phone.speaking .call-active .call-avatar {
+      animation: call-ring 1.5s ease-out infinite;
+    }
+    .call-speaking {
+      display: flex; align-items: center; gap: 6px;
+      height: 40px; margin-top: 38px;
+    }
+    .call-speaking i {
+      width: 6px; height: 8px; border-radius: 3px;
+      background: rgba(255, 255, 255, .26);
+    }
+    .phone.speaking .call-speaking i {
+      background: var(--accent-soft);
+      animation: call-bar .85s ease-in-out infinite;
+    }
+    .phone.speaking .call-speaking i:nth-child(2) { animation-delay: .12s; }
+    .phone.speaking .call-speaking i:nth-child(3) { animation-delay: .24s; }
+    .phone.speaking .call-speaking i:nth-child(4) { animation-delay: .12s; }
+    .phone.speaking .call-speaking i:nth-child(5) { animation-delay: .30s; }
+    @keyframes call-bar {
+      0%, 100% { height: 8px; }
+      50%      { height: 34px; }
+    }
+
+    .call-controls { margin-top: auto; display: flex; gap: 26px; }
+    .call-ctl {
+      display: flex; flex-direction: column; align-items: center; gap: 9px;
+      font-family: var(--font-mono); font-size: 11px;
+      color: rgba(255, 255, 255, .45);
+    }
+    .call-ctl > span {
+      width: 52px; height: 52px; border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, .14);
+      background: rgba(255, 255, 255, .05);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .call-ctl svg { width: 24px; height: 24px; fill: rgba(255, 255, 255, .72); }
+    .call-ctl.on > span { background: #fff; border-color: #fff; }
+    .call-ctl.on svg { fill: #0a0a0f; }
+    .call-end { margin-top: 26px; background: #ef4444; }
   </style>
 </head>
 <body>
@@ -193,7 +342,7 @@
 
     <section class="chapter" data-background-color="#0a0a0f">
       <div class="chapter-number">03</div>
-      <h2 class="chapter-title">Demo en vivo<br>Cómo hablarle</h2>
+      <h2 class="chapter-title">Demo en vivo<br>Como usar la IA</h2>
       <p class="chapter-sub">15 minutos · demo + el bloque más útil de hoy</p>
       <a class="deepen" href="/casos?nivel=curioso&from=demo-chatgpt" target="_blank">Los casos que probaremos</a>
     </section>
@@ -427,7 +576,82 @@
       </div>
     </section>
 
-    <!-- ============ 05.2 · Voz clonada (Marcos) ============ -->
+    <!-- ============ 05.2a · Llamada de un desconocido (Marcos) ============
+         SLIDE "INOCENTE": parece una llamada de teléfono real.
+         Flujo:  la slide entra → el teléfono SUENA (tono + animación).
+                 Pulsar "Aceptar" → para el tono y suena el audio 1.
+                 ESPACIO → suena el audio 2 (y 3, 4… si añades más).
+                 Tras el último audio, ESPACIO avanza al slide del reveal.
+         Añadir más audios: amplía data-audios (rutas .mp3 separadas por
+         comas; los ficheros viven en slides/audio/).
+         NO pongas aquí texto de IA / clonación: el efecto depende de que
+         parezca una llamada auténtica hasta el reveal del slide siguiente. -->
+    <section id="voz-clonada-demo" class="callscreen"
+             data-vc-call data-audios="audio/voz-clon-1.mp3,audio/voz-clon-2.mp3,audio/voz-clon-3.mp3"
+             style="justify-content:center">
+      <div class="phone" data-state="ringing">
+        <div class="phone-screen">
+
+          <!-- Teléfono sonando -->
+          <div class="call-ringing">
+            <div class="call-label">Llamada entrante</div>
+            <div class="call-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2.5c-5.3 0-9.5 2.8-9.5 6.2V22h19v-1.3c0-3.4-4.2-6.2-9.5-6.2z"/></svg></div>
+            <div class="call-name">Desconocido</div>
+            <div class="call-sub">número oculto</div>
+            <div class="call-actions">
+              <div class="call-action">
+                <button class="call-btn call-decline" type="button" aria-label="Rechazar llamada">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.5c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.3 2.2z"/></svg>
+                </button>
+                <span class="call-action-label">Rechazar</span>
+              </div>
+              <div class="call-action">
+                <button class="call-btn call-accept" type="button" data-vc-accept aria-label="Aceptar llamada">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.5c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.3 2.2z"/></svg>
+                </button>
+                <span class="call-action-label">Aceptar</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- En llamada -->
+          <div class="call-active">
+            <div class="call-timer" data-vc-timer>00:00</div>
+            <div class="call-name">Desconocido</div>
+            <div class="call-sub">llamada en curso</div>
+            <div class="call-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2.5c-5.3 0-9.5 2.8-9.5 6.2V22h19v-1.3c0-3.4-4.2-6.2-9.5-6.2z"/></svg></div>
+            <div class="call-speaking" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="call-controls" aria-hidden="true">
+              <div class="call-ctl">
+                <span><svg viewBox="0 0 24 24"><path d="M12 14.5a3.2 3.2 0 0 0 3.2-3.2V5.7a3.2 3.2 0 0 0-6.4 0v5.6a3.2 3.2 0 0 0 3.2 3.2zm5.3-3.2a5.3 5.3 0 0 1-10.6 0H4.8a7.2 7.2 0 0 0 6.2 7.1V21h2v-2.6a7.2 7.2 0 0 0 6.2-7.1h-1.9z"/></svg></span>
+                silenciar
+              </div>
+              <div class="call-ctl">
+                <span><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="1.9"/><circle cx="12" cy="6" r="1.9"/><circle cx="18" cy="6" r="1.9"/><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/><circle cx="6" cy="18" r="1.9"/><circle cx="12" cy="18" r="1.9"/><circle cx="18" cy="18" r="1.9"/></svg></span>
+                teclado
+              </div>
+              <div class="call-ctl on">
+                <span><svg viewBox="0 0 24 24"><path d="M3 9.5v5h3.7L11 19V5L6.7 9.5H3zm10.5 2.5a3.5 3.5 0 0 0-2-3.2v6.4a3.5 3.5 0 0 0 2-3.2zM13.5 4.2v2a5.8 5.8 0 0 1 0 11.2v2a7.8 7.8 0 0 0 0-15.2z"/></svg></span>
+                altavoz
+              </div>
+            </div>
+            <button class="call-btn call-end" type="button" aria-label="Colgar">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.5c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.3 2.2z"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <aside class="notes">
+        Llamada simulada · voz clonada con IA (el reveal es el slide siguiente).
+        El teléfono suena al entrar. Pulsa «Aceptar» → suena el audio 1.
+        Pulsa ESPACIO → audio 2. Cuando se acaben los audios, ESPACIO avanza al reveal.
+      </aside>
+    </section>
+
+    <!-- ============ 05.2 · Voz clonada — REVEAL (Marcos) ============ -->
     <section class="impact-slide">
       <div class="impact-bg"></div>
       <div class="impact-content">
@@ -1125,6 +1349,145 @@
 
     Reveal.on('ready', e => animateSlide(e.currentSlide));
     Reveal.on('slidechanged', e => animateSlide(e.currentSlide));
+  })();
+
+  /* ===================================================================
+     Llamada de Beatriz · pantalla de teléfono.
+     Al entrar en la slide el teléfono suena (tono sintetizado + animación).
+     "Aceptar" detiene el tono y reproduce el audio 1.
+     ESPACIO reproduce el siguiente audio; tras el último, ESPACIO deja
+     que Reveal avance al slide del reveal.
+     =================================================================== */
+  (function() {
+    const section = document.getElementById('voz-clonada-demo');
+    if (!section) return;
+    const phone = section.querySelector('.phone');
+    const timerEl = section.querySelector('[data-vc-timer]');
+    const acceptBtn = section.querySelector('[data-vc-accept]');
+    const sources = (section.dataset.audios || '').split(',').map(s => s.trim()).filter(Boolean);
+    const audios = sources.map(src => { const a = new Audio(src); a.preload = 'auto'; return a; });
+
+    let accepted = false, nextIndex = 0, callSecs = 0, timerInt = null;
+
+    function fmt(s) {
+      s = Math.max(0, Math.floor(s));
+      return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+    }
+
+    /* ---- Tono de llamada sintetizado (Web Audio, sin fichero) ---- */
+    let actx = null, ringInt = null, ringing = false;
+    function audioCtx() {
+      if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      return actx;
+    }
+    function ringBeep(start, dur) {
+      const c = audioCtx(), g = c.createGain();
+      g.connect(c.destination);
+      g.gain.setValueAtTime(0.0001, start);
+      g.gain.exponentialRampToValueAtTime(0.2, start + 0.05);
+      g.gain.setValueAtTime(0.2, start + dur - 0.07);
+      g.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+      [440, 480].forEach(freq => {
+        const o = c.createOscillator();
+        o.type = 'sine'; o.frequency.value = freq;
+        o.connect(g); o.start(start); o.stop(start + dur);
+      });
+    }
+    function ringCadence() {                 // clásico "ring — ring"
+      const t = audioCtx().currentTime;
+      ringBeep(t, 0.4);
+      ringBeep(t + 0.6, 0.4);
+    }
+    function startRing() {
+      if (ringing) return;
+      ringing = true;
+      const c = audioCtx();
+      const go = () => { if (!ringing) return; ringCadence(); ringInt = setInterval(ringCadence, 3000); };
+      if (c.state === 'suspended') c.resume().then(go).catch(go);
+      else go();
+    }
+    function stopRing() {
+      ringing = false;
+      if (ringInt) { clearInterval(ringInt); ringInt = null; }
+    }
+
+    /* ---- Audios de la conversación ---- */
+    function refreshSpeaking() {
+      phone.classList.toggle('speaking', audios.some(a => !a.paused && !a.ended));
+    }
+    audios.forEach(a => {
+      a.addEventListener('play', refreshSpeaking);
+      a.addEventListener('pause', refreshSpeaking);
+      a.addEventListener('ended', refreshSpeaking);
+    });
+    function stopAllAudio() {
+      audios.forEach(a => { a.pause(); a.currentTime = 0; });
+      refreshSpeaking();
+    }
+    function playNext() {
+      if (nextIndex >= audios.length) return false;
+      audios.forEach(a => a.pause());
+      const a = audios[nextIndex++];
+      a.currentTime = 0;
+      a.play().catch(() => {});
+      refreshSpeaking();
+      return true;
+    }
+
+    function accept() {
+      if (accepted) return;
+      accepted = true;
+      stopRing();
+      phone.dataset.state = 'in-call';
+      callSecs = 0;
+      timerEl.textContent = '00:00';
+      timerInt = setInterval(() => { callSecs++; timerEl.textContent = fmt(callSecs); }, 1000);
+      playNext();                            // audio 1
+    }
+
+    function reset() {
+      accepted = false; nextIndex = 0; callSecs = 0;
+      stopAllAudio();
+      if (timerInt) { clearInterval(timerInt); timerInt = null; }
+      timerEl.textContent = '00:00';
+      phone.dataset.state = 'ringing';
+    }
+
+    acceptBtn.addEventListener('click', accept);
+    // Rechazar / colgar son decorativos: no rompen el guión de la demo.
+    section.querySelectorAll('.call-decline, .call-end').forEach(b =>
+      b.addEventListener('click', e => e.preventDefault()));
+
+    const onThisSlide = () => Reveal.getCurrentSlide() === section;
+
+    /* ESPACIO: capturado antes que Reveal mientras esta slide está activa. */
+    document.addEventListener('keydown', e => {
+      if (e.code !== 'Space' && e.keyCode !== 32) return;
+      if (!onThisSlide()) return;                       // otras slides: Reveal normal
+      if (!accepted) {                                  // sonando: ignorar para no saltar
+        e.preventDefault(); e.stopImmediatePropagation();
+        return;
+      }
+      if (nextIndex < audios.length) {                  // reproducir el siguiente audio
+        e.preventDefault(); e.stopImmediatePropagation();
+        playNext();
+        return;
+      }
+      // Audios agotados → no interceptamos: Reveal avanza al slide del reveal.
+    }, true);
+
+    function onSlide() {
+      if (onThisSlide()) {
+        reset();
+        setTimeout(startRing, 280);          // suena al asentarse la slide
+      } else {
+        stopRing();
+        stopAllAudio();
+        if (timerInt) { clearInterval(timerInt); timerInt = null; }
+      }
+    }
+    Reveal.on('ready', onSlide);
+    Reveal.on('slidechanged', onSlide);
   })();
 </script>
 
