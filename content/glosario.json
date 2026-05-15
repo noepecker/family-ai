@@ -1,0 +1,146 @@
+[
+  {
+    "id": "llm",
+    "term": "LLM",
+    "def": "Sigla de Large Language Model, modelo grande de lenguaje. Un programa entrenado con enormes cantidades de texto que funciona prediciendo, una y otra vez, la siguiente palabra más probable.",
+    "match": ["LLM", "LLMs"]
+  },
+  {
+    "id": "gpt",
+    "term": "GPT",
+    "def": "Sigla de Generative Pre-trained Transformer. La familia de modelos de OpenAI; hoy «GPT» se usa casi como sinónimo de chatbot de IA. «Preentrenado» significa que aprendió leyendo internet antes de hablar contigo.",
+    "match": ["GPT"]
+  },
+  {
+    "id": "transformer",
+    "term": "Transformer",
+    "def": "La arquitectura —el diseño interno— sobre la que se construyen todos los LLM actuales. Nació en 2017 con el artículo «Attention Is All You Need» de Google.",
+    "match": ["Transformer", "Transformers"]
+  },
+  {
+    "id": "token",
+    "term": "Token",
+    "def": "El trozo de texto que procesa el modelo: unos 4 caracteres, o media palabra. Los modelos miden su memoria y facturan su uso en tokens.",
+    "match": ["token", "tokens"]
+  },
+  {
+    "id": "parametros",
+    "term": "Parámetros",
+    "def": "Los números internos del modelo —miles de millones— que se ajustan durante el entrenamiento. Son, en la práctica, todo lo que el modelo «sabe». También se les llama pesos.",
+    "match": ["parámetros", "parámetro"]
+  },
+  {
+    "id": "contexto",
+    "term": "Ventana de contexto",
+    "def": "Cuánto texto puede «ver» el modelo a la vez. En 2026 algunos modelos llegan al millón de tokens: un libro entero.",
+    "match": ["ventana de contexto"]
+  },
+  {
+    "id": "prompt",
+    "term": "Prompt",
+    "def": "Lo que le escribes al modelo: tu instrucción o tu pregunta. La calidad del prompt determina en gran medida la calidad de la respuesta.",
+    "match": ["prompt", "prompts"]
+  },
+  {
+    "id": "alucinacion",
+    "term": "Alucinación",
+    "def": "Cuando el modelo se inventa información y la presenta con total seguridad. Es el problema sin resolver número uno de los LLM.",
+    "match": ["alucinación", "alucinaciones"]
+  },
+  {
+    "id": "preentrenamiento",
+    "term": "Preentrenamiento",
+    "def": "La fase más cara del entrenamiento: el modelo lee cantidades enormes de texto y ajusta sus parámetros prediciendo palabras tapadas, fallando y corrigiéndose, billones de veces.",
+    "match": ["preentrenamiento", "pre-entrenamiento"]
+  },
+  {
+    "id": "rlhf",
+    "term": "RLHF",
+    "def": "Sigla de Reinforcement Learning from Human Feedback. Fase del entrenamiento en la que personas puntúan las respuestas del modelo para enseñarle cuáles son buenas.",
+    "match": ["RLHF"]
+  },
+  {
+    "id": "fine-tuning",
+    "term": "Fine-tuning",
+    "def": "Reentrenar un modelo ya hecho con datos propios para especializarlo en un tono, una jerga o un dominio concretos.",
+    "match": ["fine-tuning", "fine tuning"]
+  },
+  {
+    "id": "reasoning",
+    "term": "Razonamiento (reasoning)",
+    "def": "Modelos que «piensan antes de responder»: generan pasos intermedios de forma interna antes de dar la respuesta final.",
+    "match": ["reasoning"]
+  },
+  {
+    "id": "temperatura",
+    "term": "Temperatura",
+    "def": "Un ajuste que controla cuánto arriesga el modelo al elegir la siguiente palabra. Baja: respuestas más predecibles. Alta: más creativas y variables.",
+    "match": ["temperatura"]
+  },
+  {
+    "id": "inferencia",
+    "term": "Inferencia",
+    "def": "El momento en que usas el modelo ya entrenado: le das un texto y genera la respuesta. Es distinto del entrenamiento, que ocurre una sola vez.",
+    "match": ["inferencia"]
+  },
+  {
+    "id": "agente",
+    "term": "Agente",
+    "def": "Un LLM con acceso a herramientas que le permiten actuar —buscar, ejecutar, encadenar pasos— hasta cumplir un objetivo, en lugar de solo conversar.",
+    "match": ["agente", "agentes"]
+  },
+  {
+    "id": "rag",
+    "term": "RAG",
+    "def": "Sigla de Retrieval-Augmented Generation. El modelo busca documentos relevantes y los lee antes de responder. Así funcionan los chatbots de empresa.",
+    "match": ["RAG"]
+  },
+  {
+    "id": "mcp",
+    "term": "MCP",
+    "def": "Sigla de Model Context Protocol, estándar abierto creado por Anthropic en 2024 para conectar cualquier herramienta con cualquier modelo. El «USB-C» de la IA.",
+    "match": ["MCP"]
+  },
+  {
+    "id": "multimodal",
+    "term": "Multimodal",
+    "def": "Un modelo capaz de entender y combinar varios formatos a la vez: texto, imagen, audio y vídeo.",
+    "match": ["multimodal"]
+  },
+  {
+    "id": "difusion",
+    "term": "Difusión",
+    "def": "La técnica que hay detrás de la IA de imagen y vídeo: parte de ruido aleatorio y lo va «limpiando» paso a paso hasta formar lo que se le ha pedido.",
+    "match": ["difusión"]
+  },
+  {
+    "id": "embedding",
+    "term": "Embedding",
+    "def": "Convertir un texto en una lista de números que captura su significado, de modo que el modelo pueda comparar y relacionar ideas.",
+    "match": ["embedding", "embeddings"]
+  },
+  {
+    "id": "benchmark",
+    "term": "Benchmark",
+    "def": "Un examen estándar para comparar modelos (MMLU, GPQA, SWE-bench). Es útil, pero manipulable: conviene mirar varios.",
+    "match": ["benchmark", "benchmarks"]
+  },
+  {
+    "id": "gpu",
+    "term": "GPU",
+    "def": "El tipo de chip que hace en paralelo los cálculos de la IA. Entrenar y usar modelos grandes exige miles de GPU funcionando a la vez.",
+    "match": ["GPU", "GPUs"]
+  },
+  {
+    "id": "datacenter",
+    "term": "Centro de datos",
+    "def": "Las naves llenas de servidores y GPU donde se entrena y se ejecuta la IA. Consumen grandes cantidades de electricidad y de agua.",
+    "match": ["centro de datos", "datacenter", "datacenters"]
+  },
+  {
+    "id": "deepfake",
+    "term": "Deepfake",
+    "def": "Imagen, vídeo o audio falsos, generados por IA, que imitan a una persona real de forma convincente.",
+    "match": ["deepfake", "deepfakes"]
+  }
+]
