@@ -43,6 +43,12 @@
       width: 100%; height: 100%;
       border: 0;
     }
+    /* Vídeo vertical (YouTube Shorts) */
+    .video-embed.portrait {
+      width: auto;
+      height: 700px;
+      aspect-ratio: 9 / 16;
+    }
 
     /* ===== Llamada de Beatriz · pantalla de teléfono =====
        Slide-teléfono con dos estados: data-state="ringing" (sonando)
@@ -810,30 +816,28 @@
 
     <section class="chapter" data-background-color="#0a0a0f">
       <div class="chapter-number">05</div>
-      <h2 class="chapter-title">¿IA o no?</h2>
+      <h2 class="chapter-title">Chat, ¿esto es real<br>o es IA?</h2>
       <p class="chapter-sub">8 minutos · Jugamos juntos y vemos por qué nos pasa</p>
+    </section>
+
+    <!-- 05.0 · Vídeo de precalentamiento · evolución del vídeo IA -->
+    <section id="ia-o-no-video">
+      <h3 class="section-h">Evolución del vídeo IA</h3>
+      <p class="lede" style="margin-bottom:16px;max-width:1380px">Precalentamiento · 60 segundos. De caras planas a personas indistinguibles, en pocos años.</p>
+      <!-- Vídeo de YouTube. data-src → Reveal lo carga al llegar a la slide
+           y lo descarga al salir (corta la reproducción automáticamente). -->
+      <div class="video-embed portrait">
+        <iframe data-src="https://www.youtube.com/embed/8ShTwoop7oQ?rel=0"
+                title="Evolución del vídeo generado por IA"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+      </div>
     </section>
 
     <!-- ============ 05.1 · ¿Listos para jugar? ============ -->
     <section>
       <h3 class="section-h">¿Listos para jugar?</h3>
       <p class="lede" style="margin-bottom:22px;max-width:1380px">Tres rondas. Votáis a mano alzada <strong>antes</strong> de cada respuesta — y después revelamos. La sala suele dividirse en mitad y mitad.</p>
-
-      <!-- Hero warmup -->
-      <a href="https://www.youtube.com/shorts/8ShTwoop7oQ" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block;max-width:1380px;margin-bottom:22px">
-        <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:24px;align-items:center;padding:20px 28px;background:linear-gradient(135deg,rgba(255,87,34,0.14),rgba(255,87,34,0.03));border:1px solid var(--accent);border-radius:14px">
-          <div style="font-family:var(--font-serif);font-size:56px;font-weight:800;color:transparent;-webkit-text-stroke:2px var(--accent);line-height:1;letter-spacing:-0.04em">00</div>
-          <div style="min-width:0">
-            <p style="font-family:var(--font-mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:0.12em;margin:0 0 6px">Precalentamiento · 60 segundos</p>
-            <h4 style="font-family:var(--font-serif);font-size:28px;font-weight:700;margin:0 0 4px;color:var(--fg)">Evolución del vídeo IA</h4>
-            <p style="font-size:16px;color:var(--fg-soft);margin:0">De caras planas a personas indistinguibles, en pocos años.</p>
-          </div>
-          <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;display:flex;align-items:center;gap:8px">
-            <span style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--accent);display:inline-flex;align-items:center;justify-content:center;font-size:14px">▶</span>
-            youtube
-          </div>
-        </div>
-      </a>
 
       <!-- 3 round cards -->
       <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:18px;max-width:1380px">
@@ -1202,13 +1206,13 @@
     </section>
 
     <!-- ===================================================================
-         BLOQUE 10 · FUTURO Y AGI (2 slides)
+         BLOQUE 10 · FUTURO Y AGI (5 slides)
          =================================================================== -->
 
     <section class="chapter" data-background-color="#0a0a0f">
       <div class="chapter-number">10</div>
       <h2 class="chapter-title">Cómo vemos<br>el futuro</h2>
-      <p class="chapter-sub">7 minutos · AGI, ARC-AGI-3, qué hacer ya</p>
+      <p class="chapter-sub">9 minutos · AGI, empleo y qué hacer ya</p>
     </section>
 
     <!-- ARC-AGI-3 (donde la IA es ciega) -->
@@ -1243,6 +1247,97 @@
       </div>
       <p class="bottom-note">Cinco décadas de margen entre los cinco líderes que mejor saben. <strong>"AI 2027" (Kokotajlo et al., abril 2025)</strong> es el escenario más detallado: agentes generalizados en 2026, codificación automatizada en 2027, intelligence explosion a finales de 2027.</p>
       <a class="deepen" href="/agi?from=futuro" target="_blank">Las posiciones detalladas + ARC-AGI-3</a>
+    </section>
+
+    <!-- El impacto en el empleo -->
+    <section>
+      <h3 class="section-h">¿Y nuestros trabajos?</h3>
+      <div class="job-stats">
+        <div class="job-stat">
+          <span class="js-num">85 M</span>
+          <span class="js-label">empleos desplazados en el mundo por la IA y la automatización <em>(acumulado hasta finales de 2026)</em></span>
+        </div>
+        <div class="job-stat good">
+          <span class="js-num">+78 M</span>
+          <span class="js-label">saldo <strong>neto</strong> en 2030 según el Foro Económico Mundial: desaparecen 92 M... pero nacen 170 M nuevos</span>
+        </div>
+        <div class="job-stat warn">
+          <span class="js-num">26 %</span>
+          <span class="js-label">de los despidos en EE. UU. en abril de 2026 ya se atribuyen a la IA <em>(Challenger, Gray &amp; Christmas)</em></span>
+        </div>
+        <div class="job-stat warn">
+          <span class="js-num">57 %</span>
+          <span class="js-label">de las horas de trabajo en EE. UU. son automatizables hoy <em>(McKinsey)</em> — que NO es lo mismo que el 57 % de los empleos</span>
+        </div>
+      </div>
+      <p class="bottom-note">Lo que más se nota: tareas administrativas, puestos de entrada y trabajo de oficina rutinario. Lo que aguanta: los oficios manuales, el trato humano y el criterio. <strong>La IA no borra el empleo de golpe — se come el que es pura rutina.</strong></p>
+      <div class="open-question">
+        <span class="oq-mark">?</span>
+        <span class="oq-text">Tu trabajo, ¿es rutina que se puede escribir... o manos, criterio y trato?</span>
+      </div>
+    </section>
+
+    <!-- Cómo prepararse -->
+    <section>
+      <h3 class="section-h">Cómo prepararse</h3>
+      <div class="future-cols">
+        <div class="fc-now">
+          <div class="fc-header">Úsala, no la temas</div>
+          <ul>
+            <li>Conviértela en tu herramienta diaria.</li>
+            <li>Quien sabe usarla rinde más: no compite <em>contra</em> ella, compite <em>con</em> ella.</li>
+            <li>Es gratis y está en el móvil. Se empieza hoy.</li>
+          </ul>
+        </div>
+        <div class="fc-2to3">
+          <div class="fc-header">Lo que no se automatiza</div>
+          <ul>
+            <li>Trato humano, criterio y responsabilidad.</li>
+            <li>El trabajo con las manos en el mundo físico.</li>
+            <li>Cada casa es distinta: ningún plano es exacto.</li>
+          </ul>
+        </div>
+        <div class="fc-future">
+          <div class="fc-header">No dependas de una sola cosa</div>
+          <ul>
+            <li>Diversifica: una segunda fuente de ingresos.</li>
+            <li>Un oficio práctico que sea tuyo.</li>
+            <li>Algo que la IA pueda aconsejar... pero no ejecutar.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="bottom-note">No hace falta convertirse en ingeniero de IA. Hace falta <strong>saber usarla</strong> — y tener algo que ofrecer que no salga de una pantalla.</p>
+    </section>
+
+    <!-- Una idea para la familia: empresa de reformas -->
+    <section class="reformas-slide">
+      <div class="reformas-bg"></div>
+      <div class="reformas-inner">
+        <div class="reformas-eyebrow">La propuesta · para los nuestros</div>
+        <h2 class="reformas-title">Montar una <strong>empresa de reformas</strong><br>en familia</h2>
+        <p class="reformas-lead">En casa sobran manos y falta trabajo. Una reforma pide justo eso: manos, oficio y gente de confianza. <strong>Lo que nos sobra es exactamente lo que el negocio necesita.</strong></p>
+        <div class="reformas-grid">
+          <div class="rf-card">
+            <div class="rf-icon">🛡️</div>
+            <div class="rf-title">A prueba de IA</div>
+            <p>Fontanería, electricidad y albañilería: <strong>menos del 5 %</strong> de riesgo de automatización. Ningún robot te va a alicatar el baño.</p>
+          </div>
+          <div class="rf-card key">
+            <div class="rf-icon">👷</div>
+            <div class="rf-title">Trabajo para los nuestros</div>
+            <p>Cada familiar sin empleo tiene un sitio aquí. Oficio que <strong>se hereda y se practica</strong>, no que se estudia. Empleo real, y pronto.</p>
+          </div>
+          <div class="rf-card">
+            <div class="rf-icon">📈</div>
+            <div class="rf-title">El mercado lo pide</div>
+            <p>En España <strong>faltan profesionales</strong> del oficio: mucha demanda, pocos candidatos. Hay hueco — y hay futuro.</p>
+          </div>
+        </div>
+        <p class="reformas-quote">
+          "La IA podrá decidir <strong>qué</strong> tubería pones... pero no te la va a poner."
+          <cite>Telecinco · mayo 2026 — sobre los oficios a salvo de la IA</cite>
+        </p>
+      </div>
     </section>
 
     <!-- ===================================================================
