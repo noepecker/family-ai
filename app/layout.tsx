@@ -73,7 +73,6 @@ function SiteHeader() {
           <NavLink href="/jugar">Jugar</NavLink>
           <NavLink href="/herramientas">Herramientas</NavLink>
           <NavLink href="/explorar">Explorar</NavLink>
-          <NavLink href="/historia">Historia</NavLink>
           <NavLink href="/preguntas">Preguntas</NavLink>
         </nav>
       </div>

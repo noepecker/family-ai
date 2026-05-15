@@ -131,15 +131,6 @@ export default function HomePage() {
             color="warn"
             description="Para volver. Cada bloque cierra preguntas y abre dos más. Toda cita tiene fuente verificable."
           />
-          <PathCard
-            href="/historia"
-            tag="Línea temporal"
-            title="80 años de IA"
-            sub="50+ hitos · 7 eras filtrables"
-            cta="Recorrer la historia"
-            color="cool"
-            description="De McCulloch-Pitts (1943) a hoy. La perspectiva que el hype te roba."
-          />
         </div>
       </section>
 
@@ -229,7 +220,7 @@ export default function HomePage() {
           <Highlight href="/jugar/arc-agi-3" emoji="🎮" title="Humanos 100%, IA 0,5%" body="ARC-AGI-3 es donde la IA todavía es ciega. Cualquier niño de 10 años los resuelve." fuente="arc-prize-3" />
           <Highlight href="/explorar/problemas-y-dilemas" emoji="💼" title="Klarna volvió a contratar" body="Reemplazó 700 agentes por IA. Un año después, recontrató humanos." fuente="mit-nanda-2025" />
           <Highlight href="/explorar/sesgos-y-detectores" emoji="📉" title="61% de TOEFL marcados" body="Detectores de IA discriminan a no-nativos de inglés." fuente="liang-2023-toefl" />
-          <Highlight href="/historia#sora" emoji="🎬" title="App #1 del App Store" body="Sora 2 llegó en octubre 2025. En semanas, vídeos sintéticos invadieron TikTok." />
+          <Highlight href="/explorar/deepfakes-y-deteccion" emoji="🎬" title="App #1 del App Store" body="Sora 2 llegó en octubre 2025. En semanas, vídeos sintéticos invadieron TikTok." />
           <Highlight href="/explorar/agentes-y-humanos" emoji="💐" title="$110 a un humano por flores" body="Una IA llamada Addi contrató a un humano para entregar un ramo. Por primera vez, al revés." />
         </div>
       </section>
