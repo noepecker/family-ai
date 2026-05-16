@@ -1011,30 +1011,31 @@
 }
 
 .g-item {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 24px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-  align-items: baseline;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 22px;
 }
 
 .g-term {
+  display: block;
   font-family: var(--font-mono);
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 19px;
+  font-weight: 700;
   color: var(--accent);
   letter-spacing: -0.01em;
+  margin-bottom: 6px;
 }
 
 .g-def {
-  font-size: 19px;
+  display: block;
+  font-size: 18px;
   color: var(--fg-soft);
   line-height: 1.45;
 }
 
 .g-def em {
-  font-size: 18px;
+  font-size: 17px;
 }
 
 /* ============ TECHNIQUES ============ */
