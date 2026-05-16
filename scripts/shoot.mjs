@@ -6,10 +6,13 @@ const OUT = "scripts/.shots";
 await mkdir(OUT, { recursive: true });
 
 const shots = [
-  { hash: "0", wait: 2500, name: "cover" },
-  { hash: "4", wait: 7000, name: "como-responde" },
-  { hash: "5", wait: 3200, name: "lo-que-nadie" },
-  { hash: "7", wait: 1200, name: "glosario" },
+  { hash: "28", wait: 1200, name: "privacidad" },
+  { hash: "29", wait: 1200, name: "arte" },
+  { hash: "30", wait: 1200, name: "medioambiente" },
+  { hash: "32", wait: 1200, name: "pros-vidas" },
+  { hash: "33", wait: 1200, name: "pros-acceso" },
+  { hash: "36", wait: 1200, name: "no-es-agi" },
+  { hash: "37", wait: 1200, name: "nadie-sabe" },
 ];
 
 const browser = await chromium.launch();
