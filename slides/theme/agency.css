@@ -2167,3 +2167,99 @@
   font-size: 12px;
   color: var(--fg-mute);
 }
+
+/* ============================================================
+   MODO CLARO — clase .theme-light en <html>
+   El tema entero se apoya en variables CSS, así que el modo
+   claro las redefine y casi todo se adapta solo. Los bloques
+   extra arreglan superficies construidas sobre blanco
+   translúcido, que serían invisibles sobre fondo claro.
+   ============================================================ */
+html.theme-light {
+  --bg: #faf9f7;
+  --bg-elev: #ffffff;
+  --bg-card: #f0efeb;
+  --bg-card-hi: #e6e5e0;
+  --fg: #1a1a1f;
+  --fg-soft: #4a4a55;
+  --fg-mute: #87878f;
+  --accent: #dc4a1b;
+  --accent-soft: #b03d12;
+  --accent-glow: rgba(220, 74, 27, 0.20);
+  --hot: #db2777;
+  --cool: #0369a1;
+  --good: #047857;
+  --bad: #dc2626;
+  --warn: #b45309;
+  --border: rgba(0, 0, 0, 0.10);
+  --border-strong: rgba(0, 0, 0, 0.20);
+}
+
+/* Portada y divisores de capítulo fijan el fondo oscuro inline
+   (data-background-color). En modo claro se fuerzan a claro. */
+html.theme-light .reveal .slide-background {
+  background-color: var(--bg) !important;
+}
+
+/* Superficies que se apoyaban en blanco translúcido */
+html.theme-light .cover-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+}
+html.theme-light .open-question {
+  background: rgba(0, 0, 0, 0.04);
+}
+html.theme-light .pd-bar {
+  background: rgba(0, 0, 0, 0.07);
+}
+html.theme-light .quote-slide {
+  background: linear-gradient(135deg, var(--bg) 0%, #f1e3e9 100%);
+}
+html.theme-light .gloss-popover {
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.28);
+}
+html.theme-light .exit-charla {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+/* ============ TOGGLE claro / oscuro ============ */
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  color: var(--fg-mute);
+  background: rgba(20, 20, 30, 0.65);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0.55;
+  transition: opacity 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+}
+.theme-toggle:hover {
+  opacity: 1;
+  color: var(--accent);
+  border-color: rgba(255, 87, 34, 0.4);
+  transform: translateY(-1px);
+}
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  display: block;
+}
+.theme-toggle .ic-moon { display: none; }
+html.theme-light .theme-toggle {
+  background: rgba(255, 255, 255, 0.78);
+}
+html.theme-light .theme-toggle .ic-sun  { display: none; }
+html.theme-light .theme-toggle .ic-moon { display: block; }

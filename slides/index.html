@@ -4,6 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Acércate a la IA · Mayo 2026</title>
+  <script>
+    /* Modo claro/oscuro — aplica la preferencia guardada antes de pintar */
+    try {
+      if (localStorage.getItem('acercate-tema') === 'light')
+        document.documentElement.classList.add('theme-light');
+    } catch (e) {}
+  </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
   <link rel="stylesheet" href="./theme/agency.css">
@@ -203,6 +210,22 @@
 <body>
 
 <a href="/" class="exit-charla" title="Salir de la charla y volver al sitio">Salir</a>
+
+<button class="theme-toggle" type="button" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">
+  <svg class="ic-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0 2a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm0-18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V2a1 1 0 0 1 1-1zm11 11a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.07 7.07a1 1 0 0 1-1.41 0l-1.42-1.41a1 1 0 1 1 1.41-1.42l1.42 1.42a1 1 0 0 1 0 1.41zM7.76 7.76a1 1 0 0 1-1.41 0L4.93 6.34a1 1 0 0 1 1.41-1.41l1.42 1.41a1 1 0 0 1 0 1.42zm11.31-2.83a1 1 0 0 1 0 1.41L17.66 7.76a1 1 0 1 1-1.42-1.42l1.42-1.41a1 1 0 0 1 1.41 0zM7.76 16.24a1 1 0 0 1 0 1.42l-1.42 1.41a1 1 0 0 1-1.41-1.41l1.41-1.42a1 1 0 0 1 1.42 0z"/></svg>
+  <svg class="ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.37 5.51A7.35 7.35 0 0 0 9.1 7.5c0 4.08 3.32 7.4 7.4 7.4.68 0 1.35-.09 1.99-.27A7.49 7.49 0 0 1 11.75 19 7.5 7.5 0 0 1 9.37 5.51z"/></svg>
+</button>
+<script>
+  /* Toggle claro/oscuro · alterna la clase y persiste la elección */
+  (function () {
+    var btn = document.querySelector('.theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var light = document.documentElement.classList.toggle('theme-light');
+      try { localStorage.setItem('acercate-tema', light ? 'light' : 'dark'); } catch (e) {}
+    });
+  })();
+</script>
 
 <div class="reveal">
   <div class="slides">
