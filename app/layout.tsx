@@ -60,6 +60,16 @@ function SiteHeader() {
 
         {/* En móvil el orden es: logo / chip+toggle / nav debajo a ancho completo */}
         <div className="flex items-center gap-1.5 sm:gap-2 order-2 md:order-3 shrink-0">
+          <Link
+            href="/buscar"
+            aria-label="Buscar en la web"
+            className="w-8 h-8 inline-flex items-center justify-center rounded-md text-[var(--color-fg-soft)] hover:text-[var(--color-fg)] hover:bg-[var(--color-hover)] transition-colors"
+          >
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+              <circle cx="11" cy="11" r="7" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </Link>
           <NivelChip />
           <ThemeToggle />
         </div>

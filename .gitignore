@@ -6,6 +6,7 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 public/slides/
+public/search-index.json
 
 .vercel
 .claude/settings.local.json
