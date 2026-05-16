@@ -305,6 +305,9 @@ button:disabled,
   text-decoration-color: var(--color-accent-glow);
   text-underline-offset: 3px;
   transition: color 0.2s;
+  /* URLs largas pegadas como texto del enlace deben poder partirse en móvil */
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .prose-custom a:hover { color: var(--color-accent-soft); }
