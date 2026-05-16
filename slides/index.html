@@ -226,11 +226,11 @@
         </h1>
         <p class="cover-subtitle">Una hora y media para entender qué es, qué hace ya hoy, y qué empieza a romper. Sin hype y sin condescendencia.</p>
         <div class="cover-eyebrow cover-q-lead">Hoy abrimos preguntas como estas</div>
-        <ol class="cover-questions">
-          <li>Si solo predice palabras, <em>¿es inteligente?</em></li>
-          <li>¿Qué pasa con tus chats cuando le pegas tu <em>DNI</em>?</li>
-          <li>Entrenar una IA con la obra de un <em>artista vivo</em>, ¿es robar?</li>
-        </ol>
+        <div class="cover-q-rotator" data-cover-rotator>
+          <span class="cover-q is-on">Si solo predice palabras, <em>¿es inteligente?</em></span>
+          <span class="cover-q">¿Qué pasa con tus chats cuando le pegas tu <em>DNI</em>?</span>
+          <span class="cover-q">Entrenar una IA con la obra de un <em>artista vivo</em>, ¿es robar?</span>
+        </div>
       </div>
     </section>
 
@@ -247,12 +247,12 @@
     <!-- 1/5 · ¿Qué es realmente la IA? -->
     <section>
       <h3 class="section-h">¿Qué es realmente la IA?</h3>
-      <p class="lede" style="max-width:1380px;margin-bottom:22px">No es nueva, y no es un ser que lo sabe todo. Mírala de fuera hacia dentro.</p>
+      <p class="lede" style="max-width:1380px;margin-bottom:22px">No es nueva, y no es un ser que lo sabe todo. Vamos a ver qué es de verdad.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;max-width:1380px">
         <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--fg-mute);border-radius:12px;padding:24px">
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">Desde hace décadas</div>
           <h4 style="font-size:25px;margin:0 0 10px">Ya convivías con ella</h4>
-          <p style="font-size:18px;color:var(--fg-soft);margin:0;line-height:1.5">El filtro de spam, las recomendaciones de Netflix, el GPS. IA que no llamábamos IA.</p>
+          <p style="font-size:18px;color:var(--fg-soft);margin:0;line-height:1.5">El corrector del móvil, el filtro de spam, las recomendaciones de Netflix, el GPS que recalcula la ruta, las caras que detecta tu cámara. IA que no llamábamos IA.</p>
         </div>
         <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--cool);border-radius:12px;padding:24px">
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--cool);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">Desde 2022</div>
@@ -266,7 +266,7 @@
         </div>
       </div>
       <div class="rule-box" style="margin-top:24px">
-        <p class="big-rule">Un LLM no entiende ni decide. Es un <em>algoritmo</em> que hace una sola cosa: <strong>predecir la siguiente palabra</strong>. Lo asombroso es la escala, no la magia.</p>
+        <p class="big-rule">Un LLM no entiende ni decide. Es un <em>algoritmo</em> que hace una sola cosa: <strong>predecir la siguiente palabra</strong>, una y otra vez. Todo lo demás se construye encima de eso.</p>
       </div>
       <a class="deepen" href="/explorar/fundamentos-ia?from=que-es-ia" target="_blank">Las cuatro familias de IA · cómo encajan</a>
     </section>
@@ -292,10 +292,10 @@
         <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:22px">
           <span style="font-family:var(--font-mono);font-size:32px;font-weight:700;color:transparent;-webkit-text-stroke:1px var(--accent);display:block;margin-bottom:8px">3</span>
           <h4 style="font-size:22px;margin:0 0 8px">Le pulen el trato</h4>
-          <p style="font-size:17px;color:var(--fg-soft);margin:0;line-height:1.5">Después, personas puntúan sus respuestas para enseñarle cuáles son buenas.</p>
+          <p style="font-size:17px;color:var(--fg-soft);margin:0;line-height:1.5">Después, personas puntúan sus respuestas: el llamado entrenamiento reforzado le enseña qué considerar una buena respuesta.</p>
         </div>
       </div>
-      <p class="bottom-note">Acaba siendo un panel fijo de cientos de miles de millones de mandos afinados —GPT-3 ya tenía <strong>175.000 millones</strong>—. El conocimiento no es una lista de hechos: es el <strong>patrón de todos esos mandos a la vez</strong>. A eso nos referimos con que «al final son matemáticas».</p>
+      <p class="bottom-note">Dentro <strong>no hay hechos guardados</strong>: ni una base de datos, ni «la capital de Francia es París» escrito en ningún sitio. Solo cientos de miles de millones de mandos afinados —GPT-3 ya tenía <strong>175.000 millones</strong>—. El conocimiento <em>es</em> ese patrón de mandos. Por eso decimos que «al final son matemáticas».</p>
       <a class="deepen" href="/explorar/fundamentos-ia?from=como-aprende" target="_blank">El entrenamiento, paso a paso</a>
     </section>
 
@@ -324,16 +324,17 @@
           <div style="font-size:17px;color:var(--fg);line-height:1.35">Predice <strong>una palabra</strong>… y vuelve a empezar</div>
         </div>
       </div>
-      <div style="margin-top:24px;background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:22px 26px;max-width:1380px">
-        <p style="font-family:var(--font-mono);font-size:13px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.08em;margin:0 0 14px">Para «El gato se subió al ___», el modelo calcula:</p>
-        <div style="display:grid;gap:9px">
-          <div style="display:grid;grid-template-columns:130px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg)">tejado</span><span style="height:14px;background:var(--accent);border-radius:7px;width:64%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--accent-soft)">64%</span></div>
-          <div style="display:grid;grid-template-columns:130px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg-soft)">sofá</span><span style="height:14px;background:var(--fg-mute);border-radius:7px;width:21%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--fg-mute)">21%</span></div>
-          <div style="display:grid;grid-template-columns:130px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg-soft)">árbol</span><span style="height:14px;background:var(--fg-mute);border-radius:7px;width:11%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--fg-mute)">11%</span></div>
-          <div style="display:grid;grid-template-columns:130px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg-soft)">coche</span><span style="height:14px;background:var(--fg-mute);border-radius:7px;width:4%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--fg-mute)">4%</span></div>
+      <div id="predict-demo" style="margin-top:24px;background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:24px 28px;max-width:1380px">
+        <p style="font-family:var(--font-mono);font-size:13px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.08em;margin:0 0 12px">El modelo va escribiendo su respuesta · ahora elige la siguiente palabra</p>
+        <p style="font-family:var(--font-serif);font-size:30px;color:var(--fg);margin:0 0 18px;line-height:1.35">«Para quitar una mancha de vino, lo primero es <span style="color:var(--accent);border-bottom:3px dashed var(--accent);padding:0 6px">secar</span>…»</p>
+        <div style="display:grid;gap:9px;max-width:760px">
+          <div style="display:grid;grid-template-columns:150px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg)">secar</span><span style="height:14px;background:var(--accent);border-radius:7px;width:41%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--accent-soft)">41%</span></div>
+          <div style="display:grid;grid-template-columns:150px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg-soft)">absorber</span><span style="height:14px;background:var(--fg-mute);border-radius:7px;width:28%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--fg-mute)">28%</span></div>
+          <div style="display:grid;grid-template-columns:150px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg-soft)">echar sal</span><span style="height:14px;background:var(--fg-mute);border-radius:7px;width:21%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--fg-mute)">21%</span></div>
+          <div style="display:grid;grid-template-columns:150px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg-soft)">frotar</span><span style="height:14px;background:var(--fg-mute);border-radius:7px;width:10%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--fg-mute)">10%</span></div>
         </div>
       </div>
-      <p class="bottom-note">Cada palabra que lees la ha elegido de una en una, escogiendo entre miles de opciones la más probable. No hay un plan previo: hay una <strong>cadena de predicciones</strong>.</p>
+      <p class="bottom-note">No tiene la respuesta pensada de antemano. La va construyendo palabra a palabra, eligiendo cada vez —entre miles de opciones— la continuación más probable.</p>
       <a class="deepen" href="/explorar/fundamentos-ia?from=como-responde" target="_blank">Tokens, probabilidad y temperatura</a>
     </section>
 
@@ -372,24 +373,27 @@
     <!-- 5/5 · Agentes -->
     <section>
       <h3 class="section-h">El salto: de hablar a actuar</h3>
-      <p class="lede" style="max-width:1380px;margin-bottom:20px">Un LLM solo conversa. La evolución —y el presente— es darle herramientas.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1380px">
-        <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--fg-mute);border-radius:12px;padding:24px">
-          <div style="font-family:var(--font-mono);font-size:12px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">Un LLM solo</div>
-          <h4 style="font-size:26px;margin:0 0 10px">Conversa y responde</h4>
-          <p style="font-size:19px;color:var(--fg-soft);margin:0;line-height:1.5">Sabe muchísimo y escribe, pero no puede tocar nada del mundo: solo entra y sale texto.</p>
+      <p class="lede" style="max-width:1380px;margin-bottom:24px">La evolución más importante desde ChatGPT no es un modelo más listo. Es esta:</p>
+      <div style="display:flex;align-items:stretch;gap:14px;max-width:1380px">
+        <div style="flex:1;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:24px">
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">Hasta ahora</div>
+          <h4 style="font-size:26px;margin:0 0 8px">Un LLM</h4>
+          <p style="font-size:18px;color:var(--fg-soft);margin:0;line-height:1.5">Conversa y responde. Sabe muchísimo… pero solo habla: no puede tocar nada.</p>
         </div>
-        <div style="background:var(--bg-elev);border:1px solid var(--accent);border-top:3px solid var(--accent);border-radius:12px;padding:24px">
-          <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">Un agente</div>
-          <h4 style="font-size:26px;margin:0 0 10px">Ya no habla: actúa</h4>
-          <p style="font-size:19px;color:var(--fg-soft);margin:0;line-height:1.5">Un LLM + herramientas (buscar, ejecutar, leer archivos) + encadenar pasos. Completa tareas de principio a fin.</p>
+        <div style="display:flex;align-items:center;font-size:38px;color:var(--accent);font-weight:300">+</div>
+        <div style="flex:1;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:24px">
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">Le das</div>
+          <h4 style="font-size:26px;margin:0 0 8px">Herramientas y pasos</h4>
+          <p style="font-size:18px;color:var(--fg-soft);margin:0;line-height:1.5">Buscar, ejecutar, leer archivos, usar el navegador… y permiso para encadenar pasos solo.</p>
+        </div>
+        <div style="display:flex;align-items:center;font-size:38px;color:var(--accent)">→</div>
+        <div style="flex:1.3;background:linear-gradient(150deg,var(--bg-card) 0%,rgba(255,87,34,0.12) 100%);border:1px solid var(--accent);border-radius:14px;padding:24px">
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">2025-2026 · ya está aquí</div>
+          <h4 style="font-size:32px;margin:0 0 8px;color:var(--fg)">Un agente</h4>
+          <p style="font-size:18px;color:var(--fg-soft);margin:0;line-height:1.5">Ya no habla: <strong>actúa</strong>. Completa tareas enteras solo: Claude Code, agentes que manejan el navegador, asistentes que trabajan codo con codo contigo.</p>
         </div>
       </div>
-      <div style="margin-top:22px;background:var(--bg-card);border:1px solid var(--border-strong);border-radius:12px;padding:18px 24px;max-width:1380px;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap">
-        <span style="font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em">2025-2026 · lo más nuevo</span>
-        <span style="font-size:19px;color:var(--fg-soft)">Claude Code, agentes que manejan el navegador, asistentes que trabajan codo con codo contigo. Esto es de <strong>hace meses</strong>.</span>
-      </div>
-      <p class="bottom-note">Un LLM ya es potente. Un <strong>agente</strong> —un LLM con herramientas que razona en pasos— es lo que está provocando la revolución de 2026. El resto de la charla va, en buena parte, de esto.</p>
+      <p class="bottom-note">De un buscador de respuestas a algo que <strong>hace el trabajo</strong>. Es el mayor cambio desde que ChatGPT se hizo público —y es de hace apenas unos meses—.</p>
       <a class="deepen" href="/explorar/agentes-y-humanos?from=agentes-intro" target="_blank">Qué es un agente · y hasta dónde llega</a>
     </section>
 
@@ -1485,6 +1489,22 @@
     slideNumber: 'c/t',
     plugins: [ RevealHighlight, RevealNotes ]
   });
+
+  /* ===================================================================
+     Portada · preguntas que rotan en un único hueco.
+     =================================================================== */
+  (function() {
+    var rot = document.querySelector('[data-cover-rotator]');
+    if (!rot) return;
+    var qs = rot.querySelectorAll('.cover-q');
+    if (qs.length < 2) return;
+    var i = 0;
+    setInterval(function() {
+      qs[i].classList.remove('is-on');
+      i = (i + 1) % qs.length;
+      qs[i].classList.add('is-on');
+    }, 3800);
+  })();
 
   /* ===================================================================
      Typewriter animation for [data-typewriter] prompt blocks.

@@ -1814,45 +1814,43 @@
   margin-top: 34px !important;
   margin-bottom: 16px !important;
 }
-.cover-questions {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  max-width: 1000px;
+.cover-q-rotator {
+  position: relative;
+  max-width: 1020px;
+  height: 96px;
+  margin-top: 4px;
 }
-.cover-questions li {
+.cover-q {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-left: 30px;
   font-family: var(--font-serif);
-  font-size: 30px;
+  font-size: 32px;
   color: var(--fg);
   line-height: 1.3;
-  padding-left: 30px;
-  position: relative;
   opacity: 0;
-  animation: cover-q-in 0.7s ease-out forwards;
+  transform: translateY(12px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  pointer-events: none;
 }
-.cover-questions li::before {
+.cover-q::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.55em;
+  top: 0.5em;
   width: 14px;
   height: 2px;
   background: var(--accent);
 }
-.cover-questions li:nth-child(1) { animation-delay: 0.5s; }
-.cover-questions li:nth-child(2) { animation-delay: 1.4s; }
-.cover-questions li:nth-child(3) { animation-delay: 2.3s; }
-.cover-questions li em {
+.cover-q.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cover-q em {
   font-family: var(--font-serif);
   font-style: italic;
   color: var(--accent-soft);
-}
-@keyframes cover-q-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ============ Panel de mandos (slide "cómo aprende") ============ */

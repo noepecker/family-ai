@@ -55,9 +55,9 @@
   },
   {
     "id": "rlhf",
-    "term": "RLHF",
-    "def": "Sigla de Reinforcement Learning from Human Feedback. Fase del entrenamiento en la que personas puntúan las respuestas del modelo para enseñarle cuáles son buenas.",
-    "match": ["RLHF"]
+    "term": "RLHF · entrenamiento reforzado",
+    "def": "Sigla de Reinforcement Learning from Human Feedback (entrenamiento reforzado con retroalimentación humana). Fase del entrenamiento en la que personas puntúan las respuestas del modelo para enseñarle cuáles son buenas.",
+    "match": ["RLHF", "entrenamiento reforzado"]
   },
   {
     "id": "fine-tuning",
