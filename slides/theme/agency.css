@@ -1038,6 +1038,11 @@
   font-size: 17px;
 }
 
+.g-item-key {
+  border-color: var(--accent);
+  background: linear-gradient(150deg, var(--bg-card) 0%, rgba(255, 87, 34, 0.10) 100%);
+}
+
 /* ============ TECHNIQUES ============ */
 .techniques {
   display: grid;
@@ -1896,13 +1901,13 @@
   color: var(--fg-mute);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  margin: 0 0 20px;
+  margin: 0 0 12px;
 }
 .pd-sentence {
   font-family: var(--font-serif);
-  font-size: 32px;
-  line-height: 1.45;
-  margin: 0 0 26px;
+  font-size: 27px;
+  line-height: 1.4;
+  margin: 0 0 16px;
 }
 .pd-fixed { color: var(--fg-soft); }
 .pd-built { color: var(--fg); }
@@ -1931,14 +1936,14 @@
   display: flex;
   flex-direction: column;
   max-width: 720px;
-  min-height: 212px;
+  min-height: 168px;
 }
 .pd-cand {
   display: grid;
   grid-template-columns: 1fr 156px 48px;
   align-items: center;
   gap: 24px;
-  padding: 10px 18px;
+  padding: 6px 16px;
   border-radius: 10px;
   opacity: 0;
   transform: translateY(9px);
@@ -1953,7 +1958,7 @@
 .pd-cand.pd-chosen { background: rgba(255, 87, 34, 0.09); }
 .pd-cw {
   font-family: var(--font-serif);
-  font-size: 25px;
+  font-size: 22px;
   color: var(--fg-mute);
   transition: color 0.45s ease;
 }
@@ -1984,16 +1989,72 @@
 }
 .pd-cand.pd-chosen .pd-cp { color: var(--accent-soft); }
 
-/* ============ Capacidades emergentes · tarjetas ============ */
-.emerge-card {
+/* ============ Capacidades emergentes · chat de ejemplos ============ */
+.emerge-chat {
+  max-width: 940px;
+  margin-top: 6px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.ec-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.ec-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+.ec-cap {
+  margin-left: 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.ec-body {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 186px;
+}
+.ec-row { display: flex; }
+.ec-row-user { justify-content: flex-end; }
+.ec-row-ai { justify-content: flex-start; }
+.ec-bubble {
+  max-width: 80%;
+  padding: 13px 19px;
+  border-radius: 16px;
+  font-size: 19px;
+  line-height: 1.45;
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(9px);
 }
-.emerge-card.is-in {
-  animation: emerge-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.ec-bubble.ec-in {
+  animation: ec-bubble-in 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-@keyframes emerge-in {
+@keyframes ec-bubble-in {
   to { opacity: 1; transform: translateY(0); }
+}
+.ec-user {
+  background: var(--accent);
+  color: var(--bg);
+  border-bottom-right-radius: 5px;
+}
+.ec-ai {
+  background: var(--bg-card);
+  color: var(--fg-soft);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 5px;
 }
 
 /* ============ Mini-línea temporal (slide "emergentes") ============ */

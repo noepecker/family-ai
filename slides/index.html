@@ -324,7 +324,7 @@
           <div style="font-size:17px;color:var(--fg);line-height:1.35">Predice <strong>una palabra</strong>… y vuelve a empezar</div>
         </div>
       </div>
-      <div id="predict-demo" data-predict style="margin-top:24px;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:26px 32px;max-width:1380px">
+      <div id="predict-demo" data-predict style="margin-top:18px;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:18px 28px;max-width:1380px">
         <p class="pd-label">El modelo escribe su respuesta palabra a palabra · cada elección reescribe las opciones siguientes</p>
         <p class="pd-sentence"><span class="pd-fixed">«Para quitar una mancha de vino, lo primero es</span><span class="pd-built"></span> <span class="pd-cursor"></span><span class="pd-fixed">»</span></p>
         <div class="pd-candidates"></div>
@@ -339,42 +339,17 @@
       <h3 class="section-h">Lo que nadie le enseñó</h3>
       <p class="lede" style="max-width:1380px"><strong>GPT-2, 2019.</strong> Lo entrenaron para una sola cosa —predecir la siguiente palabra—, pero dándole a leer cantidades enormes de texto <strong>de todo tipo</strong>: libros, código, foros, Wikipedia, conversaciones.</p>
       <p style="font-size:23px;color:var(--fg);margin:14px 0 14px;max-width:1380px">Y, al escalarlo así, empezó a hacer cosas que <em>nadie le había enseñado</em>:</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;max-width:1380px">
-        <div class="emerge-card" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px 20px">
-          <div style="font-family:var(--font-mono);font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:7px">Traducir idiomas</div>
-          <p style="font-size:17px;color:var(--fg-soft);margin:0;line-height:1.45">Del español al japonés sin un diccionario dentro.</p>
+      <div class="emerge-chat" data-emerge-chat>
+        <div class="ec-head">
+          <span class="ec-dot"></span><span class="ec-dot"></span><span class="ec-dot"></span>
+          <span class="ec-cap" data-ec-cap></span>
         </div>
-        <div class="emerge-card" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px 20px">
-          <div style="font-family:var(--font-mono);font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:7px">Programar</div>
-          <p style="font-size:17px;color:var(--fg-soft);margin:0;line-height:1.45">Escribe código que funciona a partir de una frase.</p>
-        </div>
-        <div class="emerge-card" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px 20px">
-          <div style="font-family:var(--font-mono);font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:7px">Resumir</div>
-          <p style="font-size:17px;color:var(--fg-soft);margin:0;line-height:1.45">Convierte 40 páginas en 5 líneas claras.</p>
-        </div>
-        <div class="emerge-card" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px 20px">
-          <div style="font-family:var(--font-mono);font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:7px">Razonar paso a paso</div>
-          <p style="font-size:17px;color:var(--fg-soft);margin:0;line-height:1.45">Resuelve un acertijo de lógica que no había visto.</p>
-        </div>
-        <div class="emerge-card" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px 20px">
-          <div style="font-family:var(--font-mono);font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:7px">Imitar un estilo</div>
-          <p style="font-size:17px;color:var(--fg-soft);margin:0;line-height:1.45">Un cuento al estilo de un autor concreto.</p>
-        </div>
-        <div class="emerge-card" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px 20px">
-          <div style="font-family:var(--font-mono);font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:7px">Hacer de tutor</div>
-          <p style="font-size:17px;color:var(--fg-soft);margin:0;line-height:1.45">Te explica álgebra a tu ritmo, las veces que haga falta.</p>
+        <div class="ec-body">
+          <div class="ec-row ec-row-user"><div class="ec-bubble ec-user" data-ec-user></div></div>
+          <div class="ec-row ec-row-ai"><div class="ec-bubble ec-ai" data-ec-ai></div></div>
         </div>
       </div>
       <p class="bottom-note">Se llaman <strong>capacidades emergentes</strong>: nadie las diseñó, surgieron de la escala. Es la razón por la que la IA, de repente, parecía saber de todo.</p>
-      <div class="mini-timeline" aria-hidden="true">
-        <div class="mt-line"></div>
-        <div class="mt-item" style="--p:4%"><span class="mt-dot"></span><span class="mt-year">1943</span><span class="mt-label">1ª neurona</span></div>
-        <div class="mt-item" style="--p:50%"><span class="mt-dot"></span><span class="mt-year">2012</span><span class="mt-label">AlexNet</span></div>
-        <div class="mt-item" style="--p:66%"><span class="mt-dot"></span><span class="mt-year">2017</span><span class="mt-label">Transformer</span></div>
-        <div class="mt-item mt-hot" style="--p:79%"><span class="mt-dot"></span><span class="mt-year">2019</span><span class="mt-label">GPT-2</span></div>
-        <div class="mt-item" style="--p:90%"><span class="mt-dot"></span><span class="mt-year">2022</span><span class="mt-label">ChatGPT</span></div>
-        <div class="mt-item" style="--p:99%"><span class="mt-dot"></span><span class="mt-year">2026</span><span class="mt-label">hoy</span></div>
-      </div>
       <div class="open-question">
         <span class="oq-mark">?</span>
         <span class="oq-text">Si nadie programó esas capacidades, ¿alguien sabe del todo qué más hay ahí dentro?</span>
@@ -417,14 +392,14 @@
       <div class="chapter-pointer">Cap. 02 · Glosario</div>
       <h3 class="section-h">8 palabras para entender las noticias de 2026</h3>
       <div class="glossary-grid">
-        <div class="g-item"><span class="g-term">LLM</span><span class="g-def">El motor de la IA de texto: un programa que predice la siguiente palabra. De ahí sale todo.</span></div>
-        <div class="g-item"><span class="g-term">GPT</span><span class="g-def">La familia de modelos de OpenAI. Hoy «GPT» se usa casi como sinónimo de chatbot de IA.</span></div>
+        <div class="g-item g-item-key"><span class="g-term">Prompt</span><span class="g-def">Lo que le pides. <em>La calidad del prompt marca la calidad de la respuesta.</em></span></div>
+        <div class="g-item"><span class="g-term">LLM</span><span class="g-def">El motor de la IA de texto: predice la siguiente palabra. De ahí sale todo.</span></div>
+        <div class="g-item"><span class="g-term">GPT</span><span class="g-def">La familia de modelos de OpenAI. Hoy «GPT» suena casi a sinónimo de chatbot de IA.</span></div>
         <div class="g-item"><span class="g-term">Token</span><span class="g-def">Trozo de texto (~4 letras) que procesa el modelo. <em>Te cobran por tokens.</em></span></div>
-        <div class="g-item"><span class="g-term">Prompt</span><span class="g-def">Lo que le pides. <em>La calidad del prompt = calidad de la respuesta.</em></span></div>
-        <div class="g-item"><span class="g-term">Contexto</span><span class="g-def">Cuánto texto «ve» a la vez. En 2026: hasta <strong>1 millón de tokens</strong> (un libro).</span></div>
         <div class="g-item"><span class="g-term">Alucinación</span><span class="g-def">Cuando inventa información con total seguridad.</span></div>
-        <div class="g-item"><span class="g-term">Agente</span><span class="g-def">Un LLM con herramientas que <strong>actúa</strong>, no solo conversa.</span></div>
-        <div class="g-item"><span class="g-term">Multimodal</span><span class="g-def">Entiende texto + imagen + audio + vídeo a la vez.</span></div>
+        <div class="g-item"><span class="g-term">Contexto</span><span class="g-def">Cuánto texto «ve» a la vez. En 2026: hasta <strong>1 millón de tokens</strong>.</span></div>
+        <div class="g-item"><span class="g-term">Entrenamiento</span><span class="g-def">Leer cantidades enormes de texto y afinar millones de números hasta fallar poco.</span></div>
+        <div class="g-item"><span class="g-term">Deepfake</span><span class="g-def">Vídeo, voz o foto falsos, hechos con IA, que imitan a alguien real.</span></div>
       </div>
       <a class="deepen" href="/explorar/herramientas-actuales?from=glosario#5-glosario-para-entender-las-noticias" target="_blank">Glosario completo en la web</a>
     </section>
@@ -669,96 +644,6 @@
       </div>
     </section>
 
-    <!-- ============ 05.2a · Llamada de un desconocido (Marcos) ============
-         SLIDE "INOCENTE": parece una llamada de teléfono real.
-         Flujo:  la slide entra → el teléfono SUENA (tono + animación).
-                 Pulsar "Aceptar" → para el tono y suena el audio 1.
-                 ESPACIO → suena el audio 2 (y 3, 4… si añades más).
-                 Tras el último audio, ESPACIO avanza al slide del reveal.
-         Añadir más audios: amplía data-audios (rutas .mp3 separadas por
-         comas; los ficheros viven en slides/audio/).
-         NO pongas aquí texto de IA / clonación: el efecto depende de que
-         parezca una llamada auténtica hasta el reveal del slide siguiente. -->
-    <section id="voz-clonada-demo" class="callscreen"
-             data-vc-call data-audios="audio/voz-clon-1.mp3,audio/voz-clon-2.mp3,audio/voz-clon-3.mp3"
-             style="justify-content:center">
-      <div class="phone" data-state="ringing">
-        <div class="phone-screen">
-
-          <!-- Teléfono sonando -->
-          <div class="call-ringing">
-            <div class="call-label">Llamada entrante</div>
-            <div class="call-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2.5c-5.3 0-9.5 2.8-9.5 6.2V22h19v-1.3c0-3.4-4.2-6.2-9.5-6.2z"/></svg></div>
-            <div class="call-name">Desconocido</div>
-            <div class="call-sub">número oculto</div>
-            <div class="call-actions">
-              <div class="call-action">
-                <button class="call-btn call-decline" type="button" aria-label="Rechazar llamada">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.5c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.3 2.2z"/></svg>
-                </button>
-                <span class="call-action-label">Rechazar</span>
-              </div>
-              <div class="call-action">
-                <button class="call-btn call-accept" type="button" data-vc-accept aria-label="Aceptar llamada">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.5c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.3 2.2z"/></svg>
-                </button>
-                <span class="call-action-label">Aceptar</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- En llamada -->
-          <div class="call-active">
-            <div class="call-timer" data-vc-timer>00:00</div>
-            <div class="call-name">Desconocido</div>
-            <div class="call-sub">llamada en curso</div>
-            <div class="call-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2.5c-5.3 0-9.5 2.8-9.5 6.2V22h19v-1.3c0-3.4-4.2-6.2-9.5-6.2z"/></svg></div>
-            <div class="call-speaking" aria-hidden="true">
-              <i></i><i></i><i></i><i></i><i></i>
-            </div>
-            <div class="call-controls" aria-hidden="true">
-              <div class="call-ctl">
-                <span><svg viewBox="0 0 24 24"><path d="M12 14.5a3.2 3.2 0 0 0 3.2-3.2V5.7a3.2 3.2 0 0 0-6.4 0v5.6a3.2 3.2 0 0 0 3.2 3.2zm5.3-3.2a5.3 5.3 0 0 1-10.6 0H4.8a7.2 7.2 0 0 0 6.2 7.1V21h2v-2.6a7.2 7.2 0 0 0 6.2-7.1h-1.9z"/></svg></span>
-                silenciar
-              </div>
-              <div class="call-ctl">
-                <span><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="1.9"/><circle cx="12" cy="6" r="1.9"/><circle cx="18" cy="6" r="1.9"/><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/><circle cx="6" cy="18" r="1.9"/><circle cx="12" cy="18" r="1.9"/><circle cx="18" cy="18" r="1.9"/></svg></span>
-                teclado
-              </div>
-              <div class="call-ctl on">
-                <span><svg viewBox="0 0 24 24"><path d="M3 9.5v5h3.7L11 19V5L6.7 9.5H3zm10.5 2.5a3.5 3.5 0 0 0-2-3.2v6.4a3.5 3.5 0 0 0 2-3.2zM13.5 4.2v2a5.8 5.8 0 0 1 0 11.2v2a7.8 7.8 0 0 0 0-15.2z"/></svg></span>
-                altavoz
-              </div>
-            </div>
-            <button class="call-btn call-end" type="button" aria-label="Colgar">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.5c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.3 2.2z"/></svg>
-            </button>
-          </div>
-
-        </div>
-      </div>
-      <aside class="notes">
-        Llamada simulada · voz clonada con IA (el reveal es el slide siguiente).
-        El teléfono suena al entrar. Pulsa «Aceptar» → suena el audio 1.
-        Pulsa ESPACIO → audio 2. Cuando se acaben los audios, ESPACIO avanza al reveal.
-      </aside>
-    </section>
-
-    <!-- ============ 05.2 · Voz clonada — REVEAL (Marcos) ============ -->
-    <section class="impact-slide">
-      <div class="impact-bg"></div>
-      <div class="impact-content">
-        <div class="impact-eyebrow">ElevenLabs · clonación de voz</div>
-        <p class="impact-quote">Madre mía…<br>qué <em>bochinche</em>.</p>
-        <p class="impact-foot"><strong>60 segundos</strong> de muestra · <strong>$11</strong> al mes · <strong>30+ idiomas</strong>.<br>Una persona que no ha dicho ni una palabra de esto.</p>
-      </div>
-      <div class="open-question">
-        <span class="oq-mark">?</span>
-        <span class="oq-text">Si oyes a tu hijo pidiendo dinero urgente, ¿cómo lo verificas?</span>
-      </div>
-      <a class="deepen" href="/explorar/deepfakes-y-deteccion?from=voz-clonada#74-estafas-a-abuelos-con-voz-clonada" target="_blank">Clonación de voz · cómo protegerte</a>
-    </section>
-
     <!-- ============ 05.3 · Excel OpenBank (Marcos) ============ -->
     <section id="excel-openbank">
       <h3 class="section-h">Extracto bancario → Excel limpio</h3>
@@ -864,6 +749,96 @@
         <a class="deepen" href="/casos/categorizar-gastos?from=charla" target="_blank">Ver el caso completo</a>
         <a class="deepen" href="/slides/demos/extracto-abril-2026-analisis.xlsx" target="_blank">Descargar el Excel resultante</a>
       </div>
+    </section>
+
+    <!-- ============ 05.2a · Llamada de un desconocido (Marcos) ============
+         SLIDE "INOCENTE": parece una llamada de teléfono real.
+         Flujo:  la slide entra → el teléfono SUENA (tono + animación).
+                 Pulsar "Aceptar" → para el tono y suena el audio 1.
+                 ESPACIO → suena el audio 2 (y 3, 4… si añades más).
+                 Tras el último audio, ESPACIO avanza al slide del reveal.
+         Añadir más audios: amplía data-audios (rutas .mp3 separadas por
+         comas; los ficheros viven en slides/audio/).
+         NO pongas aquí texto de IA / clonación: el efecto depende de que
+         parezca una llamada auténtica hasta el reveal del slide siguiente. -->
+    <section id="voz-clonada-demo" class="callscreen"
+             data-vc-call data-audios="audio/voz-clon-1.mp3,audio/voz-clon-2.mp3,audio/voz-clon-3.mp3"
+             style="justify-content:center">
+      <div class="phone" data-state="ringing">
+        <div class="phone-screen">
+
+          <!-- Teléfono sonando -->
+          <div class="call-ringing">
+            <div class="call-label">Llamada entrante</div>
+            <div class="call-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2.5c-5.3 0-9.5 2.8-9.5 6.2V22h19v-1.3c0-3.4-4.2-6.2-9.5-6.2z"/></svg></div>
+            <div class="call-name">Desconocido</div>
+            <div class="call-sub">número oculto</div>
+            <div class="call-actions">
+              <div class="call-action">
+                <button class="call-btn call-decline" type="button" aria-label="Rechazar llamada">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.5c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.3 2.2z"/></svg>
+                </button>
+                <span class="call-action-label">Rechazar</span>
+              </div>
+              <div class="call-action">
+                <button class="call-btn call-accept" type="button" data-vc-accept aria-label="Aceptar llamada">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.5c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.3 2.2z"/></svg>
+                </button>
+                <span class="call-action-label">Aceptar</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- En llamada -->
+          <div class="call-active">
+            <div class="call-timer" data-vc-timer>00:00</div>
+            <div class="call-name">Desconocido</div>
+            <div class="call-sub">llamada en curso</div>
+            <div class="call-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2.5c-5.3 0-9.5 2.8-9.5 6.2V22h19v-1.3c0-3.4-4.2-6.2-9.5-6.2z"/></svg></div>
+            <div class="call-speaking" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="call-controls" aria-hidden="true">
+              <div class="call-ctl">
+                <span><svg viewBox="0 0 24 24"><path d="M12 14.5a3.2 3.2 0 0 0 3.2-3.2V5.7a3.2 3.2 0 0 0-6.4 0v5.6a3.2 3.2 0 0 0 3.2 3.2zm5.3-3.2a5.3 5.3 0 0 1-10.6 0H4.8a7.2 7.2 0 0 0 6.2 7.1V21h2v-2.6a7.2 7.2 0 0 0 6.2-7.1h-1.9z"/></svg></span>
+                silenciar
+              </div>
+              <div class="call-ctl">
+                <span><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="1.9"/><circle cx="12" cy="6" r="1.9"/><circle cx="18" cy="6" r="1.9"/><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/><circle cx="6" cy="18" r="1.9"/><circle cx="12" cy="18" r="1.9"/><circle cx="18" cy="18" r="1.9"/></svg></span>
+                teclado
+              </div>
+              <div class="call-ctl on">
+                <span><svg viewBox="0 0 24 24"><path d="M3 9.5v5h3.7L11 19V5L6.7 9.5H3zm10.5 2.5a3.5 3.5 0 0 0-2-3.2v6.4a3.5 3.5 0 0 0 2-3.2zM13.5 4.2v2a5.8 5.8 0 0 1 0 11.2v2a7.8 7.8 0 0 0 0-15.2z"/></svg></span>
+                altavoz
+              </div>
+            </div>
+            <button class="call-btn call-end" type="button" aria-label="Colgar">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.5c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.3 2.2z"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <aside class="notes">
+        Llamada simulada · voz clonada con IA (el reveal es el slide siguiente).
+        El teléfono suena al entrar. Pulsa «Aceptar» → suena el audio 1.
+        Pulsa ESPACIO → audio 2. Cuando se acaben los audios, ESPACIO avanza al reveal.
+      </aside>
+    </section>
+
+    <!-- ============ 05.2 · Voz clonada — REVEAL (Marcos) ============ -->
+    <section class="impact-slide">
+      <div class="impact-bg"></div>
+      <div class="impact-content">
+        <div class="impact-eyebrow">ElevenLabs · clonación de voz</div>
+        <p class="impact-quote">Madre mía…<br>qué <em>bochinche</em>.</p>
+        <p class="impact-foot"><strong>60 segundos</strong> de muestra · <strong>$11</strong> al mes · <strong>30+ idiomas</strong>.<br>Una persona que no ha dicho ni una palabra de esto.</p>
+      </div>
+      <div class="open-question">
+        <span class="oq-mark">?</span>
+        <span class="oq-text">Si oyes a tu hijo pidiendo dinero urgente, ¿cómo lo verificas?</span>
+      </div>
+      <a class="deepen" href="/explorar/deepfakes-y-deteccion?from=voz-clonada#74-estafas-a-abuelos-con-voz-clonada" target="_blank">Clonación de voz · cómo protegerte</a>
     </section>
 
     <!-- ===================================================================
@@ -1732,20 +1707,41 @@
   })();
 
   /* ===================================================================
-     Slide "lo que nadie le enseñó" · las tarjetas entran escalonadas.
+     Slide "lo que nadie le enseñó" · chat que recorre los ejemplos.
      =================================================================== */
   (function() {
-    var cards = document.querySelectorAll('.emerge-card');
-    if (!cards.length) return;
-    var section = cards[0].closest('section');
+    var chat = document.querySelector('[data-emerge-chat]');
+    if (!chat) return;
+    var section = chat.closest('section');
+    var capEl = chat.querySelector('[data-ec-cap]');
+    var userEl = chat.querySelector('[data-ec-user]');
+    var aiEl = chat.querySelector('[data-ec-ai]');
+    var EX = [
+      { cap: 'Traducir idiomas', u: '¿Cómo se dice «buenas noches» en japonés?', a: '«こんばんは» (konban wa). Y al irte a dormir, «おやすみ».' },
+      { cap: 'Programar', u: 'Hazme una página web con un cronómetro.', a: 'Hecho: HTML + JavaScript, 28 líneas, con botones de arrancar, parar y reiniciar. ✓' },
+      { cap: 'Resumir', u: 'Resume este informe de 40 páginas.', a: '5 puntos clave: ventas +12 %, sube el coste logístico, dos mercados nuevos…' },
+      { cap: 'Razonar paso a paso', u: 'Tengo 3 cajas; cada una pesa el doble que la anterior y juntas 28 kg.', a: 'Llamo x a la primera: x + 2x + 4x = 28 → x = 4. Pesan 4, 8 y 16 kg.' },
+      { cap: 'Hacer de tutor', u: 'No entiendo las fracciones.', a: 'Imagina una pizza en 4 trozos iguales: 3/4 son tres de esos trozos. ¿Te pongo otro ejemplo?' }
+    ];
     var timers = [];
+    function clear() { timers.forEach(clearTimeout); timers = []; }
+    function show(ex) {
+      capEl.textContent = ex.cap;
+      userEl.textContent = ex.u;
+      aiEl.textContent = ex.a;
+      userEl.classList.remove('ec-in');
+      aiEl.classList.remove('ec-in');
+      void userEl.offsetWidth;
+      timers.push(setTimeout(function() { userEl.classList.add('ec-in'); }, 80));
+      timers.push(setTimeout(function() { aiEl.classList.add('ec-in'); }, 1000));
+    }
+    function loop(i) {
+      show(EX[i]);
+      timers.push(setTimeout(function() { loop((i + 1) % EX.length); }, 4800));
+    }
     function onSlide() {
-      timers.forEach(clearTimeout); timers = [];
-      var on = Reveal.getCurrentSlide() === section;
-      cards.forEach(function(c, i) {
-        c.classList.remove('is-in');
-        if (on) timers.push(setTimeout(function() { c.classList.add('is-in'); }, 120 + i * 110));
-      });
+      clear();
+      if (Reveal.getCurrentSlide() === section) loop(0);
     }
     Reveal.on('ready', onSlide);
     Reveal.on('slidechanged', onSlide);
@@ -1804,9 +1800,10 @@
       });
     }
     function appendWord(word) {
+      builtEl.appendChild(document.createTextNode(' '));
       var s = document.createElement('span');
       s.className = 'pd-w';
-      s.textContent = ' ' + word;
+      s.textContent = word;
       builtEl.appendChild(s);
     }
     function run() {

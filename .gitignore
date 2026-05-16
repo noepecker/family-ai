@@ -9,3 +9,5 @@ public/slides/
 
 .vercel
 .claude/settings.local.json
+# capturas de verificación
+scripts/.shots/
