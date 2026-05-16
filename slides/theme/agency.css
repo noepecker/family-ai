@@ -2001,60 +2001,60 @@
 .ec-head {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 12px 18px;
+  gap: 8px;
+  padding: 13px 22px;
   border-bottom: 1px solid var(--border);
 }
-.ec-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--border-strong);
-}
+.ec-dot { width: 10px; height: 10px; border-radius: 50%; }
+.ec-dot-r { background: var(--bad); }
+.ec-dot-y { background: var(--warn); }
+.ec-dot-g { background: var(--good); }
 .ec-cap {
-  margin-left: 12px;
+  margin-left: 10px;
   font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
+  color: var(--fg-mute);
 }
+.ec-cap [data-ec-cap] { color: var(--accent); }
 .ec-body {
-  padding: 20px 22px;
+  padding: 24px 26px 26px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  min-height: 186px;
+  gap: 22px;
+  min-height: 196px;
 }
-.ec-row { display: flex; }
-.ec-row-user { justify-content: flex-end; }
-.ec-row-ai { justify-content: flex-start; }
-.ec-bubble {
-  max-width: 80%;
-  padding: 13px 19px;
-  border-radius: 16px;
-  font-size: 19px;
-  line-height: 1.45;
+.ec-msg {
   opacity: 0;
-  transform: translateY(9px);
+  transform: translateY(8px);
 }
-.ec-bubble.ec-in {
-  animation: ec-bubble-in 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.ec-msg.ec-in {
+  animation: ec-msg-in 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-@keyframes ec-bubble-in {
+@keyframes ec-msg-in {
   to { opacity: 1; transform: translateY(0); }
 }
-.ec-user {
-  background: var(--accent);
-  color: var(--bg);
-  border-bottom-right-radius: 5px;
+.ec-role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 7px;
 }
-.ec-ai {
-  background: var(--bg-card);
+.ec-role-user { color: var(--accent); }
+.ec-role-ai { color: var(--cool); }
+.ec-text-user {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 23px;
+  color: var(--fg);
+  line-height: 1.35;
+}
+.ec-text-ai {
+  font-size: 19px;
   color: var(--fg-soft);
-  border: 1px solid var(--border);
-  border-bottom-left-radius: 5px;
+  line-height: 1.55;
 }
 
 /* ============ Mini-línea temporal (slide "emergentes") ============ */

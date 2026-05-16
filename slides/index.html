@@ -341,12 +341,18 @@
       <p style="font-size:23px;color:var(--fg);margin:14px 0 14px;max-width:1380px">Y, al escalarlo así, empezó a hacer cosas que <em>nadie le había enseñado</em>:</p>
       <div class="emerge-chat" data-emerge-chat>
         <div class="ec-head">
-          <span class="ec-dot"></span><span class="ec-dot"></span><span class="ec-dot"></span>
-          <span class="ec-cap" data-ec-cap></span>
+          <span class="ec-dot ec-dot-r"></span><span class="ec-dot ec-dot-y"></span><span class="ec-dot ec-dot-g"></span>
+          <span class="ec-cap">chat · claude — <span data-ec-cap></span></span>
         </div>
         <div class="ec-body">
-          <div class="ec-row ec-row-user"><div class="ec-bubble ec-user" data-ec-user></div></div>
-          <div class="ec-row ec-row-ai"><div class="ec-bubble ec-ai" data-ec-ai></div></div>
+          <div class="ec-msg ec-msg-user">
+            <div class="ec-role ec-role-user">Tú</div>
+            <div class="ec-text-user" data-ec-user></div>
+          </div>
+          <div class="ec-msg ec-msg-ai">
+            <div class="ec-role ec-role-ai">Claude</div>
+            <div class="ec-text-ai" data-ec-ai></div>
+          </div>
         </div>
       </div>
       <p class="bottom-note">Se llaman <strong>capacidades emergentes</strong>: nadie las diseñó, surgieron de la escala. Es la razón por la que la IA, de repente, parecía saber de todo.</p>
@@ -1716,6 +1722,8 @@
     var capEl = chat.querySelector('[data-ec-cap]');
     var userEl = chat.querySelector('[data-ec-user]');
     var aiEl = chat.querySelector('[data-ec-ai]');
+    var msgUser = chat.querySelector('.ec-msg-user');
+    var msgAi = chat.querySelector('.ec-msg-ai');
     var EX = [
       { cap: 'Traducir idiomas', u: '¿Cómo se dice «buenas noches» en japonés?', a: '«こんばんは» (konban wa). Y al irte a dormir, «おやすみ».' },
       { cap: 'Programar', u: 'Hazme una página web con un cronómetro.', a: 'Hecho: HTML + JavaScript, 28 líneas, con botones de arrancar, parar y reiniciar. ✓' },
@@ -1729,11 +1737,11 @@
       capEl.textContent = ex.cap;
       userEl.textContent = ex.u;
       aiEl.textContent = ex.a;
-      userEl.classList.remove('ec-in');
-      aiEl.classList.remove('ec-in');
-      void userEl.offsetWidth;
-      timers.push(setTimeout(function() { userEl.classList.add('ec-in'); }, 80));
-      timers.push(setTimeout(function() { aiEl.classList.add('ec-in'); }, 1000));
+      msgUser.classList.remove('ec-in');
+      msgAi.classList.remove('ec-in');
+      void msgUser.offsetWidth;
+      timers.push(setTimeout(function() { msgUser.classList.add('ec-in'); }, 80));
+      timers.push(setTimeout(function() { msgAi.classList.add('ec-in'); }, 1000));
     }
     function loop(i) {
       show(EX[i]);
