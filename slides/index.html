@@ -1109,23 +1109,26 @@
     <section>
       <h3 class="section-h">Medioambiente: ponlo en perspectiva</h3>
       <p class="lede" style="max-width:1380px;margin-bottom:20px">El agua de las noticias <strong>refrigera los centros de datos</strong> donde corre la IA. Es noticia porque es un recurso local: si el datacenter está en zona de sequía, se nota en el pueblo.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1380px">
-        <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:12px;padding:22px 26px">
-          <div style="font-family:var(--font-mono);font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px">Lo que gasta la IA</div>
-          <div style="display:grid;gap:11px">
-            <div style="display:flex;justify-content:space-between;gap:18px;font-size:20px;color:var(--fg-soft);padding-bottom:11px;border-bottom:1px solid var(--border)"><span>1 pregunta de texto</span><span style="font-family:var(--font-mono);color:var(--fg)">≈ 0,3 Wh</span></div>
-            <div style="display:flex;justify-content:space-between;gap:18px;font-size:20px;color:var(--fg-soft);padding-bottom:11px;border-bottom:1px solid var(--border)"><span>1 imagen generada</span><span style="font-family:var(--font-mono);color:var(--fg)">≈ 2 Wh</span></div>
-            <div style="display:flex;justify-content:space-between;gap:18px;font-size:20px;color:var(--fg)"><span><strong>10 s de vídeo</strong> (Sora)</span><span style="font-family:var(--font-mono);color:var(--accent-soft)">≈ 940 Wh</span></div>
-          </div>
-        </div>
-        <div style="background:var(--bg-elev);border:1px solid var(--border);border-top:3px solid var(--cool);border-radius:12px;padding:22px 26px">
-          <div style="font-family:var(--font-mono);font-size:13px;color:var(--cool);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px">Lo que ya gastabas sin pensarlo</div>
-          <div style="display:grid;gap:11px">
-            <div style="display:flex;justify-content:space-between;gap:18px;font-size:20px;color:var(--fg-soft);padding-bottom:11px;border-bottom:1px solid var(--border)"><span>1 búsqueda en Google</span><span style="font-family:var(--font-mono);color:var(--fg)">≈ 0,3 Wh</span></div>
-            <div style="display:flex;justify-content:space-between;gap:18px;font-size:20px;color:var(--fg-soft);padding-bottom:11px;border-bottom:1px solid var(--border)"><span>1 hora de Netflix</span><span style="font-family:var(--font-mono);color:var(--fg)">≈ 300 Wh</span></div>
-            <div style="display:flex;justify-content:space-between;gap:18px;font-size:20px;color:var(--fg)"><span><strong>1 hamburguesa</strong></span><span style="font-family:var(--font-mono);color:var(--accent-soft)">2.400 L de agua</span></div>
-          </div>
-        </div>
+      <div style="display:grid;grid-template-columns:1fr 64px 1fr;gap:8px 16px;max-width:1380px;align-items:center">
+        <div style="font-family:var(--font-mono);font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em">Lo que hace la IA</div>
+        <div></div>
+        <div style="font-family:var(--font-mono);font-size:13px;color:var(--cool);text-transform:uppercase;letter-spacing:0.08em">Equivale a algo de toda la vida</div>
+
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:16px 22px;font-size:21px;color:var(--fg)">1 pregunta de texto a la IA</div>
+        <div style="font-family:var(--font-mono);font-size:28px;color:var(--accent);text-align:center">≈</div>
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:16px 22px;font-size:21px;color:var(--fg-soft)">una búsqueda en Google de siempre</div>
+
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:16px 22px;font-size:21px;color:var(--fg)">1 imagen generada</div>
+        <div style="font-family:var(--font-mono);font-size:28px;color:var(--accent);text-align:center">≈</div>
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:16px 22px;font-size:21px;color:var(--fg-soft)">una bombilla LED encendida 20 minutos</div>
+
+        <div style="background:var(--bg-card);border:1px solid var(--accent);border-radius:12px;padding:16px 22px;font-size:21px;color:var(--fg)"><strong>10 segundos de vídeo</strong> (Sora)</div>
+        <div style="font-family:var(--font-mono);font-size:28px;color:var(--accent);text-align:center">≈</div>
+        <div style="background:var(--bg-card);border:1px solid var(--accent);border-radius:12px;padding:16px 22px;font-size:21px;color:var(--accent-soft)"><strong>una lavadora entera</strong></div>
+
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:16px 22px;font-size:21px;color:var(--fg)">Un año escribiéndole a diario</div>
+        <div style="font-family:var(--font-mono);font-size:28px;color:var(--accent);text-align:center">≈</div>
+        <div style="background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:16px 22px;font-size:21px;color:var(--fg-soft)">el agua de <strong>una sola hamburguesa</strong></div>
       </div>
       <p class="bottom-note">Una pregunta de texto es <strong>trivial</strong>. Lo que de verdad pesa es el <strong>vídeo</strong> y el <strong>entrenamiento</strong>. Y el gasto por consulta <strong>ha caído mucho en dos años</strong>: modelos y chips más eficientes.</p>
       <a class="deepen" href="/jugar/calculadora-consumo?from=ambiente" target="_blank">Calculadora de consumo</a>
