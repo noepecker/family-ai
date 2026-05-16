@@ -1005,16 +1005,18 @@
 /* ============ GLOSSARY ============ */
 .glossary-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px 30px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px 16px;
   margin-top: 20px;
+  max-width: 1380px;
 }
 
 .g-item {
+  min-width: 0;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 18px 22px;
+  padding: 16px 20px;
 }
 
 .g-term {

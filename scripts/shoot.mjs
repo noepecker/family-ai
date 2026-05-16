@@ -13,7 +13,7 @@ const shots = [
 ];
 
 const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
+const page = await browser.newPage({ viewport: { width: 1920, height: 1200 } });
 
 for (const s of shots) {
   await page.goto(`http://localhost:3000/slides/index.html#/${s.hash}`, { waitUntil: "load" });
