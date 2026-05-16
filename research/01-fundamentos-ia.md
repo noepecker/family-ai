@@ -160,6 +160,23 @@ Modelos como o1 / o3 de OpenAI o Claude Extended Thinking se entrenan **adiciona
 
 **Regla de oro**: si la respuesta está **dentro del prompt** o es una **tarea de transformar texto**, está bien. Si le pides "datos del mundo real" sin que tenga acceso a internet, **verifica antes de fiarte**.
 
+### Capacidades emergentes
+
+Aquí está la parte que de verdad sorprendió a los investigadores. A un modelo de lenguaje se le entrena para **una sola cosa**: predecir la siguiente palabra. No se le programa para traducir, ni para resumir, ni para escribir código. Solo eso.
+
+Pero cuando ese mismo entrenamiento se hace a lo grande —con cantidades enormes de texto **de todo tipo**: libros, código, foros, Wikipedia, conversaciones, artículos en decenas de idiomas— el modelo, sin que nadie se lo enseñe explícitamente, empieza a hacer cosas que no estaban en el plan:
+
+- **Traducir** entre idiomas, sin un diccionario dentro.
+- **Programar**: escribir código que funciona a partir de una frase.
+- **Resumir** un texto largo en cuatro líneas.
+- **Razonar paso a paso** ante un problema que no había visto.
+- **Imitar un estilo** de escritura concreto.
+- **Explicar** un concepto adaptándolo a quien pregunta.
+
+A esto se le llama **capacidades emergentes**: habilidades que *aparecen* al aumentar la escala (más datos, más parámetros, más cómputo), sin haber sido diseñadas. El salto se hizo visible con **GPT-2 (2019)** y se volvió innegable con **GPT-3 (2020)**. Es, en buena medida, la razón por la que la IA pasó de ser una herramienta de nicho a estar, de repente, en todas partes.
+
+Conviene un matiz honesto: hay debate académico sobre si algunas de estas capacidades "emergen" de golpe o si simplemente mejoran de forma gradual y lo que cambia es cómo lo medimos. Pero el hecho de fondo no se discute: nadie programó al modelo para traducir o programar, y aun así lo hace.
+
 ## 4. La curiosidad central: microGPT (Karpathy, febrero 2026)
 
 ### Por qué importa esta curiosidad

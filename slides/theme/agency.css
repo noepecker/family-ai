@@ -1983,6 +1983,18 @@
 }
 .pd-cand.pd-chosen .pd-cp { color: var(--accent-soft); }
 
+/* ============ Capacidades emergentes · tarjetas ============ */
+.emerge-card {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.emerge-card.is-in {
+  animation: emerge-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes emerge-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* ============ Mini-línea temporal (slide "emergentes") ============ */
 .mini-timeline {
   position: relative;
