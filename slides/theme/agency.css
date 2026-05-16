@@ -904,6 +904,9 @@
   align-items: center;
   padding: 100px !important;
   text-align: center;
+  /* Sin esto, height:1000px + padding:100px suman 1200px (content-box):
+     la sección desborda el deck y el contenido centrado cae bajo el eje. */
+  box-sizing: border-box;
 }
 
 .quote-eyebrow {
