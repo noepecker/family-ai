@@ -324,15 +324,10 @@
           <div style="font-size:17px;color:var(--fg);line-height:1.35">Predice <strong>una palabra</strong>… y vuelve a empezar</div>
         </div>
       </div>
-      <div id="predict-demo" style="margin-top:24px;background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:24px 28px;max-width:1380px">
-        <p style="font-family:var(--font-mono);font-size:13px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.08em;margin:0 0 12px">El modelo va escribiendo su respuesta · ahora elige la siguiente palabra</p>
-        <p style="font-family:var(--font-serif);font-size:30px;color:var(--fg);margin:0 0 18px;line-height:1.35">«Para quitar una mancha de vino, lo primero es <span style="color:var(--accent);border-bottom:3px dashed var(--accent);padding:0 6px">secar</span>…»</p>
-        <div style="display:grid;gap:9px;max-width:760px">
-          <div style="display:grid;grid-template-columns:150px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg)">secar</span><span style="height:14px;background:var(--accent);border-radius:7px;width:41%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--accent-soft)">41%</span></div>
-          <div style="display:grid;grid-template-columns:150px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg-soft)">absorber</span><span style="height:14px;background:var(--fg-mute);border-radius:7px;width:28%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--fg-mute)">28%</span></div>
-          <div style="display:grid;grid-template-columns:150px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg-soft)">echar sal</span><span style="height:14px;background:var(--fg-mute);border-radius:7px;width:21%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--fg-mute)">21%</span></div>
-          <div style="display:grid;grid-template-columns:150px 1fr 56px;gap:14px;align-items:center"><span style="font-size:19px;color:var(--fg-soft)">frotar</span><span style="height:14px;background:var(--fg-mute);border-radius:7px;width:10%"></span><span style="font-family:var(--font-mono);font-size:15px;color:var(--fg-mute)">10%</span></div>
-        </div>
+      <div id="predict-demo" data-predict style="margin-top:24px;background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:24px 28px;max-width:1380px">
+        <p style="font-family:var(--font-mono);font-size:13px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.08em;margin:0 0 14px">El modelo escribe palabra a palabra · cada palabra que elige cambia las siguientes opciones</p>
+        <p class="pd-sentence">«Para quitar una mancha de vino, lo primero es<span class="pd-built"></span> <span class="pd-slot">_____</span>»</p>
+        <div class="pd-bars"></div>
       </div>
       <p class="bottom-note">No tiene la respuesta pensada de antemano. La va construyendo palabra a palabra, eligiendo cada vez —entre miles de opciones— la continuación más probable.</p>
       <a class="deepen" href="/explorar/fundamentos-ia?from=como-responde" target="_blank">Tokens, probabilidad y temperatura</a>
@@ -1689,6 +1684,96 @@
         stopAllAudio();
         if (timerInt) { clearInterval(timerInt); timerInt = null; }
       }
+    }
+    Reveal.on('ready', onSlide);
+    Reveal.on('slidechanged', onSlide);
+  })();
+
+  /* ===================================================================
+     Slide "cómo aprende" · los mandos se afinan al entrar.
+     =================================================================== */
+  (function() {
+    var panel = document.querySelector('.knob-panel');
+    if (!panel) return;
+    var section = panel.closest('section');
+    var knobs = panel.querySelectorAll('.knob');
+    function settle() {
+      knobs.forEach(function(k, i) {
+        setTimeout(function() {
+          k.style.setProperty('--a', Math.floor(Math.random() * 360) + 'deg');
+        }, i * 26);
+      });
+    }
+    function onSlide() {
+      if (Reveal.getCurrentSlide() === section) {
+        settle();
+        setTimeout(settle, 750);
+      }
+    }
+    Reveal.on('ready', onSlide);
+    Reveal.on('slidechanged', onSlide);
+  })();
+
+  /* ===================================================================
+     Slide "cómo responde" · predicción en cadena.
+     Construye una respuesta palabra a palabra; cada palabra elegida
+     cambia las opciones de la siguiente. En bucle mientras se ve la slide.
+     =================================================================== */
+  (function() {
+    var demo = document.getElementById('predict-demo');
+    if (!demo) return;
+    var section = demo.closest('section');
+    var builtEl = demo.querySelector('.pd-built');
+    var slotEl = demo.querySelector('.pd-slot');
+    var barsEl = demo.querySelector('.pd-bars');
+    var STEPS = [
+      [['secar', 41], ['absorber', 28], ['echar sal', 21], ['frotar', 10]],
+      [['la', 54], ['con', 24], ['bien', 14], ['rápido', 8]],
+      [['mancha', 47], ['zona', 39], ['tela', 14]],
+      [['con', 49], ['sin', 33], ['enseguida', 18]],
+      [['un paño', 52], ['papel', 30], ['una toalla', 18]]
+    ];
+    var timers = [];
+    function stop() { timers.forEach(clearTimeout); timers = []; }
+    function renderStep(opts) {
+      barsEl.innerHTML = '';
+      opts.forEach(function(o, i) {
+        var row = document.createElement('div');
+        row.className = 'pd-row' + (i === 0 ? ' pd-top' : '');
+        var w = document.createElement('span'); w.className = 'pd-word'; w.textContent = o[0];
+        var t = document.createElement('span'); t.className = 'pd-track';
+        var p = document.createElement('span'); p.className = 'pd-pct'; p.textContent = o[1] + '%';
+        row.appendChild(w); row.appendChild(t); row.appendChild(p);
+        barsEl.appendChild(row);
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() { t.style.width = o[1] + '%'; });
+        });
+      });
+    }
+    function markChosen() {
+      var top = barsEl.querySelector('.pd-row.pd-top');
+      if (top) top.classList.add('pd-chosen');
+    }
+    function run() {
+      stop();
+      builtEl.textContent = '';
+      slotEl.style.display = '';
+      var built = [];
+      var DUR = 2500;
+      STEPS.forEach(function(step, idx) {
+        timers.push(setTimeout(function() { renderStep(step); }, idx * DUR + 60));
+        timers.push(setTimeout(markChosen, idx * DUR + 1500));
+        timers.push(setTimeout(function() {
+          built.push(step[0][0]);
+          builtEl.textContent = ' ' + built.join(' ');
+          if (idx === STEPS.length - 1) slotEl.style.display = 'none';
+        }, idx * DUR + 2050));
+      });
+      timers.push(setTimeout(run, STEPS.length * DUR + 2800));
+    }
+    function onSlide() {
+      if (Reveal.getCurrentSlide() === section) run();
+      else { stop(); }
     }
     Reveal.on('ready', onSlide);
     Reveal.on('slidechanged', onSlide);
