@@ -996,6 +996,9 @@
   color: inherit;
   line-height: inherit;
   margin: 0 0 0.7em !important;
+  /* Reparte cada párrafo en líneas de ancho parejo: el bloque queda
+     "cuadrado" en vez de partirse en forma de rombo. */
+  text-wrap: balance;
 }
 
 .quote-mega-3 p:last-child {
