@@ -324,10 +324,10 @@
           <div style="font-size:17px;color:var(--fg);line-height:1.35">Predice <strong>una palabra</strong>… y vuelve a empezar</div>
         </div>
       </div>
-      <div id="predict-demo" data-predict style="margin-top:24px;background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:24px 28px;max-width:1380px">
-        <p style="font-family:var(--font-mono);font-size:13px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.08em;margin:0 0 14px">El modelo escribe palabra a palabra · cada palabra que elige cambia las siguientes opciones</p>
-        <p class="pd-sentence">«Para quitar una mancha de vino, lo primero es<span class="pd-built"></span> <span class="pd-slot">_____</span>»</p>
-        <div class="pd-bars"></div>
+      <div id="predict-demo" data-predict style="margin-top:24px;background:var(--bg-elev);border:1px solid var(--border);border-radius:14px;padding:26px 32px;max-width:1380px">
+        <p class="pd-label">El modelo escribe su respuesta palabra a palabra · cada elección reescribe las opciones siguientes</p>
+        <p class="pd-sentence"><span class="pd-fixed">«Para quitar una mancha de vino, lo primero es</span><span class="pd-built"></span> <span class="pd-cursor"></span><span class="pd-fixed">»</span></p>
+        <div class="pd-candidates"></div>
       </div>
       <p class="bottom-note">No tiene la respuesta pensada de antemano. La va construyendo palabra a palabra, eligiendo cada vez —entre miles de opciones— la continuación más probable.</p>
       <a class="deepen" href="/explorar/fundamentos-ia?from=como-responde#cmo-genera-texto-paso-a-paso" target="_blank">Tokens, probabilidad y temperatura</a>
@@ -1724,8 +1724,8 @@
     if (!demo) return;
     var section = demo.closest('section');
     var builtEl = demo.querySelector('.pd-built');
-    var slotEl = demo.querySelector('.pd-slot');
-    var barsEl = demo.querySelector('.pd-bars');
+    var cursorEl = demo.querySelector('.pd-cursor');
+    var candEl = demo.querySelector('.pd-candidates');
     var STEPS = [
       [['secar', 41], ['absorber', 28], ['echar sal', 21], ['frotar', 10]],
       [['la', 54], ['con', 24], ['bien', 14], ['rápido', 8]],
@@ -1734,46 +1734,63 @@
       [['un paño', 52], ['papel', 30], ['una toalla', 18]]
     ];
     var timers = [];
+    function push(t) { timers.push(t); }
     function stop() { timers.forEach(clearTimeout); timers = []; }
+
     function renderStep(opts) {
-      barsEl.innerHTML = '';
+      candEl.innerHTML = '';
+      var max = opts[0][1];
       opts.forEach(function(o, i) {
-        var row = document.createElement('div');
-        row.className = 'pd-row' + (i === 0 ? ' pd-top' : '');
-        var w = document.createElement('span'); w.className = 'pd-word'; w.textContent = o[0];
-        var t = document.createElement('span'); t.className = 'pd-track';
-        var p = document.createElement('span'); p.className = 'pd-pct'; p.textContent = o[1] + '%';
-        row.appendChild(w); row.appendChild(t); row.appendChild(p);
-        barsEl.appendChild(row);
-        requestAnimationFrame(function() {
-          requestAnimationFrame(function() { t.style.width = o[1] + '%'; });
-        });
+        var c = document.createElement('div');
+        c.className = 'pd-cand';
+        var w = document.createElement('span'); w.className = 'pd-cw'; w.textContent = o[0];
+        var bar = document.createElement('span'); bar.className = 'pd-bar';
+        var fill = document.createElement('span'); fill.className = 'pd-bar-fill';
+        bar.appendChild(fill);
+        var p = document.createElement('span'); p.className = 'pd-cp'; p.textContent = o[1] + '%';
+        c.appendChild(w); c.appendChild(bar); c.appendChild(p);
+        candEl.appendChild(c);
+        push(setTimeout(function() { c.classList.add('pd-in'); }, 90 + i * 95));
+        push(setTimeout(function() {
+          fill.style.width = Math.round(o[1] / max * 100) + '%';
+        }, 90 + i * 95 + 280));
       });
     }
     function markChosen() {
-      var top = barsEl.querySelector('.pd-row.pd-top');
-      if (top) top.classList.add('pd-chosen');
+      var first = candEl.querySelector('.pd-cand');
+      if (first) first.classList.add('pd-chosen');
+    }
+    function fadeCandidates() {
+      Array.prototype.forEach.call(candEl.children, function(c) {
+        c.style.transition = 'opacity 0.45s ease';
+        c.style.opacity = '0';
+      });
+    }
+    function appendWord(word) {
+      var s = document.createElement('span');
+      s.className = 'pd-w';
+      s.textContent = ' ' + word;
+      builtEl.appendChild(s);
     }
     function run() {
       stop();
-      builtEl.textContent = '';
-      slotEl.style.display = '';
-      var built = [];
-      var DUR = 2500;
+      builtEl.innerHTML = '';
+      cursorEl.style.display = '';
+      var DUR = 3200;
       STEPS.forEach(function(step, idx) {
-        timers.push(setTimeout(function() { renderStep(step); }, idx * DUR + 60));
-        timers.push(setTimeout(markChosen, idx * DUR + 1500));
-        timers.push(setTimeout(function() {
-          built.push(step[0][0]);
-          builtEl.textContent = ' ' + built.join(' ');
-          if (idx === STEPS.length - 1) slotEl.style.display = 'none';
-        }, idx * DUR + 2050));
+        push(setTimeout(function() { renderStep(step); }, idx * DUR));
+        push(setTimeout(markChosen, idx * DUR + 2150));
+        push(setTimeout(function() {
+          appendWord(step[0][0]);
+          fadeCandidates();
+          if (idx === STEPS.length - 1) cursorEl.style.display = 'none';
+        }, idx * DUR + 2750));
       });
-      timers.push(setTimeout(run, STEPS.length * DUR + 2800));
+      push(setTimeout(run, STEPS.length * DUR + 3200));
     }
     function onSlide() {
       if (Reveal.getCurrentSlide() === section) run();
-      else { stop(); }
+      else stop();
     }
     Reveal.on('ready', onSlide);
     Reveal.on('slidechanged', onSlide);
